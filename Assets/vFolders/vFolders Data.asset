@@ -15,9 +15,47 @@ MonoBehaviour:
   folderDatas_byGuid:
     keys:
     - bc0cad4b27e26e04e9025e8526448fd3
+    - aad807df8545b284e99584ee4f4cd508
+    - c9b5f3272f4efab4d8f3313ca0e42f41
+    - 6379ef77d1b78424ba192a319afd9537
+    - 0a33f992e13add9438b6e744a7dad662
+    - dd1fb8c42092eb2448f63c4b57a4bf73
+    - 2f17d1e6a207e4d8eb72bd03b1b645ac
+    - 95caba48119d33e4ba66351a437d34a5
     values:
     - iconNameOrGuid: 
       colorIndex: 1
       isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 4
+      isIconRecursive: 0
       isColorRecursive: 0
-  bookmarks: []
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 7
+      isIconRecursive: 0
+      isColorRecursive: 0
+  bookmarks:
+  - guid: bc0cad4b27e26e04e9025e8526448fd3
+  - guid: a911d0cc63ea8a34bb53744db53e8d02
+  - guid: 0957fae55b2049c4198d815f14345021
