@@ -194,7 +194,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowMapColor: {r: 0.43921328, g: 0.6305593, b: 0.6603774, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 0}
+    - _Tint: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &581381841201640716
 MonoBehaviour:
