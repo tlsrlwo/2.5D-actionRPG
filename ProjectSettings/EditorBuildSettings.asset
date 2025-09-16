@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/2DStartPointTest.unity
+    guid: ae1835a01836db74faabb60035b77dbd
   m_configObjects: {}
