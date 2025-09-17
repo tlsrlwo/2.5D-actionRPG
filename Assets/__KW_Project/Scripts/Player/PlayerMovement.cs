@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("¿òÁ÷ÀÓ")]
     [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float runSpeeed = 5f;
     [SerializeField] private float airSpeed = 1.5f;
     [SerializeField] private float xInput, zInput;
 
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
             sr.flipX = true;
             anim.SetBool("isWalk", true);
         }
+
         if (xInput == 0 && zInput == 0)
         {
             anim.SetBool("isWalk", false);
