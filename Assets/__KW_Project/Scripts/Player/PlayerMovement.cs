@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         if (xInput == 0 && zInput == 0)
         {
             anim.SetBool("isWalk", false);
-        }
+        }        
     }
 
     private void PlayerMove()
