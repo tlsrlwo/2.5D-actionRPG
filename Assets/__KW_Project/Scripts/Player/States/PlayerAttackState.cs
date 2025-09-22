@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace KW
 {
-    public class PlayerAttackState : MonoBehaviour
+    public class PlayerAttackState : MovementBaseState
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void EnterState(PlayerMovement movement)
         {
-        
+
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void UpdateState(PlayerMovement movement)
         {
-        
+
         }
+
     }
 }

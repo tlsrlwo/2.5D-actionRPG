@@ -45,7 +45,7 @@ namespace KW
         public PlayerWalkState playerWalk = new PlayerWalkState();
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
-
+            
 
         #endregion
 
@@ -61,27 +61,28 @@ namespace KW
             PlayerMove();
             Gravity();
 
+            if (xInput < 0)
+            {
+                sr.flipX = true;
+            }
             if (xInput > 0)
             {
                 sr.flipX = false;
-                anim.SetBool("isWalk", true);
-            }
-            else if (xInput < 0)
-            {
-                sr.flipX = true;
-                anim.SetBool("isWalk", true);
             }
 
-            if (xInput == 0 && zInput == 0)
-            {
-                anim.SetBool("isWalk", false);
-            }
+            anim.SetFloat("xInput", xInput);
+            anim.SetFloat("zInput", zInput);
+
+            //currentState.UpdateState(this);
         }
 
         private void PlayerMove()
         {
-            xInput = Input.GetAxis("Horizontal");
-            zInput = Input.GetAxis("Vertical");
+            xInput = Input.GetAxisRaw("Horizontal");
+            zInput = Input.GetAxisRaw("Vertical");
+            //xInput = Input.GetAxis("Horizontal");
+            //zInput = Input.GetAxis("Vertical");
+
             Vector3 airDir = Vector3.zero;
 
             // 공중에 있을 때 
@@ -92,6 +93,11 @@ namespace KW
             cController.Move((dir.normalized * walkSpeed + airDir * airSpeed) * Time.deltaTime);
         }
 
+        public void SwitchState(MovementBaseState state)
+        {
+            currentState = state;
+            currentState.UpdateState(this);
+        }
         private bool IsGrounded()
         {
             // 플레이어의 바닥 판정
