@@ -193,8 +193,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345900067}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18460771, y: 0, z: 0, w: 0.9828123}
-  m_LocalPosition: {x: 46.56, y: 7.283113, z: 16.85}
+  m_LocalRotation: {x: 0.19332367, y: 0, z: 0, w: 0.9811351}
+  m_LocalPosition: {x: 46.56, y: 8.893112, z: 13.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &505124570
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -371,10 +371,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0, z: 0}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
-  VerticalArmLength: 3.31
+  ShoulderOffset: {x: 0, y: 2.11, z: 0}
+  VerticalArmLength: 2.81
   CameraSide: 1
-  CameraDistance: 8.5
+  CameraDistance: 12
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -398,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &961891770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -725,10 +725,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5455399562829625783, guid: b3f52f8d8a86b134b93c22434d50d84a, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6685a31fb61bd94489b1bff9631420bd, type: 2}
     - target: {fileID: 7169915417282636933, guid: b3f52f8d8a86b134b93c22434d50d84a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -830,8 +826,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832548060}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18460771, y: 0, z: 0, w: 0.9828123}
-  m_LocalPosition: {x: 46.56, y: 7.283113, z: 16.85}
+  m_LocalRotation: {x: 0.19332367, y: 0, z: 0, w: 0.9811351}
+  m_LocalPosition: {x: 46.56, y: 8.893112, z: 13.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -931,7 +927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2015705511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1004,9 +1000,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1832548063}
+  - {fileID: 345900069}
   - {fileID: 1062048963}
   - {fileID: 1129449679}
-  - {fileID: 345900069}
   - {fileID: 1519372350}
   - {fileID: 2015705512}
   - {fileID: 961891771}

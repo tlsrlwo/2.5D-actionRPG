@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VFolders.Libs;
 
 namespace KW
 {
@@ -13,7 +14,11 @@ namespace KW
 
         public override void UpdateState(PlayerMovement movement)
         {
-
+            if (movement.dir.magnitude > 0.1f)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftShift)) movement.SwitchState(movement.playerRun);
+                else movement.SwitchState(movement.playerWalk);
+            }
         }
     }
 }

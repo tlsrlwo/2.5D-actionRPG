@@ -8,12 +8,17 @@ namespace KW
     {
         public override void EnterState(PlayerMovement movement)
         {
-
+          
         }
 
         public override void UpdateState(PlayerMovement movement)
         {
 
+        }
+
+        private void ExitState(PlayerMovement movement, MovementBaseState state)
+        {
+            movement.SwitchState(state);
         }
     }
 }

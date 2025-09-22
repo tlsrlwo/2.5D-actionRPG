@@ -13,7 +13,15 @@ namespace KW
 
         public override void UpdateState(PlayerMovement movement)
         {
+            if (Input.GetKey(KeyCode.LeftShift)) ExitState(movement, movement.playerRun);
+            else if (movement.dir.magnitude < 0.1f) ExitState(movement, movement.playerIdle);
 
+            movement.currentSpeed = movement.walkSpeed;
+        }
+
+        private void ExitState(PlayerMovement movement, MovementBaseState state)
+        {
+            movement.SwitchState(state);
         }
     }
 }

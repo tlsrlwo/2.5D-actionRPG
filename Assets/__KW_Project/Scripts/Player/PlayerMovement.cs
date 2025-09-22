@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 namespace KW
 {    
     public class PlayerMovement : MonoBehaviour
     {
         [Header("움직임")]
-        [SerializeField] private float walkSpeed = 3f;
-        [SerializeField] private float runSpeeed = 5f;
-        [SerializeField] private float airSpeed = 1.5f;
-        [SerializeField] private float xInput, zInput;
+        public float walkSpeed = 3f;
+        public float runSpeeed = 5f;
+        public float airSpeed = 4f;
+        public float xInput, zInput;
 
-        private Vector3 dir;
+        public float currentSpeed;
 
-        CharacterController cController;
-        SpriteRenderer sr;
+        public Vector3 dir;
+
 
         [Header("점프")]
-        [SerializeField] private float jumpForce = 10f;
         [SerializeField] private float groundYOffset;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float sphereRadius = 0.05f;
@@ -34,8 +32,10 @@ namespace KW
         private Vector3 velocity;
 
 
-        [Header("Anim")]
-        Animator anim;
+        [Header("컴포넌트 참조")]
+        [HideInInspector] public Animator anim;
+        [HideInInspector] public SpriteRenderer sr;
+        private CharacterController cController;
 
         #region "플레이어 FSM"
         public MovementBaseState previousState;
@@ -56,11 +56,18 @@ namespace KW
             anim = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            // 씬 시작 시 상태 설정
+            SwitchState(playerIdle);
+        }
+
         private void Update()
         {
             PlayerMove();
             Gravity();
 
+            // 스프라이트가 오른쪽만 있어서 반대로 뒤집어줌
             if (xInput < 0)
             {
                 sr.flipX = true;
@@ -73,24 +80,25 @@ namespace KW
             anim.SetFloat("xInput", xInput);
             anim.SetFloat("zInput", zInput);
 
-            //currentState.UpdateState(this);
+            currentState.UpdateState(this);
         }
 
         private void PlayerMove()
         {
+            // GetAxisRaw 로 입력값 1,0 으로 고정
             xInput = Input.GetAxisRaw("Horizontal");
             zInput = Input.GetAxisRaw("Vertical");
             //xInput = Input.GetAxis("Horizontal");
             //zInput = Input.GetAxis("Vertical");
 
-            Vector3 airDir = Vector3.zero;
+            //Vector3 airDir = Vector3.zero;
 
-            // 공중에 있을 때 
-            if (!IsGrounded()) airDir = transform.forward * zInput + transform.right * xInput;
-            // 바닥에 있을 때 
-            dir = transform.forward * zInput + transform.right * xInput;
+            dir = transform.forward * zInput + transform.right * xInput;            // vector3 dir
 
-            cController.Move((dir.normalized * walkSpeed + airDir * airSpeed) * Time.deltaTime);
+            // 변수 초기화
+            Vector3 finalVelocity = dir.normalized * currentSpeed;
+            
+            cController.Move(finalVelocity * Time.deltaTime);
         }
 
         public void SwitchState(MovementBaseState state)
