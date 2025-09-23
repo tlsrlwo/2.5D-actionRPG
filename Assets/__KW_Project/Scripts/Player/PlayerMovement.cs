@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,6 +13,8 @@ namespace KW
         public float runSpeeed = 5f;
         public float airSpeed = 4f;
         public float xInput, zInput;
+
+        private bool canMove = true;
 
         public float currentSpeed;
 
@@ -45,9 +48,26 @@ namespace KW
         public PlayerWalkState playerWalk = new PlayerWalkState();
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
-            
 
-        #endregion
+        #endregion       
+
+        // 스크립트가 활성화될 때 "구독 신청"
+        void OnEnable()
+        {
+            MapManager.OnMapStateChanged += HandleMapStateChanged;
+        }
+
+        // 스크립트가 비활성화될 때 "구독 해지" (중요!)
+        void OnDisable()
+        {
+            MapManager.OnMapStateChanged -= HandleMapStateChanged;
+        }
+
+        private void HandleMapStateChanged(bool isMapOpen)
+        {
+            canMove = !isMapOpen;
+        }
+            
 
         private void Awake()
         {
@@ -64,10 +84,16 @@ namespace KW
 
         private void Update()
         {
+            if(!canMove)
+            {
+                return;
+            }
+
             PlayerMove();
             Gravity();
 
             // 스프라이트가 오른쪽만 있어서 반대로 뒤집어줌
+            /*
             if (xInput < 0)
             {
                 sr.flipX = true;
@@ -75,6 +101,11 @@ namespace KW
             if (xInput > 0)
             {
                 sr.flipX = false;
+            }
+            */
+            if (xInput != 0)
+            {
+                sr.flipX = (xInput < 0);
             }
 
             anim.SetFloat("xInput", xInput);
