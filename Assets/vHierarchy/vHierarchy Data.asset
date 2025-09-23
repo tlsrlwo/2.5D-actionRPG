@@ -128,7 +128,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-15691927304b3e547bd797773489ed42-1545356145-0
         - globalObjectIdString: GlobalObjectId_V1-2-15691927304b3e547bd797773489ed42-15406323-0
         values:
-        - colorIndex: 1
+        - colorIndex: 2
           iconNameOrGuid: Folder Icon
           isIconRecursive: 0
           isColorRecursive: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
           iconNameOrGuid: Camera Icon
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 1
+        - colorIndex: 4
           iconNameOrGuid: Folder Icon
           isIconRecursive: 0
           isColorRecursive: 0
@@ -148,11 +148,11 @@ MonoBehaviour:
           iconNameOrGuid: Camera Icon
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 1
-          iconNameOrGuid: Folder Icon
-          isIconRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 1
           isColorRecursive: 0
-        - colorIndex: 1
+        - colorIndex: 6
           iconNameOrGuid: Folder Icon
           isIconRecursive: 0
           isColorRecursive: 0
