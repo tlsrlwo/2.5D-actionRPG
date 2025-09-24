@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc5a5b0832fb464280ecd52626b2f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniMapUI: {fileID: 1433929531}
+  mapIcon: {fileID: 1433929531}
   fullMapUI: {fileID: 2125398156}
 --- !u!1 &2014107764
 GameObject:

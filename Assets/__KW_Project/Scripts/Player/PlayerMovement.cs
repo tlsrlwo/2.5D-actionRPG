@@ -50,14 +50,12 @@ namespace KW
         public PlayerAttackState playerAttack = new PlayerAttackState();
 
         #endregion       
-
-        // 스크립트가 활성화될 때 "구독 신청"
+               
         void OnEnable()
         {
             MapManager.OnMapStateChanged += HandleMapStateChanged;
         }
 
-        // 스크립트가 비활성화될 때 "구독 해지" (중요!)
         void OnDisable()
         {
             MapManager.OnMapStateChanged -= HandleMapStateChanged;
