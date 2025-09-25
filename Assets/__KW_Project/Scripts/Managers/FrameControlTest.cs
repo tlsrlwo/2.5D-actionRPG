@@ -8,7 +8,7 @@ namespace KW
     {
         private void Awake()
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
     }
 }

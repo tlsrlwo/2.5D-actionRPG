@@ -11,7 +11,7 @@ namespace KW
     {
         public static event Action<bool> OnMapStateChanged;
 
-        //[SerializeField] private GameObject mapIcon;
+        [SerializeField] private GameObject ingameUI;
         [SerializeField] private GameObject fullMapUI;
 
         private bool isMapFull = false;             // 맵의 상태 체크
@@ -40,7 +40,7 @@ namespace KW
 
         private void UpdateMapUI()
         {
-            
+            ingameUI.SetActive(!isMapFull);
             fullMapUI.SetActive(isMapFull);
         }
     }
