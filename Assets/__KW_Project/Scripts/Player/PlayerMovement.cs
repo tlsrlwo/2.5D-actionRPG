@@ -13,6 +13,7 @@ namespace KW
         public float runSpeeed = 5f;
         public float airSpeed = 4f;
         public float xInput, zInput;
+        public float lastMoveX, lastMoveZ;
 
         private bool canMove = true;
 
@@ -106,8 +107,8 @@ namespace KW
                 sr.flipX = (xInput < 0);
             }
 
-            anim.SetFloat("xInput", xInput);
-            anim.SetFloat("zInput", zInput);
+            anim.SetFloat("lastMoveX", lastMoveX);
+            anim.SetFloat("lastMoveZ", lastMoveZ);
 
             currentState.UpdateState(this);
         }
@@ -120,10 +121,20 @@ namespace KW
             //xInput = Input.GetAxis("Horizontal");
             //zInput = Input.GetAxis("Vertical");
 
-            //Vector3 airDir = Vector3.zero;
+            //Vector3 airDir = Vector3.zero;            
 
             dir = transform.forward * zInput + transform.right * xInput;            // vector3 dir
 
+            // 애니메이터에서 0 값을 받지 않도록 (달리다가 IDLE 로 전환될 때 오류 수정)
+            if(dir.magnitude > 0.01f)
+            {
+                lastMoveX = xInput;
+                lastMoveZ = zInput;
+
+                anim.SetFloat("xInput", xInput);
+                anim.SetFloat("zInput", zInput);
+               
+            }
             // 변수 초기화
             Vector3 finalVelocity = dir.normalized * currentSpeed;
             
@@ -133,6 +144,7 @@ namespace KW
         public void SwitchState(MovementBaseState state)
         {
             currentState = state;
+            currentState.EnterState(this);
             currentState.UpdateState(this);
         }
         private bool IsGrounded()
