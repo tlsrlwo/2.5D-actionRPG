@@ -180,6 +180,5 @@ namespace KW
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(spherePos, cController.radius - sphereRadius);
         }
-
     }
 }
