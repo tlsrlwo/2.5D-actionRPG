@@ -15,7 +15,7 @@ namespace KW
         public float xInput, zInput;
         public float lastMoveX, lastMoveZ;
 
-        private bool canMove = true;
+        [SerializeField]private bool canMove = true;
 
         public float currentSpeed;
 
@@ -56,12 +56,16 @@ namespace KW
         {
             UiManager.OnMapStateChanged += HandleMapStateChanged;
             UiManager.OnInventoryStateChanged += HandleInventoryStateChanged;
+            UiManager.OnSettingsStateChanged += HandleSettingsStateChanged;
+            UiManager.OnQuestStateChanged += HandleQuestStateChanged;
         }
 
         void OnDisable()
         {
             UiManager.OnMapStateChanged -= HandleMapStateChanged;
             UiManager.OnInventoryStateChanged -= HandleInventoryStateChanged;
+            UiManager.OnSettingsStateChanged -= HandleSettingsStateChanged;
+            UiManager.OnQuestStateChanged -= HandleQuestStateChanged;
         }
 
         private void HandleMapStateChanged(bool isMapOpen)
@@ -75,6 +79,10 @@ namespace KW
         private void HandleSettingsStateChanged(bool isSettingsOpen)
         {
             canMove = !isSettingsOpen;
+        }
+        private void HandleQuestStateChanged(bool isQuestOpen)
+        {
+            canMove = !isQuestOpen;
         }
 
 
