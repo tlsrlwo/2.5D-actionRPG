@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,12 +18,12 @@ namespace KW
 
     public class UiManager : MonoBehaviour
     {
-        public static event Action<bool> OnAnyUiStateChanged;           // ÆĞ³ÎÀÌ ¿­°í ´İÀ» ¶§ È£Ãâ µÇ´Â ÀÌº¥Æ® (PlayerMovement¿¡¼­±¸µ¶ÇÔ)
+        public static event Action<bool> OnAnyUiStateChanged;           // íŒ¨ë„ì´ ì—´ê³  ë‹«ì„ ë•Œ í˜¸ì¶œ ë˜ëŠ” ì´ë²¤íŠ¸ (PlayerMovementì—ì„œêµ¬ë…í•¨)
 
         [SerializeField] private GameObject ingameUi;
         [SerializeField] private GameObject systemCanvas;
 
-        [SerializeField] private List<UiPanel> uiPanels;                // °¢ (ÀÎº¥/¸Ê/¼³Á¤/Äù½ºÆ®) ÆĞ³ÎÀ» ´ãÀ» ¸®½ºÆ®
+        [SerializeField] private List<UiPanel> uiPanels;                // ê° (ì¸ë²¤/ë§µ/ì„¤ì •/í€˜ìŠ¤íŠ¸) íŒ¨ë„ì„ ë‹´ì„ ë¦¬ìŠ¤íŠ¸
 
         private UiPanel currentOpenPanel = null;
 
@@ -31,11 +31,11 @@ namespace KW
         {
             foreach (var panel in uiPanels)
             {
-                panel.panelObject.SetActive(false);                     // ÆĞ³Î Å¬·¡½º¸¦ °¡Áø ÆĞ³Î °¢°¢ setActive(false)
+                panel.panelObject.SetActive(false);                     // íŒ¨ë„ í´ë˜ìŠ¤ë¥¼ ê°€ì§„ íŒ¨ë„ ê°ê° setActive(false)
                 panel.isOpen = false;
             }
-            ingameUi.SetActive(true);                                   // °ÔÀÓ ½ÇÇà ½Ã ÀÎ°ÔÀÓ Äµ¹ö½º on
-            systemCanvas.SetActive(false);                              // °ÔÀÓ ½ÇÇà ½Ã ½Ã½ºÅÛ Äµ¹ö½º off
+            ingameUi.SetActive(true);                                   // ê²Œì„ ì‹¤í–‰ ì‹œ ì¸ê²Œì„ ìº”ë²„ìŠ¤ on
+            systemCanvas.SetActive(false);                              // ê²Œì„ ì‹¤í–‰ ì‹œ ì‹œìŠ¤í…œ ìº”ë²„ìŠ¤ off
         }
 
         private void Update()
@@ -45,7 +45,7 @@ namespace KW
                 if (Input.GetKeyDown(panel.key))
                 {
                     TogglePanel(panel);
-                    return;                                             // ÇÑ ÇÁ·¹ÀÓ¿¡ ÇÏ³ªÀÇ ÀÔ·Â Ã³¸®
+                    return;                                             // í•œ í”„ë ˆì„ì— í•˜ë‚˜ì˜ ì…ë ¥ ì²˜ë¦¬
                 }
             }
             if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))
@@ -56,29 +56,29 @@ namespace KW
 
         private void TogglePanel(UiPanel panelToToggle)
         {
-            if (currentOpenPanel == panelToToggle)                       // ÇöÀç ¿­·ÁÀÖ´Â °Ô panelToToggleÀÌ¸é -> ²ô±â
+            if (currentOpenPanel == panelToToggle)                       // í˜„ì¬ ì—´ë ¤ìˆëŠ” ê²Œ panelToToggleì´ë©´ -> ë„ê¸°
             {
                 currentOpenPanel = null;
             }
-            else                                                        // ¿­·ÁÀÖ´Â°Ô ¾øÀ¸¸é                  -> ¿­±â
+            else                                                        // ì—´ë ¤ìˆëŠ”ê²Œ ì—†ìœ¼ë©´                  -> ì—´ê¸°
             {
                 currentOpenPanel = panelToToggle;
             }
             UpdateAllPanelViews();
-            OnAnyUiStateChanged?.Invoke(currentOpenPanel != null);      // currentOpenPanel ÀÌ ÀÖÀ¸¸é ÀÌº¥Æ® È£Ãâ
+            OnAnyUiStateChanged?.Invoke(currentOpenPanel != null);      // currentOpenPanel ì´ ìˆìœ¼ë©´ ì´ë²¤íŠ¸ í˜¸ì¶œ
         }
 
         private void UpdateAllPanelViews()
         {
-            bool isAnyPanelOpen = currentOpenPanel != null;             // currenOpenPanel ÀÌ ÀÖÀ¸¸é true
+            bool isAnyPanelOpen = currentOpenPanel != null;             // currenOpenPanel ì´ ìˆìœ¼ë©´ true
 
             ingameUi.SetActive(!isAnyPanelOpen);
             systemCanvas.SetActive(isAnyPanelOpen);
 
             foreach (var panel in uiPanels)
             {
-                panel.isOpen = (panel == currentOpenPanel);             // ÇØ´ç panel ÀÌ ÇöÀç ¿­·ÁÀÖ´Â ÆĞ³ÎÀÌ¸é isOpen
-                panel.panelObject.SetActive(panel.isOpen);              // isOpen ÀÌ true ¸é ÇØ´ç ÆĞ³Î ¿ÀºêÁ§Æ® SetActive
+                panel.isOpen = (panel == currentOpenPanel);             // í•´ë‹¹ panel ì´ í˜„ì¬ ì—´ë ¤ìˆëŠ” íŒ¨ë„ì´ë©´ isOpen
+                panel.panelObject.SetActive(panel.isOpen);              // isOpen ì´ true ë©´ í•´ë‹¹ íŒ¨ë„ ì˜¤ë¸Œì íŠ¸ SetActive
             }
         }
     }  

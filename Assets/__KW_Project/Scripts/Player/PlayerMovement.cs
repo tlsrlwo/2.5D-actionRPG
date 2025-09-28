@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,7 +8,7 @@ namespace KW
 {    
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("¿òÁ÷ÀÓ")]
+        [Header("ì›€ì§ì„")]
         public float walkSpeed = 3f;
         public float runSpeeed = 5f;
         public float airSpeed = 4f;
@@ -22,7 +22,7 @@ namespace KW
         public Vector3 dir;
 
 
-        [Header("Á¡ÇÁ")]
+        [Header("ì í”„")]
         [SerializeField] private float groundYOffset;
         [SerializeField] private LayerMask groundLayer;
         [SerializeField] private float sphereRadius = 0.05f;
@@ -31,17 +31,17 @@ namespace KW
 
         Vector3 spherePos;
 
-        [Header("Áß·Â")]
+        [Header("ì¤‘ë ¥")]
         [SerializeField] private float gravity = -9.81f;
         private Vector3 velocity;
 
 
-        [Header("ÄÄÆ÷³ÍÆ® ÂüÁ¶")]
+        [Header("ì»´í¬ë„ŒíŠ¸ ì°¸ì¡°")]
         [HideInInspector] public Animator anim;
         [HideInInspector] public SpriteRenderer sr;
         private CharacterController cController;
 
-        #region "ÇÃ·¹ÀÌ¾î FSM"
+        #region "í”Œë ˆì´ì–´ FSM"
         public MovementBaseState previousState;
         public MovementBaseState currentState;
 
@@ -78,7 +78,7 @@ namespace KW
 
         private void Start()
         {
-            // ¾À ½ÃÀÛ ½Ã »óÅÂ ¼³Á¤
+            // ì”¬ ì‹œì‘ ì‹œ ìƒíƒœ ì„¤ì •
             SwitchState(playerIdle);
         }
 
@@ -92,7 +92,7 @@ namespace KW
             PlayerMove();
             Gravity();
 
-            // ½ºÇÁ¶óÀÌÆ®°¡ ¿À¸¥ÂÊ¸¸ ÀÖ¾î¼­ ¹İ´ë·Î µÚÁı¾îÁÜ
+            // ìŠ¤í”„ë¼ì´íŠ¸ê°€ ì˜¤ë¥¸ìª½ë§Œ ìˆì–´ì„œ ë°˜ëŒ€ë¡œ ë’¤ì§‘ì–´ì¤Œ
             /*
             if (xInput < 0)
             {
@@ -116,7 +116,7 @@ namespace KW
 
         private void PlayerMove()
         {
-            // GetAxisRaw ·Î ÀÔ·Â°ª 1,0 À¸·Î °íÁ¤
+            // GetAxisRaw ë¡œ ì…ë ¥ê°’ 1,0 ìœ¼ë¡œ ê³ ì •
             xInput = Input.GetAxisRaw("Horizontal");
             zInput = Input.GetAxisRaw("Vertical");
             //xInput = Input.GetAxis("Horizontal");
@@ -126,7 +126,7 @@ namespace KW
 
             dir = transform.forward * zInput + transform.right * xInput;            // vector3 dir
 
-            // ¾Ö´Ï¸ŞÀÌÅÍ¿¡¼­ 0 °ªÀ» ¹ŞÁö ¾Êµµ·Ï (´Ş¸®´Ù°¡ IDLE ·Î ÀüÈ¯µÉ ¶§ ¿À·ù ¼öÁ¤)
+            // ì• ë‹ˆë©”ì´í„°ì—ì„œ 0 ê°’ì„ ë°›ì§€ ì•Šë„ë¡ (ë‹¬ë¦¬ë‹¤ê°€ IDLE ë¡œ ì „í™˜ë  ë•Œ ì˜¤ë¥˜ ìˆ˜ì •)
             if(dir.magnitude > 0.01f)
             {
                 lastMoveX = xInput;
@@ -136,7 +136,7 @@ namespace KW
                 anim.SetFloat("zInput", zInput);
                
             }
-            // º¯¼ö ÃÊ±âÈ­
+            // ë³€ìˆ˜ ì´ˆê¸°í™”
             Vector3 finalVelocity = dir.normalized * currentSpeed;
             
             cController.Move(finalVelocity * Time.deltaTime);
@@ -150,7 +150,7 @@ namespace KW
         }
         private bool IsGrounded()
         {
-            // ÇÃ·¹ÀÌ¾îÀÇ ¹Ù´Ú ÆÇÁ¤
+            // í”Œë ˆì´ì–´ì˜ ë°”ë‹¥ íŒì •
             spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
             if (Physics.CheckSphere(spherePos, cController.radius - sphereRadius, groundLayer))
             {
@@ -163,12 +163,12 @@ namespace KW
 
         private void Gravity()
         {
-            // Á¡ÇÁ ÇßÀ» ¶§ gravity ¸¸Å­ ´õ »¡¸£°Ô ³«ÇÏ
+            // ì í”„ í–ˆì„ ë•Œ gravity ë§Œí¼ ë” ë¹¨ë¥´ê²Œ ë‚™í•˜
             if (!IsGrounded())
             {
                 velocity.y += gravity * Time.deltaTime;
             }
-            // ¿À·ù ¹æÁö & ¹Ù´Ú¿¡ ºÙ¿©³õ±â
+            // ì˜¤ë¥˜ ë°©ì§€ & ë°”ë‹¥ì— ë¶™ì—¬ë†“ê¸°
             else if (velocity.y < 0)
             {
                 velocity.y = -2;
