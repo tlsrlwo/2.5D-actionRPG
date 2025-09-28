@@ -25,7 +25,7 @@ namespace KW
 
         [SerializeField] private List<UiPanel> uiPanels;                // 각 (인벤/맵/설정/퀘스트) 패널을 담을 리스트
 
-        private UiPanel currentOpenPanel = null;
+        [SerializeField]private UiPanel currentOpenPanel = null;
 
         private void Start()
         {
@@ -39,24 +39,25 @@ namespace KW
         }
 
         private void Update()
-        {
-            foreach (var panel in uiPanels)
+        {            
+            if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))   // 열려있는 게 있으면 우선적으로 닫음
+            {
+                TogglePanel(currentOpenPanel);
+                return;
+            }
+            foreach (var panel in uiPanels)                                     // 열려있는 게 없으면 선택된 패널을 연다
             {
                 if (Input.GetKeyDown(panel.key))
                 {
                     TogglePanel(panel);
                     return;                                             // 한 프레임에 하나의 입력 처리
                 }
-            }
-            if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))
-            {
-                TogglePanel(currentOpenPanel);
-            }
+            }           
         }
 
         private void TogglePanel(UiPanel panelToToggle)
         {
-            if (currentOpenPanel == panelToToggle)                       // 현재 열려있는 게 panelToToggle이면 -> 끄기
+            if (currentOpenPanel == panelToToggle)                      // 현재 열려있는 게 panelToToggle이면 -> 끄기
             {
                 currentOpenPanel = null;
             }
@@ -81,5 +82,35 @@ namespace KW
                 panel.panelObject.SetActive(panel.isOpen);              // isOpen 이 true 면 해당 패널 오브젝트 SetActive
             }
         }
+
+        // 패널의 버튼을 위한 함수
+        public void OpenPanelByName(string panelName)
+        {
+            // 'IsPanelMatch'라는 이름의 함수를 조건으로 사용해 패널을 찾습니다.
+            UiPanel panelToOpen = FindPanelUsingFunction(panelName);
+
+            if (panelToOpen != null)
+            {
+                TogglePanel(panelToOpen);
+            }
+        }
+
+        private UiPanel FindPanelUsingFunction(string nameToFind)
+        {
+            // 리스트의 모든 패널을 처음부터 끝까지 확인합니다.
+            foreach (var panel in uiPanels)
+            {
+                // 만약 현재 확인 중인 패널의 이름이 우리가 찾으려는 이름과 같다면
+                if (panel.name == nameToFind)
+                {
+                    // 바로 그 패널을 반환하고 함수를 종료합니다.
+                    return panel;
+                }
+            }
+
+            // 루프가 끝날 때까지 찾지 못했다면 null을 반환합니다.
+            return null;
+        }
+
     }  
 }

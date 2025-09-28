@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Medival Housus - Modular Part Low Poly/Houses/House A.prefab.meta
+guid: 85553ec8fc4169446ad9c07f599636dd
+========
 guid: 1a81368bce7b2774e8758fa0025745cf
+>>>>>>>> origin/기본브랜치:Assets/__KW_Project/Prefabs/_Ui/InGame_UI.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
