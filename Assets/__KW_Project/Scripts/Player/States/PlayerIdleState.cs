@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VFolders.Libs;
 
 namespace KW
 {
@@ -9,7 +8,8 @@ namespace KW
     {
         public override void EnterState(PlayerMovement movement)
         {
-
+            movement.anim.SetBool("isWalking", false);
+            movement.anim.SetBool("isRunning", false);
         }
 
         public override void UpdateState(PlayerMovement movement)

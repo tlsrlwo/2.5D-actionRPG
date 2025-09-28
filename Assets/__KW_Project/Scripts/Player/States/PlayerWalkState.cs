@@ -8,7 +8,7 @@ namespace KW
     {
         public override void EnterState(PlayerMovement movement)
         {
-
+            movement.anim.SetBool("isWalking", true);
         }
 
         public override void UpdateState(PlayerMovement movement)
@@ -21,6 +21,7 @@ namespace KW
 
         private void ExitState(PlayerMovement movement, MovementBaseState state)
         {
+            movement.anim.SetBool("isWalking", false);
             movement.SwitchState(state);
         }
     }
