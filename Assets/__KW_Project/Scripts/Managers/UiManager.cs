@@ -7,198 +7,79 @@ using UnityEngine.UI;
 
 namespace KW
 {
+    [System.Serializable]
+    public class UiPanel
+    {
+        public string name;
+        public KeyCode key;
+        public GameObject panelObject;
+        public bool isOpen = false;
+    }
+
     public class UiManager : MonoBehaviour
     {
-        public static event Action<bool> OnMapStateChanged;
-        public static event Action<bool> OnInventoryStateChanged;
-        public static event Action<bool> OnSettingsStateChanged;
-        public static event Action<bool> OnQuestStateChanged;
+        public static event Action<bool> OnAnyUiStateChanged;           // 패널이 열고 닫을 때 호출 되는 이벤트 (PlayerMovement에서구독함)
 
-        [SerializeField] private GameObject ingameUI;
+        [SerializeField] private GameObject ingameUi;
+        [SerializeField] private GameObject systemCanvas;
 
-        [SerializeField] private GameObject systemCanvas;                   // 전체 캔버스
+        [SerializeField] private List<UiPanel> uiPanels;                // 각 (인벤/맵/설정/퀘스트) 패널을 담을 리스트
 
-        [SerializeField] private GameObject inventoryCanvas;                // 인벤토리
-        [SerializeField] private GameObject mapCanvas;                      // 맵
-        [SerializeField] private GameObject settingsCanvas;                 // 설정
-        [SerializeField] private GameObject questCanvas;                    // 퀘스트
+        private UiPanel currentOpenPanel = null;
 
-        private bool isMapFull = false;                                     // 맵 화면 상태 체크
-        private bool isInventoryFull = false;                               // 인벤토리 화면 상태 체크
-        private bool isSettingsFull = false;                                // 설정화면 상태 체크
-        private bool isQuestFull = false;                                   // 퀘스트 화면 상태 체크
-
-        private void Awake()
+        private void Start()
         {
-            ingameUI.SetActive(true);
-            systemCanvas.SetActive(false);
+            foreach (var panel in uiPanels)
+            {
+                panel.panelObject.SetActive(false);                     // 패널 클래스를 가진 패널 각각 setActive(false)
+                panel.isOpen = false;
+            }
+            ingameUi.SetActive(true);                                   // 게임 실행 시 인게임 캔버스 on
+            systemCanvas.SetActive(false);                              // 게임 실행 시 시스템 캔버스 off
         }
 
         private void Update()
         {
-            ActivateMapScreen();
-            ActivateInventoryScreen();
-            ActivateSettingScreen();
-            ActivateQuestScreen();
+            foreach (var panel in uiPanels)
+            {
+                if (Input.GetKeyDown(panel.key))
+                {
+                    TogglePanel(panel);
+                    return;                                             // 한 프레임에 하나의 입력 처리
+                }
+            }
+            if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePanel(currentOpenPanel);
+            }
         }
 
-        #region 지도 UI 
-        private void ActivateMapScreen()
+        private void TogglePanel(UiPanel panelToToggle)
         {
-            if (isInventoryFull || isSettingsFull || isQuestFull)
-                return;
-
-            if (Input.GetKeyDown(KeyCode.M))
+            if (currentOpenPanel == panelToToggle)                       // 현재 열려있는 게 panelToToggle이면 -> 끄기
             {
-                isMapFull = !isMapFull;
-
-                UpdateMapUI();
-
-                OnMapStateChanged?.Invoke(isMapFull);
+                currentOpenPanel = null;
             }
-
-            // 맵이 켜져있을 때 M 혹은 Esc 로도 종료 가능
-            if (isMapFull && Input.GetKeyDown(KeyCode.Escape))
+            else                                                        // 열려있는게 없으면                  -> 열기
             {
-                isMapFull = false;
-
-                UpdateMapUI();
-
-                OnMapStateChanged?.Invoke(isMapFull);
+                currentOpenPanel = panelToToggle;
             }
+            UpdateAllPanelViews();
+            OnAnyUiStateChanged?.Invoke(currentOpenPanel != null);      // currentOpenPanel 이 있으면 이벤트 호출
         }
 
-        private void UpdateMapUI()
+        private void UpdateAllPanelViews()
         {
-            ingameUI.SetActive(!isMapFull);
-            systemCanvas.SetActive(isMapFull);
-            inventoryCanvas.SetActive(!isMapFull);
-            mapCanvas.SetActive(isMapFull);
-            settingsCanvas.SetActive(!isMapFull);
-            questCanvas.SetActive(!isMapFull);
-        }
-        #endregion
+            bool isAnyPanelOpen = currentOpenPanel != null;             // currenOpenPanel 이 있으면 true
 
-        #region 인벤토리 UI
-        private void ActivateInventoryScreen()
-        {
-            if (isMapFull || isSettingsFull || isQuestFull)
-                return;
+            ingameUi.SetActive(!isAnyPanelOpen);
+            systemCanvas.SetActive(isAnyPanelOpen);
 
-            if (Input.GetKeyDown(KeyCode.I))
+            foreach (var panel in uiPanels)
             {
-                isInventoryFull = !isInventoryFull;
-
-                UpdateInventoryUI();
-
-                OnInventoryStateChanged?.Invoke(isInventoryFull);
-            }
-
-            if (isInventoryFull && Input.GetKeyDown(KeyCode.Escape))
-            {
-                isInventoryFull = false;
-
-                UpdateInventoryUI();
-
-                OnInventoryStateChanged?.Invoke(isInventoryFull);
+                panel.isOpen = (panel == currentOpenPanel);             // 해당 panel 이 현재 열려있는 패널이면 isOpen
+                panel.panelObject.SetActive(panel.isOpen);              // isOpen 이 true 면 해당 패널 오브젝트 SetActive
             }
         }
-
-        private void UpdateInventoryUI()
-        {
-            ingameUI.SetActive(!isInventoryFull);
-            systemCanvas.SetActive(isInventoryFull);
-            inventoryCanvas.SetActive(isInventoryFull);
-            mapCanvas.SetActive(!isInventoryFull);
-            settingsCanvas.SetActive(!isInventoryFull);
-            questCanvas.SetActive(!isInventoryFull);
-        }
-        #endregion
-
-        #region 설정 UI
-        private void ActivateSettingScreen()
-        {
-            if (isMapFull || isInventoryFull || isQuestFull)
-                return;
-
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.Tab))              // 에디터
-            {
-                isSettingsFull = !isSettingsFull;
-
-                UpdateSettingUI();
-
-                OnSettingsStateChanged?.Invoke(isSettingsFull);
-            }
-#else
-    if (Input.GetKeyDown(KeyCode.Escape))                   // 빌드 시
-            {
-                isSettingsFull = !isSettingsFull;
-
-                UpdateSettingUI();
-
-                OnSettingsStateChanged?.Invoke(isSettingsFull);
-            }
-#endif
-            else if (isSettingsFull && Input.GetKeyDown(KeyCode.Escape))
-            {
-                isSettingsFull = false;
-
-                UpdateSettingUI();
-
-                OnSettingsStateChanged?.Invoke(isSettingsFull);
-            }
-        }
-
-        private void UpdateSettingUI()
-        {
-            ingameUI.SetActive(!isSettingsFull);
-            systemCanvas.SetActive(isSettingsFull);
-            settingsCanvas.SetActive(isSettingsFull);
-
-            inventoryCanvas.SetActive(!isSettingsFull);
-            mapCanvas.SetActive(!isSettingsFull);
-            questCanvas.SetActive(!isSettingsFull);
-        }
-
-        #endregion
-
-        #region 퀘스트 UI
-        private void ActivateQuestScreen()
-        {
-            if (isMapFull || isSettingsFull || isInventoryFull)
-                return;
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                isQuestFull = !isQuestFull;
-
-                UpdateQeustUI();
-
-                OnQuestStateChanged?.Invoke(isQuestFull);
-            }
-
-            if (isQuestFull && Input.GetKeyDown(KeyCode.Escape))
-            {
-                isQuestFull = false;
-
-                UpdateQeustUI();
-
-                OnQuestStateChanged?.Invoke(isQuestFull);
-            }
-        }
-        private void UpdateQeustUI()
-        {
-            ingameUI.SetActive(!isQuestFull);
-            systemCanvas.SetActive(isQuestFull);
-            questCanvas.SetActive(isQuestFull);
-
-            inventoryCanvas.SetActive(!isQuestFull);
-            mapCanvas.SetActive(!isQuestFull);
-            settingsCanvas.SetActive(!isQuestFull);
-        }
-
-        #endregion
-
-    }
+    }  
 }

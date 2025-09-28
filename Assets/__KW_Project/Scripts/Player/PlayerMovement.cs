@@ -54,35 +54,17 @@ namespace KW
                
         void OnEnable()
         {
-            UiManager.OnMapStateChanged += HandleMapStateChanged;
-            UiManager.OnInventoryStateChanged += HandleInventoryStateChanged;
-            UiManager.OnSettingsStateChanged += HandleSettingsStateChanged;
-            UiManager.OnQuestStateChanged += HandleQuestStateChanged;
+            UiManager.OnAnyUiStateChanged += HandleUiStateChanged;
         }
 
         void OnDisable()
         {
-            UiManager.OnMapStateChanged -= HandleMapStateChanged;
-            UiManager.OnInventoryStateChanged -= HandleInventoryStateChanged;
-            UiManager.OnSettingsStateChanged -= HandleSettingsStateChanged;
-            UiManager.OnQuestStateChanged -= HandleQuestStateChanged;
+            UiManager.OnAnyUiStateChanged -= HandleUiStateChanged;
         }
 
-        private void HandleMapStateChanged(bool isMapOpen)
+        private void HandleUiStateChanged(bool isAnyUiOpen)
         {
-            canMove = !isMapOpen;
-        }
-        private void HandleInventoryStateChanged(bool isInventoryOpen)
-        {
-            canMove = !isInventoryOpen;
-        }
-        private void HandleSettingsStateChanged(bool isSettingsOpen)
-        {
-            canMove = !isSettingsOpen;
-        }
-        private void HandleQuestStateChanged(bool isQuestOpen)
-        {
-            canMove = !isQuestOpen;
+            canMove = !isAnyUiOpen;
         }
 
 

@@ -3014,24 +3014,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2961178644736515387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6398835637969764401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc5a5b0832fb464280ecd52626b2f11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingameUI: {fileID: 2196879183318752828}
-  systemCanvas: {fileID: 3967166153370995080}
-  inventoryCanvas: {fileID: 8841346512657117506}
-  mapCanvas: {fileID: 7855049628553582927}
-  settingsCanvas: {fileID: 91729746904091060}
-  questCanvas: {fileID: 3462721828325239322}
 --- !u!114 &2973272792997853963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4120,7 +4102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.2, y: -29.4}
+  m_AnchoredPosition: {x: 33.19995, y: -29.400024}
   m_SizeDelta: {x: 400, y: 170}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4508816546414007160
@@ -5050,7 +5032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139403089800067018}
-  - component: {fileID: 2961178644736515387}
+  - component: {fileID: 6398835637969764402}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5058,6 +5040,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6398835637969764402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398835637969764401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc5a5b0832fb464280ecd52626b2f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingameUi: {fileID: 2196879183318752828}
+  systemCanvas: {fileID: 3967166153370995080}
+  uiPanels:
+  - name: Inventory
+    key: 105
+    panelObject: {fileID: 8841346512657117506}
+    isOpen: 0
+  - name: Map
+    key: 109
+    panelObject: {fileID: 7855049628553582927}
+    isOpen: 0
+  - name: Settings
+    key: 27
+    panelObject: {fileID: 91729746904091060}
+    isOpen: 0
+  - name: Quests
+    key: 113
+    panelObject: {fileID: 3462721828325239322}
+    isOpen: 0
 --- !u!222 &6400670251071488805
 CanvasRenderer:
   m_ObjectHideFlags: 0
