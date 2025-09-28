@@ -3,7 +3,27 @@ guid: 1157f1a45ebd0f94b8ce5d0bdf0856b4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Decals_e
+    second: {fileID: 2100000, guid: 000d1cdd3027bee4b8c8e0c0cc4b8107, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_Planks_3
+    second: {fileID: 2100000, guid: 20ae2cb5526a49e488603998c3b7fff0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_rough_2
+    second: {fileID: 2100000, guid: 17b3642520217464fa627f78ae9781da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_rough_3
+    second: {fileID: 2100000, guid: 6657b602a537e1b4288a93db51c96055, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
