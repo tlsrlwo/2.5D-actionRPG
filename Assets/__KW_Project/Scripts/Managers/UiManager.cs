@@ -88,8 +88,13 @@ namespace KW
         {
             // 'IsPanelMatch'라는 이름의 함수를 조건으로 사용해 패널을 찾습니다.
             UiPanel panelToOpen = FindPanelUsingFunction(panelName);
+                        
+            if(currentOpenPanel == panelToOpen)                         // 버튼으로 패널을 열 때, 현재 열려있는게 열어야 될 패널이면 버튼으로 꺼지지 않게끔 반환
+            {
+                return;
+            }
 
-            if (panelToOpen != null)
+            if (panelToOpen != null)                                    // 열어야 될 패널이 있으면(들어온 값이 있다), toggleOpen실행
             {
                 TogglePanel(panelToOpen);
             }
