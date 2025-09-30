@@ -3,7 +3,32 @@ guid: 4faff916c1675044da0f9b7f023baee8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 8631470b84dac0c4693f8b13113d8ee4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main church
+    second: {fileID: 2100000, guid: 284da4c06d21b724dad9319b9a90add2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof beam
+    second: {fileID: 2100000, guid: 5e6a81552ca89e240997ece08d230686, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tower roof
+    second: {fileID: 2100000, guid: 1082c7173a7c67e429af2b7cca11b4b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window frames
+    second: {fileID: 2100000, guid: e5d06a04d8be1f04aa8579e2b0369351, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
