@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4837770781656817087
+--- !u!1 &2340529580276876601
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1873866502536997444}
-  - component: {fileID: 3672181580959924405}
+  - component: {fileID: 6673452942221982045}
+  - component: {fileID: 1708481553019992681}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1873866502536997444
+--- !u!4 &6673452942221982045
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4837770781656817087}
+  m_GameObject: {fileID: 2340529580276876601}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,21 +32,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3672181580959924405
+--- !u!114 &1708481553019992681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4837770781656817087}
+  m_GameObject: {fileID: 2340529580276876601}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afc5a5b0832fb464280ecd52626b2f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameUI: {fileID: 0}
+  ingameUi: {fileID: 0}
   systemCanvas: {fileID: 0}
-  inventoryCanvas: {fileID: 0}
-  mapCanvas: {fileID: 0}
-  settingsCanvas: {fileID: 0}
-  questCanvas: {fileID: 0}
+  uiPanels:
+  - name: Inventory
+    key: 105
+    panelObject: {fileID: 0}
+    isOpen: 0
+  - name: Map
+    key: 109
+    panelObject: {fileID: 0}
+    isOpen: 0
+  - name: Settings
+    key: 27
+    panelObject: {fileID: 0}
+    isOpen: 0
+  - name: Quest
+    key: 113
+    panelObject: {fileID: 0}
+    isOpen: 0
+  currentOpenPanel:
+    name: 
+    key: 0
+    panelObject: {fileID: 0}
+    isOpen: 0
