@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6184887430917907700
+--- !u!114 &-1415775338160521268
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,14 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood_rough_2
-  m_Shader: {fileID: -6465566751694194690, guid: 9c0b40efb26d57d4fabe6f169af26a53, type: 3}
-  m_Parent: {fileID: 2100000, guid: 19200fe4f57fc174a81d81f0887ff487, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_Name: Shader Graphs_Sprite Shadow
+  m_Shader: {fileID: -6465566751694194690, guid: 865b43c744e7fe147a9f7eca0c72a85d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _NORMALMAP
-  m_LightmapFlags: 4
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -37,20 +36,29 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Base_Texture:
-        m_Texture: {fileID: 2800000, guid: b2ebceb0492bde144839cb63f4d2ecb1, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Metallic_Texture:
-        m_Texture: {fileID: 2800000, guid: e847faf4013552c479ce2f7402f104b7, type: 3}
+    - _MainTexture:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Roughness:
-        m_Texture: {fileID: 2800000, guid: f815789f85e51c94fa1674543937b5fe, type: 3}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors: []
   m_BuildTextureStacks: []

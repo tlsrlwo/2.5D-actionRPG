@@ -122,6 +122,11 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-345900067-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1832548060-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1859316550-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-543591506-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1640688429-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-347713959-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-946378285-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1382496618-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Terrain Icon
@@ -136,6 +141,26 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 8
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 4
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
