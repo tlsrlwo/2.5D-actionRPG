@@ -5,20 +5,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace KW
-{    
+{
     public class PlayerMovement : MonoBehaviour
     {
         [Header("움직임")]
-        public float walkSpeed = 3f;
-        public float runSpeeed = 5f;
-        public float airSpeed = 4f;
+        public float walkSpeed = 3f;                        // 걷는 속도                    
+        public float runSpeed = 5f;                         // 달리는 속도
+        public float airSpeed = 4f;                         // 공중에서의 속도 (필요없음)
         public float xInput, zInput;
         public float lastMoveX, lastMoveZ;
 
-        [SerializeField]private bool canMove = true;
-
-        public float currentSpeed;
-
+        [SerializeField] private bool canMove = true;       // 플레이어 움직임 허용
+        public float currentSpeed;                          // 현재 속도
         public Vector3 dir;
 
 
@@ -28,11 +26,10 @@ namespace KW
         [SerializeField] private float sphereRadius = 0.05f;
 
         public virtual bool isGrounded(bool value) => IsGrounded();
-
-        Vector3 spherePos;
+        Vector3 spherePos;                                  // 플레이어 지면 확인용 구체
 
         [Header("중력")]
-        [SerializeField] private float gravity = -9.81f;
+        [SerializeField] private float gravity = -9.81f;    // 중력값
         private Vector3 velocity;
 
 
@@ -41,7 +38,17 @@ namespace KW
         [HideInInspector] public SpriteRenderer sr;
         private CharacterController cController;
 
-        #region "플레이어 FSM"
+
+        [Header("전투")]
+        private float maxHp = 100;                          // 최대 체력
+        private float baseDamage = 10;                      // 기본 데미지
+        private float weaponDamage = 0;                     // 무기 데미지
+        private float defencePercentage = 0;                // 방어율
+
+        public float TotalDamage { get { return baseDamage + weaponDamage; } }
+
+
+        #region 플레이어 FSM
         public MovementBaseState previousState;
         public MovementBaseState currentState;
 
@@ -50,8 +57,9 @@ namespace KW
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
 
-        #endregion       
-               
+        #endregion
+
+        #region Ui 에 따른 상태
         void OnEnable()
         {
             UiManager.OnAnyUiStateChanged += HandleUiStateChanged;
@@ -66,11 +74,36 @@ namespace KW
         {
             canMove = !isAnyUiOpen;
         }
+        #endregion
 
+        private void LoadStatsFromJson()
+        {
+            // json 파일을 text 로서 읽어옴
+            TextAsset playerStatFile = Resources.Load<TextAsset>("playerStats");
+
+            if(playerStatFile != null)
+            {
+                // 읽어온 json의 내용을 PlayerStats 에 적용시키고, 현재 스크립트에도 적용
+                PlayerStats stats = JsonUtility.FromJson<PlayerStats>(playerStatFile.text);
+
+                this.walkSpeed = stats.walkSpeed;
+                this.runSpeed = stats.runSpeed;
+                this.baseDamage = stats.baseDamage;
+                this.maxHp = stats.maxHp;
+
+                Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + maxHp + ")" + " , baseDamage(" + baseDamage + ")");
+            }
+            else
+            {
+                Debug.Log("플레이어 데이터를 담은 json 파일을 찾을 수 없습니다");
+            }
+        }
 
 
         private void Awake()
         {
+            LoadStatsFromJson();
+
             sr = GetComponent<SpriteRenderer>();
             cController = GetComponent<CharacterController>();
             anim = GetComponent<Animator>();
@@ -78,13 +111,13 @@ namespace KW
 
         private void Start()
         {
-            // 씬 시작 시 상태 설정
+            // 씬 시작 시 상태(state) 설정
             SwitchState(playerIdle);
         }
 
         private void Update()
         {
-            if(!canMove)
+            if (!canMove)
             {
                 return;
             }
@@ -127,18 +160,18 @@ namespace KW
             dir = transform.forward * zInput + transform.right * xInput;            // vector3 dir
 
             // 애니메이터에서 0 값을 받지 않도록 (달리다가 IDLE 로 전환될 때 오류 수정)
-            if(dir.magnitude > 0.01f)
+            if (dir.magnitude > 0.01f)
             {
                 lastMoveX = xInput;
                 lastMoveZ = zInput;
 
                 anim.SetFloat("xInput", xInput);
                 anim.SetFloat("zInput", zInput);
-               
+
             }
             // 변수 초기화
             Vector3 finalVelocity = dir.normalized * currentSpeed;
-            
+
             cController.Move(finalVelocity * Time.deltaTime);
         }
 

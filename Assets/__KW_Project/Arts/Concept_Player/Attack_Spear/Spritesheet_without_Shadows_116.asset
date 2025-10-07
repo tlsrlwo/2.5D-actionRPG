@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!213 &21300000
+Sprite:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Spritesheet_without_Shadows_116
+  m_Rect:
+    serializedVersion: 2
+    x: 96
+    y: 96
+    width: 48
+    height: 48
+  m_Offset: {x: 0, y: 0}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 50
+  m_Pivot: {x: 0.5, y: 0.5}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName: 
+  m_PackingTag: 
+  m_RenderDataKey:
+    31b422922a4c3d746bbc4e01aa51c017: -265537073
+  m_AtlasTags: []
+  m_SpriteAtlas: {fileID: 0}
+  m_RD:
+    serializedVersion: 3
+    texture: {fileID: 2800000, guid: 31b422922a4c3d746bbc4e01aa51c017, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 24
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 10
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 090008000700060007000800050007000600030005000600040005000300010004000300000001000300020001000000
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 10
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 208
+      _typelessdata: cdcc4c3e8fc2753d000000000ad7233eb81e85be00000000cdcc4c3e0ad723bd000000008fc2f53dcdcc4c3e000000008fc2f53d295c8fbe000000008fc2753d295c8fbe000000000ad7a3bccdcc4c3e000000000ad7a3bdae4761be000000000ad723be0ad7233e000000000ad723be8fc2f5bd000000000000000000000000721ce73eabaada3d398ee33ee438be3d721ce73e1cc7d13d0000e03e721ce73d0000e03ec771bc3dabaada3ec771bc3d398ed33e721ce73de438ce3e1cc7c13d721cc73e398ee33d721cc73eabaaca3d
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 112.04291
+      y: 106.01291
+      width: 17.93034
+      height: 23.9673
+    textureRectOffset: {x: 16.042908, y: 10.012909}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 50, y: 120, z: 50, w: 120}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 3
+    texture: {fileID: 2800000, guid: 31b422922a4c3d746bbc4e01aa51c017, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 24
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 10
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 090008000700060007000800050007000600030005000600040005000300010004000300000001000300020001000000
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 10
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 208
+      _typelessdata: cdcc4c3e8fc2753d000000000ad7233eb81e85be00000000cdcc4c3e0ad723bd000000008fc2f53dcdcc4c3e000000008fc2f53d295c8fbe000000008fc2753d295c8fbe000000000ad7a3bccdcc4c3e000000000ad7a3bdae4761be000000000ad723be0ad7233e000000000ad723be8fc2f5bd000000000000000000000000721ce73eabaada3d398ee33ee438be3d721ce73e1cc7d13d0000e03e721ce73d0000e03ec771bc3dabaada3ec771bc3d398ed33e721ce73de438ce3e1cc7c13d721cc73e398ee33d721cc73eabaaca3d
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 112.04291
+      y: 106.01291
+      width: 17.93034
+      height: 23.9673
+    textureRectOffset: {x: 16.042908, y: 10.012909}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 50, y: 120, z: 50, w: 120}
+    downscaleMultiplier: 1
+  m_PhysicsShape:
+  - - {x: -0.02, y: 0.19999999}
+    - {x: -0.16, y: 0.16}
+    - {x: -0.16, y: -0.12}
+    - {x: -0.08, y: -0.22}
+    - {x: 0.06, y: -0.28}
+    - {x: 0.12, y: -0.28}
+    - {x: 0.16, y: -0.26}
+    - {x: 0.19999999, y: -0.04}
+    - {x: 0.19999999, y: 0.06}
+    - {x: 0.12, y: 0.19999999}
+  m_Bones: []
+  m_SpriteID: b58b18f75b21f4d43bcdba91299ad61c

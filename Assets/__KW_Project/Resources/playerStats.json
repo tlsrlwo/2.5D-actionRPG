@@ -1,0 +1,6 @@
+{
+  "walkSpeed": 3,
+  "runSpeed": 5,
+  "maxHp": 100,
+  "baseDamage": 10
+}

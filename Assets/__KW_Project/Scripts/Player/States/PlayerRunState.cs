@@ -17,7 +17,7 @@ namespace KW
             if (Input.GetKeyUp(KeyCode.LeftShift)) ExitState(movement, movement.playerWalk);
             else if (movement.dir.magnitude < 0.1f) ExitState(movement, movement.playerIdle);
 
-            movement.currentSpeed = movement.runSpeeed;
+            movement.currentSpeed = movement.runSpeed;
         }
         private void ExitState(PlayerMovement movement, MovementBaseState state)
         {
