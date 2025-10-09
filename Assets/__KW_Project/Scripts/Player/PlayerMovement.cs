@@ -179,7 +179,7 @@ namespace KW
         {
             currentState = state;
             currentState.EnterState(this);
-            currentState.UpdateState(this);
+            //currentState.UpdateState(this);
         }
         private bool IsGrounded()
         {

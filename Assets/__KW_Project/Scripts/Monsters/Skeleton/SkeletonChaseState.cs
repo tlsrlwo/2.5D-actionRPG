@@ -9,6 +9,7 @@ namespace KW
     {
         public override void EnterState(SkeletonMovement controller)
         {
+            Debug.Log("½ºÄÌ·¹Åæ Chasing »óÅÂ ÁøÀÔ");
         }
 
         public override void ExitState(SkeletonMovement controller)

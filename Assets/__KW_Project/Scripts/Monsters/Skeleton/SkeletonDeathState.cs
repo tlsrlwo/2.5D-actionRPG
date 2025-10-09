@@ -4,18 +4,20 @@ using UnityEngine;
 
 namespace KW
 {
-    public class SkeletonDeathState : MonoBehaviour
+    public class SkeletonDeathState : MonsterBaseState<SkeletonMovement>
     {
-        // Start is called before the first frame update
-        void Start()
+        public override void EnterState(SkeletonMovement controller)
         {
-        
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void UpdateState(SkeletonMovement controller)
         {
-        
         }
+
+        public override void ExitState(SkeletonMovement controller)
+        {
+        }
+
+       
     }
 }
