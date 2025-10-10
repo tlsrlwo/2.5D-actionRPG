@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,34 +9,46 @@ namespace KW
     {
         public override void EnterState(SkeletonMovement controller)
         {
-            Debug.Log("½ºÄÌ·¹Åæ patrol State ÁøÀÔ");
-            controller.agent.isStopped = false;
+            Debug.Log("ìŠ¤ì¼ˆë ˆí†¤ patrol State ì§„ì…");
+            controller.agent.isStopped = false;                                     // navemshAgent ì›€ì§ì„ ë‹¤ì‹œ í™œì„±í™”
 
             controller.anim.SetBool("isIdle", false);
-            controller.anim.SetBool("isWalking", true);                         // °È´Â ¾Ö´Ï¸ŞÀÌ¼Ç È°¼ºÈ­
-            controller.agent.speed = controller.patrolSpeed;
+            controller.anim.SetBool("isWalking", true);                             // ê±·ëŠ” ì• ë‹ˆë©”ì´ì…˜ í™œì„±í™”
+            controller.agent.speed = controller.patrolSpeed;                        
 
-            // ¸ñÀûÁö°¡ ÀÖ´ÂÁö È®ÀÎ
+            // ëª©ì ì§€ê°€ ìˆëŠ”ì§€ í™•ì¸
             if (controller.wayPoints != null && controller.wayPoints.childCount > 0)
             {
-                // navAgent ÀÇ ¸ñÀûÁö ¼³Á¤
+                // navAgent ì˜ ëª©ì ì§€ ì„¤ì •
                 controller.agent.SetDestination(controller.wayPoints.GetChild(controller.wayPointIndex).position);
             }
             else
             {
-                Debug.LogWarning("¼øÂû ÁöÁ¡(WayPoints) ÀÌ ¼³Á¤µÇÁö ¾Ê¾Æ Idle »óÅÂ·Î ÀüÈ¯ÇÕ´Ï´Ù");
+                Debug.LogWarning("ìˆœì°° ì§€ì (WayPoints) ì´ ì„¤ì •ë˜ì§€ ì•Šì•„ Idle ìƒíƒœë¡œ ì „í™˜í•©ë‹ˆë‹¤");
                 controller.SwitchState(controller.idleState);
             }
         }
 
         public override void UpdateState(SkeletonMovement controller)
         {
-            // ÇÃ·¹ÀÌ¾î °¨Áö
+            Vector3 skeletonVelocity = controller.agent.velocity;                   // ìŠ¤ì¼ˆë ˆí†¤ì˜ ì´ë„ë°©í–¥ê³¼ ì†ë„ë¥¼ ê°€ì ¸ì˜´
+
+            if(controller.agent.velocity.x > 0.1f)                                  // ë°©í–¥ì— ë§ê²Œë” spriteë¥¼ ë’¤ì§‘ì–´ì¤Œ
+            {
+                controller.sr.flipX = false;
+            }
+            else if(controller.agent.velocity.x < -0.1f)
+            {
+                controller.sr.flipX = true;
+            }
+
+
+            // í”Œë ˆì´ì–´ ê°ì§€
             if (controller.target == null)
             {
                 Collider[] hits = Physics.OverlapSphere(controller.transform.position, controller.detectRange, controller.playerLayer);
 
-                // ÇÃ·¹ÀÌ¾î¸¦ ¹ß°ßÇÑ´Ù¸é
+                // í”Œë ˆì´ì–´ë¥¼ ë°œê²¬í•œë‹¤ë©´
                 if(hits.Length > 0)
                 {
                     controller.target = hits[0].transform;
@@ -47,19 +59,24 @@ namespace KW
 
             if (!controller.agent.pathPending && controller.agent.remainingDistance <= 0.3f)
             {
-                controller.wayPointIndex++;                                         // ´ÙÀ½ ¸ñÀûÁö·Î ¸ñÀûÁö ¼³Á¤
+                controller.wayPointIndex++;                                         // ë‹¤ìŒ ëª©ì ì§€ë¡œ ëª©ì ì§€ ì„¤ì •
 
-                // wayPoint ¼øÂû ¿Ï·á ½Ã Ã³À½ wayPoint ·Î ÃÊ±âÈ­
+                // wayPoint ìˆœì°° ì™„ë£Œ ì‹œ ì²˜ìŒ wayPoint ë¡œ ì´ˆê¸°í™”
                 if(controller.wayPointIndex >= controller.wayPoints.childCount)
                 {
                     controller.wayPointIndex = 0;
                 }                
 
-                controller.idleWaitTime = controller.suspiciousTime;                // µÎ¸®¹ø½Ã°£ ÃÊ±âÈ­
+                controller.idleWaitTime = controller.suspiciousTime;                // ë‘ë¦¬ë²ˆì‹œê°„ ì´ˆê¸°í™”
                 controller.SwitchState(controller.idleState);
 
                 return;
             }
+
+            Vector3 normalizedVelocity = controller.agent.velocity.normalized;
+            controller.anim.SetFloat("xInput", normalizedVelocity.x);
+            controller.anim.SetFloat("zInput", normalizedVelocity.z);
+
 
         }
 

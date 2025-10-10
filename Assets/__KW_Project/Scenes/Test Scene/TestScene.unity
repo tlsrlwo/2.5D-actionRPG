@@ -134,7 +134,7 @@ GameObject:
   m_Layer: 0
   m_Name: WP_3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -391,7 +391,7 @@ GameObject:
   m_Layer: 0
   m_Name: WP_1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -606,7 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233554615}
   m_Layer: 0
-  m_Name: Skeleton_WP
+  m_Name: Skeleton_WayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1840,7 +1840,7 @@ Transform:
   m_GameObject: {fileID: 770615202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.904, y: 6.901, z: 53.918}
+  m_LocalPosition: {x: 47.904, y: 6.59, z: 53.918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1866,7 +1866,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &770615205
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7e93add2817704ea2fa7b18fef4064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 3
+  patrolSpeed: 1
   chaseSpeed: 3
   currentHp: 0
   maxHp: 80
@@ -1900,6 +1900,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   agent: {fileID: 0}
   rb: {fileID: 0}
+  sr: {fileID: 0}
 --- !u!4 &771610442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 379045933088921749, guid: 6e64657bcc8e0c94591f7e0a23976fe9, type: 3}
@@ -8476,7 +8477,7 @@ GameObject:
   m_Layer: 0
   m_Name: WP_4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8489,7 +8490,7 @@ Transform:
   m_GameObject: {fileID: 1162891929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9432,7 +9433,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: 525bef0210d4c94428b6e8db1ba8e6de, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 9672287d474d68541bd2ac49e7d56046, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9453,7 +9454,7 @@ Animator:
   m_GameObject: {fileID: 1647220938}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33c231df828b8e242845ea12b691069c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 812210d2f66a4944abf4b022661fed36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10203,7 +10204,7 @@ GameObject:
   m_Layer: 0
   m_Name: WP_2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -14929,7 +14930,7 @@ GameObject:
   - component: {fileID: 5455399562883935031}
   - component: {fileID: 1975453675632435363}
   - component: {fileID: 2962833563146421560}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

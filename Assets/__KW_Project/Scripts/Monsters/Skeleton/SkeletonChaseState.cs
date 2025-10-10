@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +9,7 @@ namespace KW
     {
         public override void EnterState(SkeletonMovement controller)
         {
-            Debug.Log("½ºÄÌ·¹Åæ Chasing »óÅÂ ÁøÀÔ");
+            Debug.Log("ìŠ¤ì¼ˆë ˆí†¤ Chasing ìƒíƒœ ì§„ì…");
         }
 
         public override void ExitState(SkeletonMovement controller)

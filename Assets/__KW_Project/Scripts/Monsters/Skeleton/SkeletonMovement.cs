@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +9,7 @@ namespace KW
     {
         private MonsterBaseState<SkeletonMovement> currentState;
 
-        #region ½ºÄÌ·¹Åæ fsm
+        #region ìŠ¤ì¼ˆë ˆí†¤ fsm
 
         public readonly SkeletonIdleState idleState = new SkeletonIdleState();
         public readonly SkeletonPatrolState patrolState = new SkeletonPatrolState();
@@ -19,40 +19,44 @@ namespace KW
 
         #endregion
 
-        [Header("ÀÌµ¿")]
-        public float patrolSpeed = 3;
+        #region ì»´í¬ë„ŒíŠ¸
+        [Header("ì´ë™")]
+        public float patrolSpeed = 1;
         public float chaseSpeed = 3;
 
-        [Header("Ã¼·Â")]
+        [Header("ì²´ë ¥")]
         public float currentHp =0;
         public float maxHp = 80;
 
-        [Header("Ãß°İ,°ø°İ ¹üÀ§")]
+        [Header("ì¶”ê²©,ê³µê²© ë²”ìœ„")]
         public float detectRange = 5f;
         public float attackRange = 1f;
         public float idleWaitTime = 3f;
-        public float suspiciousTime = 3f;                           // µÎ¸®¹ø°Å¸®´Â ½Ã°£
+        public float suspiciousTime = 3f;                           // ë‘ë¦¬ë²ˆê±°ë¦¬ëŠ” ì‹œê°„
         public float timeSinceLastSawPlayer;
 
         public LayerMask playerLayer;
-        public Transform wayPoints;                                 // ¸ñÀûÁö
-        public int       wayPointIndex;                             // ¸ñÀûÁö ÀÎµ¦½º ( Áõ°¡½ÃÅ³°ÅÀÓ ) 
+        public Transform wayPoints;                                 // ëª©ì ì§€
+        public int       wayPointIndex;                             // ëª©ì ì§€ ì¸ë±ìŠ¤ ( ì¦ê°€ì‹œí‚¬ê±°ì„ ) 
 
         public Transform target;
 
-        [Header("°ø°İ")]
+        [Header("ê³µê²©")]
         public float damage = 25;
 
-        [Header("ÄÄÆ÷³ÍÆ®")]
+        [Header("ì»´í¬ë„ŒíŠ¸")]
         [HideInInspector] public Animator anim;
         [HideInInspector] public NavMeshAgent agent;
         [HideInInspector] public Rigidbody rb;
+        [HideInInspector] public SpriteRenderer sr;
+        #endregion
 
         private void Awake()
         {
             anim = GetComponentInChildren<Animator>();
             rb = GetComponentInChildren<Rigidbody>();
             agent = GetComponent<NavMeshAgent>();
+            sr = GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Start()

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
 
 namespace KW
@@ -9,26 +9,26 @@ namespace KW
 
         public override void EnterState(SkeletonMovement controller)
         {
-            Debug.Log("½ºÄÌ·¹Åæ »óÅÂ ÁøÀÔ : Idle");
+            Debug.Log("ìŠ¤ì¼ˆë ˆí†¤ ìƒíƒœ ì§„ì… : Idle");
             
-            controller.anim.SetBool("isWalking", false);                // ´Ù¸¥ ¾Ö´Ï¸ŞÀÌ¼Ç bool(false)·Î ¼³Á¤
+            controller.anim.SetBool("isWalking", false);                // ë‹¤ë¥¸ ì• ë‹ˆë©”ì´ì…˜ bool(false)ë¡œ ì„¤ì •
             //controller.anim.SetBool("isRunning", false);
             controller.anim.SetBool("isIdle", true);
            
-            controller.agent.isStopped = true;                          // navMeshÀÇ ÀÌµ¿À» ¸ØÃçÁÜ
+            controller.agent.isStopped = true;                          // navMeshì˜ ì´ë™ì„ ë©ˆì¶°ì¤Œ
 
-            // //// ¿©±â ºÎºĞÀ» patrol ¿¡¼­ ÁöÁ¤ÇØÁÖ±â ¶§¹®¿¡ ºÒÇÊ¿äÇÑ °Å ¾Æ´Ñ°¡
-            idleTimer = controller.idleWaitTime;                        // ÄÁÆ®·Ñ·¯¿¡ ¼³Á¤µÈ ´ë±â ½Ã°£À¸·Î Å¸ÀÌ¸Ó ÃÊ±âÈ­
+            // //// ì—¬ê¸° ë¶€ë¶„ì„ patrol ì—ì„œ ì§€ì •í•´ì£¼ê¸° ë•Œë¬¸ì— ë¶ˆí•„ìš”í•œ ê±° ì•„ë‹Œê°€
+            idleTimer = controller.idleWaitTime;                        // ì»¨íŠ¸ë¡¤ëŸ¬ì— ì„¤ì •ëœ ëŒ€ê¸° ì‹œê°„ìœ¼ë¡œ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
         }        
 
         public override void UpdateState(SkeletonMovement controller)
         {          
-            // ÇÃ·¹ÀÌ¾î °¨Áö
+            // í”Œë ˆì´ì–´ ì§€ì •í•´ì£¼ê¸°
             if (controller.target == null)
             {
                 Collider[] hits = Physics.OverlapSphere(controller.transform.position, controller.detectRange, controller.playerLayer);
 
-                // ÇÃ·¹ÀÌ¾î¸¦ ¹ß°ßÇÑ´Ù¸é
+                // í”Œë ˆì´ì–´ë¥¼ ë°œê²¬í•œë‹¤ë©´ (hitì— ê°ì§€ëœ ê°’ì´ ìˆì„ ì‹œ)
                 if (hits.Length > 0)
                 {
                     controller.target = hits[0].transform;
@@ -37,11 +37,11 @@ namespace KW
                 }
             }
 
-            if (idleTimer > 0 )                                          // ´ë±â ½Ã°£À» ¸Å ÃÊ °¨¼Ò½ÃÅ´
+            if (idleTimer > 0 )                                          // ëŒ€ê¸° ì‹œê°„ì„ ë§¤ ì´ˆ ê°ì†Œì‹œí‚´
             {
                 idleTimer -= Time.deltaTime;    
             }
-            else                                                        // ´ë±â ½Ã°£ÀÌ ³¡³ª¸é ¼øÂû »óÅÂ·Î ÀüÈ¯
+            else                                                        // ëŒ€ê¸° ì‹œê°„ì´ ëë‚˜ë©´ ìˆœì°° ìƒíƒœë¡œ ì „í™˜
             {
                 controller.SwitchState(controller.patrolState);
             }
@@ -49,10 +49,10 @@ namespace KW
 
         public override void ExitState(SkeletonMovement controller)
         {
-            // ¾Ö´Ï¸ŞÀÌ¼Ç idle »óÅÂ false
+            // ì• ë‹ˆë©”ì´ì…˜ idle ìƒíƒœ false
             controller.anim.SetBool("isIdle", false);
 
-            // ÀÌµ¿ÇÒ ¼ö ÀÖµµ·Ï isStopped ÇØÁ¦
+            // ì´ë™í•  ìˆ˜ ìˆë„ë¡ isStopped í•´ì œ
             controller.agent.isStopped = false;
 
         }
