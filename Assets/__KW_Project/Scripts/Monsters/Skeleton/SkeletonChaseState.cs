@@ -34,6 +34,7 @@ namespace KW
             // 플레이어와의 공격범위 거리 체크
             float distanceToTarget = Vector3.Distance(controller.transform.position, controller.target.position);
 
+
             // 타겟을 목적지로 삼기
             if (distanceToTarget <= controller.attackRange)
             {
@@ -49,7 +50,7 @@ namespace KW
                 return;
             }
 
-            //if (controller.agent.velocity.sqrMagnitude < 0.01f) return;
+            if (controller.agent.velocity.sqrMagnitude < 0.01f) return;
 
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;         // 스켈레톤의 이도방향과 속도를 가져옴
 

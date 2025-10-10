@@ -1895,7 +1895,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
-  wayPoints: {fileID: 0}
+  wayPoints: {fileID: 233554615}
   wayPointIndex: 0
   target: {fileID: 0}
   damage: 25
@@ -15322,7 +15322,7 @@ GameObject:
   - component: {fileID: 5455399562883935031}
   - component: {fileID: 1975453675632435363}
   - component: {fileID: 2962833563146421560}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
