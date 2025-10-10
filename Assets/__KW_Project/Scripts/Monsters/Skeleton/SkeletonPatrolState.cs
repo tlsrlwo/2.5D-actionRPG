@@ -5,15 +5,16 @@ using UnityEngine.AI;
 
 namespace KW
 {
-    public class SkeletonPatrolState : MonsterBaseState<SkeletonMovement>
+    public class SkeletonPatrolState : MonsterBaseState<SkeletonController>
     {
-        public override void EnterState(SkeletonMovement controller)
+        public override void EnterState(SkeletonController controller)
         {
-            Debug.Log("스켈레톤 patrol State 진입");
+            Debug.Log("스켈레톤 상태 진입 : Patrol");
             controller.agent.isStopped = false;                                     // navemshAgent 움직임 다시 활성화
 
             controller.anim.SetBool("isIdle", false);
-            controller.anim.SetBool("isWalking", true);                             // 걷는 애니메이션 활성화
+            controller.anim.SetBool("isPatrol", true);                             // 걷는 애니메이션 활성화
+            controller.anim.SetBool("isChase", false);
             controller.agent.speed = controller.patrolSpeed;                        
 
             // 목적지가 있는지 확인
@@ -29,20 +30,8 @@ namespace KW
             }
         }
 
-        public override void UpdateState(SkeletonMovement controller)
+        public override void UpdateState(SkeletonController controller)
         {
-            Vector3 skeletonVelocity = controller.agent.velocity;                   // 스켈레톤의 이도방향과 속도를 가져옴
-
-            if(controller.agent.velocity.x > 0.1f)                                  // 방향에 맞게끔 sprite를 뒤집어줌
-            {
-                controller.sr.flipX = false;
-            }
-            else if(controller.agent.velocity.x < -0.1f)
-            {
-                controller.sr.flipX = true;
-            }
-
-
             // 플레이어 감지
             if (controller.target == null)
             {
@@ -73,14 +62,29 @@ namespace KW
                 return;
             }
 
+            Vector3 skeletonVelocity = controller.agent.velocity;                   // 스켈레톤의 이도방향과 속도를 가져옴
+
+            if (controller.agent.velocity.x > 0.1f)                                  // 방향에 맞게끔 sprite를 뒤집어줌
+            {
+                controller.sr.flipX = false;
+            }
+            else if (controller.agent.velocity.x < -0.1f)
+            {
+                controller.sr.flipX = true;
+            }
+
+
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;
-            controller.anim.SetFloat("xInput", normalizedVelocity.x);
+
+            float blendTreeMoveX = Mathf.Abs(normalizedVelocity.x);
+
+            controller.anim.SetFloat("xInput", blendTreeMoveX);
             controller.anim.SetFloat("zInput", normalizedVelocity.z);
 
 
         }
 
-        public override void ExitState(SkeletonMovement controller)
+        public override void ExitState(SkeletonController controller)
         {
             
         }

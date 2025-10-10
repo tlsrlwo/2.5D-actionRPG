@@ -3,25 +3,25 @@ using UnityEngine.AI;
 
 namespace KW
 {
-    public class SkeletonIdleState : MonsterBaseState<SkeletonMovement>
+    public class SkeletonIdleState : MonsterBaseState<SkeletonController>
     {
         private float idleTimer;
 
-        public override void EnterState(SkeletonMovement controller)
+        public override void EnterState(SkeletonController controller)
         {
             Debug.Log("스켈레톤 상태 진입 : Idle");
-            
-            controller.anim.SetBool("isWalking", false);                // 다른 애니메이션 bool(false)로 설정
-            //controller.anim.SetBool("isRunning", false);
+
+            // 다른 애니메이션 bool(false)로 설정
+            controller.anim.SetBool("isPatrol", false);                
+            controller.anim.SetBool("isChase", false);
             controller.anim.SetBool("isIdle", true);
            
             controller.agent.isStopped = true;                          // navMesh의 이동을 멈춰줌
-
-            // //// 여기 부분을 patrol 에서 지정해주기 때문에 불필요한 거 아닌가
+                        
             idleTimer = controller.idleWaitTime;                        // 컨트롤러에 설정된 대기 시간으로 타이머 초기화
         }        
 
-        public override void UpdateState(SkeletonMovement controller)
+        public override void UpdateState(SkeletonController controller)
         {          
             // 플레이어 지정해주기
             if (controller.target == null)
@@ -47,7 +47,7 @@ namespace KW
             }
         }
 
-        public override void ExitState(SkeletonMovement controller)
+        public override void ExitState(SkeletonController controller)
         {
             // 애니메이션 idle 상태 false
             controller.anim.SetBool("isIdle", false);

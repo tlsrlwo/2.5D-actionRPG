@@ -5,19 +5,19 @@ using UnityEngine.AI;
 
 namespace KW
 {
-    public class SkeletonAttackState : MonsterBaseState<SkeletonMovement>
+    public class SkeletonAttackState : MonsterBaseState<SkeletonController>
     {
-        public override void EnterState(SkeletonMovement controller)
+        public override void EnterState(SkeletonController controller)
+        {
+            Debug.Log("½ºÄÌ·¹Åæ »óÅÂ ÁøÀÔ : Attack");
+        }
+
+        public override void ExitState(SkeletonController controller)
         {
 
         }
 
-        public override void ExitState(SkeletonMovement controller)
-        {
-
-        }
-
-        public override void UpdateState(SkeletonMovement controller)
+        public override void UpdateState(SkeletonController controller)
         {
 
         }

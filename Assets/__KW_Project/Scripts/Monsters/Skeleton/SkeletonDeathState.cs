@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace KW
 {
-    public class SkeletonDeathState : MonsterBaseState<SkeletonMovement>
+    public class SkeletonDeathState : MonsterBaseState<SkeletonController>
     {
-        public override void EnterState(SkeletonMovement controller)
+        public override void EnterState(SkeletonController controller)
         {
         }
 
-        public override void UpdateState(SkeletonMovement controller)
+        public override void UpdateState(SkeletonController controller)
         {
         }
 
-        public override void ExitState(SkeletonMovement controller)
+        public override void ExitState(SkeletonController controller)
         {
         }
 
