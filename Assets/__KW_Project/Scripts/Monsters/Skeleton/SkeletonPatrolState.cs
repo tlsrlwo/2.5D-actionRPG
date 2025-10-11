@@ -12,9 +12,8 @@ namespace KW
             Debug.Log("스켈레톤 상태 진입 : Patrol");
             controller.agent.isStopped = false;                                     // navemshAgent 움직임 다시 활성화
 
-            controller.anim.SetBool("isIdle", false);
-            controller.anim.SetBool("isPatrol", true);                             // 걷는 애니메이션 활성화
-            controller.anim.SetBool("isChase", false);
+            controller.anim.SetBool("isPatrol", true);                              // 걷는 애니메이션 활성화
+                                                                                   
             controller.agent.speed = controller.patrolSpeed;                        
 
             // 목적지가 있는지 확인
@@ -64,7 +63,7 @@ namespace KW
 
             Vector3 skeletonVelocity = controller.agent.velocity;                   // 스켈레톤의 이도방향과 속도를 가져옴
 
-            if (controller.agent.velocity.x > 0.1f)                                  // 방향에 맞게끔 sprite를 뒤집어줌
+            if (controller.agent.velocity.x > 0.1f)                                 // 방향에 맞게끔 sprite를 뒤집어줌
             {
                 controller.sr.flipX = false;
             }
@@ -73,6 +72,7 @@ namespace KW
                 controller.sr.flipX = true;
             }
 
+            if (controller.agent.velocity.sqrMagnitude < 0.01f) return;
 
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;
 
@@ -86,7 +86,7 @@ namespace KW
 
         public override void ExitState(SkeletonController controller)
         {
-            
+            controller.anim.SetBool("isPatrol", false);
         }
 
        

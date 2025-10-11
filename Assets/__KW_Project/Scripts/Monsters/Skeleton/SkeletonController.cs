@@ -30,11 +30,11 @@ namespace KW
 
         [Header("추격,공격 범위")]
         public float detectRange = 5f;
-        public float attackRange = 0.7f;
+        public float attackRange = 1f;
         public float idleWaitTime = 3f;
         public float minSuspiciousTime = 2f;                        // 두리번거리는 시간
         public float maxSuspiciousTime = 6f;
-        public float suspiciousTime = 3f;                           
+        public float suspiciousTime = 3f;
         public float timeSinceLastSawPlayer;
 
         public LayerMask playerLayer;
@@ -45,6 +45,9 @@ namespace KW
 
         [Header("공격")]
         public float damage = 25;
+        public float lungeForce = 2f;                              // 공격 후 반동
+        public float lungeDuration = 0.2f;
+        [HideInInspector] public Vector3 lastAttackDirection;
 
         [Header("컴포넌트")]
         [HideInInspector] public Animator anim;
@@ -56,7 +59,7 @@ namespace KW
         private void Awake()
         {
             anim = GetComponentInChildren<Animator>();
-            rb = GetComponentInChildren<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
             agent = GetComponent<NavMeshAgent>();
             sr = GetComponentInChildren<SpriteRenderer>();
 
@@ -68,6 +71,7 @@ namespace KW
         {
             currentHp = maxHp;
             agent.updateRotation = false;
+            rb.isKinematic = true;
             SwitchState(idleState);
         }
 
@@ -78,8 +82,35 @@ namespace KW
 
         public void SwitchState(MonsterBaseState<SkeletonController> monsterState)
         {
+            currentState?.ExitState(this);
+
             currentState = monsterState;
             currentState.EnterState(this);            
+        }
+
+        public void PerformAttackLunge()
+        {
+            StopAllCoroutines();
+            StartCoroutine(LungeRoutine());
+        }
+
+        private IEnumerator LungeRoutine()
+        {
+            // navAgent 잠시 비활성화
+            agent.enabled = false;
+
+            // rigidbody의 kinematic 잠시 비활성화
+            rb.isKinematic = false;
+
+            // AttackState 에서 지정한 방향으로 공격 시 조금 이동(반동효과)
+            rb.AddForce(lastAttackDirection * lungeForce, ForceMode.Impulse);
+
+            yield return new WaitForSeconds(lungeDuration);
+
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+
+            agent.enabled = true;
         }
 
         private void OnDrawGizmos()

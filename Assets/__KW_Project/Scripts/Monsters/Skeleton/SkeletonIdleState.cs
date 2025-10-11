@@ -10,10 +10,7 @@ namespace KW
         public override void EnterState(SkeletonController controller)
         {
             Debug.Log("스켈레톤 상태 진입 : Idle");
-
-            // 다른 애니메이션 bool(false)로 설정
-            controller.anim.SetBool("isPatrol", false);                
-            controller.anim.SetBool("isChase", false);
+                       
             controller.anim.SetBool("isIdle", true);
            
             controller.agent.isStopped = true;                          // navMesh의 이동을 멈춰줌
@@ -54,7 +51,6 @@ namespace KW
 
             // 이동할 수 있도록 isStopped 해제
             controller.agent.isStopped = false;
-
         }
     }
 }

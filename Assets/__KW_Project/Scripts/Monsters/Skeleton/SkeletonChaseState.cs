@@ -13,10 +13,8 @@ namespace KW
 
             controller.agent.isStopped = false;
 
-            controller.anim.SetBool("isPatrol", false);
             controller.anim.SetBool("isChase", true);
-            controller.anim.SetBool("isIdle", false);
-
+           
             controller.agent.speed = controller.chaseSpeed;
         }   
 
@@ -54,7 +52,7 @@ namespace KW
 
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;         // 스켈레톤의 이도방향과 속도를 가져옴
 
-            if (controller.agent.velocity.x > 0.1f)                                  // 방향에 맞게끔 sprite를 뒤집어줌
+            if (controller.agent.velocity.x > 0.1f)                                    // 방향에 맞게끔 sprite를 뒤집어줌
             {
                 controller.sr.flipX = false;
             }
