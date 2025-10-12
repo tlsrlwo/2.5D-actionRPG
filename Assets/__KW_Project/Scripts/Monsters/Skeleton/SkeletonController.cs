@@ -15,7 +15,7 @@ namespace KW
         public readonly SkeletonPatrolState patrolState = new SkeletonPatrolState();
         public readonly SkeletonAttackState attackState = new SkeletonAttackState();
         public readonly SkeletonChaseState chaseState = new SkeletonChaseState();
-
+        public readonly SkeletonCoolDownState coolDownState = new SkeletonCoolDownState();
 
         #endregion
 
@@ -47,7 +47,10 @@ namespace KW
         public float damage = 25;
         public float lungeForce = 2f;                              // 공격 후 반동
         public float lungeDuration = 0.2f;
+        public bool isDoingLunge = false;
+        public float coolDownDuration = 1f;
         [HideInInspector] public Vector3 lastAttackDirection;
+        public Vector2 lastDirection;                               // coolDownState 에서 방향을 기억하기 위한 변수
 
         [Header("컴포넌트")]
         [HideInInspector] public Animator anim;
@@ -96,6 +99,8 @@ namespace KW
 
         private IEnumerator LungeRoutine()
         {
+            isDoingLunge = true;
+
             // navAgent 잠시 비활성화
             agent.enabled = false;
 
@@ -111,6 +116,30 @@ namespace KW
             rb.isKinematic = true;
 
             agent.enabled = true;
+
+            isDoingLunge = false;
+        }
+
+        public void StartCoolDown()
+        {
+            SwitchState(coolDownState);
+
+            StartCoroutine(CoolDownRoutine());
+        }
+
+        private IEnumerator CoolDownRoutine()
+        {
+            Debug.Log("스켈레톤 : 쿨다운 시작");
+
+            anim.SetBool("isCoolDown", true);
+
+            yield return new WaitForSeconds(coolDownDuration);
+
+            Debug.Log("스켈레톤 : 쿨다운 종료!");
+
+            anim.SetBool("isCoolDown", false);
+
+            SwitchState(chaseState);
         }
 
         private void OnDrawGizmos()
@@ -121,6 +150,5 @@ namespace KW
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, attackRange);
         }
-
     }
 }

@@ -31,6 +31,10 @@ namespace KW
 
         public override void UpdateState(SkeletonController controller)
         {
+            if (controller.isDoingLunge)
+            {
+                return;
+            }
             // 플레이어 감지
             if (controller.target == null)
             {
@@ -75,6 +79,7 @@ namespace KW
             if (controller.agent.velocity.sqrMagnitude < 0.01f) return;
 
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;
+            controller.lastDirection = new Vector2(normalizedVelocity.x, normalizedVelocity.z);
 
             float blendTreeMoveX = Mathf.Abs(normalizedVelocity.x);
 

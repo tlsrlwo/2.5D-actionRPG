@@ -20,6 +20,11 @@ namespace KW
 
         public override void UpdateState(SkeletonController controller)
         {
+            if (controller.isDoingLunge)
+            {
+                return;
+            }
+
             // 타겟이 없으면 patrol로 다시 돌아감
             if(controller.target == null)
             {
@@ -51,6 +56,7 @@ namespace KW
             if (controller.agent.velocity.sqrMagnitude < 0.01f) return;
 
             Vector3 normalizedVelocity = controller.agent.velocity.normalized;         // 스켈레톤의 이도방향과 속도를 가져옴
+            controller.lastDirection = new Vector2(normalizedVelocity.x, normalizedVelocity.z);
 
             if (controller.agent.velocity.x > 0.1f)                                    // 방향에 맞게끔 sprite를 뒤집어줌
             {

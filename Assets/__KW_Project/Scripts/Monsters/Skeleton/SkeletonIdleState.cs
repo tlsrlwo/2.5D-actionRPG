@@ -19,7 +19,11 @@ namespace KW
         }        
 
         public override void UpdateState(SkeletonController controller)
-        {          
+        {
+            if (controller.isDoingLunge)
+            {
+                return;
+            }
             // 플레이어 지정해주기
             if (controller.target == null)
             {
