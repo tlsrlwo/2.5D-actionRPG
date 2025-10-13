@@ -51,11 +51,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 79853ac9988969744a80f407b0a83235, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic_Value: 0
+    - _Roughness_Value: 0
     m_Colors:
     - _BaseColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 1}
   m_BuildTextureStacks: []
