@@ -28,9 +28,23 @@ namespace KW
         {
             coolDownTimer -= Time.deltaTime;
 
-            if(coolDownTimer <= 0)
+            // 플레이어와의 공격범위 거리 체크
+            float distanceToTarget = Vector3.Distance(controller.transform.position, controller.target.position);
+
+            if (coolDownTimer <= 0)
             {
-                controller.SwitchState(controller.chaseState);
+                // 플레이어가 아직 detectRange 안에 있다면
+                if (controller.target != null && (distanceToTarget <= controller.detectRange))
+                {
+                    // 추격(Chase) 상태로 복귀
+                    controller.SwitchState(controller.chaseState);
+                }
+                else
+                {
+                    // 범위를 벗어났거나 타겟이 없다면 순찰 상태로 복귀
+                    controller.target = null; 
+                    controller.SwitchState(controller.patrolState);
+                }
             }
         }
 
