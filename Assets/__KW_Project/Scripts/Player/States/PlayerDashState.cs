@@ -11,6 +11,11 @@ namespace KW
           
         }
 
+        public override void ExitState(PlayerMovement movement)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void UpdateState(PlayerMovement movement)
         {
 

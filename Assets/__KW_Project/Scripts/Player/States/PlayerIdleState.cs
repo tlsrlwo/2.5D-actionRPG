@@ -12,6 +12,7 @@ namespace KW
             movement.anim.SetBool("isRunning", false);
         }
 
+       
         public override void UpdateState(PlayerMovement movement)
         {
             if (movement.dir.magnitude > 0.1f)
@@ -20,5 +21,10 @@ namespace KW
                 else movement.SwitchState(movement.playerWalk);
             }
         }
+
+        public override void ExitState(PlayerMovement movement)
+        {
+        }
+
     }
 }

@@ -124,27 +124,21 @@ namespace KW
 
             PlayerMove();
             Gravity();
-
-            // 스프라이트가 오른쪽만 있어서 반대로 뒤집어줌
-            /*
-            if (xInput < 0)
-            {
-                sr.flipX = true;
-            }
-            if (xInput > 0)
-            {
-                sr.flipX = false;
-            }
-            */
-            if (xInput != 0)
-            {
-                sr.flipX = (xInput < 0);
-            }
-
+            HandleSpriteFlip();
             anim.SetFloat("lastMoveX", lastMoveX);
             anim.SetFloat("lastMoveZ", lastMoveZ);
 
             currentState.UpdateState(this);
+        }
+
+        private void HandleSpriteFlip()
+        {
+            if (xInput != 0)
+            {
+                sr.flipX = (xInput < 0);
+            }
+            else
+                sr.flipX = (lastMoveX < 0);
         }
 
         private void PlayerMove()
@@ -177,9 +171,10 @@ namespace KW
 
         public void SwitchState(MovementBaseState state)
         {
+            currentState?.ExitState(this);
+
             currentState = state;
             currentState.EnterState(this);
-            //currentState.UpdateState(this);
         }
         private bool IsGrounded()
         {
