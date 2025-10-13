@@ -16,6 +16,8 @@ namespace KW
             controller.anim.SetBool("isChase", true);
            
             controller.agent.speed = controller.chaseSpeed;
+
+            controller.agent.stoppingDistance = 1;                                          // 플레이어한테 너무 붙지 않게끔 1로 설정(patrol에서 다시 0 으로 해줌)
         }   
 
         public override void UpdateState(SkeletonController controller)

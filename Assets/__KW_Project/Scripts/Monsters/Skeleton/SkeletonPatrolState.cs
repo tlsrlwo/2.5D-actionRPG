@@ -14,7 +14,9 @@ namespace KW
 
             controller.anim.SetBool("isPatrol", true);                              // 걷는 애니메이션 활성화
                                                                                    
-            controller.agent.speed = controller.patrolSpeed;                        
+            controller.agent.speed = controller.patrolSpeed;
+
+            controller.agent.stoppingDistance = 0;                                  // chaseState에서 1로 해준거 다시 0으로 만들어줌
 
             // 목적지가 있는지 확인
             if (controller.wayPoints != null && controller.wayPoints.childCount > 0)
