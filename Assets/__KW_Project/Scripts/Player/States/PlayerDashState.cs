@@ -8,22 +8,48 @@ namespace KW
     {
         public override void EnterState(PlayerMovement movement)
         {
-          
+            movement.isDashing = true;
+
+            movement.StartCoroutine(DashCoroutine(movement));
         }
 
-        public override void ExitState(PlayerMovement movement)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public override void UpdateState(PlayerMovement movement)
         {
 
         }
 
-        private void ExitState(PlayerMovement movement, MovementBaseState state)
+        public override void ExitState(PlayerMovement movement)
         {
-            movement.SwitchState(state);
+            movement.isDashing = false;
+        }
+
+        private IEnumerator DashCoroutine(PlayerMovement movement)
+        {
+            float startTime = Time.time;
+            Vector3 dashDir;
+
+            // 따로 입력되는 값이 없으면 이전에 움직였던 방향으로 대쉬
+            if(movement.dir.magnitude > 0.1f)
+            {
+                dashDir = movement.dir;
+            }
+            else
+            {
+                dashDir = new Vector3(movement.lastMoveX, 0, movement.lastMoveZ);
+                // 만약 게임 시작 직후라 lastMove 방향이 없으면 정면으로 나가게 예외처리
+                if (dashDir.magnitude < 0.1f) dashDir = movement.transform.forward;
+            }
+
+            while (Time.time < startTime + movement.dashDuration)
+            {
+                movement.cController.Move(movement.dashSpeed * dashDir.normalized * Time.deltaTime);
+
+                yield return null;
+            }
+
+            movement.isDashing = false;
+            movement.SwitchState(movement.previousState);
         }
     }
 }

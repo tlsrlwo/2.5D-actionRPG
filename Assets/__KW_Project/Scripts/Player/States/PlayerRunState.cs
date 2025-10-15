@@ -23,6 +23,11 @@ namespace KW
             {
                 movement.SwitchState(movement.playerIdle);
             }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                movement.previousState = this;
+                movement.SwitchState(movement.dashState);
+            }
 
             movement.currentSpeed = movement.runSpeed;
         }

@@ -19,6 +19,11 @@ namespace KW
         public float currentSpeed;                          // 현재 속도
         public Vector3 dir;
 
+        [Header("대쉬")]
+        public float dashSpeed = 15f;
+        public float dashDuration = 0.2f;
+        [HideInInspector] public bool isDashing = false;
+
 
         [Header("점프")]
         [SerializeField] private float groundYOffset;
@@ -36,7 +41,7 @@ namespace KW
         [Header("컴포넌트 참조")]
         [HideInInspector] public Animator anim;
         [HideInInspector] public SpriteRenderer sr;
-        private CharacterController cController;
+        [HideInInspector] public CharacterController cController;
 
 
         [Header("전투")]
@@ -56,6 +61,7 @@ namespace KW
         public PlayerWalkState playerWalk = new PlayerWalkState();
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
+        public PlayerDashState dashState = new PlayerDashState();
 
         #endregion
 
@@ -122,6 +128,10 @@ namespace KW
                 return;
             }
 
+            if (isDashing)
+            {
+                return;
+            }
             PlayerMove();
             Gravity();
             HandleSpriteFlip();

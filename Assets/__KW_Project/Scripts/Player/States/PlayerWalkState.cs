@@ -17,6 +17,12 @@ namespace KW
             else if (movement.dir.magnitude < 0.1f) movement.SwitchState(movement.playerIdle);
 
             movement.currentSpeed = movement.walkSpeed;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                movement.previousState = this;
+                movement.SwitchState(movement.dashState);
+            }
         }
 
         public override void ExitState(PlayerMovement movement)

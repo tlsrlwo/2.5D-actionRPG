@@ -12697,6 +12697,9 @@ MonoBehaviour:
   canMove: 1
   currentSpeed: 0
   dir: {x: 0, y: 0, z: 0}
+  dashSpeed: 8
+  dashDuration: 0.2
+  isDashing: 0
   groundYOffset: 0.68
   groundLayer:
     serializedVersion: 2
@@ -12705,6 +12708,7 @@ MonoBehaviour:
   gravity: -9.81
   anim: {fileID: 0}
   sr: {fileID: 0}
+  cController: {fileID: 0}
 --- !u!222 &2972576745897773748
 CanvasRenderer:
   m_ObjectHideFlags: 0

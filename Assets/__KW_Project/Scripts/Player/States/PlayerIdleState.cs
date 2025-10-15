@@ -20,6 +20,11 @@ namespace KW
                 if (Input.GetKeyDown(KeyCode.LeftShift)) movement.SwitchState(movement.playerRun);
                 else movement.SwitchState(movement.playerWalk);
             }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                movement.previousState = this;
+                movement.SwitchState(movement.dashState);
+            }
         }
 
         public override void ExitState(PlayerMovement movement)
