@@ -20,6 +20,9 @@ namespace KW
         #endregion
 
         #region 컴포넌트
+        [Header("정보")]
+        public string monsterId = "Skeleton";
+
         [Header("이동")]
         public float patrolSpeed = 1;
         public float chaseSpeed = 3;
@@ -72,10 +75,28 @@ namespace KW
 
         private void Start()
         {
+            LoadStatsParsing();
+
             currentHp = maxHp;
             agent.updateRotation = false;
             rb.isKinematic = true;
             SwitchState(idleState);
+        }
+
+        private void LoadStatsParsing()
+        {
+            if (MonsterDataParsing.Instance != null)
+            {
+                // DataManager에서 이 몬스터의 ID에 맞는 데이터를 가져옴
+                MonsterData data = MonsterDataParsing.Instance.GetMonsterData(monsterId);
+
+                // 가져온 데이터로 변수 값 초기화
+                patrolSpeed = data.patrolSpeed;
+                chaseSpeed = data.chaseSpeed;
+                maxHp = data.maxHp;
+                detectRange = data.detectRange;                
+                damage = data.damage;
+            }
         }
 
         private void Update()
