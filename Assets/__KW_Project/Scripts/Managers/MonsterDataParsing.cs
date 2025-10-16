@@ -10,7 +10,8 @@ namespace KW
         public float patrolSpeed;
         public float chaseSpeed;
         public float maxHp;
-        public float detectRange;        
+        public float detectRange;
+        public float coolDownDuration;
         public float damage;
     }
 
@@ -58,7 +59,8 @@ namespace KW
                     chaseSpeed = float.Parse(columns[2]),
                     maxHp = float.Parse(columns[3]),
                     detectRange = float.Parse(columns[4]),
-                    damage = float.Parse(columns[5])
+                    coolDownDuration = float.Parse(columns[5]),
+                    damage = float.Parse(columns[6])
                 };
 
                 string monsterID = columns[0];              

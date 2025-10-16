@@ -94,7 +94,8 @@ namespace KW
                 patrolSpeed = data.patrolSpeed;
                 chaseSpeed = data.chaseSpeed;
                 maxHp = data.maxHp;
-                detectRange = data.detectRange;                
+                detectRange = data.detectRange;
+                coolDownDuration = data.coolDownDuration;
                 damage = data.damage;
             }
         }
