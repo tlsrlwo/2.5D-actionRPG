@@ -52,7 +52,7 @@ namespace KW
                     TogglePanel(panel);
                     return;                                             // 한 프레임에 하나의 입력 처리
                 }
-            }           
+            }             
         }
 
         private void TogglePanel(UiPanel panelToToggle)
@@ -73,7 +73,16 @@ namespace KW
         {
             bool isAnyPanelOpen = currentOpenPanel != null;             // currenOpenPanel 이 있으면 true
 
-            ingameUi.SetActive(!isAnyPanelOpen);
+            if(isAnyPanelOpen)
+            {
+                Time.timeScale = 0.0001f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+
+                ingameUi.SetActive(!isAnyPanelOpen);
             systemCanvas.SetActive(isAnyPanelOpen);
 
             foreach (var panel in uiPanels)
