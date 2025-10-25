@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KW
 {
-    public class Item : ScriptableObject
+    public abstract class Item : ScriptableObject
     {
         [Header("공통 정보")]
         public string itemName;
