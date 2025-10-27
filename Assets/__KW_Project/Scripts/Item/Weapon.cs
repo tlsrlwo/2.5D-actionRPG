@@ -7,16 +7,24 @@ namespace KW
     public enum WeaponType
     {
         Sword,
-        Speark,
+        Spear,
         Bow
     }
-
-    [CreateAssetMenu(fileName = "NewWeaponData", menuName = "MyGame/ItemData/Weapon")]
-    public class Weapon : Item
+    
+    public enum WeaponGrade
     {
-        // 코드 적기 전에 한글폰트 보이게 다른이름으로저장 -> 인코딩 하기 !!
+       Normal,
+       Traveler,
+       Knight,
+       Legendary
+    }
+
+    [CreateAssetMenu(fileName = "NewWeaponData", menuName = "DuskBorn/ItemData/Weapon")]
+    public class Weapon : Item
+    {     
         [Header("무기 정보")]
         public WeaponType weaponType;
+        public WeaponGrade weaponGrade;
         public int damage;
     }
 }

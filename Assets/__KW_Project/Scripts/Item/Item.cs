@@ -7,6 +7,7 @@ namespace KW
     public abstract class Item : ScriptableObject
     {
         [Header("공통 정보")]
+        public string itemId;                       // 데이터파싱 csv 를 위해
         public string itemName;
         public Sprite itemSprite;
         [TextArea(3, 5)]

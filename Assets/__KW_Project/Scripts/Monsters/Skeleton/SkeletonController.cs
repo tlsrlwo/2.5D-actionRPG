@@ -85,10 +85,10 @@ namespace KW
 
         private void LoadStatsParsing()
         {
-            if (MonsterDataParsing.Instance != null)
+            if (ItemDataParsing.Instance != null)
             {
                 // DataManager에서 이 몬스터의 ID에 맞는 데이터를 가져옴
-                MonsterData data = MonsterDataParsing.Instance.GetMonsterData(monsterId);
+                MonsterData data = ItemDataParsing.Instance.GetMonsterData(monsterId);
 
                 // 가져온 데이터로 변수 값 초기화
                 patrolSpeed = data.patrolSpeed;
