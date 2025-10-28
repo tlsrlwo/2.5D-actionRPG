@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef094e02c98852047b013bd2b1691427, type: 3}
   m_Name: Helmet_ClothHelmet
   m_EditorClassIdentifier: 
-  itemId: arm_clothhelmet
+  itemId: arm_ClothHelmet
   itemName: "\uCC9C \uBAA8\uC790"
   itemSprite: {fileID: 0}
   description: 

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909ed3d71f80bf241971f22944e92788, type: 3}
   m_Name: Bow_CompoundCrossbow
   m_EditorClassIdentifier: 
-  itemId: wep_compoundcrossbow
+  itemId: wep_CompoundCrossBow
   itemName: "\uB3C4\uB974\uB798 \uC11D\uAD81"
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 2
-  grade: 2
+  weaponGrade: 0
   damage: 0

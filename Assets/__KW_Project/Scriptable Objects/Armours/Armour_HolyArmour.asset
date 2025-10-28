@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef094e02c98852047b013bd2b1691427, type: 3}
   m_Name: Armour_HolyArmour
   m_EditorClassIdentifier: 
-  itemId: arm_holyarmour
+  itemId: arm_HolyArmour
   itemName: "\uC8FC\uC2E0\uC758 \uAC00\uD638"
   itemSprite: {fileID: 0}
   description: 

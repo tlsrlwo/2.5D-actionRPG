@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909ed3d71f80bf241971f22944e92788, type: 3}
   m_Name: Sword_HolySword
   m_EditorClassIdentifier: 
-  itemId: wep_holysword
+  itemId: wep_HolySword
   itemName: 
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 0
-  grade: 3
+  weaponGrade: 0
   damage: 0

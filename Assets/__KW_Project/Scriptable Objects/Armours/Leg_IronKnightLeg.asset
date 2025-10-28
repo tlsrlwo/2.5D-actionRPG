@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef094e02c98852047b013bd2b1691427, type: 3}
   m_Name: Leg_IronKnightLeg
   m_EditorClassIdentifier: 
-  itemId: arm_ironknightleg
+  itemId: arm_IronKnightLeg
   itemName: "\uCCA0\uC81C \uAE30\uC0AC \uB2E4\uB9AC \uBCF4\uD638\uB300"
   itemSprite: {fileID: 0}
   description: 

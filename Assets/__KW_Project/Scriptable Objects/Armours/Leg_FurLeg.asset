@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef094e02c98852047b013bd2b1691427, type: 3}
   m_Name: Leg_FurLeg
   m_EditorClassIdentifier: 
-  itemId: arm_furleg
+  itemId: arm_FurLeg
   itemName: "\uBAA8\uD53C \uBC14\uC9C0"
   itemSprite: {fileID: 0}
   description: 

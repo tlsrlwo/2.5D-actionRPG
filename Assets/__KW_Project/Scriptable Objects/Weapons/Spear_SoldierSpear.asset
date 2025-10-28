@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909ed3d71f80bf241971f22944e92788, type: 3}
   m_Name: Spear_SoldierSpear
   m_EditorClassIdentifier: 
-  itemId: wep_soldierspear
+  itemId: wep_SoldierSpear
   itemName: "\uBCD1\uC0AC\uC6A9 \uCC3D"
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 1
-  grade: 2
+  weaponGrade: 0
   damage: 0
