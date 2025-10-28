@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sword_HolySword
   m_EditorClassIdentifier: 
   itemId: wep_HolySword
-  itemName: 
+  itemName: "\uC131\uAC80"
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 0
-  weaponGrade: 0
-  damage: 0
+  weaponGrade: 3
+  damage: 100

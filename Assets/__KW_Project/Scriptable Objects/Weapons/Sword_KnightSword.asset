@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sword_KnightSword
   m_EditorClassIdentifier: 
   itemId: wep_KnightSword
-  itemName: 
+  itemName: "\uB098\uC774\uD2B8\uC18C\uB4DC"
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 0
-  weaponGrade: 0
+  weaponGrade: 2
   damage: 45

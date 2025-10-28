@@ -10,7 +10,7 @@ namespace KW
         Armour,
         Leg
     }
-    public enum ArmorGrade
+    public enum ArmourGrade
     {
         Normal,
         Traveler,
@@ -23,7 +23,7 @@ namespace KW
     {
         [Header("갑옷 정보")]
         public ArmourType armourType;
-        public ArmorGrade armourGrade;
+        public ArmourGrade armourGrade;
 
         public float defenceRate;
     }

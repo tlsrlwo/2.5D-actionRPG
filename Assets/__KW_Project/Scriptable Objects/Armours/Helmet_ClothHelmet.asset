@@ -19,4 +19,4 @@ MonoBehaviour:
   maxStack: 1
   armourType: 0
   armourGrade: 0
-  defenceRate: 0
+  defenceRate: 0.05

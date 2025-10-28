@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sword_HardWoodenSword
   m_EditorClassIdentifier: 
   itemId: wep_HardWoodSword
-  itemName: "\uB2E8\uB2E8\uD55C \uBAA9\uAC80"
+  itemName: "\uB2E8\uB2E8\uD55C \uB098\uBB34 \uAC80"
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1
   weaponType: 0
-  weaponGrade: 0
+  weaponGrade: 1
   damage: 28
