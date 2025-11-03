@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;               // 이벤트 Action 을 위해 필요함
 
 namespace KW
 {
     public class Inventory : MonoBehaviour
     {
+        public event Action OnInventoryChanged; 
+
         public List<InventorySlot> slots = new List<InventorySlot>();
         public int maxSlots = 20;               // 가방 최대 칸 수
 
         public bool AddItem(Item itemToAdd)
         {
+            
+            
             // 포션 처럼 1개 이상 겹칠 수 있는 지 아이템인 경우
             if (itemToAdd.maxStack > 1)
             {
@@ -21,6 +26,8 @@ namespace KW
                     {
                         slot.stack++;
                         Debug.Log($"{itemToAdd.itemName} 스택 추가. 현재 : {slot.stack} 개");
+
+                        OnInventoryChanged?.Invoke();           // 이벤트 호출
 
                         return true;
                     }
@@ -34,6 +41,8 @@ namespace KW
                 slots.Add(newSlot);
 
                 Debug.Log($"{itemToAdd.itemName} 1개 추가");
+
+                OnInventoryChanged?.Invoke();
 
                 return true;
             }

@@ -6,14 +6,25 @@ namespace KW
 {
     public class PlayerInteraction : MonoBehaviour
     {
-        public float interactionDistance = 1f;
+        public float interactionDistance = 2f;
         public KeyCode interactionKey = KeyCode.E;
 
-        private Color rayColor = Color.blue;
+        private PlayerMovement playerMovement;
 
+        private Color successRayColor = Color.blue;
+        private Color failureRayColor = Color.red;
+
+        private void Awake()
+        {
+            playerMovement = GetComponent<PlayerMovement>();    
+            if(playerMovement == null)
+            {
+                Debug.LogError("PlayerMovement 를 찾을 수 없음");
+            }
+        }
         private void Start()
         {
-            Debug.Log($"상호작용 ray 색 : {rayColor}");
+            Debug.Log("상호작용 ray 색 : Blue, 실패 시 생상 : Red");
         }
 
         private void Update()
@@ -21,14 +32,29 @@ namespace KW
             // E 키를 누르는 '순간'
             if (Input.GetKeyDown(interactionKey))
             {
+                if (playerMovement == null)
+                {
+                    return;
+                }
+
                 RaycastHit hit;
                 Vector3 startPos = transform.position;
-                Vector3 direction = transform.forward; // 플레이어의 정면
 
-                // 1. Raycast 발사
-                if (Physics.Raycast(startPos, direction, out hit, interactionDistance))
+                Vector3 direction;
+                Vector3 lastMoveDir = new Vector3(playerMovement.lastMoveX, 0, playerMovement.lastMoveZ);
+
+                // 기존 움직임이 있었으면
+                if (lastMoveDir.magnitude > 0.1f)
                 {
-                    // 맞은 물체에서 <IInteractable> 찾기
+                    direction = lastMoveDir.normalized;
+                }
+                else // 움직임이 없었으면 (게임을 시작한 직후 등과 같은 상황)
+                {
+                    direction = transform.forward;
+                }
+
+                if(Physics.Raycast(startPos, direction, out hit, interactionDistance))
+                {
                     IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
                     if (interactable != null)
@@ -36,15 +62,15 @@ namespace KW
                         interactable.Interact(this.gameObject);
                     }
 
-                    // (성공!) 1초 동안 '녹색' 광선을 '맞은 곳까지만' 그림
-                    Debug.DrawRay(startPos, direction * hit.distance, rayColor, 1.0f);
+                    Debug.DrawRay(startPos, direction * hit.distance, successRayColor, 1f);
+                    Debug.Log("상자와 interact");
                 }
-                // 2. Raycast가 아무것도 맞히지 못했을 때
                 else
                 {
-                    // (실패!) 1초 동안 '빨간색' 광선을 '최대 거리까지' 그림
-                    Debug.DrawRay(startPos, direction * interactionDistance, rayColor, 1.0f);
+                    Debug.DrawRay(startPos, direction * interactionDistance, failureRayColor, 1f);
+                    Debug.Log("Interact 할 Object 를 찾지 못함");
                 }
+
             }
         }
     }
