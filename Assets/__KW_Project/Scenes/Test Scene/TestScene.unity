@@ -336,7 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e35ce1ec6dded54da71c7c6a0458bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsInChest: []
+  itemsInChest:
+  - {fileID: 11400000, guid: 4eb636f01d26b044aa73f61dd3a50197, type: 2}
 --- !u!1001 &109311096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,6 +2191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02eba5a0ac7623e40b0a63deced740fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DataParsingFrom: "\uB370\uC774\uD130 \uBCC0\uACBD \uC2DC\nAssets/__KW_Project/Resources
+    \uC5D0\uC11C \uBCC0\uACBD\nmonsterDataParsing.csv"
   monsterId: Skeleton
   patrolSpeed: 1
   chaseSpeed: 3
@@ -12032,6 +12035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85978f65849935442ba85261d5e76a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DataParsingFrom: "\uB370\uC774\uD130 \uBCC0\uACBD \uC2DC \nAssets/__KW_Project/Resources
+    \uC5D0\uC11C \uBCC0\uACBD\nplayerStats.json"
   walkSpeed: 3
   runSpeed: 5
   airSpeed: 1.5

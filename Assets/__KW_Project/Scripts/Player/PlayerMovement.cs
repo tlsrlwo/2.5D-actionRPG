@@ -8,6 +8,10 @@ namespace KW
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("데이터파싱")]
+        [TextArea(10, 1)]
+        public string DataParsingFrom;
+
         [Header("움직임")]
         public float walkSpeed = 3f;                        // 걷는 속도                    
         public float runSpeed = 5f;                         // 달리는 속도

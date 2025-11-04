@@ -20,6 +20,9 @@ namespace KW
         #endregion
 
         #region 컴포넌트
+        [TextArea(10, 2)]
+        public string DataParsingFrom;
+
         [Header("정보")]
         public string monsterId = "Skeleton";
 
