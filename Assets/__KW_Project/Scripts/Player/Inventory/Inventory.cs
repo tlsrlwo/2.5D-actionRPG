@@ -11,12 +11,10 @@ namespace KW
         public event Action OnInventoryChanged; 
 
         public List<InventorySlot> slots = new List<InventorySlot>();
-        public int maxSlots = 20;               // 가방 최대 칸 수
+        public int maxSlots = 50;               // 가방 최대 칸 수
 
         public bool AddItem(Item itemToAdd)
-        {
-            
-            
+        {            
             // 포션 처럼 1개 이상 겹칠 수 있는 지 아이템인 경우
             if (itemToAdd.maxStack > 1)
             {

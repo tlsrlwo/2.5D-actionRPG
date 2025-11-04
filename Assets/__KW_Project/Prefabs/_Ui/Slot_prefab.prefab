@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7407701124911543947}
   - component: {fileID: 6151254433272677435}
   - component: {fileID: 8612150840610572442}
+  - component: {fileID: -514786628707915205}
   m_Layer: 5
   m_Name: Slot_prefab
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -781, y: 255}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 110, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6151254433272677435
 CanvasRenderer:
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-514786628707915205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080450082177358474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b233bea091c963849bba3330917c4d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 3685120053138306843}
+  stackText: {fileID: 6523395807840402369}
 --- !u!1 &5684550134359516097
 GameObject:
   m_ObjectHideFlags: 0
