@@ -337,7 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsInChest:
-  - {fileID: 11400000, guid: 4eb636f01d26b044aa73f61dd3a50197, type: 2}
+  - item: {fileID: 11400000, guid: 2e38db743d43cf44097a726358ee828f, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 4eb636f01d26b044aa73f61dd3a50197, type: 2}
+    quantity: 1
 --- !u!1001 &109311096
 PrefabInstance:
   m_ObjectHideFlags: 0
