@@ -8,6 +8,7 @@ namespace KW
 {
     public class PlayerMovement : MonoBehaviour
     {
+        #region 변수
         [Header("데이터파싱")]
         [TextArea(10, 1)]
         public string DataParsingFrom;
@@ -47,7 +48,6 @@ namespace KW
         [HideInInspector] public SpriteRenderer sr;
         [HideInInspector] public CharacterController cController;
 
-
         [Header("전투")]
         private float maxHp = 100;                          // 최대 체력
         private float baseDamage = 10;                      // 기본 데미지
@@ -55,7 +55,7 @@ namespace KW
         private float defencePercentage = 0;                // 방어율
 
         public float TotalDamage { get { return baseDamage + weaponDamage; } }
-
+        #endregion
 
         #region 플레이어 FSM
         public MovementBaseState previousState;
@@ -91,7 +91,7 @@ namespace KW
             // json 파일을 text 로서 읽어옴
             TextAsset playerStatFile = Resources.Load<TextAsset>("playerStats");
 
-            if(playerStatFile != null)
+            if (playerStatFile != null)
             {
                 // 읽어온 json의 내용을 PlayerStats 에 적용시키고, 현재 스크립트에도 적용
                 PlayerStats stats = JsonUtility.FromJson<PlayerStats>(playerStatFile.text);

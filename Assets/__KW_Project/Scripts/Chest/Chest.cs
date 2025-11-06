@@ -9,13 +9,16 @@ namespace KW
         [Header("파밍")]
         public List<ChestSlot> itemsInChest = new List<ChestSlot>();
 
+        [Header("연결")]
+        [SerializeField] private NotificationManager notificationManager;
+
         private bool isOpen = false;                                                    // 상자가 열려있는지
 
         public void Interact(GameObject player)
         {
             if (isOpen) return;
 
-            Debug.Log("상자를 엽니다");
+            // Debug.Log("상자를 엽니다");
 
             // 플레이어에서 <Inventory>() 찾기
             Inventory playerInventory = player.GetComponent<Inventory>();
@@ -50,6 +53,11 @@ namespace KW
                 {
                     isOpen = true;
                     // TODO: 상자 열리는 애니메이션/사운드 재생
+                }
+
+                if(itemSuccessfullyAdded.Count > 0 && notificationManager!= null)
+                {
+                    notificationManager.ShowLootPopup(itemSuccessfullyAdded);
                 }
             }
         }

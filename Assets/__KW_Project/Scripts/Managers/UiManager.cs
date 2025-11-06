@@ -25,7 +25,7 @@ namespace KW
 
         [SerializeField] private List<UiPanel> uiPanels;                // 각 (인벤/맵/설정/퀘스트) 패널을 담을 리스트
 
-        [SerializeField]private UiPanel currentOpenPanel = null;
+        [SerializeField] private UiPanel currentOpenPanel = null;
 
         private void Start()
         {
@@ -39,7 +39,7 @@ namespace KW
         }
 
         private void Update()
-        {            
+        {
             if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))   // 열려있는 게 있으면 우선적으로 닫음
             {
                 TogglePanel(currentOpenPanel);
@@ -52,7 +52,7 @@ namespace KW
                     TogglePanel(panel);
                     return;                                             // 한 프레임에 하나의 입력 처리
                 }
-            }             
+            }
         }
 
         private void TogglePanel(UiPanel panelToToggle)
@@ -71,9 +71,10 @@ namespace KW
 
         private void UpdateAllPanelViews()
         {
-            bool isAnyPanelOpen = currentOpenPanel != null;             // currenOpenPanel 이 있으면 true
+            // currenOpenPanel 이 있거나, 외부 팝업창이 열려있으면 true
+            bool isAnyUiOpen = (currentOpenPanel != null);         
 
-            if(isAnyPanelOpen)
+            if (isAnyUiOpen)
             {
                 Time.timeScale = 0.0001f;
             }
@@ -82,14 +83,16 @@ namespace KW
                 Time.timeScale = 1f;
             }
 
-                ingameUi.SetActive(!isAnyPanelOpen);
-            systemCanvas.SetActive(isAnyPanelOpen);
+            ingameUi.SetActive(!isAnyUiOpen);
+            systemCanvas.SetActive(isAnyUiOpen);
 
             foreach (var panel in uiPanels)
             {
                 panel.isOpen = (panel == currentOpenPanel);             // 해당 panel 이 현재 열려있는 패널이면 isOpen
                 panel.panelObject.SetActive(panel.isOpen);              // isOpen 이 true 면 해당 패널 오브젝트 SetActive
             }
+            
+            // OnAnyUiStateChanged?.Invoke(isAnyUiOpen);
         }
 
         // 패널의 버튼을 위한 함수
@@ -97,8 +100,8 @@ namespace KW
         {
             // 'IsPanelMatch'라는 이름의 함수를 조건으로 사용해 패널을 찾습니다.
             UiPanel panelToOpen = FindPanelUsingFunction(panelName);
-                        
-            if(currentOpenPanel == panelToOpen)                         // 버튼으로 패널을 열 때, 현재 열려있는게 열어야 될 패널이면 버튼으로 꺼지지 않게끔 반환
+
+            if (currentOpenPanel == panelToOpen)                         // 버튼으로 패널을 열 때, 현재 열려있는게 열어야 될 패널이면 버튼으로 꺼지지 않게끔 반환
             {
                 return;
             }
@@ -125,6 +128,5 @@ namespace KW
             // 루프가 끝날 때까지 찾지 못했다면 null을 반환합니다.
             return null;
         }
-
-    }  
+    }
 }

@@ -21,7 +21,7 @@ namespace KW
             if (playerInventory == null || slotPrefab == null || slotParent == null)
             {
                 Debug.LogError("InventoryUI : 필요한 참조가 설정되지 않았습니다");
-                return; 
+                return;
             }
 
             // 슬롯 UI 들을 미리 생성
@@ -31,7 +31,7 @@ namespace KW
             playerInventory.OnInventoryChanged += UpdateUI;
 
             // UI 최초 업데이트
-            UpdateUI();            
+            UpdateUI();
         }
 
         private void OnDestroy()
@@ -43,14 +43,14 @@ namespace KW
         private void InitializeSlots()
         {
             // 기존에 생성된 게 있다면 삭제 (초기화)
-            foreach(Transform child in slotParent)
+            foreach (Transform child in slotParent)
             {
                 Destroy(child.gameObject);
             }
             uiSlots.Clear();
 
             // maxSlot 만큼 slot 을 생성해줌
-            for(int i = 0; i < playerInventory.maxSlots; i++)
+            for (int i = 0; i < playerInventory.maxSlots; i++)
             {
                 // slotPrefab 을 slotParent 의 자식으로 생성
                 GameObject newSlot = Instantiate(slotPrefab, slotParent);
@@ -70,7 +70,7 @@ namespace KW
             for (int i = 0; i < uiSlots.Count; i++)
             {
                 // 실제 데이터에도 i번째 데이터가 있는지 확인
-                if(i < playerInventory.slots.Count)
+                if (i < playerInventory.slots.Count)
                 {
                     // 데이터가 있으면
                     uiSlots[i].SetSlotData(playerInventory.slots[i]);
