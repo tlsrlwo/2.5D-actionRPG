@@ -10,7 +10,8 @@ namespace KW
         [SerializeField] private Inventory playerInventory;
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject slotPrefab;
-        [SerializeField] private Transform slotParent;           // 슬롯prefab이 생성될 부모
+        [SerializeField] private Transform slotParent;                              // 슬롯prefab이 생성될 부모
+        [SerializeField] private TooltipManager tooltipManager;
 
         private List<InventorySlotUI> uiSlots = new List<InventorySlotUI>();        // slot Ui 를 관리할 리스트
 
@@ -18,7 +19,7 @@ namespace KW
         {
             playerInventory = player.GetComponent<Inventory>();
 
-            if (playerInventory == null || slotPrefab == null || slotParent == null)
+            if (playerInventory == null || slotPrefab == null || slotParent == null || tooltipManager == null)
             {
                 Debug.LogError("InventoryUI : 필요한 참조가 설정되지 않았습니다");
                 return;
@@ -36,7 +37,8 @@ namespace KW
 
         private void OnDestroy()
         {
-            playerInventory.OnInventoryChanged -= UpdateUI;
+            if (playerInventory != null)
+                playerInventory.OnInventoryChanged -= UpdateUI;
         }
 
         // 인벤토리에 maxSlots 만큼 미리 slots 생성
@@ -57,6 +59,16 @@ namespace KW
 
                 // 생성된 slot 에 InventorySlotUI 를 가져와서 List에 추가
                 InventorySlotUI slotUi = newSlot.GetComponent<InventorySlotUI>();
+
+                // 생성된 slot 에서 TooltipUi 를 가져옴
+                TooltipUi tooltipUi = newSlot.GetComponent<TooltipUi>();
+
+                // 가져온 tooltipUi 에 tooltipManager 참조를 전달해줌
+                if(tooltipUi != null)
+                {
+                    tooltipUi.Initialize(tooltipManager);
+                }
+
                 uiSlots.Add(slotUi);
             }
         }
@@ -69,16 +81,31 @@ namespace KW
             // 현재 생성된 uiSlots 의 개수 만큼 반복
             for (int i = 0; i < uiSlots.Count; i++)
             {
+                // 현재 슬롯[i] 에서 tooltipUi 컴포넌트를 가져옴
+                TooltipUi tooltipUi = uiSlots[i].GetComponent<TooltipUi>();
+
                 // 실제 데이터에도 i번째 데이터가 있는지 확인
                 if (i < playerInventory.slots.Count)
                 {
                     // 데이터가 있으면
                     uiSlots[i].SetSlotData(playerInventory.slots[i]);
+
+                    // tooltipUi 컴포넌트가 존재한다면
+                    if (tooltipUi != null)
+                    {
+                        // tooltipUi 에게 현재 아이템의 정보를 전달
+                        tooltipUi.SetItem(playerInventory.slots[i].item);
+                    }
                 }
                 else
                 {
                     // 데이터가 없으면 (빈 슬롯이면)
                     uiSlots[i].ClearSlot();
+
+                    if(tooltipUi!= null)
+                    {
+                        tooltipUi.SetItem(null);
+                    }
                 }
             }
         }

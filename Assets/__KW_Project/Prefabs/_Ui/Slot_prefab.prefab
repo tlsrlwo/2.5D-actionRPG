@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6151254433272677435}
   - component: {fileID: 8612150840610572442}
   - component: {fileID: -514786628707915205}
+  - component: {fileID: -1386888350707067672}
   m_Layer: 5
   m_Name: Slot_prefab
   m_TagString: Untagged
@@ -92,6 +93,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 3685120053138306843}
   stackText: {fileID: 6523395807840402369}
+--- !u!114 &-1386888350707067672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080450082177358474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188244b2bd812648b5b01ef9c82968a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentItem: {fileID: 0}
+  _tooltipManager: {fileID: 0}
+  _rectTransform: {fileID: 0}
 --- !u!1 &5684550134359516097
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,8 +250,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 036b1711e79b8d44b98cbbe0d2c2219e, type: 2}
-  m_sharedMaterial: {fileID: 5284957936693052245, guid: 036b1711e79b8d44b98cbbe0d2c2219e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70e3b4e764120614b931e7cd57751bef, type: 2}
+  m_sharedMaterial: {fileID: 8459637569845841311, guid: 70e3b4e764120614b931e7cd57751bef, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

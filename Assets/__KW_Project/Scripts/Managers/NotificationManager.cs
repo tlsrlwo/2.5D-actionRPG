@@ -22,6 +22,9 @@ namespace KW
             // 팝업 창 생성
             GameObject popupObj = Instantiate(itemLootPopupPrefab, popupHolder);
 
+            if (popupObj != null) Debug.Log("팝업 생성됨");
+            else Debug.LogWarning("팝업 생성 안됨");
+
             // 팝업 창 안에서 아이템 1줄이 생성될 위치 찾기
             Transform lineHolder = popupObj.transform.Find("LineHolder");
 
@@ -40,7 +43,7 @@ namespace KW
 
                 if (text != null)
                     text.text = $"{slot.item.itemName}이(가) x{slot.quantity}개 추가됐다.";
-            }           
+            }
 
             if (confirmBtn != null)
             {

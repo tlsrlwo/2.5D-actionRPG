@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: wep_LooseBow
   itemName: "\uD5D0\uB801\uD55C \uD65C"
   itemSprite: {fileID: 21300000, guid: 63312642a5ab708419bd8fbbc19b1973, type: 3}
-  description: 
+  description: "\uAE30\uBCF8\uC801\uC778 \uD5D0\uB801\uD55C \uD65C\uC774\uB2E4. "
   maxStack: 1
   weaponType: 2
   weaponGrade: 0

@@ -10,13 +10,22 @@ namespace KW
         public List<ChestSlot> itemsInChest = new List<ChestSlot>();
 
         [Header("연결")]
-        [SerializeField] private NotificationManager notificationManager;
+        [SerializeField] private NotificationManager _notificationManager;
 
-        private bool isOpen = false;                                                    // 상자가 열려있는지
+        [HideInInspector] private Animator _anim;
+
+        private bool _isOpen = false;                                                    // 상자가 열려있는지
+
+        public void Start()
+        {
+            _anim = GetComponentInChildren<Animator>();
+        }
 
         public void Interact(GameObject player)
         {
-            if (isOpen) return;
+            if (_isOpen) return;
+
+            //anim.SetBool("isOpen", isOpen);
 
             // Debug.Log("상자를 엽니다");
 
@@ -51,13 +60,15 @@ namespace KW
 
                 if (itemsInChest.Count == 0)
                 {
-                    isOpen = true;
+                    _isOpen = true;
+
+                    if(_anim!= null) _anim.SetTrigger("isOpen");
                     // TODO: 상자 열리는 애니메이션/사운드 재생
                 }
 
-                if(itemSuccessfullyAdded.Count > 0 && notificationManager!= null)
+                if (itemSuccessfullyAdded.Count > 0 && _notificationManager!= null)
                 {
-                    notificationManager.ShowLootPopup(itemSuccessfullyAdded);
+                    _notificationManager.ShowLootPopup(itemSuccessfullyAdded);
                 }
             }
         }
