@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: wep_HardWoodSword
   itemName: "\uB2E8\uB2E8\uD55C \uB098\uBB34 \uAC80"
-  itemSprite: {fileID: 21300000, guid: 521ba74e05d3acb4081de4ba7af2f33c, type: 3}
+  itemSprite: {fileID: 21300000, guid: 30898a6248ab6ba4280a323d8f615d38, type: 3}
   description: "\uAE30\uBCF8\uC801\uC778 \uB2E8\uB2E8\uD55C \uB098\uBB34 \uAC80\uC774\uB2E4. "
   maxStack: 1
   weaponType: 0
