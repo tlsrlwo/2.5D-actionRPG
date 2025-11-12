@@ -2,11 +2,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KW
 {
     public class DialogueManager : MonoBehaviour
     {
+        // 대화 자체를 보관한 SO 만들기 ->
+        // dialogue 를 띄울 매니저 스크립트 (안에는 대화 내용을 띄우는 함수,
+        // 플레이어가 특정 버튼을 누르면 어떤 다음 dialogue 를 띄울지 정하는 함수 등) ->
+        // npc 자체를 만들어 interact 가능한 object로 만들기
         public static DialogueManager Instance { get; set; }
 
         [Header("UI 요소")]
@@ -44,72 +49,133 @@ namespace KW
 
             // 다음 버튼에 DisplayNextLine 을 미리 연결
             // nextBtn.onClick.AddListener(=> );
+            if(nextBtn != null)
+            {
+                nextBtn.onClick.AddListener(DisplayNextLine);
+            }
         }
 
         public void StartDialogue(DialogueSO dialogueData, Npc npc)
         {
             // 대화창 패널 활성화
+            dialoguePanel.SetActive(true);
 
             // 게임 시간 정지 / 플레이어 정지
+            Time.timeScale = 0.00001f;
 
             // 현재 대화 중인 NPC 저장
+            currentNpc = npc;
 
             // 현재 대화 데이터 저장 (선택지를 위해)
+            _currentDialogueData = dialogueData;
 
             // lineQueue 비우기 (clear)
+            _dialogueQueue.Clear();
 
-            // SO 안의 모든 대사를 lineQueue 에 추가 (foreach, Enqueue)
+            // SO 안의 모든 대사를 lineQueue 에 추가
+            foreach(string line in dialogueData.dialogueLines)
+            {
+                _dialogueQueue.Enqueue(line);
+            }
 
             // 첫 번째 대사 표시
-            //DisplayNextLine();
+            DisplayNextLine();
         }
 
         public void DisplayNextLine()
         {
             // 다음 버튼을 일단 보이게 함
+            if (nextBtn != null)
+            {
+                nextBtn.gameObject.SetActive(true);
+            }
 
-            // lineQueue 에 남은 대사가 (count) 0 보다 큰가?
-
-            // 남은 대사가 없다면 (else)
+            // lineQueue 에 남은 대사가 있는지 확인
+            if (_dialogueQueue.Count > 0)
+            {
+                string line = _dialogueQueue.Dequeue();
+                dialogueText.text = line;
+            }
+            else
+            {
+                // 남은 대사가 없다면 
+                if(nextBtn!= null)
+                {
+                    nextBtn.gameObject.SetActive(false);
+                }
+                // 선택지 표시
+                DisplayChoices();
+            }
         }
 
         private void DisplayChoices()
         {
             // _currentDialogueData.choices 에 선택지가 0보다 많은가?
+            if (_currentDialogueData != null && _currentDialogueData.dialogueChoices.Length > 0)
+            {
+                // 기존에 있던 버튼들 삭제 후 선택지 버튼 생성
+                foreach (Transform child in choiceBtnHolder)
+                {
+                    Destroy(child.gameObject);
+                }
 
-            // 기존에 있던 버튼들 삭제 후 선택지 버튼 생성
+                // currentDialogueData.choices 배열을 순회 (foreach)
+                foreach (DialogueChoice choice in _currentDialogueData.dialogueChoices)
+                {
+                    // choiceBtnPrefab 을  choiceBtnHolder 자식으로 생성 (Instantiate)
+                    GameObject buttonObj = Instantiate(choiceBtnPrefab, choiceBtnHolder);
 
-            // currentDialogueData.choices 배열을 순회 (foreach)
+                    // 생성된 버튼의 텍스트를 지정
+                    buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
 
-                // choiceBtnPrefab 을  choiceBtnHolder 자식으로 생성 (Instantiate)
-                // 생성된 버튼의 텍스트를 지정
-                // 생성된 버튼의 onClick 리스너에 새 기능 추가
-
-                // (리스너 내부)선택한 다음대화 로 바로 넘어가기
-
-            // else 선택지가 없다면 (대화 끝)
-            // EndDialogue();
+                    // 생성된 버튼의 onClick 리스너에 새 기능 추가
+                    Button button = buttonObj.GetComponent<Button>();
+                    button.onClick.AddListener(() =>
+                    {
+                        // (리스너 내부)선택한 다음대화 로 바로 넘어가기
+                        OnChoiceSelected(choice.nextDialogue);
+                    });
+                }
+            }
+            else
+            {
+                // else 선택지가 없다면 (대화 끝)
+                EndDialogue();
+            }
         }
 
         private void OnChoiceSelected(DialogueSO nextDialogue)
         {
             // 모든  선택지 버튼 삭제
+            foreach(Transform child in choiceBtnHolder)
+            {
+                Destroy(child.gameObject);
+            }
 
             // 다음 대화가 있는지 확인 (null 체크)
+            if (nextDialogue != null)
+            {
                 // 다음 대화로 이어서 시작
-
-            // else 다음 대화가 없다면 (대화 끝)
-            // EndDialogue();
+                StartDialogue(nextDialogue, currentNpc);
+            }
+            else
+            {
+                // 다음 대화가 없다면 (대화 끝)
+                EndDialogue();
+            }            
         }
 
         private void EndDialogue()
         {
             // 대화창 패널 비활성화
+            dialoguePanel.SetActive(false);
 
             // 시간 되돌리기
+            Time.timeScale = 1f;
 
             // NPC 참조 비우기
-
+            currentNpc = null;
+            _currentDialogueData = null;
         }
     }
 }

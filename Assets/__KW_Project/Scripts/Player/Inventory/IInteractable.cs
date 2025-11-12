@@ -8,6 +8,6 @@ namespace KW
     public interface IInteractable
     {
         // 플레이어와 상호작용
-        void Interact(GameObject plyaer);
+        void Interact(GameObject player);
     }
 }
