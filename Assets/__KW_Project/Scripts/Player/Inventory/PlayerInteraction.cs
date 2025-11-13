@@ -29,6 +29,11 @@ namespace KW
 
         private void Update()
         {
+            if (DialogueManager.isDialogueActive)
+            {
+                return;
+            }
+
             // E 키를 누르는 '순간'
             if (Input.GetKeyDown(interactionKey))
             {
@@ -63,7 +68,7 @@ namespace KW
                     }
 
                     Debug.DrawRay(startPos, direction * hit.distance, successRayColor, 1f);
-                    Debug.Log("상자와 interact");
+                    Debug.Log("Interact 할 Object 를 찾음");
                 }
                 else
                 {

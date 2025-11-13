@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Rendering.HighDefinition;
+using Unity.VisualScripting;
 
 namespace KW
 {
@@ -14,6 +16,8 @@ namespace KW
         // npc 자체를 만들어 interact 가능한 object로 만들기
         public static DialogueManager Instance { get; set; }
 
+        public static bool isDialogueActive { get; private set; }
+
         [Header("UI 요소")]
         [SerializeField] private GameObject dialoguePanel;                       // 대화창 
         [SerializeField] private TextMeshProUGUI dialogueText;                   // 대화가 표시될 텍스트
@@ -21,6 +25,9 @@ namespace KW
 
         [SerializeField] private Transform choiceBtnHolder;
         [SerializeField] private GameObject choiceBtnPrefab;
+
+        [SerializeField] private GameObject _INGAMECANVAS;
+        [SerializeField] private GameObject _SYSTEMCANVAS;
 
         // Queue 는 순차적으로 정보를 보여주는 형식의 List와 비슷한 것
         private Queue<string> _dialogueQueue;
@@ -40,13 +47,14 @@ namespace KW
             }
 
             _dialogueQueue = new Queue<string>();
+            isDialogueActive = false;
         }
 
         private void Start()
         {
             // 시작 때 대화창 숨기기
             dialoguePanel.SetActive(false);
-
+            
             // 다음 버튼에 DisplayNextLine 을 미리 연결
             // nextBtn.onClick.AddListener(=> );
             if(nextBtn != null)
@@ -59,6 +67,11 @@ namespace KW
         {
             // 대화창 패널 활성화
             dialoguePanel.SetActive(true);
+
+            isDialogueActive = true;
+
+            _SYSTEMCANVAS.SetActive(false);
+            _INGAMECANVAS.SetActive(false);
 
             // 게임 시간 정지 / 플레이어 정지
             Time.timeScale = 0.00001f;
@@ -156,7 +169,7 @@ namespace KW
             if (nextDialogue != null)
             {
                 // 다음 대화로 이어서 시작
-                StartDialogue(nextDialogue, currentNpc);
+                currentNpc.OnChoiceMade(nextDialogue);
             }
             else
             {
@@ -169,6 +182,9 @@ namespace KW
         {
             // 대화창 패널 비활성화
             dialoguePanel.SetActive(false);
+            _INGAMECANVAS.SetActive(true);
+
+            isDialogueActive = false;
 
             // 시간 되돌리기
             Time.timeScale = 1f;

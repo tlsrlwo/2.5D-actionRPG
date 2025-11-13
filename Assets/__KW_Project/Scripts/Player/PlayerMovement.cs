@@ -29,13 +29,13 @@ namespace KW
         public float dashDuration = 0.2f;
         [HideInInspector] public bool isDashing = false;
 
-
         [Header("점프")]
         [SerializeField] private float groundYOffset;
-        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float sphereRadius = 0.05f;
 
         public virtual bool isGrounded(bool value) => IsGrounded();
+        public virtual LayerMask groundLayer => _groundLayer;
         Vector3 spherePos;                                  // 플레이어 지면 확인용 구체
 
         [Header("중력")]
@@ -53,6 +53,12 @@ namespace KW
         private float baseDamage = 10;                      // 기본 데미지
         private float weaponDamage = 0;                     // 무기 데미지
         private float defencePercentage = 0;                // 방어율
+        [SerializeField] private GameObject attackHitBox;   // 히트박스
+
+        [Tooltip("전투 시 반동")]
+        private float attackLungeSpeed = 5f;                // 공격 반동 속도
+        private float attackLungeDuration = 0.2f;           // 공격 반동 지속시간
+        [HideInInspector] public bool isAttacking = false;
 
         public float TotalDamage { get { return baseDamage + weaponDamage; } }
         #endregion
@@ -117,6 +123,12 @@ namespace KW
             sr = GetComponent<SpriteRenderer>();
             cController = GetComponent<CharacterController>();
             anim = GetComponent<Animator>();
+
+            // 시작 시에는 히트박스를 비활성화
+            if(attackHitBox != null)
+            {
+                attackHitBox.SetActive(false);
+            }
         }
 
         private void Start()
@@ -127,23 +139,102 @@ namespace KW
 
         private void Update()
         {
-            if (!canMove)
+            if (DialogueManager.isDialogueActive) { return; }
+            if (!canMove) { return; }
+            if (isDashing) { return; }
+
+            PlayerMove();
+
+            if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
+                previousState = currentState;
+
+                SwitchState(playerAttack);
+
+                // 공격 상태에서는 아래의 로직을 사용하지 않기 때문에 return
                 return;
             }
 
-            if (isDashing)
+            if (!isAttacking)
             {
-                return;
+                Gravity();
+                HandleSpriteFlip();
             }
-            PlayerMove();
-            Gravity();
-            HandleSpriteFlip();
             anim.SetFloat("lastMoveX", lastMoveX);
             anim.SetFloat("lastMoveZ", lastMoveZ);
 
             currentState.UpdateState(this);
         }
+
+        private IEnumerator AttackLungeCoroutine()
+        {
+            float startTime = Time.time;
+
+            // 반동 방향
+            Vector3 lungeDir;
+
+            // 기존의 방향을 lungeDir 로 지정
+            if(dir.magnitude > 0.1f)
+            {
+                lungeDir = dir;
+            }
+            else
+            {
+                lungeDir = new Vector3(lastMoveX, lastMoveZ);
+                // 기존 입력값이 없으면
+                if(lungeDir.magnitude < 0.1f)
+                {
+                    lungeDir = transform.forward;
+                }
+            }
+
+            while(Time.time < startTime + attackLungeDuration)
+            {
+                cController.Move(lungeDir.normalized * attackLungeSpeed * Time.deltaTime);
+
+                yield return null;
+            }
+        }
+
+        #region 애니메이션 이벤트에서 사용할 코루틴 & 히트박스
+        [Tooltip("애니메이션 이벤트")]
+        public void AnimationEvent_StartAttackLunge()
+        {
+            StartCoroutine(AttackLungeCoroutine());
+        }
+
+        [Tooltip("히트박스")]
+        public void AnimationEvent_EnableHitBox()
+        {
+            if (attackHitBox != null)
+                attackHitBox.SetActive(true);
+        }
+        public void AnimationEvent_DisableHitBox()
+        {
+            if (attackHitBox != null)
+                attackHitBox.SetActive(false);
+        }
+
+        [Tooltip("애니메이션 이벤트 : 공격 애니메이션 종료")]
+        public void AnimationEvent_AttackFinished()
+        {
+            if (!isAttacking) return;
+
+            float xInput = Input.GetAxisRaw("Horizontal");
+            float zInput = Input.GetAxisRaw("Vertical");
+
+            // 입력 값이 있으면 
+            if(MathF.Abs(xInput) > 0.1f || Mathf.Abs(zInput) > 0.1f)
+            {
+                SwitchState(playerWalk);
+            }
+            else
+            {
+                SwitchState(playerIdle);
+            }
+        }
+
+        #endregion  
 
         private void HandleSpriteFlip()
         {
@@ -194,7 +285,7 @@ namespace KW
         {
             // 플레이어의 바닥 판정
             spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
-            if (Physics.CheckSphere(spherePos, cController.radius - sphereRadius, groundLayer))
+            if (Physics.CheckSphere(spherePos, cController.radius - sphereRadius, _groundLayer))
             {
                 return true;
             }

@@ -1,6 +1,6 @@
 ﻿ItemId,Category,Type,Name,Grade,Damage,AttackSpeed,DefenceRate
 wep_WeakWoodSword,Weapon,Sword,조악한 나무 검,Normal,15,1,0
-wep_HardWoodSword,Weapon,Sword,단단한 나무 검,Traveler,28,1.3,0
+wep_HardSword,Weapon,Sword,단단한 철제 검,Traveler,28,1.3,0
 wep_KnightSword,Weapon,Sword,나이트소드,Knight,45,1.6,0
 wep_HolySword,Weapon,Sword,성검,Legendary,100,2.5,0
 wep_ThrowSpear,Weapon,Spear,투척 창,Normal,20,1.8,0

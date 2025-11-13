@@ -40,6 +40,11 @@ namespace KW
 
         private void Update()
         {
+            if (DialogueManager.isDialogueActive)
+            {
+                return;
+            }
+
             if (currentOpenPanel != null && Input.GetKeyDown(KeyCode.Escape))   // 열려있는 게 있으면 우선적으로 닫음
             {
                 TogglePanel(currentOpenPanel);

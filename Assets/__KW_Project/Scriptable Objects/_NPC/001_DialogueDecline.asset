@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
+  m_Name: 001_DialogueDecline
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - "\uADF8\uB807\uAD70.. \uC5ED\uC2DC \uBB34\uB9AC\uD55C \uBD80\uD0C1\uC774\uC5C8\uB358
+    \uAC70 \uC544\uB124"
+  dialogueChoices: []
