@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace KW
@@ -33,14 +31,14 @@ namespace KW
         [SerializeField] private float groundYOffset;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float sphereRadius = 0.05f;
-
-        public virtual bool isGrounded(bool value) => IsGrounded();
+        
         public virtual LayerMask groundLayer => _groundLayer;
         Vector3 spherePos;                                  // 플레이어 지면 확인용 구체
 
         [Header("중력")]
         [SerializeField] private float gravity = -9.81f;    // 중력값
         private Vector3 velocity;
+        [SerializeField] private bool _isGrounded;
 
 
         [Header("컴포넌트 참조")]
@@ -54,11 +52,11 @@ namespace KW
         private float weaponDamage = 0;                     // 무기 데미지
         private float defencePercentage = 0;                // 방어율
         [SerializeField] private GameObject attackHitBox;   // 히트박스
-
+       
         [Tooltip("전투 시 반동")]
         private float attackLungeSpeed = 5f;                // 공격 반동 속도
         private float attackLungeDuration = 0.2f;           // 공격 반동 지속시간
-        [HideInInspector] public bool isAttacking = false;
+        public bool isAttacking = false;
 
         public float TotalDamage { get { return baseDamage + weaponDamage; } }
         #endregion
@@ -125,7 +123,7 @@ namespace KW
             anim = GetComponent<Animator>();
 
             // 시작 시에는 히트박스를 비활성화
-            if(attackHitBox != null)
+            if (attackHitBox != null)
             {
                 attackHitBox.SetActive(false);
             }
@@ -143,7 +141,14 @@ namespace KW
             if (!canMove) { return; }
             if (isDashing) { return; }
 
-            PlayerMove();
+            _isGrounded = IsGrounded();                
+            Gravity();
+
+            if (!isAttacking)
+            {
+                PlayerMove(); 
+                HandleSpriteFlip();
+            }
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
@@ -153,12 +158,6 @@ namespace KW
 
                 // 공격 상태에서는 아래의 로직을 사용하지 않기 때문에 return
                 return;
-            }
-
-            if (!isAttacking)
-            {
-                Gravity();
-                HandleSpriteFlip();
             }
             anim.SetFloat("lastMoveX", lastMoveX);
             anim.SetFloat("lastMoveZ", lastMoveZ);
@@ -174,21 +173,21 @@ namespace KW
             Vector3 lungeDir;
 
             // 기존의 방향을 lungeDir 로 지정
-            if(dir.magnitude > 0.1f)
+            if (dir.magnitude > 0.1f)
             {
-                lungeDir = dir;
+                lungeDir = dir;                
             }
             else
             {
-                lungeDir = new Vector3(lastMoveX, lastMoveZ);
+                lungeDir = new Vector3(lastMoveX, 0, lastMoveZ);
                 // 기존 입력값이 없으면
-                if(lungeDir.magnitude < 0.1f)
+                if (lungeDir.magnitude < 0.1f)
                 {
                     lungeDir = transform.forward;
                 }
             }
 
-            while(Time.time < startTime + attackLungeDuration)
+            while (Time.time < startTime + attackLungeDuration)
             {
                 cController.Move(lungeDir.normalized * attackLungeSpeed * Time.deltaTime);
 
@@ -219,12 +218,13 @@ namespace KW
         public void AnimationEvent_AttackFinished()
         {
             if (!isAttacking) return;
+           
 
             float xInput = Input.GetAxisRaw("Horizontal");
             float zInput = Input.GetAxisRaw("Vertical");
 
             // 입력 값이 있으면 
-            if(MathF.Abs(xInput) > 0.1f || Mathf.Abs(zInput) > 0.1f)
+            if (MathF.Abs(xInput) > 0.1f || Mathf.Abs(zInput) > 0.1f)
             {
                 SwitchState(playerWalk);
             }
@@ -236,27 +236,13 @@ namespace KW
 
         #endregion  
 
-        private void HandleSpriteFlip()
-        {
-            if (xInput != 0)
-            {
-                sr.flipX = (xInput < 0);
-            }
-            else
-                sr.flipX = (lastMoveX < 0);
-        }
 
         private void PlayerMove()
         {
-            // GetAxisRaw 로 입력값 1,0 으로 고정
             xInput = Input.GetAxisRaw("Horizontal");
             zInput = Input.GetAxisRaw("Vertical");
-            //xInput = Input.GetAxis("Horizontal");
-            //zInput = Input.GetAxis("Vertical");
 
-            //Vector3 airDir = Vector3.zero;            
-
-            dir = transform.forward * zInput + transform.right * xInput;            // vector3 dir
+            dir = transform.forward * zInput + transform.right * xInput;
 
             // 애니메이터에서 0 값을 받지 않도록 (달리다가 IDLE 로 전환될 때 오류 수정)
             if (dir.magnitude > 0.01f)
@@ -266,13 +252,22 @@ namespace KW
 
                 anim.SetFloat("xInput", xInput);
                 anim.SetFloat("zInput", zInput);
-
             }
-            // 변수 초기화
+            // 이동
             Vector3 finalVelocity = dir.normalized * currentSpeed;
 
             cController.Move(finalVelocity * Time.deltaTime);
         }
+        private void HandleSpriteFlip()
+        {
+            if (xInput != 0)
+            {
+                sr.flipX = (xInput < 0);
+            }
+            else
+                sr.flipX = (lastMoveX < 0);
+        }        
+       
 
         public void SwitchState(MovementBaseState state)
         {
@@ -281,6 +276,7 @@ namespace KW
             currentState = state;
             currentState.EnterState(this);
         }
+        
         private bool IsGrounded()
         {
             // 플레이어의 바닥 판정

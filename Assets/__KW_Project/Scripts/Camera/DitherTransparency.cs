@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -30,7 +30,7 @@ namespace KW
             HashSet<Renderer> currentOccluders = new HashSet<Renderer>();
             foreach (var hit in hits)
             {
-                // Äİ¶óÀÌ´õ°¡ ¸ÂÀº ¿ÀºêÁ§Æ®ÀÇ 'ÀÚ½Ä'µé¿¡ ÀÖ´Â ¸ğµç ·»´õ·¯¸¦ Ã£½À´Ï´Ù.
+                // ì½œë¼ì´ë”ê°€ ë§ì€ ì˜¤ë¸Œì íŠ¸ì˜ 'ìì‹'ë“¤ì— ìˆëŠ” ëª¨ë“  ë Œë”ëŸ¬ë¥¼ ì°¾ìŠµë‹ˆë‹¤.
                 Renderer[] renderers = hit.collider.GetComponentsInChildren<Renderer>();
                 foreach (var rend in renderers)
                 {
@@ -54,7 +54,7 @@ namespace KW
 
             foreach (var rend in rendererKeys)
             {
-                if (rend == null) // ¿ÀºêÁ§Æ®°¡ ÆÄ±«µÈ °æ¿ì¸¦ ´ëºñ
+                if (rend == null) // ì˜¤ë¸Œì íŠ¸ê°€ íŒŒê´´ëœ ê²½ìš°ë¥¼ ëŒ€ë¹„
                 {
                     toRemove.Add(rend);
                     continue;

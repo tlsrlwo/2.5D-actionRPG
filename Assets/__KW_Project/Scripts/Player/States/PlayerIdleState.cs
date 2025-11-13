@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ namespace KW
         {
             movement.anim.SetBool("isWalking", false);
             movement.anim.SetBool("isRunning", false);
+            movement.anim.SetBool("isAttacking", false);
         }
 
        

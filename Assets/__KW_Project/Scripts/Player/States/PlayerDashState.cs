@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ namespace KW
             float startTime = Time.time;
             Vector3 dashDir;
 
-            // µû·Î ÀÔ·ÂµÇ´Â °ªÀÌ ¾øÀ¸¸é ÀÌÀü¿¡ ¿òÁ÷¿´´ø ¹æÇâÀ¸·Î ´ë½¬
+            // ë”°ë¡œ ì…ë ¥ë˜ëŠ” ê°’ì´ ì—†ìœ¼ë©´ ì´ì „ì— ì›€ì§ì˜€ë˜ ë°©í–¥ìœ¼ë¡œ ëŒ€ì‰¬
             if(movement.dir.magnitude > 0.1f)
             {
                 dashDir = movement.dir;
@@ -37,7 +37,7 @@ namespace KW
             else
             {
                 dashDir = new Vector3(movement.lastMoveX, 0, movement.lastMoveZ);
-                // ¸¸¾à °ÔÀÓ ½ÃÀÛ Á÷ÈÄ¶ó lastMove ¹æÇâÀÌ ¾øÀ¸¸é Á¤¸éÀ¸·Î ³ª°¡°Ô ¿¹¿ÜÃ³¸®
+                // ë§Œì•½ ê²Œì„ ì‹œì‘ ì§í›„ë¼ lastMove ë°©í–¥ì´ ì—†ìœ¼ë©´ ì •ë©´ìœ¼ë¡œ ë‚˜ê°€ê²Œ ì˜ˆì™¸ì²˜ë¦¬
                 if (dashDir.magnitude < 0.1f) dashDir = movement.transform.forward;
             }
 

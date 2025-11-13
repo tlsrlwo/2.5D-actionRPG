@@ -1,4 +1,4 @@
-namespace KW
+﻿namespace KW
 {
     public abstract class MovementBaseState
     {

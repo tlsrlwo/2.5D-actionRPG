@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +14,8 @@ namespace KW
 
         public override void UpdateState(PlayerMovement movement)
         {
+            movement.currentSpeed = movement.runSpeed;            
+
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 movement.SwitchState(movement.playerWalk);
@@ -29,12 +31,10 @@ namespace KW
                 movement.SwitchState(movement.dashState);
             }
 
-            movement.currentSpeed = movement.runSpeed;
         }
         public override void ExitState(PlayerMovement movement)
         {
-            movement.anim.SetBool("isRunning", false);
-           
+            movement.anim.SetBool("isRunning", false);           
         }
     }
 }

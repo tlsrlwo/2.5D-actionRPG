@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,12 +31,12 @@ namespace KW
         {
             Debug.Log("Exit Button is Pressed");
 
-            // --- °ÔÀÓ Á¾·á ·ÎÁ÷ ---
+            // --- ê²Œì„ ì¢…ë£Œ ë¡œì§ ---
 
-            // 1. ½ÇÁ¦ ºôµåµÈ °ÔÀÓ(PC, Mac µî)¿¡¼­ Á¾·áÇÒ ¶§ »ç¿ë
+            // 1. ì‹¤ì œ ë¹Œë“œëœ ê²Œì„(PC, Mac ë“±)ì—ì„œ ì¢…ë£Œí•  ë•Œ ì‚¬ìš©
             Application.Quit();
 
-            // 2. À¯´ÏÆ¼ ¿¡µğÅÍ¿¡¼­ ÇÃ·¹ÀÌ ¸ğµå¸¦ ÁßÁöÇÒ ¶§ »ç¿ë
+            // 2. ìœ ë‹ˆí‹° ì—ë””í„°ì—ì„œ í”Œë ˆì´ ëª¨ë“œë¥¼ ì¤‘ì§€í•  ë•Œ ì‚¬ìš©
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
 #endif

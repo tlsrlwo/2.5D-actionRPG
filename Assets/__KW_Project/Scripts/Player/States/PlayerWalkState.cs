@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,10 +13,10 @@ namespace KW
 
         public override void UpdateState(PlayerMovement movement)
         {
+            movement.currentSpeed = movement.walkSpeed;          
+
             if (Input.GetKey(KeyCode.LeftShift)) movement.SwitchState(movement.playerRun);
             else if (movement.dir.magnitude < 0.1f) movement.SwitchState(movement.playerIdle);
-
-            movement.currentSpeed = movement.walkSpeed;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
