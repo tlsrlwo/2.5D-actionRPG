@@ -16,6 +16,8 @@ namespace KW
         public readonly SkeletonAttackState attackState = new SkeletonAttackState();
         public readonly SkeletonChaseState chaseState = new SkeletonChaseState();
         public readonly SkeletonCoolDownState coolDownState = new SkeletonCoolDownState();
+        public readonly SkeletonDamagedState damagedState = new SkeletonDamagedState();
+        public readonly SkeletonDeathState deathState = new SkeletonDeathState();
 
         #endregion
 
@@ -31,7 +33,7 @@ namespace KW
         public float chaseSpeed = 3;
 
         [Header("체력")]
-        public float currentHp =0;
+        public float currentHp = 0;
         public float maxHp = 80;
 
         [Header("추격,공격 범위")]
@@ -63,6 +65,8 @@ namespace KW
         [HideInInspector] public NavMeshAgent agent;
         [HideInInspector] public Rigidbody rb;
         [HideInInspector] public SpriteRenderer sr;
+        [HideInInspector] public SkeletonHealth health;
+
         #endregion
 
         private void Awake()
@@ -72,6 +76,12 @@ namespace KW
             agent = GetComponent<NavMeshAgent>();
             sr = GetComponentInChildren<SpriteRenderer>();
 
+            health = GetComponent<SkeletonHealth>();
+            if(health == null)
+            {
+                Debug.LogError("Skeleton 의 SkeletonHealth 참조가 없음");
+            }
+
             // 스클레톤마다 랜덤한 시간 부여
             suspiciousTime = Random.Range(minSuspiciousTime, maxSuspiciousTime);            
         }
@@ -80,7 +90,12 @@ namespace KW
         {
             LoadStatsParsing();
 
-            currentHp = maxHp;
+            if(health != null)
+            {
+                health.OnSkeletonHit += HandleHit;
+                health.OnSkeletonDead += HandleDeath;
+            }
+           
             agent.updateRotation = false;
             rb.isKinematic = true;
             SwitchState(idleState);
@@ -95,11 +110,15 @@ namespace KW
 
                 // 가져온 데이터로 변수 값 초기화
                 patrolSpeed = data.patrolSpeed;
-                chaseSpeed = data.chaseSpeed;
-                maxHp = data.maxHp;
+                chaseSpeed = data.chaseSpeed;                
                 detectRange = data.detectRange;
                 coolDownDuration = data.coolDownDuration;
                 damage = data.damage;
+
+                if(health != null)
+                {
+                    health.InitializeHealth(data.maxHp);
+                }
             }
         }
 
@@ -165,6 +184,16 @@ namespace KW
             anim.SetBool("isCoolDown", false);
 
             SwitchState(chaseState);
+        }
+
+        public void HandleHit()
+        {
+            SwitchState(damagedState);
+        }
+
+        public void HandleDeath()
+        {
+            SwitchState(deathState);
         }
 
         private void OnDrawGizmos()

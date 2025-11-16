@@ -12,31 +12,34 @@ namespace KW
         public string DataParsingFrom;
 
         [Header("움직임")]
-        public float walkSpeed = 3f;                        // 걷는 속도                    
-        public float runSpeed = 5f;                         // 달리는 속도
-        public float airSpeed = 4f;                         // 공중에서의 속도 (필요없음)
-        public float xInput, zInput;
-        public float lastMoveX, lastMoveZ;
+        public float    walkSpeed = 3f;                         // 걷는 속도                    
+        public float    runSpeed = 5f;                          // 달리는 속도
+        public float    airSpeed = 4f;                          // 공중에서의 속도 (필요없음)
+        public float    xInput, zInput;
+        public float    lastMoveX, lastMoveZ;
+        public bool     isAttacking = false;
 
-        [SerializeField] private bool canMove = true;       // 플레이어 움직임 허용
-        public float currentSpeed;                          // 현재 속도
-        public Vector3 dir;
+        [SerializeField]
+        private bool    canMove = true;                         // 플레이어 움직임 허용
+        public float    currentSpeed;                           // 현재 속도
+        public Vector3  dir;
 
         [Header("대쉬")]
-        public float dashSpeed = 15f;
-        public float dashDuration = 0.2f;
-        [HideInInspector] public bool isDashing = false;
+        public float    dashSpeed = 15f;
+        public float    dashDuration = 0.2f;
+        [HideInInspector] public bool     isDashing = false;
 
         [Header("점프")]
-        [SerializeField] private float groundYOffset;
-        [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private float sphereRadius = 0.05f;
-        
+        [SerializeField] private float   groundYOffset;
+        [SerializeField] private LayerMask _groundLayer;        
         public virtual LayerMask groundLayer => _groundLayer;
-        Vector3 spherePos;                                  // 플레이어 지면 확인용 구체
+
+        [SerializeField]
+        private float   sphereRadius = 0.05f;
+        Vector3 spherePos;                                      // 플레이어 지면 확인용 구체
 
         [Header("중력")]
-        [SerializeField] private float gravity = -9.81f;    // 중력값
+        [SerializeField] private float gravity = -9.81f;        // 중력값
         private Vector3 velocity;
         [SerializeField] private bool _isGrounded;
 
@@ -45,18 +48,18 @@ namespace KW
         [HideInInspector] public Animator anim;
         [HideInInspector] public SpriteRenderer sr;
         [HideInInspector] public CharacterController cController;
+        [HideInInspector] public PlayerHealth playerHealth;
 
         [Header("전투")]
-        private float maxHp = 100;                          // 최대 체력
-        private float baseDamage = 10;                      // 기본 데미지
-        private float weaponDamage = 0;                     // 무기 데미지
-        private float defencePercentage = 0;                // 방어율
-        [SerializeField] private GameObject attackHitBox;   // 히트박스
+        // private float maxHp = 100;                              // 최대 체력
+        private float baseDamage = 10;                          // 기본 데미지
+        private float weaponDamage = 0;                         // 무기 데미지
+        private float defencePercentage = 0;                    // 방어율
+        [SerializeField] private GameObject attackHitBox;       // 히트박스
        
         [Tooltip("전투 시 반동")]
-        private float attackLungeSpeed = 5f;                // 공격 반동 속도
-        private float attackLungeDuration = 0.2f;           // 공격 반동 지속시간
-        public bool isAttacking = false;
+        private float attackLungeSpeed = 5f;                    // 공격 반동 속도
+        private float attackLungeDuration = 0.2f;               // 공격 반동 지속시간
 
         public float TotalDamage { get { return baseDamage + weaponDamage; } }
         #endregion
@@ -103,9 +106,15 @@ namespace KW
                 this.walkSpeed = stats.walkSpeed;
                 this.runSpeed = stats.runSpeed;
                 this.baseDamage = stats.baseDamage;
-                this.maxHp = stats.maxHp;
+                // this.maxHp = stats.maxHp;
 
-                Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + maxHp + ")" + " , baseDamage(" + baseDamage + ")");
+                if(playerHealth != null)
+                {
+                    playerHealth.InitializeHealth(stats.maxHp);
+                }
+
+
+                Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + stats.maxHp + ")" + " , baseDamage(" + baseDamage + ")");
             }
             else
             {
@@ -116,11 +125,14 @@ namespace KW
 
         private void Awake()
         {
-            LoadStatsFromJson();
 
             sr = GetComponent<SpriteRenderer>();
             cController = GetComponent<CharacterController>();
             anim = GetComponent<Animator>();
+
+            playerHealth = GetComponent<PlayerHealth>();
+
+            LoadStatsFromJson();
 
             // 시작 시에는 히트박스를 비활성화
             if (attackHitBox != null)
@@ -213,6 +225,14 @@ namespace KW
             if (attackHitBox != null)
                 attackHitBox.SetActive(false);
         }
+        public void AnimationEvent_DisalbeFlipX()
+        {
+            if (isAttacking)
+            {
+                sr.flipX = false;
+            }
+        }
+
 
         [Tooltip("애니메이션 이벤트 : 공격 애니메이션 종료")]
         public void AnimationEvent_AttackFinished()
@@ -265,7 +285,7 @@ namespace KW
                 sr.flipX = (xInput < 0);
             }
             else
-                sr.flipX = (lastMoveX < 0);
+                sr.flipX = (lastMoveX < 0);        
         }        
        
 
@@ -289,9 +309,13 @@ namespace KW
             return false;
         }
 
-
         private void Gravity()
         {
+            if (isAttacking)
+            {
+                velocity = Vector3.zero;
+                return;
+            }
             // 점프 했을 때 gravity 만큼 더 빨르게 낙하
             if (!IsGrounded())
             {

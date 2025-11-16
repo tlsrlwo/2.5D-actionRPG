@@ -5,11 +5,11 @@ namespace KW
     public class PlayerAttackState : MovementBaseState
     {
         public override void EnterState(PlayerMovement movement)
-        {
+        {           
+
             movement.isAttacking = true;
             movement.anim.SetBool("isAttacking", true);
 
-            movement.sr.flipX = false;
 
             // "공격 방향" 결정
             float attackDirX;
@@ -38,9 +38,12 @@ namespace KW
             // Blend Tree가 사용할 '방향' 파라미터 설정            
             movement.anim.SetFloat("AttackX", attackDirX);
             movement.anim.SetFloat("AttackZ", attackDirZ);
+            
 
             // "Attack" 트리거 발동 (Any State -> Attack Blend Tree 상태로 이동)
             movement.anim.SetTrigger("isAttack");
+            movement.sr.flipX = false;
+
         }
 
         public override void ExitState(PlayerMovement movement)
@@ -56,7 +59,7 @@ namespace KW
 
         public override void UpdateState(PlayerMovement movement)
         {
-           
+          
         }
     }
 }
