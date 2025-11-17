@@ -6,8 +6,16 @@ namespace KW
     public class PlayerHealth : MonoBehaviour
     {
         [Header("체력 설정")]
-        [SerializeField] private float _maxHp;       
+        [SerializeField] private float _maxHp;
         [SerializeField] private float _currentHp;
+
+        [Header("공격 관련")]
+        [SerializeField] private float _baseDamage = 10f;
+        [SerializeField] private float _weaponDamage = 0f;
+
+        [SerializeField] private float defencePercentage = 0f;
+
+        public float TotalDamage { get { return _baseDamage + _weaponDamage; } }    
 
         public virtual float currentHp => _currentHp; 
         public virtual float maxHp => _maxHp;
@@ -32,6 +40,20 @@ namespace KW
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 TakeDamage(10f);
+            }
+        }
+
+        public void SetEquippedWeapon(Weapon weaponData)
+        {
+            if(weaponData != null)
+            {
+                // 무기가 장착되어 있을 경우
+                _weaponDamage = weaponData.damage;
+            }
+            else
+            {
+                // 무기없음. 맨손
+                _weaponDamage = 0f;
             }
         }
 

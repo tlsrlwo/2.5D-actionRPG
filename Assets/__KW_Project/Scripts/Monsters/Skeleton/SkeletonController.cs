@@ -31,11 +31,7 @@ namespace KW
         [Header("이동")]
         public float patrolSpeed = 1;
         public float chaseSpeed = 3;
-
-        [Header("체력")]
-        public float currentHp = 0;
-        public float maxHp = 80;
-
+        
         [Header("추격,공격 범위")]
         public float detectRange = 5f;
         public float attackRange = 1f;
@@ -60,12 +56,15 @@ namespace KW
         [HideInInspector] public Vector3 lastAttackDirection;
         public Vector2 lastDirection;                               // coolDownState 에서 방향을 기억하기 위한 변수
 
+        [Header("피격")]
+        [HideInInspector] public Vector3 lastDamagedDirection;
+
         [Header("컴포넌트")]
         [HideInInspector] public Animator anim;
         [HideInInspector] public NavMeshAgent agent;
         [HideInInspector] public Rigidbody rb;
         [HideInInspector] public SpriteRenderer sr;
-        [HideInInspector] public SkeletonHealth health;
+        [HideInInspector] public MonsterHealth health;
 
         #endregion
 
@@ -76,7 +75,7 @@ namespace KW
             agent = GetComponent<NavMeshAgent>();
             sr = GetComponentInChildren<SpriteRenderer>();
 
-            health = GetComponent<SkeletonHealth>();
+            health = GetComponent<MonsterHealth>();
             if(health == null)
             {
                 Debug.LogError("Skeleton 의 SkeletonHealth 참조가 없음");
@@ -92,8 +91,8 @@ namespace KW
 
             if(health != null)
             {
-                health.OnSkeletonHit += HandleHit;
-                health.OnSkeletonDead += HandleDeath;
+                health.OnHit += HandleHit;
+                health.OnDeath += HandleDeath;
             }
            
             agent.updateRotation = false;
@@ -186,8 +185,10 @@ namespace KW
             SwitchState(chaseState);
         }
 
-        public void HandleHit()
+        public void HandleHit(Vector3 hitDirection)
         {
+            lastDamagedDirection = hitDirection;
+
             SwitchState(damagedState);
         }
 

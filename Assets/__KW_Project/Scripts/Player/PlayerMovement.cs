@@ -52,16 +52,17 @@ namespace KW
 
         [Header("전투")]
         // private float maxHp = 100;                              // 최대 체력
-        private float baseDamage = 10;                          // 기본 데미지
-        private float weaponDamage = 0;                         // 무기 데미지
-        private float defencePercentage = 0;                    // 방어율
+        // private float baseDamage = 10;                          // 기본 데미지
+        // private float weaponDamage = 0;                         // 무기 데미지
+        // private float defencePercentage = 0;                    // 방어율
+        // public float TotalDamage { get { return baseDamage + weaponDamage; } }
+
         [SerializeField] private GameObject attackHitBox;       // 히트박스
        
         [Tooltip("전투 시 반동")]
         private float attackLungeSpeed = 5f;                    // 공격 반동 속도
         private float attackLungeDuration = 0.2f;               // 공격 반동 지속시간
 
-        public float TotalDamage { get { return baseDamage + weaponDamage; } }
         #endregion
 
         #region 플레이어 FSM
@@ -105,7 +106,7 @@ namespace KW
 
                 this.walkSpeed = stats.walkSpeed;
                 this.runSpeed = stats.runSpeed;
-                this.baseDamage = stats.baseDamage;
+                // this.baseDamage = stats.baseDamage; 
                 // this.maxHp = stats.maxHp;
 
                 if(playerHealth != null)
@@ -114,7 +115,7 @@ namespace KW
                 }
 
 
-                Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + stats.maxHp + ")" + " , baseDamage(" + baseDamage + ")");
+                // Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + stats.maxHp + ")" + " , baseDamage(" + baseDamage + ")");
             }
             else
             {

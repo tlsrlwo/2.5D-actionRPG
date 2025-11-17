@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace KW
 {
-    public class SkeletonHealth : MonoBehaviour
+    public class SkeletonHealth : MonsterHealth
     {
-        [Header("체력")]
+       /* [Header("체력")]
         [SerializeField] private float _currentHp;
         [SerializeField] private float _maxHp;
         [HideInInspector] public virtual float currentHp => _currentHp;
@@ -40,6 +40,6 @@ namespace KW
             {
                 OnSkeletonHit?.Invoke();
             }
-        }
+        }*/
     }
 }
