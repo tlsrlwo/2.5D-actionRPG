@@ -34,7 +34,7 @@ namespace KW
         
         [Header("추격,공격 범위")]
         public float detectRange = 5f;
-        public float attackRange = 2f;
+        public float attackRange = 2.5f;
         public float idleWaitTime = 3f;
         public float minSuspiciousTime = 2f;                        // 두리번거리는 시간
         public float maxSuspiciousTime = 6f;

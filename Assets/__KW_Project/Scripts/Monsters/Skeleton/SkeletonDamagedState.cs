@@ -7,7 +7,7 @@ namespace KW
     public class SkeletonDamagedState : MonsterBaseState<SkeletonController>
     {
         [Header("변수")]        
-        private float stunDuration = 1f;              // 경직 시간
+        private float stunDuration = 0.5f;              // 경직 시간
         private float stunTimer;
 
         [SerializeField] private float knockBackForce = 5f;             // 넉백 힘
