@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,50 +6,52 @@ namespace KW
 {
     public class SkeletonDamagedState : MonsterBaseState<SkeletonController>
     {
-        [Header("º¯¼ö")]        
-        private float stunDuration = 0.5f;              // °æÁ÷ ½Ã°£
-        private float stunTimer;
+        [Header("ë³€ìˆ˜")]        
+        private float _stunDuration = 0.3f;              // ê²½ì§ ì‹œê°„
+        private float _stunTimer;
 
-        [SerializeField] private float knockBackForce = 5f;             // ³Ë¹é Èû
-        [SerializeField] private Color originalColor;   // ¿ø·¡ »ö»ó ÀúÀå¿ë
+        public float stunTimer => _stunTimer;
+
+        private float _knockBackForce = 4f;              // ë„‰ë°± í˜
+        private Color originalColor;                    // ì›ë˜ ìƒ‰ìƒ ì €ì¥ìš©
 
         public override void EnterState(SkeletonController controller)
         {
-            // ÃÊ±âÈ­ ¹× Á¤Áö
-            stunTimer = stunDuration;
+            // ì´ˆê¸°í™” ë° ì •ì§€
+            _stunTimer = _stunDuration;
             controller.agent.isStopped = true;
             controller.isDoingLunge = false;
 
-            // ºÓ°í ¹İÅõ¸íÇÏ°Ô º¯°æ
+            // ë¶‰ê³  ë°˜íˆ¬ëª…í•˜ê²Œ ë³€ê²½
             originalColor = controller.sr.color;
-            controller.sr.color = new Color(1f, 0.5f, 0.5f, 0.7f);      // (R:1, G:0.5, B:0.5 -> ºÓÀº³¢, Alpha:0.7 -> ¹İÅõ¸í)
+            controller.sr.color = new Color(1f, 0.5f, 0.5f, 0.7f);      // (R:1, G:0.5, B:0.5 -> ë¶‰ì€ë¼, Alpha:0.7 -> ë°˜íˆ¬ëª…)
 
-            // ¸Â´Â ¹æÇâ Ã£±â
+            // ë§ëŠ” ë°©í–¥ ì°¾ê¸°
             Vector3 localHitDir = controller.transform.InverseTransformDirection(controller.lastDamagedDirection);
 
             controller.anim.SetFloat("HitX", localHitDir.x);
             controller.anim.SetFloat("HitZ", localHitDir.z);
 
-            // ÇÇ°İ Æ®¸®°Å ¹ßµ¿
+            // í”¼ê²© íŠ¸ë¦¬ê±° ë°œë™
             controller.anim.SetTrigger("isHit");
 
-            // ¹°¸® Èû °¡ÇÏ±â
-            // NavMeshAgent¿Í ¹°¸® Ãæµ¹ÀÌ ½Î¿ìÁö ¾Êµµ·Ï kinematic Àá½Ã ÇØÁ¦
+            // ë¬¼ë¦¬ í˜ ê°€í•˜ê¸°
+            // NavMeshAgentì™€ ë¬¼ë¦¬ ì¶©ëŒì´ ì‹¸ìš°ì§€ ì•Šë„ë¡ kinematic ì ì‹œ í•´ì œ
             controller.rb.isKinematic = false;
 
-            // Controller¿¡ ÀúÀåµÈ 'ÇÇ°İ ¹æÇâ(¹Ğ·Á³¯ ¹æÇâ)'À¸·Î ÈûÀ» °¡ÇÔ
-            controller.rb.AddForce(controller.lastDamagedDirection * knockBackForce, ForceMode.Impulse);
+            // Controllerì— ì €ì¥ëœ 'í”¼ê²© ë°©í–¥(ë°€ë ¤ë‚  ë°©í–¥)'ìœ¼ë¡œ í˜ì„ ê°€í•¨
+            controller.rb.AddForce(controller.lastDamagedDirection * _knockBackForce, ForceMode.Impulse);
         }
 
         public override void UpdateState(SkeletonController controller)
         {
-            // ½Ã°£ °¨¼Ò
-            stunTimer -= Time.deltaTime;
+            // ì‹œê°„ ê°ì†Œ
+            _stunTimer -= Time.deltaTime;
 
-            // °æÁ÷ ½Ã°£ÀÌ ³¡³ª¸é »óÅÂ ÀüÈ¯
-            if (stunTimer <= 0)
+            // ê²½ì§ ì‹œê°„ì´ ëë‚˜ë©´ ìƒíƒœ ì „í™˜
+            if (_stunTimer <= 0)
             {
-                // Å¸°Ù(ÇÃ·¹ÀÌ¾î)ÀÌ ¿©ÀüÈ÷ ÀÖ´Ù¸é Ãß°İ, ³õÃÆ´Ù¸é Idle
+                // íƒ€ê²Ÿ(í”Œë ˆì´ì–´)ì´ ì—¬ì „íˆ ìˆë‹¤ë©´ ì¶”ê²©, ë†“ì³¤ë‹¤ë©´ Idle
                 if (controller.target != null)
                 {
                     controller.SwitchState(controller.chaseState);
@@ -63,14 +65,14 @@ namespace KW
 
         public override void ExitState(SkeletonController controller)
         {
-            // [½Ã°¢ È¿°ú] »ö»ó ¿ø»óº¹±¸
+            // [ì‹œê° íš¨ê³¼] ìƒ‰ìƒ ì›ìƒë³µêµ¬
             controller.sr.color = originalColor;
 
-            // ¹°¸®·Â ÃÊ±âÈ­ (¹Ì²ô·¯Áü ¹æÁö)
+            // ë¬¼ë¦¬ë ¥ ì´ˆê¸°í™” (ë¯¸ë„ëŸ¬ì§ ë°©ì§€)
             controller.rb.velocity = Vector3.zero;
             controller.rb.isKinematic = true;
 
-            // ÀÌµ¿ Àç°³ Çã¿ë
+            // ì´ë™ ì¬ê°œ í—ˆìš©
             controller.agent.isStopped = false;
         }
     }

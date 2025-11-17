@@ -55,6 +55,7 @@ namespace KW
         public float coolDownDuration = 1f;
         [HideInInspector] public Vector3 lastAttackDirection;
         public Vector2 lastDirection;                               // coolDownState 에서 방향을 기억하기 위한 변수
+        public float stunTimerSerialized;
 
         [Header("피격")]
         [HideInInspector] public Vector3 lastDamagedDirection;
@@ -123,7 +124,9 @@ namespace KW
 
         private void Update()
         {
-            currentState.UpdateState(this);            
+            currentState.UpdateState(this);
+
+            stunTimerSerialized = damagedState.stunTimer;
         }
 
         public void SwitchState(MonsterBaseState<SkeletonController> monsterState)
