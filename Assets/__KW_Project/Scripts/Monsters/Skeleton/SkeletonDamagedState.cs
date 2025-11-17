@@ -7,10 +7,10 @@ namespace KW
     public class SkeletonDamagedState : MonsterBaseState<SkeletonController>
     {
         [Header("변수")]        
-        private float stunDuration = 0.5f;              // 경직 시간
+        private float stunDuration = 1f;              // 경직 시간
         private float stunTimer;
 
-        [SerializeField] private float knockBackForce = 50f;             // 넉백 힘
+        [SerializeField] private float knockBackForce = 5f;             // 넉백 힘
         [SerializeField] private Color originalColor;   // 원래 색상 저장용
 
         public override void EnterState(SkeletonController controller)

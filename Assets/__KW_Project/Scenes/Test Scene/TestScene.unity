@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 352838403}
   - component: {fileID: 352838402}
   - component: {fileID: 352838405}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1174,7 +1174,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2824,7 +2824,7 @@ GameObject:
   - component: {fileID: 770615205}
   - component: {fileID: 770615207}
   - component: {fileID: 770615208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Skeleton_001
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2967,7 +2967,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -11437,7 +11437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4723107735738678597, guid: 9672287d474d68541bd2ac49e7d56046, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12604,7 +12604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055699348}
   - component: {fileID: 2055699349}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
