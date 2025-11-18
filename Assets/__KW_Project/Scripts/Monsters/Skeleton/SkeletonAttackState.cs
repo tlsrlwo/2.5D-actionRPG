@@ -13,7 +13,7 @@ namespace KW
         private bool hasSwitchedState;              // attack 이 실행되는 동안 update 문이 다시 실행되지 않게 하기 위함
         public override void EnterState(SkeletonController controller)
         {
-            Debug.Log("스켈레톤 상태 진입 : Attack");
+            // Debug.Log("스켈레톤 상태 진입 : Attack");
             hasSwitchedState = false;
 
             // navAgent 는 멈춰줌
@@ -26,12 +26,13 @@ namespace KW
                 dirToPlayer.y = 0;
 
                 // LungeRoutine 을 위해 방향값 저장
-                controller.lastAttackDirection = dirToPlayer.normalized;                
-                
+                controller.lastAttackDirection = dirToPlayer.normalized;
+
                 // 스프라이트 & blend tree 파라미터 설정 //               
                 // controller.sr.flipX = (dirToPlayer.x < 0);                                  // 스프라이트 반전
+                controller.sr.flipX = false;
                 
-                float blendTreeMoveX = Mathf.Abs(dirToPlayer.x);                            // 애니메이터에 전달할 값
+                float blendTreeMoveX = dirToPlayer.x;                                       // 애니메이터에 전달할 값
                 float blendTreeMoveZ = dirToPlayer.z;
                
                 controller.anim.SetFloat("xInput", blendTreeMoveX);                          // 애니메이터 설정

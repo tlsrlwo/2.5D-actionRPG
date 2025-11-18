@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Buffers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ namespace KW
                 if (playerHealth != null)
                 {
                     Debug.Log($"SkeletonHitBox : 플레이어에게 {_damage} 피해");
-                    playerHealth.TakeDamage(_damage);
+                    playerHealth.TakeDamage(_damage, skeleton.transform);
 
                     alreadyHitTargets.Add(other);
                 }

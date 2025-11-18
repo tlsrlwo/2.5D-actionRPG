@@ -9,7 +9,7 @@ namespace KW
     {
         public override void EnterState(SkeletonController controller)
         {
-            Debug.Log("스켈레톤 상태 진입 : Patrol");
+            // Debug.Log("스켈레톤 상태 진입 : Patrol");
             controller.agent.isStopped = false;                                     // navemshAgent 움직임 다시 활성화
 
             controller.anim.SetBool("isPatrol", true);                              // 걷는 애니메이션 활성화

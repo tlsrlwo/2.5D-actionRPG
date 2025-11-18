@@ -41,7 +41,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 1.0998421
+        value: 1.2677917
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -98,7 +98,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: -1.1036549
+        value: -1.1876297
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -155,7 +155,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.92201996
+        value: 0.66092014
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -203,7 +203,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.7197499
+        value: 0.72829247
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -251,7 +251,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.74414825
+        value: 0.89813614
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -260,7 +260,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.8175049
+        value: 1.1443214
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -308,7 +308,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: -0.16236496
+        value: -0.2393589
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -317,7 +317,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -0.04683304
+        value: -0.04609108
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -486,7 +486,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 1.0998421
+        value: 1.2677917
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -543,7 +543,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: -1.1036549
+        value: -1.1876297
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -600,7 +600,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.92201996
+        value: 0.66092014
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -648,7 +648,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.7197499
+        value: 0.72829247
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -696,7 +696,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 0.74414825
+        value: 0.89813614
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -705,7 +705,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.8175049
+        value: 1.1443214
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -753,7 +753,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: -0.16236496
+        value: -0.2393589
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -762,7 +762,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -0.04683304
+        value: -0.04609108
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -797,7 +797,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.43333334
     functionName: PerformAttackLunge
     data: 
     objectReferenceParameter: {fileID: 0}

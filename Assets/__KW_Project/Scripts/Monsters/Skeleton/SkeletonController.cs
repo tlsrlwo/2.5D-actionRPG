@@ -178,13 +178,13 @@ namespace KW
 
         private IEnumerator CoolDownRoutine()
         {
-            Debug.Log("스켈레톤 : 쿨다운 시작");
+            // Debug.Log("스켈레톤 : 쿨다운 시작");
 
             anim.SetBool("isCoolDown", true);
 
             yield return new WaitForSeconds(coolDownDuration);
 
-            Debug.Log("스켈레톤 : 쿨다운 종료!");
+            // Debug.Log("스켈레톤 : 쿨다운 종료!");
 
             anim.SetBool("isCoolDown", false);
 

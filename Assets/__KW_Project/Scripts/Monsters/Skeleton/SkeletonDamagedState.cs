@@ -26,11 +26,8 @@ namespace KW
             originalColor = controller.sr.color;
             controller.sr.color = new Color(1f, 0.5f, 0.5f, 0.7f);      // (R:1, G:0.5, B:0.5 -> 붉은끼, Alpha:0.7 -> 반투명)
 
-            // 맞는 방향 찾기
-            Vector3 localHitDir = controller.transform.InverseTransformDirection(controller.lastDamagedDirection);
-
-            controller.anim.SetFloat("HitX", localHitDir.x);
-            controller.anim.SetFloat("HitZ", localHitDir.z);
+            controller.anim.SetFloat("HitX", controller.lastDamagedDirection.x);
+            controller.anim.SetFloat("HitZ", controller.lastDamagedDirection.z);
 
             // 피격 트리거 발동
             controller.anim.SetTrigger("isHit");

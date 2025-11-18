@@ -20,7 +20,7 @@ namespace KW
         public bool     isAttacking = false;
 
         [SerializeField]
-        private bool    canMove = true;                         // 플레이어 움직임 허용
+        public bool    canMove = true;                         // 플레이어 움직임 허용
         public float    currentSpeed;                           // 현재 속도
         public Vector3  dir;
 
@@ -51,13 +51,8 @@ namespace KW
         [HideInInspector] public PlayerHealth playerHealth;
 
         [Header("전투")]
-        // private float maxHp = 100;                              // 최대 체력
-        // private float baseDamage = 10;                          // 기본 데미지
-        // private float weaponDamage = 0;                         // 무기 데미지
-        // private float defencePercentage = 0;                    // 방어율
-        // public float TotalDamage { get { return baseDamage + weaponDamage; } }
-
         [SerializeField] private GameObject attackHitBox;       // 히트박스
+        [HideInInspector] public Vector3 lastHisPos;            // 맞은 위치값
        
         [Tooltip("전투 시 반동")]
         private float attackLungeSpeed = 5f;                    // 공격 반동 속도
@@ -74,6 +69,7 @@ namespace KW
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
         public PlayerDashState dashState = new PlayerDashState();
+        public PlayerDamagedState damagedState = new PlayerDamagedState();  
 
         #endregion
 
@@ -146,6 +142,12 @@ namespace KW
         {
             // 씬 시작 시 상태(state) 설정
             SwitchState(playerIdle);
+
+            if(playerHealth!= null)
+            {
+                playerHealth.OnPlayerHit += HandleHit;
+            }
+            
         }
 
         private void Update()
@@ -289,6 +291,12 @@ namespace KW
                 sr.flipX = (lastMoveX < 0);        
         }        
        
+        public void HandleHit(Vector3 dir)
+        {
+            lastHisPos = dir;
+
+            SwitchState(damagedState);
+        }
 
         public void SwitchState(MovementBaseState state)
         {
