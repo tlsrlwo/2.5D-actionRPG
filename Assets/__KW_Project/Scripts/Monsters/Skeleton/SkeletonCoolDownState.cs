@@ -17,7 +17,8 @@ namespace KW
             controller.anim.SetBool("isCoolDown", true);
             controller.anim.SetBool("isChase", false);
 
-            controller.sr.flipX = (controller.lastDirection.x < 0);
+            controller.sr.flipX = false;
+
             controller.anim.SetFloat("xInput", controller.lastDirection.x);
             controller.anim.SetFloat("zInput", controller.lastDirection.y);
 

@@ -56,6 +56,7 @@ namespace KW
         [HideInInspector] public Vector3 lastAttackDirection;
         public Vector2 lastDirection;                               // coolDownState 에서 방향을 기억하기 위한 변수
         public float stunTimerSerialized;
+        public GameObject hitBox;
 
         [Header("피격")]
         [HideInInspector] public Vector3 lastDamagedDirection;
@@ -77,6 +78,8 @@ namespace KW
             sr = GetComponentInChildren<SpriteRenderer>();
 
             health = GetComponent<MonsterHealth>();
+
+
             if(health == null)
             {
                 Debug.LogError("Skeleton 의 SkeletonHealth 참조가 없음");

@@ -17,5 +17,20 @@ namespace KW
         {
             skeletonController.PerformAttackLunge();
         }
+
+        public void EnableHitBox()
+        {
+            if(skeletonController.hitBox != null)
+            {
+                skeletonController.hitBox.SetActive(true);
+            }
+        }
+        public void DisableHitBox()
+        {
+            if (skeletonController.hitBox != null)
+            {
+                skeletonController.hitBox.SetActive(false);
+            }
+        }
     }
 }

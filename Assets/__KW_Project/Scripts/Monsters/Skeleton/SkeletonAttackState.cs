@@ -26,11 +26,10 @@ namespace KW
                 dirToPlayer.y = 0;
 
                 // LungeRoutine 을 위해 방향값 저장
-                controller.lastAttackDirection = dirToPlayer.normalized;
-                
+                controller.lastAttackDirection = dirToPlayer.normalized;                
                 
                 // 스프라이트 & blend tree 파라미터 설정 //               
-                controller.sr.flipX = (dirToPlayer.x < 0);                                  // 스프라이트 반전
+                // controller.sr.flipX = (dirToPlayer.x < 0);                                  // 스프라이트 반전
                 
                 float blendTreeMoveX = Mathf.Abs(dirToPlayer.x);                            // 애니메이터에 전달할 값
                 float blendTreeMoveZ = dirToPlayer.z;
