@@ -5,7 +5,9 @@ namespace KW
 {
     public class SkeletonIdleState : MonsterBaseState<SkeletonController>
     {
-        private float idleTimer;
+        private float _idleTimer;
+
+        public float idleTimer => _idleTimer;
 
         public override void EnterState(SkeletonController controller)
         {
@@ -15,7 +17,7 @@ namespace KW
            
             controller.agent.isStopped = true;                          // navMesh의 이동을 멈춰줌
                         
-            idleTimer = controller.idleWaitTime;                        // 컨트롤러에 설정된 대기 시간으로 타이머 초기화
+            _idleTimer = controller.idleWaitTime;                        // 컨트롤러에 설정된 대기 시간으로 타이머 초기화
         }        
 
         public override void UpdateState(SkeletonController controller)
@@ -38,9 +40,9 @@ namespace KW
                 }
             }
 
-            if (idleTimer > 0 )                                          // 대기 시간을 매 초 감소시킴
+            if (_idleTimer > 0 )                                          // 대기 시간을 매 초 감소시킴
             {
-                idleTimer -= Time.deltaTime;    
+                _idleTimer -= Time.deltaTime;    
             }
             else                                                        // 대기 시간이 끝나면 순찰 상태로 전환
             {

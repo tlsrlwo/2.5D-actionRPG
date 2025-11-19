@@ -55,7 +55,7 @@ namespace KW
                 }
                 else
                 {
-                    controller.SwitchState(controller.idleState);
+                    controller.SwitchState(controller.coolDownState);
                 }
             }
         }

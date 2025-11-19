@@ -33,13 +33,15 @@ namespace KW
         public float chaseSpeed = 3;
         
         [Header("추격,공격 범위")]
-        public float detectRange = 5f;
-        public float attackRange = 2.5f;
-        public float idleWaitTime = 3f;
-        public float minSuspiciousTime = 2f;                        // 두리번거리는 시간
-        public float maxSuspiciousTime = 6f;
-        public float suspiciousTime = 3f;
-        public float timeSinceLastSawPlayer;
+        [HideInInspector] public float detectRange = 5f;
+        [HideInInspector] public float attackRange = 2.5f;
+        [HideInInspector] public float idleWaitTime = 3f;
+        [HideInInspector] public float minSuspiciousTime = 2f;                        // 두리번거리는 시간
+        [HideInInspector] public float maxSuspiciousTime = 6f;
+        [HideInInspector] public float suspiciousTime = 3f;
+        [HideInInspector] public float timeSinceLastSawPlayer;
+
+        public float idleWaittimeSerialized = 0f;
 
         public LayerMask playerLayer;
         public Transform wayPoints;                                 // 목적지
@@ -130,6 +132,7 @@ namespace KW
             currentState.UpdateState(this);
 
             stunTimerSerialized = damagedState.stunTimer;
+            idleWaittimeSerialized = idleState.idleTimer;
         }
 
         public void SwitchState(MonsterBaseState<SkeletonController> monsterState)
