@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: arm_SoldierHelmet
   itemName: "\uBCD1\uC0AC \uD22C\uAD6C"
+  itemType: 2
   itemSprite: {fileID: 0}
   description: 
   maxStack: 1

@@ -1,22 +1,22 @@
-﻿ItemId,Category,Type,Name,Grade,Damage,AttackSpeed,DefenceRate
-wep_WeakWoodSword,Weapon,Sword,조악한 나무 검,Normal,15,1,0
-wep_HardSword,Weapon,Sword,단단한 철제 검,Traveler,28,1.3,0
-wep_KnightSword,Weapon,Sword,나이트소드,Knight,45,1.6,0
-wep_HolySword,Weapon,Sword,성검,Legendary,100,2.5,0
-wep_ThrowSpear,Weapon,Spear,투척 창,Normal,20,1.8,0
-wep_Harpoon,Weapon,Spear,작살,Traveler,35,2,0
-wep_SoldierSpear,Weapon,Spear,병사용 창,Knight,60,2.4,0
-wep_LooseBow,Weapon,Bow,헐렁한 활,Normal,12,0.9,0
-wep_TightBow,Weapon,Bow,튼튼한 활,Traveler,25,1.2,0
-wep_SoldierBow,Weapon,Bow,기사용 활,Knight,40,1.8,0
-wep_CompoundCrossBow,Weapon,Bow,도르래 석궁,Knight,65,2,0
-arm_ClothHelmet,Equipment,Helmet,천 모자,Normal,0,0,0.05
-arm_SoldierHelmet,Equipment,Helmet,병사 투구,Traveler,0,0,0.1
-arm_IronKnightHelmet,Equipment,Helmet,철제 기사 투구,Knight,0,0,0.18
-arm_LightClothArmour,Equipment,Armour,가벼운 천 옷,Normal,0,0,0.08
-arm_TravelerArmour,Equipment,Armour,모험가의 옷,Traveler,0,0,0.15
-arm_IronKnightArmour,Equipment,Armour,철제 기사 갑옷,Knight,0,0,0.25
-arm_HolyArmour,Equipment,Armour,주신의 가호,Legendary,0,0,0.7
-arm_LightLeg,Equipment,Leg,가벼운 바지,Normal,0,0,0.04
-arm_FurLeg,Equipment,Leg,모피 바지,Traveler,0,0,0.08
-arm_IronKnightLeg,Equipment,Leg,철제 기사 다리 보호대,Knight,0,0,0.15
+﻿ItemId,Category,Type,Name,Grade,Damage,AttackSpeed,DefenceRate,ItemType
+wep_WeakWoodSword,Weapon,Sword,조악한 나무 검,Normal,15,1,0,1
+wep_HardSword,Weapon,Sword,단단한 철제 검,Traveler,28,1.3,0,1
+wep_KnightSword,Weapon,Sword,나이트소드,Knight,45,1.6,0,1
+wep_HolySword,Weapon,Sword,성검,Legendary,100,2.5,0,1
+wep_ThrowSpear,Weapon,Spear,투척 창,Normal,20,1.8,0,1
+wep_Harpoon,Weapon,Spear,작살,Traveler,35,2,0,1
+wep_SoldierSpear,Weapon,Spear,병사용 창,Knight,60,2.4,0,1
+wep_LooseBow,Weapon,Bow,헐렁한 활,Normal,12,0.9,0,1
+wep_TightBow,Weapon,Bow,튼튼한 활,Traveler,25,1.2,0,1
+wep_SoldierBow,Weapon,Bow,기사용 활,Knight,40,1.8,0,1
+wep_CompoundCrossBow,Weapon,Bow,도르래 석궁,Knight,65,2,0,1
+arm_ClothHelmet,Equipment,Helmet,천 모자,Normal,0,0,0.05,2
+arm_SoldierHelmet,Equipment,Helmet,병사 투구,Traveler,0,0,0.1,2
+arm_IronKnightHelmet,Equipment,Helmet,철제 기사 투구,Knight,0,0,0.18,2
+arm_LightClothArmour,Equipment,Armour,가벼운 천 옷,Normal,0,0,0.08,2
+arm_TravelerArmour,Equipment,Armour,모험가의 옷,Traveler,0,0,0.15,2
+arm_IronKnightArmour,Equipment,Armour,철제 기사 갑옷,Knight,0,0,0.25,2
+arm_HolyArmour,Equipment,Armour,주신의 가호,Legendary,0,0,0.7,2
+arm_LightLeg,Equipment,Leg,가벼운 바지,Normal,0,0,0.04,2
+arm_FurLeg,Equipment,Leg,모피 바지,Traveler,0,0,0.08,2
+arm_IronKnightLeg,Equipment,Leg,철제 기사 다리 보호대,Knight,0,0,0.15,2

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KW
 {
@@ -13,6 +15,11 @@ namespace KW
         [SerializeField] private Transform slotParent;                              // 슬롯prefab이 생성될 부모
         [SerializeField] private TooltipManager tooltipManager;
 
+        [Header("드래그 앤 드롭")]
+        [SerializeField] private Image dragIconImage;
+        
+        public Item currentDragItem { get; private set; }
+
         private List<InventorySlotUI> uiSlots = new List<InventorySlotUI>();        // slot Ui 를 관리할 리스트
 
         private void Start()
@@ -24,6 +31,8 @@ namespace KW
                 Debug.LogError("InventoryUI : 필요한 참조가 설정되지 않았습니다");
                 return;
             }
+
+            if (dragIconImage != null) dragIconImage.gameObject.SetActive(false);
 
             // 슬롯 UI 들을 미리 생성
             InitializeSlots();
@@ -69,9 +78,45 @@ namespace KW
                     tooltipUi.Initialize(tooltipManager);
                 }
 
+                if(slotUi != null)
+                {
+                    slotUi.Initialize(this);
+                }
+
                 uiSlots.Add(slotUi);
             }
         }
+        // InventorySlotUi 에서 참조됨 -----------------------
+        public void BeginDrag(Item item)
+        {
+            if (item == null) return;
+
+            currentDragItem = item;
+
+            // Ghost 세팅
+            if (dragIconImage != null)
+            {
+                dragIconImage.sprite = currentDragItem.itemSprite;
+                dragIconImage.color = new Color(1, 1, 1, 0.8f);
+                dragIconImage.gameObject.SetActive(true);
+            }
+        }
+
+        public void OnDrag(Vector2 mousePos)
+        {
+            if (currentDragItem != null)
+            {
+                // 아이콘이 마우스를 따라다니게
+                dragIconImage.transform.position = mousePos;
+            }
+        }
+
+        public void EndDrag()
+        {
+            currentDragItem = null;
+            if (dragIconImage != null) dragIconImage.gameObject.SetActive(false);
+        }
+        //------------------------------------------------
 
         // 이벤트에서 구독 할 함수
         private void UpdateUI()
@@ -109,6 +154,5 @@ namespace KW
                 }
             }
         }
-
     }
 }

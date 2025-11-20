@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using UnityEditor;                  // 1. 에디터 스크립트 필수
-using System.IO;                    // 2. CSV 파일(File) 읽기 필수
-using System.Collections.Generic;   // 3. 딕셔너리(Dictionary) 사용 필수
-using System;                       // 4. Enum, TryParse 등 예외 처리 필수
+using UnityEditor;                  // 에디터 스크립트 필수
+using System.IO;                    // CSV 파일(File) 읽기 필수
+using System.Collections.Generic;   // 딕셔너리(Dictionary) 사용 필수
+using System;
+using Codice.Client.BaseCommands.Merge.Xml;                       // Enum, TryParse 등 예외 처리 필수
 
 namespace KW
 {
@@ -97,6 +98,13 @@ namespace KW
 
                             // DefenceRate -> defenceRate (float)
                             armour.defenceRate = TryParseFloat(columns[7]);
+                        }
+
+                        // 아이템 타입 값 파싱
+                        if(columns.Length > 8)
+                        {
+                            int typeNumber = TryParseInt(columns[8]);
+                            targetItem.itemType = (ItemType)typeNumber;
                         }
 
                         EditorUtility.SetDirty(targetItem);

@@ -5,7 +5,7 @@ using System;                                                           // Ïù¥Î≤
 
 
 namespace KW
-{
+{    
     public class Inventory : MonoBehaviour
     {
         public event Action OnInventoryChanged;

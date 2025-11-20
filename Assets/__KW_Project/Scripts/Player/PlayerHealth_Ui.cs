@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace KW
 {
     public class PlayerHealth_UI : MonoBehaviour
-    {
+    {        
         [Header("참조")]
         // [힌트] 1. Player 오브젝트에 붙어있는 'PlayerHealth' 스크립트       
         [SerializeField] private PlayerHealth playerHealth;

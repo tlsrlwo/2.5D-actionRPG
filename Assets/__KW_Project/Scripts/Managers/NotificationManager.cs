@@ -22,8 +22,8 @@ namespace KW
             // 팝업 창 생성
             GameObject popupObj = Instantiate(itemLootPopupPrefab, popupHolder);
 
-            if (popupObj != null) Debug.Log("팝업 생성됨");
-            else Debug.LogWarning("팝업 생성 안됨");
+            if (popupObj != null) Debug.Log("Notification Manager : 팝업 생성됨");
+            else Debug.LogWarning("Notification Manager : 팝업 생성 안됨");
 
             // 팝업 창 안에서 아이템 1줄이 생성될 위치 찾기
             Transform lineHolder = popupObj.transform.Find("LineHolder");

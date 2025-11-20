@@ -146,8 +146,7 @@ namespace KW
             if(playerHealth!= null)
             {
                 playerHealth.OnPlayerHit += HandleHit;
-            }
-            
+            }            
         }
 
         private void Update()
@@ -167,6 +166,12 @@ namespace KW
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
+                if(playerHealth.hasWeapon == false)
+                {
+                    Debug.Log("플레이어가 무기가 없음");
+                    return;
+                }
+
                 previousState = currentState;
 
                 SwitchState(playerAttack);

@@ -14,7 +14,8 @@ namespace KW
         [SerializeField] private float _weaponDamage = 0f;
 
         [SerializeField] private float defencePercentage = 0f;
-
+                
+        public bool hasWeapon => _weaponDamage > 0f;                    // 현재 무기가 장착되어 있는 지 확인
         public float TotalDamage { get { return _baseDamage + _weaponDamage; } }    
 
         public virtual float currentHp => _currentHp; 
@@ -23,8 +24,8 @@ namespace KW
         public event Action<float, float> OnHealthChanged;
 
         // 나중에 PlayerMovement가 사용
-        public event Action OnPlayerDied;           // 사망 이벤트
-        public event Action<Vector3> OnPlayerHit;   // 피격 이벤트
+        public event Action OnPlayerDied;                               // 사망 이벤트
+        public event Action<Vector3> OnPlayerHit;                       // 피격 이벤트
 
         private void Start()
         {

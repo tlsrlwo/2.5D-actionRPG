@@ -80,7 +80,7 @@ namespace KW
             // 6. 툴팁 켜기
             gameObject.SetActive(true);            
         }
-
+        
         // InventorySlotUI가 호출
         public void HideTooltip()
         {
