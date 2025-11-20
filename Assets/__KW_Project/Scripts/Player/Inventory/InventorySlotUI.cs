@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 
 namespace KW
 {
@@ -21,15 +20,15 @@ namespace KW
             this._inventoryUI = uiManager;
         }
 
-        // Slot ¿¡ µ¥ÀÌÅÍ Ã¤¿ì±â
+        // Slot ì— ë°ì´í„° ì±„ìš°ê¸°
         public void SetSlotData(InventorySlot slotData)
         {
             _currentItem = slotData.item;
 
-            iconImage.sprite = slotData.item.itemSprite;                // ItemÀÇ sprite
+            iconImage.sprite = slotData.item.itemSprite;                // Itemì˜ sprite
             iconImage.enabled = true;
 
-            // °ãÄ¥ ¼ö ÀÖ´Â ¾ÆÀÌÅÛÀÏ °æ¿ì¿¡¸¸ ¼ö·® ÅØ½ºÆ®¸¦ Ç¥½Ã
+            // ê²¹ì¹  ìˆ˜ ìˆëŠ” ì•„ì´í…œì¼ ê²½ìš°ì—ë§Œ ìˆ˜ëŸ‰ í…ìŠ¤íŠ¸ë¥¼ í‘œì‹œ
             if (slotData.stack > 1)
             {
                 stackText.text = slotData.stack.ToString();
@@ -41,7 +40,7 @@ namespace KW
             }
         }
 
-        // Slot¿¡ µ¥ÀÌÅÍ ºñ¿ì±â (InventoryUI ¿¡¼­ È£Ãâ)
+        // Slotì— ë°ì´í„° ë¹„ìš°ê¸° (InventoryUI ì—ì„œ í˜¸ì¶œ)
         public void ClearSlot()
         {
             _currentItem = null;
@@ -55,7 +54,7 @@ namespace KW
         {
             if (_currentItem == null) return;
 
-            // ÀÎº¥Åä¸®UI ¿¡ ¾Ë¸²
+            // ì¸ë²¤í† ë¦¬UI ì— ì•Œë¦¼
             if (_inventoryUI != null)
             {
                 _inventoryUI.BeginDrag(_currentItem);
@@ -66,7 +65,7 @@ namespace KW
         {
             if (_currentItem == null) return;
 
-            // ¸Å´ÏÀú¿¡°Ô ÇöÀç ¸¶¿ì½º À§Ä¡¸¦ Àü´ŞÇØ¼­ 'À¯·É ¾ÆÀÌÄÜ'ÀÌ µû¶ó¿À°Ô ÇÔ
+            // ë§¤ë‹ˆì €ì—ê²Œ í˜„ì¬ ë§ˆìš°ìŠ¤ ìœ„ì¹˜ë¥¼ ì „ë‹¬í•´ì„œ 'ìœ ë ¹ ì•„ì´ì½˜'ì´ ë”°ë¼ì˜¤ê²Œ í•¨
             if (_inventoryUI != null)
             {
                 _inventoryUI.OnDrag(eventData.position);
@@ -75,7 +74,7 @@ namespace KW
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            // ¸Å´ÏÀú¿¡°Ô µå·¡±× ³¡³µÀ½À» ¾Ë¸² (À¯·É ¾ÆÀÌÄÜ ²ô±â)
+            // ë§¤ë‹ˆì €ì—ê²Œ ë“œë˜ê·¸ ëë‚¬ìŒì„ ì•Œë¦¼ (ìœ ë ¹ ì•„ì´ì½˜ ë„ê¸°)
             if (_inventoryUI != null)
             {
                 _inventoryUI.EndDrag();

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;                                                           // 이벤트 Action 을 위해 필요함
@@ -102,6 +102,30 @@ namespace KW
             {
                 Debug.LogWarning($"인벤토리 공간 부족. {itemToAdd} {amountRemaining} 개를 추가하지 못함.");
                 return false;
+            }
+        }
+        
+        // 인벤토리에서 아이템을 제거하는 함수
+        public void RemoveItem(Item itemToRemove)
+        {
+            for(int i = 0; i < slots.Count; i++)
+            {
+                if(slots[i].item == itemToRemove)
+                {
+                    // 아이템이 1개 이상이면 한 개 감소
+                    if(slots[i].stack > 1)
+                    {
+                     slots[i].stack--;   
+                    }
+                    // 1개면 슬롯 삭제
+                    else
+                    {
+                        slots.RemoveAt(i);
+                    }
+
+                    OnInventoryChanged?.Invoke();
+                    return;
+                }
             }
         }
     }

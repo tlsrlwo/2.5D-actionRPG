@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace KW
 {
-    public class InventoryUI : MonoBehaviour
+    public class InventoryUI : MonoBehaviour, IDropHandler
     {
         [Header("참조")]
         [SerializeField] private Inventory playerInventory;
+        public Inventory PlayerInventory => playerInventory;
+
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject slotPrefab;
         [SerializeField] private Transform slotParent;                              // 슬롯prefab이 생성될 부모
@@ -17,8 +21,9 @@ namespace KW
 
         [Header("드래그 앤 드롭")]
         [SerializeField] private Image dragIconImage;
-        
-        public Item currentDragItem { get; private set; }
+                
+        public Item currentDragItem { get; private set; }                           // 현재 드래그 중인 아이템
+        public QuickSlot_Ui dragSourceSlot {get; private set; }
 
         private List<InventorySlotUI> uiSlots = new List<InventorySlotUI>();        // slot Ui 를 관리할 리스트
 
@@ -87,11 +92,12 @@ namespace KW
             }
         }
         // InventorySlotUi 에서 참조됨 -----------------------
-        public void BeginDrag(Item item)
+        public void BeginDrag(Item item, QuickSlot_Ui sourceSlot = null)
         {
             if (item == null) return;
 
             currentDragItem = item;
+            dragSourceSlot = sourceSlot;            // 출처 저장
 
             // Ghost 세팅
             if (dragIconImage != null)
@@ -114,7 +120,25 @@ namespace KW
         public void EndDrag()
         {
             currentDragItem = null;
+            dragSourceSlot = null;
+
             if (dragIconImage != null) dragIconImage.gameObject.SetActive(false);
+        }
+
+        
+        public void OnDrop(PointerEventData eventData)
+        {
+            // 드래그 중인 아이템이 있고, 출처가 퀵슬롯
+            if(currentDragItem != null  && dragSourceSlot != null)
+            {
+                // 인벤토리에 아이템 추가
+                playerInventory.AddItem(currentDragItem);
+
+                // 퀵슬롯에서는 아이템 제거
+                dragSourceSlot.ClearSlot();
+
+                EndDrag();
+            }
         }
         //------------------------------------------------
 

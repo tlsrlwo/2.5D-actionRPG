@@ -466,9 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsInChest:
-  - item: {fileID: 11400000, guid: 8ab1bfbf24ee0f1439b6d1b8eaa55759, type: 2}
-    quantity: 1
-  - item: {fileID: 11400000, guid: 4dc9ee1e703d3e245b2a30def91d6b7d, type: 2}
+  - item: {fileID: 11400000, guid: 1fa320c452719644dbdbcae64bb137d7, type: 2}
     quantity: 1
   _notificationManager: {fileID: 1990563872}
 --- !u!1001 &109311096

@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace KW
 {
-    public class QuickSlot_Ui : MonoBehaviour, IDropHandler
+    public class QuickSlot_Ui : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private ItemType _acceptedItemType;
 
@@ -98,19 +99,56 @@ namespace KW
             _itemSprite.enabled = false;
         }
 
-        public void OnDrop(PointerEventData eventData)
+        // 마우스 Drag 관련-----------------------------------------------------------------------      
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if(_equippedItem == null) return;
+            if(_inventoryUI == null) return;
+
+            // InventoryUI 에 아이템의 정보와, 자기 자신에서 Drag 를 시작했다고 알림
+            _inventoryUI.BeginDrag(_equippedItem, this);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if(_equippedItem == null) return;
+            if(_inventoryUI != null) _inventoryUI.OnDrag(eventData.position);
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if(_equippedItem == null) return;
+            if(_inventoryUI != null) _inventoryUI.EndDrag();
+        }
+
+          public void OnDrop(PointerEventData eventData)
         {
             if (_inventoryUI == null) return;
 
             Item droppedItem = _inventoryUI.currentDragItem;
+            QuickSlot_Ui sourceSlot = _inventoryUI.dragSourceSlot;
 
-            if (droppedItem != null)
-            {
+            // 유효한 아이템이고, 인벤토리(퀵슬롯 x) 에서 온 경우
+            if (droppedItem != null && sourceSlot == null)
+            {               
+                // 타입 체크 (EquipItem 함수 안에서 체크하지만 미리 해도 됨)
+                if(droppedItem.itemType != _acceptedItemType) return;
+               
+                // [교체 로직] 만약 이미 장착중인 아이템이 있다면?
+                if(equippedItem != null)
+                {
+                    // 기존 아이템을 인벤토리로 돌려보냄 (Swap)
+                    _inventoryUI.PlayerInventory.AddItem(_equippedItem);
+                }
+
+                // 새 아이템 장착
                 if (EquipItem(droppedItem))
                 {
-                    Debug.Log("퀵슬롯 장착 성공");
+                    //[핵심] 장착 성공 시 인벤토리에서 해당 아이템 제거
+                    _inventoryUI.PlayerInventory.RemoveItem(droppedItem);
                 }
             }
         }
+        //--------------------------------------------------------------------------------
     }
 }
