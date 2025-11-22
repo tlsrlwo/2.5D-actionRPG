@@ -21,10 +21,19 @@ namespace KW
         public event Action<Vector3> OnHit;                         // 피격 시 플레이어 위치를 전달받기 위함
         public event Action OnDeath;
 
+        public event Action<float, float> OnHealthChanged;
+
+        void Start()
+        {
+            OnHealthChanged?.Invoke(_currentHp, _maxHp);
+        }
+
         public virtual void InitializeHealth(float parsedMaxHp)
         {
             _maxHp = parsedMaxHp;
             _currentHp = _maxHp;
+
+            OnHealthChanged?.Invoke(_currentHp, _maxHp);
         }
 
         public virtual void TakeDamage(float damage, Transform attacker)
@@ -33,9 +42,13 @@ namespace KW
 
             // 데미지 만큼 체력 감소
             _currentHp -= damage;
-            Debug.Log($"몬스터 체력 감소 : {damage} 만큼 감소됨");
-
+            
             _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
+
+            OnHealthChanged?.Invoke(_currentHp, _maxHp);
+
+            Debug.Log($"몬스터 체력 감소 : {damage} 만큼 감소됨");
+            Debug.Log($"몬스터 남은 체력 : {_currentHp} 만큼 남음");
 
             if (_currentHp <= 0)
             {

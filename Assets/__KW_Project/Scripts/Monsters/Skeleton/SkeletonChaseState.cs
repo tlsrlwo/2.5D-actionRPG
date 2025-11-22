@@ -9,7 +9,7 @@ namespace KW
     {
         public override void EnterState(SkeletonController controller)
         {
-            // Debug.Log("스켈레톤 상태 진입 : Chasing");
+            Debug.Log("스켈레톤 상태 진입 : Chasing");
 
             controller.agent.isStopped = false;
 
@@ -79,6 +79,7 @@ namespace KW
         public override void ExitState(SkeletonController controller)
         {
             controller.anim.SetBool("isChase", false);
+            controller.anim.ResetTrigger("isAttack");
         }
     }
 }

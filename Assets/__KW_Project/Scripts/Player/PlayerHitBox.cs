@@ -10,14 +10,18 @@ namespace KW
         private PlayerHealth playerHealth;
         private float _attackDamage;
 
+        private HashSet<Collider> alreadyHitTargets = new HashSet<Collider>();
+
         private void Awake()
         {
             playerHealth = transform.root.GetComponent<PlayerHealth>();
 
             if (playerHealth == null)
             {
-                Debug.LogError("PlayerHitBox : PlyaerHealth.cs ¸¦ Ã£À» ¼ö ¾øÀ½");
+                Debug.LogError("PlayerHitBox : PlyaerHealth.cs ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŒ");
             }
+
+            alreadyHitTargets.Clear();
         }
 
         private void OnEnable()
@@ -29,26 +33,35 @@ namespace KW
             else
             {
                 _attackDamage = 10f;
-                Debug.LogError("PlayerHitBox : PlayerHealth¸¦ Ã£Áö ¸øÇØ °ø°İ ¼öÄ¡ 10 À¸·Î °íÁ¤");
+                Debug.LogError("PlayerHitBox : PlayerHealthë¥¼ ì°¾ì§€ ëª»í•´ ê³µê²© ìˆ˜ì¹˜ 10 ìœ¼ë¡œ ê³ ì •");
             }
+
+            alreadyHitTargets.Clear();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            // ºÎµúÈù ´ë»óÀÌ ÀûÀÎÁö È®ÀÎ (ÅÂ±× È®ÀÎ)
+            // ë¶€ë”ªíŒ ëŒ€ìƒì´ ì ì¸ì§€ í™•ì¸ (íƒœê·¸ í™•ì¸)
             if (other.CompareTag("Monster"))
             {
-                // Àû¿¡°Ô¼­ 'MonsterHealth' ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+                if (alreadyHitTargets.Contains(other))
+                {
+                    return;
+                }
+
+                // ì ì—ê²Œì„œ 'MonsterHealth' ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
                 MonsterHealth monsterHealth = other.gameObject.GetComponent<MonsterHealth>();
 
-                // ÀûÀÇ Ã¼·Â ½ºÅ©¸³Æ®°¡ Á¸ÀçÇÑ´Ù¸é
+                // ì ì˜ ì²´ë ¥ ìŠ¤í¬ë¦½íŠ¸ê°€ ì¡´ì¬í•œë‹¤ë©´
                 if (monsterHealth != null)
                 {
-                    // Àû¿¡°Ô µ¥¹ÌÁö¸¦ ÁÖ°í, °ø°İÀÚ(³ª)ÀÇ À§Ä¡¸¦ Àü´Ş
+                    // ì ì—ê²Œ ë°ë¯¸ì§€ë¥¼ ì£¼ê³ , ê³µê²©ì(ë‚˜)ì˜ ìœ„ì¹˜ë¥¼ ì „ë‹¬
                     monsterHealth.TakeDamage(_attackDamage, transform.root);
-                    Debug.Log("ÇÃ·¹ÀÌ¾î°¡ °ø°İÇÔ");
+                    Debug.Log("í”Œë ˆì´ì–´ê°€ ê³µê²©í•¨");
 
-                    // °ø°İÇßÀ» ¶§ È¿°ú µî ·ÎÁ÷ 
+                    alreadyHitTargets.Add(other);
+
+                    // ê³µê²©í–ˆì„ ë•Œ íš¨ê³¼ ë“± ë¡œì§ 
 
                 }
             }

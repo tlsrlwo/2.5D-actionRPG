@@ -8,8 +8,7 @@ namespace KW
         {           
 
             movement.isAttacking = true;
-            movement.anim.SetBool("isAttacking", true);
-
+            movement.anim.SetBool("isAttacking", true);            
 
             // "공격 방향" 결정
             float attackDirX;

@@ -7,7 +7,7 @@ namespace KW
     public class SkeletonDamagedState : MonsterBaseState<SkeletonController>
     {
         [Header("변수")]        
-        private float _stunDuration = 0.3f;              // 경직 시간
+        private float _stunDuration = 0.4f;              // 경직 시간
         private float _stunTimer;
 
         public float stunTimer => _stunTimer;
@@ -17,6 +17,8 @@ namespace KW
 
         public override void EnterState(SkeletonController controller)
         {
+            Debug.Log("스켈레톤 상태 진입 : Damaged");
+
             // 초기화 및 정지
             _stunTimer = _stunDuration;
             controller.agent.isStopped = true;
@@ -55,13 +57,15 @@ namespace KW
                 }
                 else
                 {
-                    controller.SwitchState(controller.coolDownState);
+                    controller.SwitchState(controller.idleState);
                 }
             }
         }
 
         public override void ExitState(SkeletonController controller)
         {
+            controller.anim.ResetTrigger("isAttack");
+
             // [시각 효과] 색상 원상복구
             controller.sr.color = originalColor;
 

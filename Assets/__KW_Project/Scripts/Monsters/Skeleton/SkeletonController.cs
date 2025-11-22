@@ -34,7 +34,7 @@ namespace KW
         
         [Header("추격,공격 범위")]
         [HideInInspector] public float detectRange = 5f;
-        [HideInInspector] public float attackRange = 2.5f;
+        [HideInInspector] public float attackRange = 0.8f;
         [HideInInspector] public float idleWaitTime = 3f;
         [HideInInspector] public float minSuspiciousTime = 2f;                        // 두리번거리는 시간
         [HideInInspector] public float maxSuspiciousTime = 6f;

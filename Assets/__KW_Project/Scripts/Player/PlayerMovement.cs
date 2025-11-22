@@ -107,9 +107,8 @@ namespace KW
 
                 if(playerHealth != null)
                 {
-                    playerHealth.InitializeHealth(stats.maxHp);
+                    playerHealth.InitializeHealth(stats.maxHp, stats.baseDamage);
                 }
-
 
                 // Debug.Log("플레이어 기본 스탯 로드 완료 : maxHP(" + stats.maxHp + ")" + " , baseDamage(" + baseDamage + ")");
             }

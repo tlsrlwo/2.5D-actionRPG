@@ -10,7 +10,7 @@ namespace KW
 
         public override void EnterState(SkeletonController controller)
         {
-            // Debug.Log("스켈레톤 상태 진입 : CoolDown");
+            Debug.Log("스켈레톤 상태 진입 : CoolDown");
                         
             controller.agent.isStopped = true;
 

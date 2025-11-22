@@ -8,37 +8,37 @@ namespace KW
 {
     public class SkeletonAttackState : MonsterBaseState<SkeletonController>
     {
-        // Æò»ó½ÃÀÇ ÀÌµ¿À» navMesh ·Î ÇÏÁö¸¸ °ø°İÇÒ¶§´Â rigidbody¸¦ »ç¿ë
+        // í‰ìƒì‹œì˜ ì´ë™ì„ navMesh ë¡œ í•˜ì§€ë§Œ ê³µê²©í• ë•ŒëŠ” rigidbodyë¥¼ ì‚¬ìš©
 
-        private bool hasSwitchedState;              // attack ÀÌ ½ÇÇàµÇ´Â µ¿¾È update ¹®ÀÌ ´Ù½Ã ½ÇÇàµÇÁö ¾Ê°Ô ÇÏ±â À§ÇÔ
+        private bool hasSwitchedState;              // attack ì´ ì‹¤í–‰ë˜ëŠ” ë™ì•ˆ update ë¬¸ì´ ë‹¤ì‹œ ì‹¤í–‰ë˜ì§€ ì•Šê²Œ í•˜ê¸° ìœ„í•¨
         public override void EnterState(SkeletonController controller)
         {
-            // Debug.Log("½ºÄÌ·¹Åæ »óÅÂ ÁøÀÔ : Attack");
+            // Debug.Log("ìŠ¤ì¼ˆë ˆí†¤ ìƒíƒœ ì§„ì… : Attack");
             hasSwitchedState = false;
 
-            // navAgent ´Â ¸ØÃçÁÜ
+            // navAgent ëŠ” ë©ˆì¶°ì¤Œ
             controller.agent.isStopped = true;
 
             if (controller.target != null)
             {
-                // ÇÃ·¹ÀÌ¾îÀÇ ¹æÇâÀ» °è»ê
+                // í”Œë ˆì´ì–´ì˜ ë°©í–¥ì„ ê³„ì‚°
                 Vector3 dirToPlayer = controller.target.position - controller.transform.position;
                 dirToPlayer.y = 0;
 
-                // LungeRoutine À» À§ÇØ ¹æÇâ°ª ÀúÀå
+                // LungeRoutine ì„ ìœ„í•´ ë°©í–¥ê°’ ì €ì¥
                 controller.lastAttackDirection = dirToPlayer.normalized;
 
-                // ½ºÇÁ¶óÀÌÆ® & blend tree ÆÄ¶ó¹ÌÅÍ ¼³Á¤ //               
-                // controller.sr.flipX = (dirToPlayer.x < 0);                                  // ½ºÇÁ¶óÀÌÆ® ¹İÀü
+                // ìŠ¤í”„ë¼ì´íŠ¸ & blend tree íŒŒë¼ë¯¸í„° ì„¤ì •            
+                // controller.sr.flipX = (dirToPlayer.x < 0);                                   // ìŠ¤í”„ë¼ì´íŠ¸ ë°˜ì „
                 controller.sr.flipX = false;
                 
-                float blendTreeMoveX = dirToPlayer.x;                                       // ¾Ö´Ï¸ŞÀÌÅÍ¿¡ Àü´ŞÇÒ °ª
+                float blendTreeMoveX = dirToPlayer.x;                                           // ì• ë‹ˆë©”ì´í„°ì— ì „ë‹¬í•  ê°’
                 float blendTreeMoveZ = dirToPlayer.z;
                
-                controller.anim.SetFloat("xInput", blendTreeMoveX);                          // ¾Ö´Ï¸ŞÀÌÅÍ ¼³Á¤
+                controller.anim.SetFloat("xInput", blendTreeMoveX);                             // ì• ë‹ˆë©”ì´í„° ì„¤ì •
                 controller.anim.SetFloat("zInput", blendTreeMoveZ);
             }
-            // trigger ¾Ö´Ï¸ŞÀÌ¼Ç
+            // trigger ì• ë‹ˆë©”ì´ì…˜
             controller.anim.SetTrigger("isAttack");
         }
 
@@ -51,7 +51,7 @@ namespace KW
             }
             if (hasSwitchedState) return;
 
-            // Å¸°ÙÀÌ »ç¶óÁ³À¸¸é ¼øÂû·Î º¹±Í
+            // íƒ€ê²Ÿì´ ì‚¬ë¼ì¡Œìœ¼ë©´ ìˆœì°°ë¡œ ë³µê·€
             if (controller.target == null)
             {
                 controller.SwitchState(controller.patrolState);
@@ -59,7 +59,7 @@ namespace KW
                 return;
             }
 
-            /*// ÇÃ·¹ÀÌ¾î°¡ °ø°İ¹üÀ§¸¦ ¹ş¾î³µ´ÂÁö È®ÀÎ
+              /*// í”Œë ˆì´ì–´ê°€ ê³µê²©ë²”ìœ„ë¥¼ ë²—ì–´ë‚¬ëŠ”ì§€ í™•ì¸
             float distanceToTarget = Vector3.Distance(controller.transform.position, controller.target.position);
             if (distanceToTarget > controller.attackRange)
             {
@@ -68,11 +68,11 @@ namespace KW
                 return;
             }*/
 
-            // ÇöÀç ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ 'Attack' ÀÌ°í, Àç»ıÀÌ ³¡³µ´ÂÁö È®ÀÎ
+            // í˜„ì¬ ì• ë‹ˆë©”ì´ì…˜ì´ 'Attack' ì´ê³ , ì¬ìƒì´ ëë‚¬ëŠ”ì§€ í™•ì¸
             AnimatorStateInfo animStateInfo = controller.anim.GetCurrentAnimatorStateInfo(0);
             if (animStateInfo.IsName("Attack") && animStateInfo.normalizedTime >= 1.0f)
             {
-                // ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ³¡³ª¸é, Àá½Ã µô·¹ÀÌ¸¦ ÁÖ±â À§ÇØ coolDownState ·Î ÀüÈ¯
+                // ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚˜ë©´, ì ì‹œ ë”œë ˆì´ë¥¼ ì£¼ê¸° ìœ„í•´ coolDownState ë¡œ ì „í™˜
                 controller.SwitchState(controller.coolDownState);
                 hasSwitchedState = true;
             }
@@ -81,7 +81,7 @@ namespace KW
 
         public override void ExitState(SkeletonController controller)
         {
-            
+            controller.anim.ResetTrigger("isAttack");
         }
     }
 }

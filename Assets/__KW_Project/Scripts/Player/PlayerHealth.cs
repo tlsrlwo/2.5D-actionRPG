@@ -54,10 +54,11 @@ namespace KW
             }
         }
 
-        public void InitializeHealth(float parsedMaxHp)
+        public void InitializeHealth(float parsedMaxHp, float parsedBaseDamage)
         {
             _maxHp = parsedMaxHp;
             _currentHp = _maxHp;
+            _baseDamage = parsedBaseDamage;
 
             OnHealthChanged?.Invoke(_currentHp, parsedMaxHp);
         }
