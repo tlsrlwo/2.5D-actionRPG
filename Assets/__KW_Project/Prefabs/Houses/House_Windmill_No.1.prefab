@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2197236563038575443}
   m_Layer: 0
-  m_Name: House_Windmill_No.2
+  m_Name: House_Windmill_No.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,9 +108,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5037463095747791628}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.219608, y: 5.697133, z: 64.71325}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 70.214, y: 17.295002, z: 33.193}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7917528654847035868}
@@ -118,7 +118,7 @@ Transform:
   - {fileID: 4739937325570723100}
   - {fileID: 5217624217598474850}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &5371795238668097446
 GameObject:
   m_ObjectHideFlags: 0
