@@ -25,5 +25,9 @@ namespace KW
 
         // 다음으로 지정할 다이엍SO
         public DialogueSO nextDialogue;
+
+        // 보상이 있는 대화에서만 사용
+        public Item rewardItem;
+        public int rewardItemCount = 1;
     }
 }

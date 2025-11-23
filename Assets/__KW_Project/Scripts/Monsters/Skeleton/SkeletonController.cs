@@ -69,6 +69,7 @@ namespace KW
         [HideInInspector] public Rigidbody rb;
         [HideInInspector] public SpriteRenderer sr;
         [HideInInspector] public MonsterHealth health;
+        public GameObject healthCanvas;
 
         #endregion
 
@@ -172,6 +173,7 @@ namespace KW
             isDoingLunge = false;
         }
 
+        
         public void StartCoolDown()
         {
             SwitchState(coolDownState);
@@ -203,6 +205,8 @@ namespace KW
 
         public void HandleDeath()
         {
+            hitBox.SetActive(false);
+
             SwitchState(deathState);
         }
 

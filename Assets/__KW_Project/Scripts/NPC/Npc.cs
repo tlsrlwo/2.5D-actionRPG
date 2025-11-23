@@ -13,7 +13,7 @@ namespace KW
         [SerializeField] private DialogueSO declinedDialogue;                   // 퀘스트 거절했을 때 대사       
         [SerializeField] private DialogueSO acceptedLoopDialogue;               // 퀘스트 진행 중 대사 (미션 미완)      
         [SerializeField] private DialogueSO declinedLoopDialogue;               // 퀘스트 거절 후 재방문 대사        
-        [SerializeField] private DialogueSO questHandInDialogue;                // 퀘스트 완료 대사         
+        [SerializeField] private DialogueSO questCompletionDialogue;            // 퀘스트 완료 대사         
         [SerializeField] private DialogueSO afterQuestDialogue;                 // 퀘스트 완료 후 방문 시 대사
 
 
@@ -23,6 +23,7 @@ namespace KW
 
         [Tooltip("퀘스트 완료 시 지급할 보상")]
         public List<ChestSlot> questRewards;
+        public QuestSO questData;
 
         // NPC의 현재 상태 저장 
         private bool hasMetPlayer = false;
@@ -40,14 +41,13 @@ namespace KW
         // --- 메인 상호작용 함수 ---
         public void Interact(GameObject player)
         {
-            // 1. 플레이어 인벤토리 참조 (최초 1회)
+            // 플레이어 인벤토리 참조 (최초 1회)
             if (_playerInventory == null)
             {
                 _playerInventory = player.GetComponent<Inventory>();
             }
 
-            // 2. [핵심] NPC의 '현재 상태'에 따라 다른 대화를 시작
-
+            // NPC의 '현재 상태'에 따라 다른 대화를 시작
             if (hasMetPlayer == false)
             {
                 hasMetPlayer = true;
@@ -63,11 +63,11 @@ namespace KW
             }
             else if (currentQuestState == QuestState.Accepted) // 퀘스트를 수락한 상태일 때
             {
-                // [튜토리얼 로직 적용!] 요구 아이템을 다 모았는지 '먼저 확인'
+                // 요구 아이템을 다 모았는지 '먼저 확인'
                 if (CheckQuestRequirements())
                 {
                     // [If Yes] "다 모아왔군!" 대화 시작 (보상받기 버튼)
-                    _dialogueManager.StartDialogue(questHandInDialogue, this);
+                    _dialogueManager.StartDialogue(afterQuestDialogue, this);
                 }
                 else
                 {
@@ -86,56 +86,75 @@ namespace KW
         {
             if (_playerInventory == null) return false;
 
-            // (Inventory.cs에 HasItem 함수가 필요합니다. 지금은 임시로 true를 반환시켜 테스트합니다.)
-            //
-            // foreach (ChestSlot req in questRequirements)
-            // {
-            //    // [필요한 함수] if (!playerInventory.HasItem(req.item, req.quantity))
-            //    // {
-            //    //     return false; // 하나라도 부족하면 false
-            //    // }
-            // }
-            // return true; // 모두 다 있음
-
             Debug.LogWarning("CheckQuestRequirements()가 아직 구현되지 않아 임시로 'true'를 반환합니다.");
             return false; // ◀◀ [임시] 테스트를 위해 항상 true 반환
         }
-
-        // [핵심 수정] DialogueManager가 선택지를 눌렀을 때 호출할 함수
-        public void OnChoiceMade(DialogueSO nextDialogue)
+        
+        public void OnChoiceMade(DialogueChoice choice)
         {
-            // 1. 퀘스트 수락 시
+            if(choice.rewardItem != null)
+            {
+                if (_playerInventory != null)
+                {
+                    _playerInventory.AddItem(choice.rewardItem, choice.rewardItemCount);
+                    Debug.Log($"보상 지급 완료 : {choice.rewardItem}, {choice.rewardItemCount}개 추가됨");
+
+                    // 팝업 알림 로직 여기에도 추가
+
+                }
+            }
+
+            // 다음 대화 확인
+            DialogueSO nextDialogue = choice.nextDialogue;
+
+            if(nextDialogue == acceptedDialogue)
+            {
+                currentQuestState = QuestState.Accepted;
+            }
+            else if( nextDialogue == declinedDialogue)
+            {
+                currentQuestState = QuestState.Declined;
+            }
+            else if (nextDialogue == afterQuestDialogue)
+            {
+                currentQuestState = QuestState.Completed;
+            }
+
+            /*// 퀘스트 수락 시
             if (nextDialogue == acceptedDialogue)
             {
                 currentQuestState = QuestState.Accepted;
-                // [삭제!] 보상 지급 로직 삭제
+
+                if(questData != null)
+                {
+                    QuestManager.Instance.AcceptQuest(questData);
+                }
             }
-            // 2. 퀘스트 거절 시
+            // 퀘스트 거절 시
             else if (nextDialogue == declinedDialogue)
             {
                 currentQuestState = QuestState.Declined;
             }
-            // 3. [추가!] '보상 받기' 버튼을 눌렀을 때
-            // (questHandInDialogue의 "[보상받기]" 선택지에 nextDialogue를 'null'로 연결)
             else if (nextDialogue == null)
             {
                 // [추가!] 요구 아이템을 '제출'받습니다.
                 SubmitItems();
 
-                // [이동!] 여기서 '보상'을 줍니다.
+                // 보상 주기
                 GiveRewards();
 
-                // [추가!] 상태를 '완료'로 변경
+                // 상태를 완료로 변경
                 currentQuestState = QuestState.Completed;
 
-                // [추가!] 완료 후 대화로 넘어감
+                // 완료 후 대화로 넘어감
                 _dialogueManager.StartDialogue(afterQuestDialogue, this);
 
-                return; // 여기서 함수 종료
+                return; 
             }
 
-            // 4. (보상 받기가 아닌) 다음 대화로 이어서 시작
+            // 다음 대화로 이어서 시작
             _dialogueManager.StartDialogue(nextDialogue, this);
+            */
         }
 
         // 보상 지급 함수 (Chest.cs 로직 재활용)
@@ -176,6 +195,7 @@ namespace KW
             // }
         }
     }
+    // 
 
     // NPC의 퀘스트 상태를 관리할 'Enum'
     public enum QuestState

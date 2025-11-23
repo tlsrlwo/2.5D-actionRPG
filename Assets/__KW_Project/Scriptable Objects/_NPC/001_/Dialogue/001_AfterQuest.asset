@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
+  m_Name: 001_AfterQuest
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - "\uACE0\uB9D9\uB124...! \uC815\uB9D0 \uACE0\uB9D9\uB124.. \uADF8\uB9AC \uC88B\uC9C4
+    \uC54A\uB2E4\uB9CC \uC6D0\uD558\uB294 \uAC83\uC744 \uAC00\uC838\uAC00\uC138.."
+  dialogueChoices:
+  - choiceText: "\uD5EC\uBA67 "
+    nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
+    rewardItem: {fileID: 11400000, guid: 2f143384f91ab1a408500f78deecdb84, type: 2}
+    rewardItemCount: 1

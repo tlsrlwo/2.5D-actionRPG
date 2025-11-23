@@ -2,9 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine.Rendering.HighDefinition;
-using Unity.VisualScripting;
 
 namespace KW
 {
@@ -146,7 +143,7 @@ namespace KW
                     button.onClick.AddListener(() =>
                     {
                         // (리스너 내부)선택한 다음대화 로 바로 넘어가기
-                        OnChoiceSelected(choice.nextDialogue);
+                        OnChoiceSelected(choice);
                     });
                 }
             }
@@ -157,19 +154,25 @@ namespace KW
             }
         }
 
-        private void OnChoiceSelected(DialogueSO nextDialogue)
+        private void OnChoiceSelected(DialogueChoice choice)
         {
-            // 모든  선택지 버튼 삭제
+            // 모든 선택지 버튼 삭제
             foreach(Transform child in choiceBtnHolder)
             {
                 Destroy(child.gameObject);
             }
 
+            // NPC에게 어떤 선택질를 골랐는지 전달
+            if(currentNpc != null)
+            {
+                currentNpc.OnChoiceMade(choice);
+            }
+
             // 다음 대화가 있는지 확인 (null 체크)
-            if (nextDialogue != null)
+            if (choice.nextDialogue != null)
             {
                 // 다음 대화로 이어서 시작
-                currentNpc.OnChoiceMade(nextDialogue);
+                StartDialogue(choice.nextDialogue, currentNpc);
             }
             else
             {

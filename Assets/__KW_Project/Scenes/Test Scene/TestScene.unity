@@ -3278,6 +3278,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   sr: {fileID: 0}
   health: {fileID: 0}
+  healthCanvas: {fileID: 609692596}
 --- !u!54 &770615206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11847,6 +11848,7 @@ Transform:
   - {fileID: 1293037742}
   - {fileID: 1224665258}
   - {fileID: 951160930}
+  - {fileID: 2047775810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647220938
@@ -13215,10 +13217,11 @@ MonoBehaviour:
   declinedDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}
   acceptedLoopDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
   declinedLoopDialogue: {fileID: 11400000, guid: c40be54b3110b234f9d8ce9e73e97da4, type: 2}
-  questHandInDialogue: {fileID: 0}
-  afterQuestDialogue: {fileID: 0}
+  questCompletionDialogue: {fileID: 11400000, guid: 6c6197a4b4b023141aad1797300fade1, type: 2}
+  afterQuestDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
   questRequirements: []
   questRewards: []
+  questData: {fileID: 11400000, guid: ab045e92cdda25b4187b676a5b34748e, type: 2}
   currentQuestState: 0
 --- !u!65 &2015705514
 BoxCollider:
@@ -13241,6 +13244,51 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2047775809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2047775810}
+  - component: {fileID: 2047775811}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2047775810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047775809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1640688430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047775811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047775809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ed7eb6a5016ca4899d9406c2bf78ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeQuests: []
 --- !u!1 &2053977812
 GameObject:
   m_ObjectHideFlags: 0
