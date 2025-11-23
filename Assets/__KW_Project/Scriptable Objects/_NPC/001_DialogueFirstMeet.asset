@@ -20,6 +20,6 @@ MonoBehaviour:
     \uC788\uB098? "
   dialogueChoices:
   - choiceText: "\uC218\uB77D"
-    nextDialogue: {fileID: 11400000, guid: e9e9d9bd329914b4d828a4a468cd22da, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
   - choiceText: "\uAC70\uC808"
-    nextDialogue: {fileID: 11400000, guid: 6838e0f379a163447818c42e7f4a06bf, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}

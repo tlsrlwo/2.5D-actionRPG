@@ -17,6 +17,6 @@ MonoBehaviour:
     \uBAAC\uC2A4\uD130\uB4E4\uC744 \uD1A0\uBC8C\uD574\uC8FC\uAC8C"
   dialogueChoices:
   - choiceText: "\uC54C\uACA0\uB2E4"
-    nextDialogue: {fileID: 11400000, guid: e79a99fb19d493c419349460b641e0e5, type: 2}
+    nextDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
   - choiceText: "\uBAA8\uB974\uACA0\uB2E4"
-    nextDialogue: {fileID: 11400000, guid: 6838e0f379a163447818c42e7f4a06bf, type: 2}
+    nextDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}

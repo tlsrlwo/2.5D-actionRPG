@@ -10,18 +10,25 @@ namespace KW
         {
             movement.isDashing = true;
 
+            //movement.sr.flipX = false;
+
+            movement.anim.SetTrigger("isDashing");
+            movement.anim.SetFloat("lastMoveX", movement.lastMoveX);
+            movement.anim.SetFloat("lastMoveZ", movement.lastMoveZ);
+
             movement.StartCoroutine(DashCoroutine(movement));
         }
 
 
         public override void UpdateState(PlayerMovement movement)
         {
-
+            
         }
 
         public override void ExitState(PlayerMovement movement)
         {
             movement.isDashing = false;
+            movement.anim.ResetTrigger("isDashing");    
         }
 
         private IEnumerator DashCoroutine(PlayerMovement movement)
@@ -45,11 +52,27 @@ namespace KW
             {
                 movement.cController.Move(movement.dashSpeed * dashDir.normalized * Time.deltaTime);
 
+                //movement.sr.flipX = false;
+
                 yield return null;
             }
 
             movement.isDashing = false;
-            movement.SwitchState(movement.previousState);
+
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
+
+            if(Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f)
+            {
+                movement.SwitchState(movement.playerWalk);
+
+            }
+            else
+            {
+                movement.SwitchState(movement.playerIdle);
+            }
+
+            //movement.SwitchState(movement.previousState);
         }
     }
 }
