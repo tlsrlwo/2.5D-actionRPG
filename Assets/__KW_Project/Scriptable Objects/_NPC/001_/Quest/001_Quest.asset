@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: "\uC2A4\uCF08\uB808\uD1A4 \uD1A0\uBC8C"
   description: "\uC2A4\uCF08\uB808\uD1A4\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uB77C"
-  targetName: "\uC2A4\uCF08\uB808\uD1A4"
-  targetCount: 0
-  itemReward: {fileID: 11400000, guid: 2ad4aede257dbee4c9e80e5263ebe780, type: 2}
+  type: 0
+  targetName: Skeleton
+  targetCount: 5
+  targetRegion: TestScene
+  requiredItem: {fileID: 0}
   itemRewardCount: 1

@@ -1,4 +1,6 @@
 using System.Collections.Generic; // ◀◀ 퀘스트/보상 리스트를 위해
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace KW
@@ -47,51 +49,75 @@ namespace KW
                 _playerInventory = player.GetComponent<Inventory>();
             }
 
-            // NPC의 '현재 상태'에 따라 다른 대화를 시작
-            if (hasMetPlayer == false)
+            // NPC 현재 상태에 따른 대화 시작
+            switch (currentQuestState)
             {
-                hasMetPlayer = true;
-                _dialogueManager.StartDialogue(firstMeetingDialogue, this);
-            }
-            else if (currentQuestState == QuestState.NotOffered)
-            {
-                _dialogueManager.StartDialogue(questOfferDialogue, this);
-            }
-            else if (currentQuestState == QuestState.Declined)
-            {
-                _dialogueManager.StartDialogue(declinedLoopDialogue, this);
-            }
-            else if (currentQuestState == QuestState.Accepted) // 퀘스트를 수락한 상태일 때
-            {
-                // 요구 아이템을 다 모았는지 '먼저 확인'
-                if (CheckQuestRequirements())
-                {
-                    // [If Yes] "다 모아왔군!" 대화 시작 (보상받기 버튼)
+                case QuestState.NotOffered:
+                    _dialogueManager.StartDialogue(firstMeetingDialogue, this);
+                    break;
+
+                case QuestState.Declined:
+                    _dialogueManager.StartDialogue(declinedLoopDialogue, this);
+                    break;
+
+                case QuestState.Accepted:
+                    // QuestManager 에서 조건 만족 여부 확인
+                    if (QuestManager.Instance.IsQuestConditionMet(questData))
+                    {
+                        // 조건만족 -> 완료(보상) 대화 시작
+                        _dialogueManager.StartDialogue(questCompletionDialogue, this);
+                    }
+                    else
+                    {
+                        // 아직 달성 못 했으면 수락 후 재방문 대사 
+                        _dialogueManager.StartDialogue(acceptedLoopDialogue, this);
+                    }
+                    break;
+                case QuestState.Completed:
                     _dialogueManager.StartDialogue(afterQuestDialogue, this);
-                }
-                else
-                {
-                    // [If No] "아직인가?" 대화 시작
-                    _dialogueManager.StartDialogue(acceptedLoopDialogue, this);
-                }
+                    break;
+
             }
-            else if (currentQuestState == QuestState.Completed)
-            {
-                _dialogueManager.StartDialogue(afterQuestDialogue, this);
-            }
+
+            /*  // NPC의 '현재 상태'에 따라 다른 대화를 시작
+             if (hasMetPlayer == false)
+             {
+                 hasMetPlayer = true;
+                 _dialogueManager.StartDialogue(firstMeetingDialogue, this);
+             }
+             else if (currentQuestState == QuestState.NotOffered)
+             {
+                 _dialogueManager.StartDialogue(questOfferDialogue, this);
+             }
+             else if (currentQuestState == QuestState.Declined)
+             {
+                 _dialogueManager.StartDialogue(declinedLoopDialogue, this);
+             }
+             else if (currentQuestState == QuestState.Accepted) // 퀘스트를 수락한 상태일 때
+             {
+                 // 요구 아이템을 다 모았는지 '먼저 확인'
+                 if (CheckQuestRequirements())
+                 {
+                     // [If Yes] "다 모아왔군!" 대화 시작 (보상받기 버튼)
+                     _dialogueManager.StartDialogue(afterQuestDialogue, this);
+                 }
+                 else
+                 {
+                     // [If No] "아직인가?" 대화 시작
+                     _dialogueManager.StartDialogue(acceptedLoopDialogue, this);
+                 }
+             }
+             else if (currentQuestState == QuestState.Completed)
+             {
+                 _dialogueManager.StartDialogue(afterQuestDialogue, this);
+             } */
         }
 
-        // [새 함수] 플레이어 인벤토리를 확인하는 함수
-        private bool CheckQuestRequirements()
-        {
-            if (_playerInventory == null) return false;
-
-            Debug.LogWarning("CheckQuestRequirements()가 아직 구현되지 않아 임시로 'true'를 반환합니다.");
-            return false; // ◀◀ [임시] 테스트를 위해 항상 true 반환
-        }
+ 
         
         public void OnChoiceMade(DialogueChoice choice)
         {
+            // 보상 지급
             if(choice.rewardItem != null)
             {
                 if (_playerInventory != null)
@@ -110,6 +136,11 @@ namespace KW
             if(nextDialogue == acceptedDialogue)
             {
                 currentQuestState = QuestState.Accepted;
+
+                if(questData != null)
+                {
+                    QuestManager.Instance.AcceptQuest(questData);
+                }
             }
             else if( nextDialogue == declinedDialogue)
             {
@@ -117,85 +148,15 @@ namespace KW
             }
             else if (nextDialogue == afterQuestDialogue)
             {
+                // 요구 아이템 가져가기
+                QuestManager.Instance.SubmitQuestItems(questData);
+
+                QuestManager.Instance.FinishQuest(questData);                
+
                 currentQuestState = QuestState.Completed;
             }
-
-            /*// 퀘스트 수락 시
-            if (nextDialogue == acceptedDialogue)
-            {
-                currentQuestState = QuestState.Accepted;
-
-                if(questData != null)
-                {
-                    QuestManager.Instance.AcceptQuest(questData);
-                }
-            }
-            // 퀘스트 거절 시
-            else if (nextDialogue == declinedDialogue)
-            {
-                currentQuestState = QuestState.Declined;
-            }
-            else if (nextDialogue == null)
-            {
-                // [추가!] 요구 아이템을 '제출'받습니다.
-                SubmitItems();
-
-                // 보상 주기
-                GiveRewards();
-
-                // 상태를 완료로 변경
-                currentQuestState = QuestState.Completed;
-
-                // 완료 후 대화로 넘어감
-                _dialogueManager.StartDialogue(afterQuestDialogue, this);
-
-                return; 
-            }
-
-            // 다음 대화로 이어서 시작
-            _dialogueManager.StartDialogue(nextDialogue, this);
-            */
-        }
-
-        // 보상 지급 함수 (Chest.cs 로직 재활용)
-        private void GiveRewards()
-        {
-            if (_playerInventory != null && questRewards.Count > 0)
-            {
-                Debug.Log("퀘스트 보상을 지급합니다...");
-                List<ChestSlot> givenRewards = new List<ChestSlot>();
-                foreach (ChestSlot reward in questRewards)
-                {
-                    if (_playerInventory.AddItem(reward.item, reward.quantity))
-                    {
-                        givenRewards.Add(reward);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("인벤토리 공간 부족으로 보상 지급 실패.");
-                    }
-                }
-                foreach (ChestSlot reward in givenRewards)
-                {
-                    questRewards.Remove(reward);
-                }
-            }
-        }
-
-        // [새 함수] (선택 사항) 요구 아이템을 인벤토리에서 제거
-        private void SubmitItems()
-        {
-            if (_playerInventory == null) return;
-
-            Debug.Log("퀘스트 아이템을 제출받습니다...");
-            // (Inventory.cs에 RemoveItem 함수가 필요합니다)
-            // foreach (ChestSlot req in questRequirements)
-            // {
-            //    playerInventory.RemoveItem(req.item, req.quantity);
-            // }
         }
     }
-    // 
 
     // NPC의 퀘스트 상태를 관리할 'Enum'
     public enum QuestState

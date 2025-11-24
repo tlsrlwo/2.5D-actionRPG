@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;                                                           // 이벤트 Action 을 위해 필요함
+using System;
+using Unity.VisualScripting;                                                           // 이벤트 Action 을 위해 필요함
 
 
 namespace KW
@@ -63,7 +64,6 @@ namespace KW
                         break;
                     }
                 }
-
             }
 
             else        // 스택 불가능한 아이템 (무기, 방어구)
@@ -104,18 +104,18 @@ namespace KW
                 return false;
             }
         }
-        
+
         // 인벤토리에서 아이템을 제거하는 함수
         public void RemoveItem(Item itemToRemove)
         {
-            for(int i = 0; i < slots.Count; i++)
+            for (int i = 0; i < slots.Count; i++)
             {
-                if(slots[i].item == itemToRemove)
+                if (slots[i].item == itemToRemove)
                 {
                     // 아이템이 1개 이상이면 한 개 감소
-                    if(slots[i].stack > 1)
+                    if (slots[i].stack > 1)
                     {
-                     slots[i].stack--;   
+                        slots[i].stack--;
                     }
                     // 1개면 슬롯 삭제
                     else
@@ -127,6 +127,55 @@ namespace KW
                     return;
                 }
             }
+        }
+
+        // 특정 아이템의 소지 갯수를 반환하는 함수
+        public int GetItemCount(Item itemToCheck)
+        {
+            int count = 0;                          // 아이템을 세기 위한 함수
+
+            // 모든 인벤토리 슬롯을 검사함
+            foreach (var slot in slots)
+            {
+                // 체크할 아이템이 매개변수로 받아온 아이템이면
+                if (slot.item == itemToCheck)
+                {
+                    count += slot.stack;
+                }
+            }
+
+            return count;
+        }
+        
+        // 특정 아이템을 N개 삭제하는 함수
+        public void RemoveItemQuantity(Item itemToRemove, int amountToRemove)
+        {
+            // 모든 슬롯을 검사
+            for (int i = 0; i < slots.Count; i++)
+            {
+                if (amountToRemove <= 0) break;
+
+                // 제거할 아이템인지 확인
+                if (slots[i].item == itemToRemove)
+                {
+                    // 현재 소지갯수가 제거해야될 양 보다 많으면
+                    if (slots[i].stack > amountToRemove)
+                    {
+                        // 제거해야되는 만큼 제거해줌
+                        slots[i].stack -= amountToRemove;
+
+                        amountToRemove = 0;
+                    }
+                    else
+                    {
+                        // 슬롯에 있는 갯수가 똑같거나, 다 제거해도 부족할 때
+                        amountToRemove -= slots[i].stack;
+                        slots.RemoveAt(i);                          // 슬롯을 제거
+                        i--;                                        // 리스트 크기가 줄었으니 인덱스 조절
+                    }
+                }
+            }
+            OnInventoryChanged.Invoke();
         }
     }
 }

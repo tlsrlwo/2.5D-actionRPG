@@ -1,34 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace KW
 {
     [System.Serializable]
-        public class Quest
-        {
-            public QuestSO data;            // 원본 데이터
-            public int currentCount;        // 현재 잡은 수 
-            public bool isCompleted;        // 완료 여부
+    public class Quest
+    {
+        public QuestSO data;            // 원본 데이터
+        public int currentCount;        // 현재 잡은 수 
+        public bool isCompleted;        // 완료 여부
 
-            public Quest(QuestSO questData)
-            {
-                this.data = questData;
-                this.currentCount = 0;
-                this.isCompleted = false;
-            }
+        public Quest(QuestSO questData)
+        {
+            this.data = questData;
+            this.currentCount = 0;
+            this.isCompleted = false;
         }
+    }
     public class QuestManager : MonoBehaviour
     {
-        public static QuestManager Instance {get; private set;  }
+        public static QuestManager Instance { get; private set; }
 
         public List<Quest> activeQuests = new List<Quest>();            // 모든 퀘스트를 담을 리스트
+
+        private Inventory playerInventory;
 
         // 플레이어가 현재 수행 중인 퀘스트 목록
         private void Awake()
         {
-            if(Instance != null)
+            if (Instance != null)
             {
                 Destroy(this);
             }
@@ -37,14 +38,27 @@ namespace KW
                 Instance = this;
             }
         }
+        private void Start()
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+            if (player != null)
+            {
+                playerInventory = player.GetComponent<Inventory>();
+            }
+            else
+            {
+                Debug.LogError("[QuestManager] 'Player' 태그를 가진 게임 오브젝트를 찾지 못함");
+            }
+        }
+        
         // 퀘스트 수락 함수 (NPC에서 호출)
         public void AcceptQuest(QuestSO questData)
         {
             // 중복방지
-            foreach(var quest in activeQuests)
+            foreach (var quest in activeQuests)
             {
-                if(quest.data == questData)
+                if (quest.data == questData)
                 {
                     Debug.LogWarning("[QuestManager] 이미 수행중인 퀘스트입니다");
 
@@ -62,5 +76,97 @@ namespace KW
             // 퀘스트 UI 업데이트
         }
 
+
+        public void OnMonsterKilled(string monsterId, string region)
+        {
+            foreach (var quest in activeQuests)
+            {
+                if (quest.isCompleted) continue;                            // continue 의 조건이 맞을 시, (for, foreach, while등 반복문) 이번 순서의 코드는 무시하고 다음으로 넘어가라
+                if (quest.data.type != QuestType.Kill) continue;
+
+                // 이름 확인
+                bool isTargetMatch = quest.data.targetName == monsterId;
+                // 지역 확인
+                bool isRegionMatch = string.IsNullOrEmpty(quest.data.targetRegion) || (quest.data.targetRegion == region);
+
+                if (isTargetMatch && isRegionMatch)
+                {
+                    quest.currentCount++;
+
+                    Debug.Log($"[QuestManager] 퀘스트 진행중 : {quest.data.questTitle} {quest.currentCount} / {quest.data.targetCount}");
+                }
+            }
+        }
+
+        public bool IsQuestConditionMet(QuestSO questData)
+        {
+            // 활성화된 퀘스트인지 확인
+            Quest activeQuest = activeQuests.Find(q => q.data == questData);
+
+            if (activeQuest == null) return false;      // 받지도 않음
+
+            // 토벌 퀘스트인지 확인
+            if (questData.type == QuestType.Kill)
+            {
+                // 현재 퀘스트의 count 가 요구 count 보다 많으면 true
+                return activeQuest.currentCount >= questData.targetCount;
+            }
+
+            // 수집 퀘스트인지 확인
+            else if (questData.type == QuestType.Collect)
+            {
+                if (playerInventory == null) return false;
+
+                return playerInventory.GetItemCount(questData.requiredItem) >= questData.targetCount;
+            }
+            return false;
+        }
+
+        // 미션 물건 제출
+        public void SubmitQuestItems(QuestSO questData)
+        {
+            // 퀘스트 타입이 수집퀘스트이고, 요구아이템이 있을 때
+            if (questData.type == QuestType.Collect && questData.requiredItem != null)
+            {
+                // 플레이어 인벤토리에서 해당 아이템, 갯수만큼 제거
+                if (playerInventory != null)
+                {
+                    playerInventory.RemoveItemQuantity(questData.requiredItem, questData.targetCount);
+                }
+            }
+        }
+
+        public void CompleteQuest(Quest quest)
+        {
+            quest.isCompleted = true;
+            quest.currentCount = quest.data.targetCount;
+
+            Debug.Log($"[QuestManager] {quest.data.questTitle} 퀘스트 조건 달성!");
+        }
+
+        public bool CheckQuestIsCompleted(QuestSO questData)
+        {
+            foreach (var quest in activeQuests)
+            {
+                if (quest.data == questData)
+                {
+                    return quest.isCompleted;
+                }
+            }
+            return false;
+        }
+
+        public void FinishQuest(QuestSO questData)
+        {
+            for (int i = 0; i < activeQuests.Count; i++)
+            {
+                if (activeQuests[i].data == questData)
+                {
+                    activeQuests.RemoveAt(i);
+
+                    return;
+                }
+            }
+        }
     }
 }

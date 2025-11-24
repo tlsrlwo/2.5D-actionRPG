@@ -1,7 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -206,6 +207,11 @@ namespace KW
         public void HandleDeath()
         {
             hitBox.SetActive(false);
+
+            // 몬스터 사망 시, 사망 지역을 전달
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            QuestManager.Instance.OnMonsterKilled(this.monsterId, currentScene);
 
             SwitchState(deathState);
         }

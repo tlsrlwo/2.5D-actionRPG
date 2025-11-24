@@ -1277,7 +1277,7 @@ Transform:
   m_GameObject: {fileID: 345900067}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19332367, y: -0, z: -0, w: 0.9811351}
-  m_LocalPosition: {x: 34.14, y: 11.428999, z: 42.66}
+  m_LocalPosition: {x: 40.98, y: 11.428999, z: 57.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2369,7 +2369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.12}
+  m_AnchoredPosition: {x: 0, y: 1.13}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609692598
@@ -12664,7 +12664,7 @@ Transform:
   m_GameObject: {fileID: 1832548060}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19332367, y: -0, z: -0, w: 0.9811351}
-  m_LocalPosition: {x: 34.14, y: 11.428999, z: 42.66}
+  m_LocalPosition: {x: 40.98, y: 11.428999, z: 57.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13215,7 +13215,7 @@ MonoBehaviour:
   questOfferDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
   declinedDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}
-  acceptedLoopDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
+  acceptedLoopDialogue: {fileID: 11400000, guid: ca2b5a84049399949a40d6a46028376f, type: 2}
   declinedLoopDialogue: {fileID: 11400000, guid: c40be54b3110b234f9d8ce9e73e97da4, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 6c6197a4b4b023141aad1797300fade1, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
@@ -13897,7 +13897,7 @@ Transform:
   m_GameObject: {fileID: 7169915417261587973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.14, y: 6.509, z: 54.66}
+  m_LocalPosition: {x: 40.98, y: 6.509, z: 69.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
