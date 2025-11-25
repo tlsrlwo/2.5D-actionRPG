@@ -1258,7 +1258,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 967379291}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
       propertyPath: m_LocalScale.x
@@ -1274,15 +1274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.09394
+      value: 10.9711685
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.517001
+      value: 0.06178665
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 60.973984
+      value: 35.755463
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1321,6 +1321,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
+--- !u!4 &224225813 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7f3ee1f3bddd5564f82afb98a19c9551, type: 3}
+  m_PrefabInstance: {fileID: 224225812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &228101239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3489,6 +3494,7 @@ Transform:
   - {fileID: 790801804}
   - {fileID: 2001490}
   - {fileID: 1312246973}
+  - {fileID: 224225813}
   m_Father: {fileID: 601859258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &970339978
@@ -5873,6 +5879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b9db3defb001dfa47a56843389837a46, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd3b65f67dd682b44b67582b90569c74, type: 2}
     - target: {fileID: 919132149155446097, guid: b9db3defb001dfa47a56843389837a46, type: 3}
       propertyPath: m_Name
       value: SM_PROP_streetlamp_v01_02
@@ -7701,4 +7711,3 @@ SceneRoots:
   - {fileID: 601859258}
   - {fileID: 1379538623}
   - {fileID: 20341755}
-  - {fileID: 224225812}
