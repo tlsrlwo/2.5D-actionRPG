@@ -213,6 +213,8 @@ namespace KW
 
             QuestManager.Instance.OnMonsterKilled(this.monsterId, currentScene);
 
+            Debug.Log($"[SkeletonController] 스켈레톹 사망 : {this.monsterId} / {currentScene}");
+
             SwitchState(deathState);
         }
 

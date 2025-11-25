@@ -57,7 +57,7 @@ namespace KW
                 {
                     // 적에게 데미지를 주고, 공격자(나)의 위치를 전달
                     monsterHealth.TakeDamage(_attackDamage, transform.root);
-                    Debug.Log("플레이어가 공격함");
+                    // Debug.Log("플레이어가 공격함");
 
                     alreadyHitTargets.Add(other);
 

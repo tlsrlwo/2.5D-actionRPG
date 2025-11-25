@@ -100,3 +100,10 @@ InitTestScene*.unity*
 
 # Your personal settings file
 settings.json
+
+# VS Code settings
+.vscode/
+
+# 에디터별로 내용이 달라지는 자동 생성 파일들
+*.sln
+*.csproj

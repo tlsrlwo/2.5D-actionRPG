@@ -167,7 +167,7 @@ namespace KW
             {
                 if(playerHealth.hasWeapon == false)
                 {
-                    Debug.Log("플레이어가 무기가 없음");
+                    // Debug.Log("플레이어가 무기가 없음");
                     return;
                 }
 

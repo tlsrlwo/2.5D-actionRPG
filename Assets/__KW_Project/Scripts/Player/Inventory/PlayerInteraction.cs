@@ -24,7 +24,7 @@ namespace KW
         }
         private void Start()
         {
-            Debug.Log("상호작용 ray 색 : Blue, 실패 시 생상 : Red");
+            // Debug.Log("상호작용 ray 색 : Blue, 실패 시 생상 : Red");
         }
 
         private void Update()
@@ -68,12 +68,12 @@ namespace KW
                     }
 
                     Debug.DrawRay(startPos, direction * hit.distance, successRayColor, 1f);
-                    Debug.Log("Interact 할 Object 를 찾음");
+                    // Debug.Log("Interact 할 Object 를 찾음");
                 }
                 else
                 {
                     Debug.DrawRay(startPos, direction * interactionDistance, failureRayColor, 1f);
-                    Debug.Log("Interact 할 Object 를 찾지 못함");
+                    // Debug.Log("Interact 할 Object 를 찾지 못함");
                 }
 
             }

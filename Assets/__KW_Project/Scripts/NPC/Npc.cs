@@ -52,15 +52,23 @@ namespace KW
             // NPC 현재 상태에 따른 대화 시작
             switch (currentQuestState)
             {
-                case QuestState.NotOffered:
-                    _dialogueManager.StartDialogue(firstMeetingDialogue, this);
+                case QuestState.NotOffered:                     // 아직 퀘스트를 주지 않은 상태
+                    if (hasMetPlayer == false)
+                    {
+                        hasMetPlayer = true;
+                        _dialogueManager.StartDialogue(firstMeetingDialogue, this);
+                    }
+                    else
+                    {
+                        _dialogueManager.StartDialogue(questOfferDialogue, this);
+                    }
                     break;
 
-                case QuestState.Declined:
+                case QuestState.Declined:                       // 퀘스트를 알려줬지만 거절당한 상태
                     _dialogueManager.StartDialogue(declinedLoopDialogue, this);
                     break;
 
-                case QuestState.Accepted:
+                case QuestState.Accepted:                       // 퀘스트가 수락된 상태
                     // QuestManager 에서 조건 만족 여부 확인
                     if (QuestManager.Instance.IsQuestConditionMet(questData))
                     {
@@ -73,7 +81,7 @@ namespace KW
                         _dialogueManager.StartDialogue(acceptedLoopDialogue, this);
                     }
                     break;
-                case QuestState.Completed:
+                case QuestState.Completed:                      // 퀘스트 완료된 상태
                     _dialogueManager.StartDialogue(afterQuestDialogue, this);
                     break;
 
@@ -111,9 +119,7 @@ namespace KW
              {
                  _dialogueManager.StartDialogue(afterQuestDialogue, this);
              } */
-        }
-
- 
+        } 
         
         public void OnChoiceMade(DialogueChoice choice)
         {
@@ -133,16 +139,18 @@ namespace KW
             // 다음 대화 확인
             DialogueSO nextDialogue = choice.nextDialogue;
 
-            if(nextDialogue == acceptedDialogue)
+            // 다음 대화 선택지를 확인하고
+            if (nextDialogue == acceptedDialogue)
             {
+                // 현재 상태 변경
                 currentQuestState = QuestState.Accepted;
 
-                if(questData != null)
+                if (questData != null)
                 {
                     QuestManager.Instance.AcceptQuest(questData);
                 }
             }
-            else if( nextDialogue == declinedDialogue)
+            else if (nextDialogue == declinedDialogue)
             {
                 currentQuestState = QuestState.Declined;
             }
@@ -151,9 +159,17 @@ namespace KW
                 // 요구 아이템 가져가기
                 QuestManager.Instance.SubmitQuestItems(questData);
 
-                QuestManager.Instance.FinishQuest(questData);                
+                QuestManager.Instance.FinishQuest(questData);
 
                 currentQuestState = QuestState.Completed;
+            }
+            if (nextDialogue != null)
+            {
+                _dialogueManager.StartDialogue(nextDialogue, this);
+            }
+            else
+            {
+                
             }
         }
     }

@@ -145,7 +145,7 @@ namespace KW
         // 이벤트에서 구독 할 함수
         private void UpdateUI()
         {
-            Debug.Log("InventoryUI : UI 업데이트");
+            // Debug.Log("InventoryUI : UI 업데이트");
 
             // 현재 생성된 uiSlots 의 개수 만큼 반복
             for (int i = 0; i < uiSlots.Count; i++)

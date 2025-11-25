@@ -9,7 +9,7 @@ namespace KW
         
         public override void EnterState(SkeletonController controller)
         {
-            Debug.Log("스켈레톤 상태 진입 : Dead");
+            // Debug.Log("스켈레톤 상태 진입 : Dead");
 
             controller.anim.SetTrigger("isDead");
             controller.anim.ResetTrigger("isAttack");

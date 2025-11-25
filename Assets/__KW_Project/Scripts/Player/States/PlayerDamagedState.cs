@@ -48,7 +48,7 @@ namespace KW
             // 넉백 방향 설정
             knockBackDir = movement.lastHisPos;
 
-            Debug.Log($"[피격 로그] FlipX: {movement.sr.flipX} | 원본 방향: {movement.lastHisPos} | 넉백 적용 방향: {knockBackDir}");
+            // Debug.Log($"[피격 로그] FlipX: {movement.sr.flipX} | 원본 방향: {movement.lastHisPos} | 넉백 적용 방향: {knockBackDir}");
         }
 
         public override void ExitState(PlayerMovement movement)

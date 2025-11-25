@@ -47,7 +47,7 @@ namespace KW
                 // 플레이어에게 데미지 주기
                 if (playerHealth != null)
                 {
-                    Debug.Log($"SkeletonHitBox : 플레이어에게 {_damage} 피해");
+                    // Debug.Log($"SkeletonHitBox : 플레이어에게 {_damage} 피해");
                     playerHealth.TakeDamage(_damage, skeleton.transform);
 
                     alreadyHitTargets.Add(other);
