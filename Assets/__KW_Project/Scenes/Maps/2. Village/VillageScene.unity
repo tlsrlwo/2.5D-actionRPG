@@ -5327,19 +5327,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1434425232}
+    m_TransformParent: {fileID: 1479084733}
     m_Modifications:
     - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.384792
+      value: 0.84711075
       objectReference: {fileID: 0}
     - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.344526
+      value: 0.42226505
       objectReference: {fileID: 0}
     - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.668381
+      value: -3.6403694
       objectReference: {fileID: 0}
     - target: {fileID: 4862582133737318495, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5371,7 +5383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784998110209642775, guid: 10cc4fcdf8f6f4e4d92df2135692ecff, type: 3}
       propertyPath: m_Name
-      value: IncaProps_Bonfire_Stones
+      value: Village Bonfire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6030,15 +6042,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a1e9157e46452d74dad1c4ae8f319576, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1e9157e46452d74dad1c4ae8f319576, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1e9157e46452d74dad1c4ae8f319576, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1e9157e46452d74dad1c4ae8f319576, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6187,6 +6199,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b7123c37b666a3f4b94cd120227e412f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7123c37b666a3f4b94cd120227e412f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7123c37b666a3f4b94cd120227e412f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7123c37b666a3f4b94cd120227e412f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.5881157
@@ -6661,7 +6685,6 @@ Transform:
   - {fileID: 1134071862}
   - {fileID: 202363495}
   - {fileID: 1349787638}
-  - {fileID: 1110119670}
   - {fileID: 1497551690}
   - {fileID: 1549801710}
   - {fileID: 2122155548}
@@ -6787,6 +6810,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0c8afc64092a17499f75726ccb57c60, type: 3}
   m_PrefabInstance: {fileID: 1467399225}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1479084732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479084733}
+  m_Layer: 0
+  m_Name: Bonfire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479084733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479084732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.31289, y: 5.908103, z: 41.10037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1110119670}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1497551689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10490,3 +10545,4 @@ SceneRoots:
   - {fileID: 2095263078}
   - {fileID: 753085901}
   - {fileID: 1159954152}
+  - {fileID: 1479084733}
