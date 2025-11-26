@@ -14,6 +14,9 @@ namespace KW
 
         [SerializeField] private Transform popupHolder;                         // 팝업이 생성될 위치
 
+
+
+        // 아이템을 획득했을 때 뜨는 팝업
         public void ShowLootPopup(List<ChestSlot> items)
         {
             Time.timeScale = 0.00001f;
