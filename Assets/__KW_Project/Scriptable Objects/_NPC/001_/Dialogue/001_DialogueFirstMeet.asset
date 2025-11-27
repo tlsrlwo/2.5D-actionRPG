@@ -21,5 +21,9 @@ MonoBehaviour:
   dialogueChoices:
   - choiceText: "\uC218\uB77D"
     nextDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1
   - choiceText: "\uAC70\uC808"
     nextDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1

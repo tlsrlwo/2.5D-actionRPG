@@ -72,11 +72,11 @@ namespace KW
 
             if (isTracking)
             {
-                trackBtnText.text = "현재 추적중";
+                trackBtnText.text = "ON";
             }
             else
             {
-                trackBtnText.text = "추적하기";
+                trackBtnText.text = "OFF";
             }
         }
     }

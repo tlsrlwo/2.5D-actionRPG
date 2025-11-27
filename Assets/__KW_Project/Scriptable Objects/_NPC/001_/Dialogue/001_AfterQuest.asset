@@ -18,5 +18,5 @@ MonoBehaviour:
   dialogueChoices:
   - choiceText: "\uD5EC\uBA67 "
     nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
-    rewardItem: {fileID: 11400000, guid: 2f143384f91ab1a408500f78deecdb84, type: 2}
+    rewardItem: {fileID: 11400000, guid: 2e38db743d43cf44097a726358ee828f, type: 2}
     rewardItemCount: 1
