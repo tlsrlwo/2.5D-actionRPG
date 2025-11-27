@@ -16,7 +16,11 @@ MonoBehaviour:
   - "\uACE0\uB9D9\uB124...! \uC815\uB9D0 \uACE0\uB9D9\uB124.. \uADF8\uB9AC \uC88B\uC9C4
     \uC54A\uB2E4\uB9CC \uC6D0\uD558\uB294 \uAC83\uC744 \uAC00\uC838\uAC00\uC138.."
   dialogueChoices:
-  - choiceText: "\uD5EC\uBA67 "
+  - choiceText: "\uD5D0\uB801\uD55C \uD65C"
     nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
     rewardItem: {fileID: 11400000, guid: 2e38db743d43cf44097a726358ee828f, type: 2}
+    rewardItemCount: 1
+  - choiceText: "\uD22C\uCC99\uC6A9 \uCC3D"
+    nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
+    rewardItem: {fileID: 11400000, guid: bd193f72c9b0bc943985fdc4093191ee, type: 2}
     rewardItemCount: 1
