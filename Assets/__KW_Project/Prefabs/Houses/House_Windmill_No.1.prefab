@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5217624217598474850}
   - component: {fileID: 9207435722492065223}
   - component: {fileID: 6351084037090656525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_beam_big_v01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: 691ce6ddd38f5194f8d9c838b8542a03, type: 3}
-  - {fileID: 1807664802090774700, guid: 691ce6ddd38f5194f8d9c838b8542a03, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 9e708b70723afe84d8db0b59e30fcb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2197236563038575443}
-  m_Layer: 0
+  - component: {fileID: 5819770795277585698}
+  m_Layer: 10
   m_Name: House_Windmill_No.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +120,27 @@ Transform:
   - {fileID: 5217624217598474850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &5819770795277585698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037463095747791628}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.4907837, y: 16.57511, z: 5.5029907}
+  m_Center: {x: -6.775116, y: 2.265357, z: -14.545227}
 --- !u!1 &5371795238668097446
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +152,7 @@ GameObject:
   - component: {fileID: 4739937325570723100}
   - component: {fileID: 8532201947125318329}
   - component: {fileID: 5876229113624000115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_window_v05_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,11 +202,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4769793504480993517, guid: 3db51d7867e5b164c9acd8a1ee5eaa79, type: 3}
-  - {fileID: -1405128922151489706, guid: 3db51d7867e5b164c9acd8a1ee5eaa79, type: 3}
-  - {fileID: 3051933428391494051, guid: 3db51d7867e5b164c9acd8a1ee5eaa79, type: 3}
-  - {fileID: -4096354652238735949, guid: 3db51d7867e5b164c9acd8a1ee5eaa79, type: 3}
-  - {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+  - {fileID: 2100000, guid: aeddbed63c42a5945bd9c6619d1036e4, type: 2}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 33ab60104649e2b43b2052be7eecdd5c, type: 2}
+  - {fileID: 2100000, guid: cd996331f01c67940a5c046022965cd1, type: 2}
+  - {fileID: 2100000, guid: e8a2dcdfb802ce1428d8c49d49152719, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,7 +239,8 @@ GameObject:
   - component: {fileID: 8020093574053455582}
   - component: {fileID: 6404896060356323707}
   - component: {fileID: 9153060749386882481}
-  m_Layer: 0
+  - component: {fileID: 7080069335686649331}
+  m_Layer: 10
   m_Name: SM_BLD_windmill_sail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,11 +290,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: 67933ab4bbda71648912c5f0e59909cd, type: 3}
-  - {fileID: 8364799137868796100, guid: 67933ab4bbda71648912c5f0e59909cd, type: 3}
-  - {fileID: 7820285602010480627, guid: 67933ab4bbda71648912c5f0e59909cd, type: 3}
-  - {fileID: 7699416853086568628, guid: 67933ab4bbda71648912c5f0e59909cd, type: 3}
-  - {fileID: 1807664802090774700, guid: 67933ab4bbda71648912c5f0e59909cd, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 4bb844ce2ed562242b9c2806a7780714, type: 2}
+  - {fileID: 2100000, guid: 03d39d23a9c8c0a46b14c287ee91c32f, type: 2}
+  - {fileID: 2100000, guid: 5a95891d33c830e44a3b84826b56ed79, type: 2}
+  - {fileID: 2100000, guid: f6370e75e9d07214c98498b8e69fc0dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -293,6 +316,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7080069335686649331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7207668368989043812}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 17.066525, y: 17.066551, z: 3.4798875}
+  m_Center: {x: 0.00321436, y: 0.00046396255, z: 1.5792811}
 --- !u!1 &7398119994964448102
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +348,7 @@ GameObject:
   - component: {fileID: 7917528654847035868}
   - component: {fileID: 6507540699266500217}
   - component: {fileID: 9055501352305537715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_body_v01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,10 +398,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: 5e9d2d82f782c1c4884b621cc4a6d78e, type: 3}
-  - {fileID: -4769793504480993517, guid: 5e9d2d82f782c1c4884b621cc4a6d78e, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: aeddbed63c42a5945bd9c6619d1036e4, type: 2}
   - {fileID: 2100000, guid: 112ce5ad5d146744187878e578ebeff6, type: 2}
-  - {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+  - {fileID: 2100000, guid: b68a3fd8442a2f44b996c616dec21546, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

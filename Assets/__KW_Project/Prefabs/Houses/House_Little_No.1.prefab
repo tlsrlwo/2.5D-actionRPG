@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 264903463818062759}
   - component: {fileID: 3747834773958714370}
   - component: {fileID: 1433847375398080712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_window_v07_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: f3a0d3d71119fa74a89413b2847a3a72, type: 3}
-  - {fileID: 3051933428391494051, guid: f3a0d3d71119fa74a89413b2847a3a72, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 33ab60104649e2b43b2052be7eecdd5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 79226050840193292}
   - component: {fileID: 3942527885415704233}
   - component: {fileID: 1248160586640298595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_body_v02_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,12 +145,12 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1807664802090774700, guid: 7c51902b50bdaf34e8dc9bfc290783b3, type: 3}
-  - {fileID: -1405128922151489706, guid: 7c51902b50bdaf34e8dc9bfc290783b3, type: 3}
-  - {fileID: 7820285602010480627, guid: 7c51902b50bdaf34e8dc9bfc290783b3, type: 3}
-  - {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+  - {fileID: 2100000, guid: 9e708b70723afe84d8db0b59e30fcb10, type: 2}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 03d39d23a9c8c0a46b14c287ee91c32f, type: 2}
+  - {fileID: 2100000, guid: b68a3fd8442a2f44b996c616dec21546, type: 2}
   - {fileID: 2100000, guid: 112ce5ad5d146744187878e578ebeff6, type: 2}
-  - {fileID: -4769793504480993517, guid: 7c51902b50bdaf34e8dc9bfc290783b3, type: 3}
+  - {fileID: 2100000, guid: aeddbed63c42a5945bd9c6619d1036e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 2120921531531689726}
   - component: {fileID: 3080705618586333531}
   - component: {fileID: 946928250241910161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_beam_big_v03_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,9 +233,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: 5710ae473a99d61469b0bc8d7a4b18f9, type: 3}
-  - {fileID: 1807664802090774700, guid: 5710ae473a99d61469b0bc8d7a4b18f9, type: 3}
-  - {fileID: 7820285602010480627, guid: 5710ae473a99d61469b0bc8d7a4b18f9, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 9e708b70723afe84d8db0b59e30fcb10, type: 2}
+  - {fileID: 2100000, guid: 03d39d23a9c8c0a46b14c287ee91c32f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1300804502823286987}
   - component: {fileID: 2711933717249374062}
   - component: {fileID: 163904271452816292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_PROP_barrel_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,9 +318,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -335465181104682441, guid: 6d6082a0feaa1ae4dbf89f8559476426, type: 3}
-  - {fileID: 1807664802090774700, guid: 6d6082a0feaa1ae4dbf89f8559476426, type: 3}
-  - {fileID: 7902132123254751847, guid: 6d6082a0feaa1ae4dbf89f8559476426, type: 3}
+  - {fileID: 2100000, guid: e21397e8f013b58478ae1f211aa0709f, type: 2}
+  - {fileID: 2100000, guid: 9e708b70723afe84d8db0b59e30fcb10, type: 2}
+  - {fileID: 2100000, guid: 534359c1d339a634c9779c2c2bc2309c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 3268505522002197913}
   - component: {fileID: 1942120032617689660}
   - component: {fileID: 4402053856608388854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_chimney_v01_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 112ce5ad5d146744187878e578ebeff6, type: 2}
-  - {fileID: 1981159611554246928, guid: 458cbf20b2ac51c40b09082ac6b18446, type: 3}
+  - {fileID: 2100000, guid: 26c89726e2f522c448cbd286b9b4ebba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 3420344739982203262}
   - component: {fileID: 4946397632078198495}
   - component: {fileID: 7076594647517618247}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_window_v07_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,8 +487,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1405128922151489706, guid: f3a0d3d71119fa74a89413b2847a3a72, type: 3}
-  - {fileID: 3051933428391494051, guid: f3a0d3d71119fa74a89413b2847a3a72, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 33ab60104649e2b43b2052be7eecdd5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 7626467415795100951}
   - component: {fileID: 6807608790767231666}
   - component: {fileID: 8763313735529993848}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_door_v04_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,8 +572,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 112ce5ad5d146744187878e578ebeff6, type: 2}
-  - {fileID: -4096354652238735949, guid: b47c9fe73425bb343a3d1def14989045, type: 3}
-  - {fileID: 1981159611554246928, guid: b47c9fe73425bb343a3d1def14989045, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
+  - {fileID: 2100000, guid: 9e708b70723afe84d8db0b59e30fcb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -604,7 +604,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 137587260614827635}
-  m_Layer: 0
+  - component: {fileID: 4651129339109501287}
+  m_Layer: 10
   m_Name: House_Little_No.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,6 +635,27 @@ Transform:
   - {fileID: 3268505522002197913}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &4651129339109501287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7769400639450008985}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.9334564, y: 11.468336, z: 5.7382507}
+  m_Center: {x: -0.9344406, y: 2.734168, z: -0.4265747}
 --- !u!1 &7840990019532634823
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +667,7 @@ GameObject:
   - component: {fileID: 7465589728449945725}
   - component: {fileID: 5779457359526981592}
   - component: {fileID: 8633460482454297362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_BLD_stairs_v01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +718,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 63d835b6e430b134d9ae5d389e72190d, type: 2}
-  - {fileID: -1405128922151489706, guid: c0bfa851f28b48b48b225b907c44987d, type: 3}
+  - {fileID: 2100000, guid: 182309e13a7cfc14eb3252cc74f34ade, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
