@@ -22,6 +22,7 @@ MonoBehaviour:
     - 95951b636f85b6e418d6f4faac547b3c
     - 09a1c77c7a33ec342bb83ce341c14d22
     - 3a16ebb013cd3b84fb68f27c696d1ce1
+    - 7f77c870263ced048a91606656940805
     values:
     - goDatas_byGlobalId:
         keys:
@@ -310,6 +311,39 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 2
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-6886808744084825488-0
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-5709726595044805211-0
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-8845616512947236539-0
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-1802294729-0
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-1904509284-0
+        - globalObjectIdString: GlobalObjectId_V1-2-7f77c870263ced048a91606656940805-811355063-0
+        values:
+        - colorIndex: 1
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

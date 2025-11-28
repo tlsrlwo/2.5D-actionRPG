@@ -10,8 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: 002_Quest
+  m_Name: 099_DelineLoop
   m_EditorClassIdentifier: 
   dialogueLines:
-  - 1
-  dialogueChoices: []
+  - Change of mind?
+  dialogueChoices:
+  - choiceText: Yes
+    nextDialogue: {fileID: 11400000, guid: 6a81128fe4c87bd48871f8011b2d73ef, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 0
+  - choiceText: No
+    nextDialogue: {fileID: 11400000, guid: 13d8502a8441577469e806dfc8bc9df0, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 0

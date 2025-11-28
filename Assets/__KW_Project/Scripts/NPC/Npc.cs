@@ -19,13 +19,14 @@ namespace KW
         [SerializeField] private DialogueSO afterQuestDialogue;                 // 퀘스트 완료 후 방문 시 대사
 
 
-        [Header("퀘스트 데이터")]
+        /* [Header("퀘스트 데이터")]
         [Tooltip("퀘스트 요구 사항")]
         public List<ChestSlot> questRequirements;
 
         [Tooltip("퀘스트 완료 시 지급할 보상")]
-        public List<ChestSlot> questRewards;
-        public QuestSO questData;
+        public List<ChestSlot> questRewards;*/
+
+        public QuestSO questData; 
 
         // NPC의 현재 상태 저장 
         private bool hasMetPlayer = false;

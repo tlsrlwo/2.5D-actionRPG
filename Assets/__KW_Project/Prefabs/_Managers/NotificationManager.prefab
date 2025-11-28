@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4975884048107063211
+--- !u!1 &6802933328659431527
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8850977415284563641}
-  - component: {fileID: 4254824374299651564}
+  - component: {fileID: 124331839589521804}
+  - component: {fileID: 2670599026542041364}
   m_Layer: 0
-  m_Name: SaveManager
+  m_Name: NotificationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8850977415284563641
+--- !u!4 &124331839589521804
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4975884048107063211}
+  m_GameObject: {fileID: 6802933328659431527}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.832104, y: 6.428248, z: 22.43223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4254824374299651564
+--- !u!114 &2670599026542041364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4975884048107063211}
+  m_GameObject: {fileID: 6802933328659431527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89a9798b099ea743ae65bf48ff0aba0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dcfaf32c118615469ac96cec211634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemLootPopupPrefab: {fileID: 7149998467113904836, guid: 89305220dde48e1478484a31a313e0a7, type: 3}
+  itemLootLinePrefab: {fileID: 8839367403115059734, guid: 7695cd56c4d8e7746910485a752b3f1e, type: 3}
+  popupHolder: {fileID: 0}
