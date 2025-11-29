@@ -29,6 +29,11 @@ namespace KW
 
         private void Start()
         {
+            if(SaveManager.Instance != null)
+            {
+                SaveManager.Instance.playerHealth = this;
+            }
+
             _currentHp = _maxHp;
 
             OnHealthChanged?.Invoke(_currentHp, _maxHp);
@@ -86,6 +91,21 @@ namespace KW
                 hitDirection.y = 0;
 
                 OnPlayerHit?.Invoke(hitDirection);
+            }
+        }
+
+        public void SetHealth(float health)
+        {
+            // 불러온 체력 적용
+            _currentHp = Mathf.Clamp(health, 0, _maxHp);
+
+            OnHealthChanged?.Invoke(_currentHp, _maxHp);
+
+
+            // 체력이 0 이하일 시 
+            if (_currentHp <= 0)
+            {
+                OnPlayerDied?.Invoke();
             }
         }
                 

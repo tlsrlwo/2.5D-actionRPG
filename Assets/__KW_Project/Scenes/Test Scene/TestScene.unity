@@ -15437,7 +15437,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3185719028248415606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.415439}
+  m_AnchorMin: {x: 0, y: 0.41548508}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -17355,6 +17355,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89a9798b099ea743ae65bf48ff0aba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerHealth: {fileID: 0}
+  inventory: {fileID: 0}
+  questManager: {fileID: 0}
+  weaponSlot: {fileID: 0}
+  armourSlot: {fileID: 0}
+  potionSlot: {fileID: 0}
 --- !u!222 &2552315067862335142
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18217,7 +18224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2523461662954091734}
         m_TargetAssemblyTypeName: KW.SaveManager, Assembly-CSharp
-        m_MethodName: LoadBtn
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21295,6 +21302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeQuests: []
+  completedQuests: []
   trackedQuests: []
 --- !u!224 &6249297703928938968
 RectTransform:
@@ -23189,7 +23197,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2523461662954091734}
         m_TargetAssemblyTypeName: KW.SaveManager, Assembly-CSharp
-        m_MethodName: SaveBtn
+        m_MethodName: SaveGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23668,7 +23676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -284.27475}
+  m_AnchoredPosition: {x: 0, y: -284.2743}
   m_SizeDelta: {x: 832, y: 1440.5771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8439114320715625798
@@ -23749,8 +23757,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5693623868201559021}
   m_HandleRect: {fileID: 524509933328108259}
   m_Direction: 2
-  m_Value: 1.000001
-  m_Size: 0.584561
+  m_Value: 1.0000002
+  m_Size: 0.5845149
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

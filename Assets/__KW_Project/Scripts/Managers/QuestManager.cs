@@ -24,6 +24,8 @@ namespace KW
         public static QuestManager Instance { get; private set; }
 
         public List<Quest> activeQuests = new List<Quest>();            // 모든 퀘스트를 담을 리스트
+        public List<string> completedQuests = new List<string>();         // 완료된 퀘스트들
+
 
         public List<Quest> trackedQuests = new List<Quest>();
 
@@ -46,6 +48,11 @@ namespace KW
         }
         private void Start()
         {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.questManager = this;
+            }
+
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             if (player != null)
@@ -188,7 +195,11 @@ namespace KW
                     trackedQuests.Remove(questToRemove);
                     OnTrackListUpdated?.Invoke();
                 }
-            }
+                if (!completedQuests.Contains(questData.questTitle))
+                {
+                    completedQuests.Add(questData.questTitle);
+                }
+            }       
 
             activeQuests.Remove(questToRemove);
             OnQuestListUpdated?.Invoke();
@@ -208,6 +219,15 @@ namespace KW
                 trackedQuests.Add(quest);           // 지금 받아온 퀘스트 추가
             }
 
+            OnTrackListUpdated?.Invoke();
+        }
+
+        public void ForceUpdateUI()
+        {
+            // 퀘스트 목록
+            OnQuestListUpdated?.Invoke();
+
+            // 추적중인 퀘스트 
             OnTrackListUpdated?.Invoke();
         }
     }
