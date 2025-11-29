@@ -6,6 +6,9 @@ namespace KW
     [System.Serializable]
     public class SaveData
     {
+        [Header("지정된 씬(Scene)) 이름")]
+        public string sceneName;
+
         [Header("플레이어 정보")]
         public Vector3 playerPos;
         public float currentHp;
@@ -16,7 +19,7 @@ namespace KW
 
         [Header("퀘스트 정보")]
         public List<string> completedQuestNames = new List<string>();                   // 완료한 퀘스트
-        public List<QuestSaveData> activeQuests = new List<QuestSaveData>();         // 진행중인 퀘스트
+        public List<QuestSaveData> activeQuests = new List<QuestSaveData>();            // 진행중인 퀘스트
     }
 
     [System.Serializable]

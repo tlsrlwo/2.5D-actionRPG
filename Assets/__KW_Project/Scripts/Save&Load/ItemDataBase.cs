@@ -5,15 +5,22 @@ namespace KW
 {
     public class ItemDataBase : MonoBehaviour
     {
-        public static ItemDataBase Instance;
+        public static ItemDataBase Instance { get; private set; }
 
         // ID로 아이템을 찾기 위한 사전
         private Dictionary<string, Item> _itemDictionary = new Dictionary<string, Item>();
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            } 
 
             // Resources/Item 폴더에 있는 모든 Item 을 불러옴
             Item[] allItems = Resources.LoadAll<Item>("Items");

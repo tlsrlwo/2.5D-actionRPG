@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using Unity.VisualScripting;
-
-
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -47,6 +45,9 @@ namespace KW
         public void SaveGame()
         {
             SaveData data = new SaveData();
+
+            // 현재 씬 정보 저장
+            data.sceneName = SceneManager.GetActiveScene().name;
 
             // 플레이어 정보 저장
             data.playerPos = player.transform.position;
@@ -102,7 +103,6 @@ namespace KW
                 list.Add(new ItemSaveData { itemId = "", amount = 0 });
             }
         }
-        
 
         public void LoadGame()
         {
@@ -115,61 +115,92 @@ namespace KW
             string json = File.ReadAllText(savePath);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+            StartCoroutine(LoadGameCoroutine(data));
+        }
+
+        private IEnumerator LoadGameCoroutine(SaveData data)
+        {
+            // 씬 확인
+            string currentScene = SceneManager.GetActiveScene().name;
+            if (data.sceneName != currentScene)
+            {
+                // 씬이 다르면 로드하고 기다림
+                AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(data.sceneName);
+
+                // 로딩이 끝날 때 까지 대기
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
+
+                // 씬 로드 후 1프레임을 더 쉬어 다른 스크립트들의 Awake() 함수가 호출될 동안 더 기다려줌
+                yield return null;
+            }
+
+            // 데이터 복구
             // 플레이어 복구
             // CharacterController 가 있으면 transform.position 직접 수정이 안 먹힐 수 있어서 꺼야함
-            player.cController.enabled = false;
-            player.transform.position = data.playerPos;
-            player.cController.enabled = true;
+            if (player != null)
+            {
+                player.cController.enabled = false;
+                player.transform.position = data.playerPos;
+                player.cController.enabled = true;
+            }
 
             // 체력 복구 
-            playerHealth.SetHealth(data.currentHp);;
+            if (playerHealth != null)
+            {
+                playerHealth.SetHealth(data.currentHp); ;
+            }
 
             // 인벤토리 복구
-            inventory.slots.Clear();
-
-            foreach (var itemData in data.inventoryItems)
-            {
-                Item item = ItemDataBase.Instance.GetItemId(itemData.itemId);
-                if (item != null)
-                {
-                    inventory.AddItem(item, itemData.amount);
-                }
-            }
-
-            // 퀵슬롯 복구
-            LoadQuickSlot(weaponSlot, data.quickSlotItems[0]);
-            LoadQuickSlot(armourSlot, data.quickSlotItems[1]);
-            // LoadQuickSlot(potionSlot, data.quickSlotItems[2]);
-
-            questManager.activeQuests.Clear();
-            questManager.completedQuests = data.completedQuestNames;
-
-            foreach (var qData in data.activeQuests)
-            {
-                QuestSO so = Resources.Load<QuestSO>("Quests/" + qData.questName);          // Resources 안에 Quests 안에 questName 을 기준으로 찾음
-
-                if (so != null)
-                {
-                    Quest restoredQuest = new Quest(so);
-                    restoredQuest.currentCount = qData.currentCount;
-
-                    questManager.activeQuests.Add(restoredQuest);
-                }
-            }
-
-            // UI 갱신
             if (inventory != null)
             {
+                inventory.slots.Clear();
+
+                foreach (var itemData in data.inventoryItems)
+                {
+                    Item item = ItemDataBase.Instance.GetItemId(itemData.itemId);
+                    if (item != null)
+                    {
+                        inventory.AddItem(item, itemData.amount);
+                    }
+                }
                 inventory.ForceUpdateUI();
             }
-            
+            // 퀵슬롯 복구
+            if (weaponSlot != null) LoadQuickSlot(weaponSlot, data.quickSlotItems[0]);
+            if (armourSlot != null) LoadQuickSlot(armourSlot, data.quickSlotItems[1]);
+            if (potionSlot != null) LoadQuickSlot(potionSlot, data.quickSlotItems[2]);
+
             if (questManager != null)
             {
+                questManager.activeQuests.Clear();
+                questManager.completedQuests = data.completedQuestNames;
+
+                foreach (var qData in data.activeQuests)
+                {
+                    QuestSO so = Resources.Load<QuestSO>("Quests/" + qData.questName);          // Resources 안에 Quests 안에 questName 을 기준으로 찾음
+
+                    if (so != null)
+                    {
+                        Quest restoredQuest = new Quest(so);
+                        restoredQuest.currentCount = qData.currentCount;
+
+                        questManager.activeQuests.Add(restoredQuest);
+                    }
+                    else
+                    {
+                        Debug.LogError("저장된 퀘스트 Scriptable Object 를 찾을 수 없습니다");
+                    }
+                }
                 questManager.ForceUpdateUI();
             }
 
-            Debug.Log("Game Data Loaded");
+            Debug.Log("Game Loaded , Scene" + data.sceneName);
+
         }
+
         public void DisplayBtn()
         {
             Debug.Log("Display Button is Pressed");

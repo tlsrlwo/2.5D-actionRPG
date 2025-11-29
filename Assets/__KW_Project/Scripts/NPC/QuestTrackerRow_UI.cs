@@ -13,7 +13,7 @@ namespace KW
 
         public void Setup(Quest quest)
         {
-            titleText.text = quest.data.questTitle;
+            titleText.text = quest.data.questNameForGame;
 
             if (quest.isCompleted)
             {

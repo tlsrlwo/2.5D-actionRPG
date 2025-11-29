@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55942b11c7e975e43b4c767879c32c20, type: 3}
   m_Name: 001_Quest
   m_EditorClassIdentifier: 
-  questTitle: "\uC2A4\uCF08\uB808\uD1A4 \uD1A0\uBC8C"
-  description: "\uC2A4\uCF08\uB808\uD1A4\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uB77C"
+  questTitle: 001_Quest
+  questNameForGame: "\uC2A4\uCF08\uB808\uD1A4 \uC0AC\uB0E5"
+  description: "\uC2A4\uCF08\uB808\uD1A4\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uB77C "
   type: 1
   targetName: Skeleton
   targetCount: 5

@@ -19,7 +19,7 @@ namespace KW
             _quest = quest;
 
             // 텍스트 설정
-            titleText.text = quest.data.questTitle;
+            titleText.text = quest.data.questNameForGame;
 
             if (quest.isCompleted)
             {
