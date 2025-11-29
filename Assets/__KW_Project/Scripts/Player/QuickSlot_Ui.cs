@@ -47,6 +47,25 @@ namespace KW
             ClearSlot();
         }
 
+        private void Start()
+        {
+            if(SaveManager.Instance != null)
+            {
+                switch (_acceptedItemType)
+                {
+                    case ItemType.Weapon:
+                        SaveManager.Instance.weaponSlot = this;
+                        break;
+                    case ItemType.Armour:
+                        SaveManager.Instance.armourSlot = this;
+                        break;
+                    case ItemType.Consumable:
+                        SaveManager.Instance.potionSlot = this;
+                        break;
+                }
+            }
+        }
+
         // 아이템 장착 시도
         public bool EquipItem(Item newItem)
         {

@@ -121,7 +121,6 @@ namespace KW
 
         private void Awake()
         {
-
             sr = GetComponent<SpriteRenderer>();
             cController = GetComponent<CharacterController>();
             anim = GetComponent<Animator>();
@@ -139,6 +138,10 @@ namespace KW
 
         private void Start()
         {
+            if(SaveManager.Instance != null)
+            {
+                SaveManager.Instance.player = this;
+            }
             // 씬 시작 시 상태(state) 설정
             SwitchState(playerIdle);
 

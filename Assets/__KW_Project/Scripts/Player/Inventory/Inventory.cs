@@ -16,6 +16,14 @@ namespace KW
 
         public int maxSlots = 50;                                       // 가방 최대 칸 수
 
+        private void Start()
+        {
+             if(SaveManager.Instance != null)
+            {
+                SaveManager.Instance.inventory = this;
+            }
+        }
+
         // 아이템이 한개일때만 AddItem(itemToAdd, amountToAdd) 호출
         public bool AddItem(Item itemToAdd)
         {
@@ -146,7 +154,7 @@ namespace KW
 
             return count;
         }
-        
+
         // 특정 아이템을 N개 삭제하는 함수
         public void RemoveItemQuantity(Item itemToRemove, int amountToRemove)
         {
@@ -176,6 +184,11 @@ namespace KW
                 }
             }
             OnInventoryChanged.Invoke();
+        }
+        
+        public void ForceUpdateUI()
+        {
+            OnInventoryChanged?.Invoke();
         }
     }
 }
