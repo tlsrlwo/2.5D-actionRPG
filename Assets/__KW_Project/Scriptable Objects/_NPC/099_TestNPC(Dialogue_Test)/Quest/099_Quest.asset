@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55942b11c7e975e43b4c767879c32c20, type: 3}
   m_Name: 099_Quest
   m_EditorClassIdentifier: 
-  questTitle: TestQuest_099
-  description: '099_NPC_Test
-
-'
-  type: 1
-  targetName: Skeleton
-  targetCount: 99
-  targetRegion: TestScene
-  requiredItem: {fileID: 0}
-  itemRewardCount: 0
+  questTitle: "\uAC11\uC637\uC774 \uD544\uC694\uD574!"
+  description: "\uBCD1\uC0AC\uC6A9 \uD5EC\uBA67\uC744 \uC5BB\uC5B4\uB77C"
+  type: 0
+  targetName: arm_SoldierHelmet
+  targetCount: 1
+  targetRegion: 
+  requiredItem: {fileID: 11400000, guid: ef57de8865e0fa746b43736bf931c05f, type: 2}
+  itemRewardCount: 1

@@ -681,6 +681,8 @@ MonoBehaviour:
   itemsInChest:
   - item: {fileID: 11400000, guid: 5841f634e66dd9d4aa3683bec903a62f, type: 2}
     quantity: 1
+  - item: {fileID: 11400000, guid: ef57de8865e0fa746b43736bf931c05f, type: 2}
+    quantity: 1
   _notificationManager: {fileID: 6882644072127748915}
 --- !u!1001 &109311096
 PrefabInstance:
@@ -2308,7 +2310,6 @@ Transform:
   - {fileID: 1098449255}
   - {fileID: 1134528734}
   - {fileID: 111973631}
-  - {fileID: 1822477510}
   - {fileID: 922018261}
   - {fileID: 1014960813}
   m_Father: {fileID: 0}
@@ -13531,7 +13532,7 @@ GameObject:
   - component: {fileID: 1822477512}
   - component: {fileID: 1822477511}
   m_Layer: 0
-  m_Name: Player_concept
+  m_Name: NPC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13602,7 +13603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 543591507}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1822477511
 BoxCollider:
@@ -13639,15 +13640,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstMeetingDialogue: {fileID: 11400000, guid: 19c7efbdabdaaa34b9bb384bda20f54b, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 6a81128fe4c87bd48871f8011b2d73ef, type: 2}
-  acceptedDialogue: {fileID: 0}
+  acceptedDialogue: {fileID: 11400000, guid: a07f1d1ac6c2473498c329b3140fb107, type: 2}
   declinedDialogue: {fileID: 11400000, guid: 13d8502a8441577469e806dfc8bc9df0, type: 2}
-  acceptedLoopDialogue: {fileID: 0}
-  declinedLoopDialogue: {fileID: 0}
-  questCompletionDialogue: {fileID: 0}
-  afterQuestDialogue: {fileID: 0}
-  questRequirements: []
-  questRewards: []
-  questData: {fileID: 0}
+  acceptedLoopDialogue: {fileID: 11400000, guid: fcf7b355816ab8a4c875f1b7f8277821, type: 2}
+  declinedLoopDialogue: {fileID: 11400000, guid: 31a3331c2e8b0f34c901b046f660fc58, type: 2}
+  questCompletionDialogue: {fileID: 11400000, guid: 16dddaba1956d1d4aa5ecec722250c7e, type: 2}
+  afterQuestDialogue: {fileID: 11400000, guid: 233ba159201ed014c8b31526b816cbb1, type: 2}
+  questData: {fileID: 11400000, guid: df0a794cb24d0a94b98607abb063c411, type: 2}
   currentQuestState: 0
 --- !u!1 &1828673822
 GameObject:
@@ -14262,8 +14261,6 @@ MonoBehaviour:
   declinedLoopDialogue: {fileID: 11400000, guid: c40be54b3110b234f9d8ce9e73e97da4, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 6c6197a4b4b023141aad1797300fade1, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
-  questRequirements: []
-  questRewards: []
   questData: {fileID: 11400000, guid: ab045e92cdda25b4187b676a5b34748e, type: 2}
   currentQuestState: 0
 --- !u!65 &2015705514
@@ -24384,3 +24381,4 @@ SceneRoots:
   - {fileID: 72144084}
   - {fileID: 1392205921}
   - {fileID: 2015705512}
+  - {fileID: 1822477510}
