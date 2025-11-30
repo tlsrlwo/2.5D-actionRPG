@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -44,6 +46,11 @@ namespace KW
 
         public void SaveGame()
         {
+            if (weaponSlot == null || armourSlot == null || potionSlot == null)
+            {
+                FindQuickSlots();   
+            }
+
             SaveData data = new SaveData();
 
             // 현재 씬 정보 저장
@@ -103,6 +110,28 @@ namespace KW
                 list.Add(new ItemSaveData { itemId = "", amount = 0 });
             }
         }
+
+        private void FindQuickSlots()
+        {
+            QuickSlot_Ui[] allSlots = FindObjectsOfType<QuickSlot_Ui>(true);
+
+            foreach(var slot in allSlots)
+            {
+                switch (slot.acceptedItemType)
+                {
+                    case ItemType.Weapon:
+                        weaponSlot = slot;
+                        break;
+                    case ItemType.Armour:
+                        armourSlot = slot;
+                        break;
+                    case ItemType.Consumable:
+                        potionSlot = slot;
+                        break;                        
+                }
+            }
+        }
+
 
         public void LoadGame()
         {

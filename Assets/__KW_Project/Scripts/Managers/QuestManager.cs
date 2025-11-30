@@ -219,6 +219,7 @@ namespace KW
                 trackedQuests.Add(quest);           // 지금 받아온 퀘스트 추가
             }
 
+            OnQuestListUpdated?.Invoke();
             OnTrackListUpdated?.Invoke();
         }
 

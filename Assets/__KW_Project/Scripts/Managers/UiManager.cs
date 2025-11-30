@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace KW
 {
@@ -16,17 +15,46 @@ namespace KW
 
     public class UiManager : MonoBehaviour
     {
+        public static UiManager Instance { get; private set; }
+
         public static event Action<bool> OnAnyUiStateChanged;           // 패널이 열고 닫을 때 호출 되는 이벤트 (PlayerMovement에서구독함)
 
         [SerializeField] private GameObject ingameUi;
+        public InGameUI inGameUIScript;
         [SerializeField] private GameObject systemCanvas;
+        public SystemCanvasUI systemCanvasUIScript;
 
         [SerializeField] private List<UiPanel> uiPanels;                // 각 (인벤/맵/설정/퀘스트) 패널을 담을 리스트
 
         [SerializeField] private UiPanel currentOpenPanel = null;
 
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }           
+        }
+
         private void Start()
         {
+             if (inGameUIScript != null)
+            {
+                // Debug.Log("[UiManager] 인게임Ui 등록완료");
+                ingameUi = inGameUIScript.transform.gameObject;
+                ingameUi.SetActive(true);
+            }
+            if (systemCanvasUIScript != null)
+            {
+                // Debug.Log("[UiManager] 시스템Ui 등록완료");
+                systemCanvas = systemCanvasUIScript.transform.gameObject;
+                systemCanvas.SetActive(true);             
+            }
             foreach (var panel in uiPanels)
             {
                 panel.panelObject.SetActive(false);                     // 패널 클래스를 가진 패널 각각 setActive(false)

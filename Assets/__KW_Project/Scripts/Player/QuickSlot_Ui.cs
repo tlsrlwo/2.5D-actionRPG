@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,6 +7,7 @@ namespace KW
     public class QuickSlot_Ui : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [SerializeField] private ItemType _acceptedItemType;
+        public ItemType acceptedItemType => _acceptedItemType;
 
         [SerializeField] private Image _itemSprite;
 
@@ -23,6 +21,8 @@ namespace KW
 
         public void OnEnable()
         {
+            RegisterToSaveManager();
+
             if (_inventoryUI == null)
             {
                 _inventoryUI = GetComponentInParent<InventoryUI>();
@@ -49,7 +49,12 @@ namespace KW
 
         private void Start()
         {
-            if(SaveManager.Instance != null)
+            RegisterToSaveManager();
+        }
+        
+        private void RegisterToSaveManager()
+        {
+             if (SaveManager.Instance != null)
             {
                 switch (_acceptedItemType)
                 {

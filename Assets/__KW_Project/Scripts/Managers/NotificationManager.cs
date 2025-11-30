@@ -7,13 +7,40 @@ namespace KW
 {
     public class NotificationManager : MonoBehaviour
     {
+public static NotificationManager Instance { get; private set;  }
+
         [Header("참조")]
+        public InGameUI ingameUi;
         [SerializeField] private GameObject itemLootPopupPrefab;                // 팝업 창 프리팹
 
         [SerializeField] private GameObject itemLootLinePrefab;                 // 아이템 1줄 프리팹
 
         [SerializeField] private Transform popupHolder;                         // 팝업이 생성될 위치
 
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        void Start()
+        {
+            if (ingameUi != null)
+            {
+                popupHolder = ingameUi.gameObject.transform.Find("PopupHolder");
+            }
+            else
+            {
+                Debug.LogError("[NotificationManager] 팝업을 담을 오브젝트를 찾지 못함");
+            }
+        }
 
 
         // 아이템을 획득했을 때 뜨는 팝업

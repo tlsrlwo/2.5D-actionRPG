@@ -16,12 +16,16 @@ namespace KW
         public static bool isDialogueActive { get; private set; }
 
         [Header("UI 요소")]
+       
         [SerializeField] private GameObject dialoguePanel;                       // 대화창 
         [SerializeField] private TextMeshProUGUI dialogueText;                   // 대화가 표시될 텍스트
         [SerializeField] private Button nextBtn;                                 // 다음 버튼
 
         [SerializeField] private Transform choiceBtnHolder;
         [SerializeField] private GameObject choiceBtnPrefab;
+        [HideInInspector] public NpcCanvasUI npcCanvas;
+        [HideInInspector] public InGameUI ingameUi;
+        [HideInInspector] public SystemCanvasUI systemCanvasUi;
 
         [SerializeField] private GameObject _INGAMECANVAS;
         [SerializeField] private GameObject _SYSTEMCANVAS;
@@ -49,6 +53,22 @@ namespace KW
 
         private void Start()
         {
+            if (npcCanvas != null)
+            {
+                dialoguePanel = npcCanvas.dialoguePanel;
+                dialogueText = npcCanvas.dialogueText;
+                nextBtn = npcCanvas.nextBtn;
+                choiceBtnHolder = npcCanvas.choiceBtnHolder;
+                choiceBtnPrefab = npcCanvas.choiceBtnPrefab;
+            }
+            else
+            {
+                Debug.LogError("[DialogueManager] NPC Canvas를 찾을 수 없음");
+            }
+
+            _INGAMECANVAS = ingameUi.gameObject;
+            _SYSTEMCANVAS = systemCanvasUi.gameObject;
+
             // 시작 때 대화창 숨기기
             dialoguePanel.SetActive(false);
             
