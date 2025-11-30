@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/__KW_Project/Scenes/Test Scene/TestScene.unity
     guid: dda6ebf62fba6344ebe3c34cf60d656c
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/Maps/1. Plain/PlainScene.unity
+    guid: 95951b636f85b6e418d6f4faac547b3c
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/Maps/2. Village/VillageScene.unity
+    guid: 09a1c77c7a33ec342bb83ce341c14d22
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/Maps/3. Dock/DockScene.unity
+    guid: 3a16ebb013cd3b84fb68f27c696d1ce1
   m_configObjects: {}

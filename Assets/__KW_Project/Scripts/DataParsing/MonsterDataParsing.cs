@@ -40,21 +40,21 @@ namespace KW
         {
             TextAsset monsterDataCsv = Resources.Load<TextAsset>("MonsterDataParsing");
 
-            // ÁÙ¹Ù²ŞÀ» ±âÁØÀ¸·Î µ¥ÀÌÅÍ¸¦ ³ª´®
+            // ì¤„ë°”ê¿ˆì„ ê¸°ì¤€ìœ¼ë¡œ ë°ì´í„°ë¥¼ ë‚˜ëˆ” 
             string[] lines = monsterDataCsv.text.Split('\n');
 
-            // Ã¹¹øÂ°ÁÙÀº header ¶ó °Ç³Ê¶Ù°íºÎÅÍ ÀÎ½Ä
+            // ì²«ë²ˆì§¸ì¤„ì€ header ë¼ ê±´ë„ˆë›°ê³ ë¶€í„° ì¸ì‹
             for (int i = 1; i < lines.Length; i++)
             {
-                string line = lines[i].Trim();                      // È¤½Ã ¸ğ¸¦ °ø¹é Á¦°Å
+                string line = lines[i].Trim();                      // í˜¹ì‹œ ëª¨ë¥¼ ê³µë°± ì œê±°
                 if (string.IsNullOrEmpty(line)) continue;
 
-                // (",") ¸¦ ±âÁØÀ¸·Î ¼¿ÀÇ µ¥ÀÌÅÍ¸¦ ³ª´®
+                //  (",") ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì…€ì˜ ë°ì´í„°ë¥¼ ë‚˜ëˆ”
                 string[] columns = line.Split(',');
 
                 MonsterData data = new MonsterData
                 {
-                    // float.Parse¸¦ ÀÌ¿ëÇØ ¹®ÀÚ¿­À» floatÀ¸·Î º¯È¯
+                    // float.Parseë¥¼ ì´ìš©í•´ ë¬¸ìì—´ì„ floatìœ¼ë¡œ ë³€í™˜
                     patrolSpeed = float.Parse(columns[1]),
                     chaseSpeed = float.Parse(columns[2]),
                     maxHp = float.Parse(columns[3]),
@@ -64,12 +64,11 @@ namespace KW
                 };
 
                 string monsterID = columns[0];              
-                monsterData.Add(monsterID, data);                   // monsterID, data ¸¦ dictionary°ªÀ¸·Î ÀúÀå
+                monsterData.Add(monsterID, data);                  // monsterID, data ë¥¼ dictionaryê°’ìœ¼ë¡œ ì €ì¥
             }
         }
 
-
-        // ¿ÜºÎ¿¡¼­ ¸ó½ºÅÍµ¥ÀÌÅÍ¸¦ ¿äÃ»ÇÒ ¶§ »ç¿ëÇÏ´Â º¯¼ö
+        // ì™¸ë¶€ì—ì„œ ëª¬ìŠ¤í„°ë°ì´í„°ë¥¼ ìš”ì²­í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜
         public MonsterData GetMonsterData(string monsterId)
         {
             if (monsterData.ContainsKey(monsterId))
@@ -79,7 +78,7 @@ namespace KW
             else
             {
                 Debug.LogError("Monster ID not found in CSV: " + monsterId);
-                return new MonsterData(); // ±âº»°ª ¹İÈ¯
+                return new MonsterData(); // ê¸°ë³¸ê°’ ë°˜í™˜
             }
         }
     }

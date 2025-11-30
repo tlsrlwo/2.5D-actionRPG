@@ -17,7 +17,9 @@ namespace KW
 
             if(monsterHealth != null)
             {
-                monsterHealth.OnHealthChanged += UpdateHealthBar;     
+                monsterHealth.OnHealthChanged += UpdateHealthBar;
+
+                Debug.Log($"현재 몬스터의 체력 : {monsterHealth.currentHp}, {monsterHealth.maxHp}");
 
                 UpdateHealthBar(monsterHealth.currentHp, monsterHealth.maxHp);           
             }
