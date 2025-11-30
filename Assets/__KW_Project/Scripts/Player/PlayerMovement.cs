@@ -168,11 +168,11 @@ namespace KW
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
-                if(playerHealth.hasWeapon == false)
-                {
-                    // Debug.Log("플레이어가 무기가 없음");
-                    return;
-                }
+                //if(playerHealth.hasWeapon == false)
+                //{
+                //    Debug.Log("플레이어가 무기가 없음");
+                //    return;
+                //}
 
                 previousState = currentState;
 

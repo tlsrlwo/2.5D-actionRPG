@@ -211,7 +211,14 @@ namespace KW
             // 몬스터 사망 시, 사망 지역을 전달
             string currentScene = SceneManager.GetActiveScene().name;
 
-            QuestManager.Instance.OnMonsterKilled(this.monsterId, currentScene);
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.OnMonsterKilled(this.monsterId, currentScene);
+            }
+            else
+            {
+                Debug.LogError("[SkeletonController] QuestManager.cs를 찾을 수 없음");
+            }
 
             Debug.Log($"[SkeletonController] 스켈레톹 사망 : {this.monsterId} / {currentScene}");
 

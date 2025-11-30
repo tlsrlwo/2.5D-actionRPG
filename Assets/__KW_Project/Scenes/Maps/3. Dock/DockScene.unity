@@ -2052,12 +2052,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262578077}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.51, y: 4.63, z: 69.8102}
   m_LocalScale: {x: 8.16, y: 5, z: 16.239323}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 559468301}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &262578079
 BoxCollider:
@@ -3262,7 +3262,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 262578078}
   - {fileID: 727703906}
   - {fileID: 234793283}
   - {fileID: 569212437}
@@ -16868,7 +16867,7 @@ GameObject:
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5034733680389546728
 Transform:
   m_ObjectHideFlags: 0
@@ -16922,7 +16921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d32b57b9825a7444a80ff25b96ebf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterHealth: {fileID: 1089113616738798748}
+  monsterHealth: {fileID: 0}
   healthBar: {fileID: 7258885542150975404}
 --- !u!33 &5205001046138089225
 MeshFilter:
@@ -17188,7 +17187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5922334476953823507
 Transform:
   m_ObjectHideFlags: 0
@@ -17874,15 +17873,16 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 3802684628086162929}
+  - {fileID: 1547380913}
+  - {fileID: 1148159030}
   - {fileID: 242377856}
   - {fileID: 2093550819}
   - {fileID: 1398119971}
   - {fileID: 1743172198}
-  - {fileID: 1547380913}
-  - {fileID: 1148159030}
   - {fileID: 1192244401}
   - {fileID: 559468301}
   - {fileID: 1344586378}
   - {fileID: 1192872977267786670}
   - {fileID: 6693895122229465386}
-  - {fileID: 3802684628086162929}
+  - {fileID: 262578078}

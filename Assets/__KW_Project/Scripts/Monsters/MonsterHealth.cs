@@ -47,8 +47,8 @@ namespace KW
 
             OnHealthChanged?.Invoke(_currentHp, _maxHp);
 
-            // Debug.Log($"몬스터 체력 감소 : {damage} 만큼 감소됨");
-            // Debug.Log($"몬스터 남은 체력 : {_currentHp} 만큼 남음");
+            Debug.Log($"몬스터 체력 감소 : {damage} 만큼 감소됨");
+            Debug.Log($"몬스터 남은 체력 : {_currentHp} 만큼 남음");
 
             if (_currentHp <= 0)
             {
