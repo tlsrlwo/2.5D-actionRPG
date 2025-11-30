@@ -4131,6 +4131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: 2013416258335224844, guid: 35cdc78dbba41904398d45d5aefda575, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 2227355694344439271, guid: 35cdc78dbba41904398d45d5aefda575, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.545208
@@ -4175,6 +4179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Big_No.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6399840865089974836, guid: 35cdc78dbba41904398d45d5aefda575, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 9024423520939025111, guid: 35cdc78dbba41904398d45d5aefda575, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4708,6 +4720,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: 3212183216047702448, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 3708616186308079119, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 7268288330456564822, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
       propertyPath: m_Name
       value: House_Little_No.2
@@ -5268,6 +5288,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Windmill_No.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5876229113624000115, guid: ab74ecc49c6da5a40adf3f746b71f617, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 9055501352305537715, guid: ab74ecc49c6da5a40adf3f746b71f617, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7207668368989043812, guid: ab74ecc49c6da5a40adf3f746b71f617, type: 3}
@@ -6055,6 +6083,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Big_No.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3843587400661371441, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 7502044777108384930, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 7664689651401507989, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.195208
@@ -6604,6 +6640,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: 4834057458570033531, guid: 8df844475498a7841bea10abdae6a6fd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 8162003335524077970, guid: 8df844475498a7841bea10abdae6a6fd, type: 3}
       propertyPath: m_Name
       value: House_Windmill_No.2
@@ -8288,6 +8328,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Windmill_No.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5876229113624000115, guid: ab74ecc49c6da5a40adf3f746b71f617, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 9055501352305537715, guid: ab74ecc49c6da5a40adf3f746b71f617, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8434,6 +8482,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Big_No.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3843587400661371441, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 7502044777108384930, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 7664689651401507989, guid: afbe53f262192ca4c98ef13e8beba017, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.914791
@@ -8492,6 +8548,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: 3213839820755663042, guid: e40c6a6e9de4245439f2486d1fd527bd, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 3724321233123931840, guid: e40c6a6e9de4245439f2486d1fd527bd, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 3899104412296830524, guid: e40c6a6e9de4245439f2486d1fd527bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.891312
@@ -8536,6 +8600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_Little_No.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6899137499620127626, guid: e40c6a6e9de4245439f2486d1fd527bd, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10651,6 +10719,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1434425232}
     m_Modifications:
+    - target: {fileID: 3212183216047702448, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
+    - target: {fileID: 3708616186308079119, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 7268288330456564822, guid: 0fc49c1f8c8df874da5f549fc0d70a7e, type: 3}
       propertyPath: m_Name
       value: House_Little_No.2
@@ -11224,6 +11300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1248160586640298595, guid: 5a4695e75f540e643a660b83f33df96b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51e51c74b3726f8429c10473121d021b, type: 2}
     - target: {fileID: 7769400639450008985, guid: 5a4695e75f540e643a660b83f33df96b, type: 3}
       propertyPath: m_Name
       value: House_Little_No.1
