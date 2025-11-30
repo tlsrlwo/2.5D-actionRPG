@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/__KW_Project/Scenes/Test Scene/TestScene.unity
-    guid: dda6ebf62fba6344ebe3c34cf60d656c
+    path: Assets/__KW_Project/Scenes/MainScene/1. TitleScene/TitleScene.unity
+    guid: 7e42862a0e0724844a0410852cefdd11
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/MainScene/2. OpeningCutScene/OpeningCutScene.unity
+    guid: 65a491a2842e544488f4e692f371e2d5
+  - enabled: 1
+    path: Assets/__KW_Project/Scenes/Maps/1. Plain/PlainScene.unity
+    guid: 95951b636f85b6e418d6f4faac547b3c
   m_configObjects: {}
