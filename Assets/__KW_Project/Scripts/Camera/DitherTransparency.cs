@@ -6,7 +6,7 @@ namespace KW
 {
     public class DitherTransparency : MonoBehaviour
     {
-        [SerializeField] private Transform player;
+        [SerializeField] public Transform player;
         [SerializeField] private LayerMask occluderLayer;
         [SerializeField, Range(0f, 1f)] private float transparentAlpha = 0.2f;
         [SerializeField] private float fadeSpeed = 5f;
@@ -21,6 +21,8 @@ namespace KW
 
         private void Update()
         {
+            // if (player == null) Debug.LogError("[DitherTransparency] 플레이어가 없음");
+
             if (player == null || mainCamera == null) return;
 
             Vector3 direction = (player.position - mainCamera.transform.position).normalized;

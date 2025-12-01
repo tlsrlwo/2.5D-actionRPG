@@ -16,9 +16,11 @@ namespace KW
         {
             if (other.CompareTag("Player"))
             {
-                // DuskbornSceneManager.Instance.nextSpawnPointID = spawnPointID;
 
-                SceneManager.LoadScene(sceneToLoad);
+                DuskbornSceneManager.Instance.LoadScene(sceneToLoad, spawnPointID);
+               /*   DuskbornSceneManager.Instance.nextSpawnPointID = spawnPointID;
+
+                SceneManager.LoadScene(sceneToLoad); */
             }
         }
     }

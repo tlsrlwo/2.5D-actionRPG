@@ -135,13 +135,16 @@ namespace KW
                 attackHitBox.SetActive(false);
             }
         }
-
+     
         private void Start()
         {
-            if(SaveManager.Instance != null)
+            if (SaveManager.Instance != null)
             {
                 SaveManager.Instance.player = this;
             }
+
+            DontDestroyOnLoad(this);
+
             // 씬 시작 시 상태(state) 설정
             SwitchState(playerIdle);
 
@@ -152,7 +155,7 @@ namespace KW
         }
 
         private void Update()
-        {
+        { 
             if (DialogueManager.isDialogueActive) { return; }
             if (!canMove) { return; }
             if (isDashing) { return; }
@@ -168,11 +171,11 @@ namespace KW
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
-                //if(playerHealth.hasWeapon == false)
-                //{
-                //    Debug.Log("플레이어가 무기가 없음");
-                //    return;
-                //}
+                if(playerHealth.hasWeapon == false)
+                {
+                    Debug.Log("플레이어가 무기가 없음");
+                    return;
+                }
 
                 previousState = currentState;
 
