@@ -19,7 +19,7 @@ namespace KW
 
                 UpdateHealthBar(monsterHealth.currentHp, monsterHealth.maxHp);           
                 
-                Debug.Log($"현재 몬스터의 체력 : {monsterHealth.currentHp}, {monsterHealth.maxHp}");
+                // Debug.Log($"현재 몬스터의 체력 : {monsterHealth.currentHp}, {monsterHealth.maxHp}");
             }
                else
             {

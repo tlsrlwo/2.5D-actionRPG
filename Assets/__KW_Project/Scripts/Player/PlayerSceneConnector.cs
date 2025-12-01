@@ -6,21 +6,25 @@ namespace KW
 {
     public class PlayerSceneConnector : MonoBehaviour
     {
-     /*    private void Onable()
-        {
-            // 씬 로드 이벤트 구독
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
+        public static PlayerSceneConnector Instance { get; private set; }
 
-        private void OnDisable()
+        private void Awake()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        } */
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
             // 게임 처음 시작할 때도 연결
-            ConnectToSceneComponents();            
+            ConnectToSceneComponents();
         }
 
       /*   private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -63,6 +67,20 @@ namespace KW
             {
                 Debug.LogError("[PlayerSceneConnector] Dither 못 찾음.");
 
+            }
+
+            PlayerMovement player = this.transform.GetComponent<PlayerMovement>();
+
+            PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+            if (playerHealth == null)
+            {
+                playerHealth = player.GetComponent<PlayerHealth>();
+                player.playerHealth = playerHealth;
+                Debug.LogError("[PlayerSceneConnection] playerHealth를 찾지 못함");
+            }
+            else
+            {
+                Debug.Log("[PlayerSceneConnector] playerHealth 를 찾음");
             }
         }
     }

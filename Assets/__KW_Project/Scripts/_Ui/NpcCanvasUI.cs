@@ -6,6 +6,9 @@ namespace KW
 {
     public class NpcCanvasUI : MonoBehaviour
     {
+        public static NpcCanvasUI Instance { get; private set; }
+
+
         [Header("대화 UI 요소들")]
         public GameObject dialoguePanel;
         public TextMeshProUGUI dialogueText;
@@ -14,9 +17,18 @@ namespace KW
         public GameObject choiceBtnPrefab;
 
       
-        private void Start()
+        private void Awake()
         {
-            Debug.Log("[NpcCanvasUI] 나 존재함");
+              if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            // Debug.Log("[NpcCanvasUI] 나 존재함");
 
             if (DialogueManager.Instance != null)
             {

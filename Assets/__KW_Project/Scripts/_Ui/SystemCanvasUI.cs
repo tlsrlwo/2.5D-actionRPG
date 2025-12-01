@@ -4,8 +4,19 @@ namespace KW
 {
     public class SystemCanvasUI : MonoBehaviour
     {
-        private void Start()
+        public static SystemCanvasUI Instance { get; private set;   }
+        private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
             if (UiManager.Instance != null)
             {
                 UiManager.Instance.systemCanvasUIScript = this;

@@ -4,8 +4,22 @@ namespace KW
 {
     public class InGameUI : MonoBehaviour
     {
-        private void Start()
+        public static InGameUI Instance { get; private set; }
+
+        private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+
+
             if (UiManager.Instance != null)
             {
                 UiManager.Instance.inGameUIScript = this;

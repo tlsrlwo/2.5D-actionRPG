@@ -18,6 +18,6 @@ MonoBehaviour:
   type: 1
   targetName: Skeleton
   targetCount: 5
-  targetRegion: TestScene
+  targetRegion: DockScene
   requiredItem: {fileID: 0}
   itemRewardCount: 1

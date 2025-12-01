@@ -13,13 +13,17 @@ namespace KW
         [SerializeField] private float _baseDamage = 10f;
         [SerializeField] private float _weaponDamage = 0f;
 
-        [SerializeField] private float defencePercentage = 0f;
+
+        [Header("방어 관련")]
+        [SerializeField] private float _defencePercentage = 0f;
                 
         public bool hasWeapon => _weaponDamage > 0f;                    // 현재 무기가 장착되어 있는 지 확인
         public float TotalDamage { get { return _baseDamage + _weaponDamage; } }    
 
-        public virtual float currentHp => _currentHp; 
+        public virtual float currentHp => _currentHp;
         public virtual float maxHp => _maxHp;
+
+        private PlayerMovement player;
 
         public event Action<float, float> OnHealthChanged;
 
@@ -27,27 +31,45 @@ namespace KW
         public event Action OnPlayerDied;                               // 사망 이벤트
         public event Action<Vector3> OnPlayerHit;                       // 피격 이벤트
 
+        private void Awake()
+        {
+            if (player != null)
+            {
+                player.playerHealth = this;
+                Debug.Log("[PlayerHealth] 플레이어에 등록 완료!");
+            }
+        }
         private void Start()
         {
-            if(SaveManager.Instance != null)
+            if (SaveManager.Instance != null)
             {
                 SaveManager.Instance.playerHealth = this;
             }
+           
 
             _currentHp = _maxHp;
 
             OnHealthChanged?.Invoke(_currentHp, _maxHp);
         }
+        
 
-
-        private void Update()
+        // 방어구 장착 시 호출될 함수
+        public void SetEquippedArmour(Armour armourData)
         {
-            return;
+            if (armourData != null)
+            {
+                _defencePercentage = armourData.defenceRate;
+                Debug.Log($"[PlayerHealth] 방어구 장착 : 방어율은 {_defencePercentage * 100}%");
+            }
+            else
+            {
+                _defencePercentage = 0f;
+            }
         }
 
         public void SetEquippedWeapon(Weapon weaponData)
         {
-            if(weaponData != null)
+            if (weaponData != null)
             {
                 // 무기가 장착되어 있을 경우
                 _weaponDamage = weaponData.damage;
@@ -73,9 +95,13 @@ namespace KW
         {
             if (_currentHp <= 0) return;
 
+            float reducedDamage = damage - (damage * _defencePercentage);
+
             // 체력 깎기
-            _currentHp -= damage;
+            _currentHp -= reducedDamage;
             _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
+
+            Debug.Log($"피격! 원본: {damage} -> 최종: {reducedDamage} (방어율: {_defencePercentage})");
 
             // UI에 변경된 체력 '방송' (가장 중요!)
             OnHealthChanged?.Invoke(_currentHp, _maxHp);

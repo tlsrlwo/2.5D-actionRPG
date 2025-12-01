@@ -8,7 +8,7 @@ namespace KW
     {
         public static DuskbornSceneManager Instance { get; private set; }
 
-        public int nextSpawnPointID = 0;
+        [HideInInspector] public int nextSpawnPointID = 0;
 
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace KW
             yield return null;
             // yield return new WaitForSeconds(1f); 
 
-            // 4. 이제 안전하게 플레이어 이동
+            // 이제 안전하게 플레이어 이동
             MovePlayerToSpawnPoint();
         }
 
@@ -93,38 +93,9 @@ namespace KW
             else
             {
                 Debug.LogWarning($"ID {nextSpawnPointID}에 해당하는 스폰 포인트를 찾지 못했습니다.");
-            }
-            
+            }           
 
         }
 
-        // 씬 로딩이 끝나면 자동으로 호출됨
-        /* private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            // 현재 씬에 있는 모든 스폰 포인트를 찾음
-            PlayerSpawnPoint[] spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
-
-            foreach (var point in spawnPoints)
-            {
-                // ID가 일치하는 스폰 포인트를 찾음
-                if (point.spawnID == nextSpawnPointID)
-                {
-                    // 플레이어를 그 위치로 이동시킴
-                    GameObject player = GameObject.FindGameObjectWithTag("Player");
-                    if (player != null)
-                    {
-                        // (CharacterController가 있으면 잠시 끄고 이동해야 함)
-                        CharacterController cc = player.GetComponent<CharacterController>();
-                        if (cc != null) cc.enabled = false;
-
-                        player.transform.position = point.transform.position;
-                        // (필요하다면 회전값도 point.transform.rotation으로 설정)
-
-                        if (cc != null) cc.enabled = true;
-                    }
-                    break; // 찾았으니 루프 종료
-                }
-            }
-        } */
     }
 }

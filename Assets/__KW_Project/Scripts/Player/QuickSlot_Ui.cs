@@ -101,6 +101,13 @@ namespace KW
             }
 
             // 방어구 수치 저장 로직
+            if(_acceptedItemType == ItemType.Armour && newItem is Armour armourData)
+            {
+                if(_playerHealth != null)
+                {
+                    _playerHealth.SetEquippedArmour(armourData);
+                }
+            }
 
             return true;
         }
@@ -112,6 +119,13 @@ namespace KW
                 if (_playerHealth != null)
                 {
                     _playerHealth.SetEquippedWeapon(null);
+                }
+            }
+            if (_acceptedItemType == ItemType.Armour && equippedItem != null)
+            {
+                if (_playerHealth != null)
+                {
+                    _playerHealth.SetEquippedArmour(null);
                 }
             }
 

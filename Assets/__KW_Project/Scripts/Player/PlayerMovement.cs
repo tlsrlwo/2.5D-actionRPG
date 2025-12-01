@@ -12,30 +12,30 @@ namespace KW
         public string DataParsingFrom;
 
         [Header("움직임")]
-        public float    walkSpeed = 3f;                         // 걷는 속도                    
-        public float    runSpeed = 5f;                          // 달리는 속도
-        public float    airSpeed = 4f;                          // 공중에서의 속도 (필요없음)
-        public float    xInput, zInput;
-        public float    lastMoveX, lastMoveZ;
-        public bool     isAttacking = false;
+        public float walkSpeed = 3f;                         // 걷는 속도                    
+        public float runSpeed = 5f;                          // 달리는 속도
+        public float airSpeed = 4f;                          // 공중에서의 속도 (필요없음)
+        public float xInput, zInput;
+        public float lastMoveX, lastMoveZ;
+        public bool isAttacking = false;
 
         [SerializeField]
-        public bool    canMove = true;                         // 플레이어 움직임 허용
-        public float    currentSpeed;                           // 현재 속도
-        public Vector3  dir;
+        public bool canMove = true;                         // 플레이어 움직임 허용
+        public float currentSpeed;                           // 현재 속도
+        public Vector3 dir;
 
         [Header("대쉬")]
-        public float    dashSpeed = 15f;
-        public float    dashDuration = 0.2f;
-        [HideInInspector] public bool     isDashing = false;
+        public float dashSpeed = 15f;
+        public float dashDuration = 0.2f;
+        [HideInInspector] public bool isDashing = false;
 
         [Header("점프")]
-        [SerializeField] private float   groundYOffset;
-        [SerializeField] private LayerMask _groundLayer;        
+        [SerializeField] private float groundYOffset;
+        [SerializeField] private LayerMask _groundLayer;
         public virtual LayerMask groundLayer => _groundLayer;
 
         [SerializeField]
-        private float   sphereRadius = 0.05f;
+        private float sphereRadius = 0.05f;
         Vector3 spherePos;                                      // 플레이어 지면 확인용 구체
 
         [Header("중력")]
@@ -45,15 +45,15 @@ namespace KW
 
 
         [Header("컴포넌트 참조")]
-        [HideInInspector] public Animator anim;
-        [HideInInspector] public SpriteRenderer sr;
-        [HideInInspector] public CharacterController cController;
-        [HideInInspector] public PlayerHealth playerHealth;
+        public Animator anim;
+        public SpriteRenderer sr;
+        public CharacterController cController;
+        public PlayerHealth playerHealth;
 
         [Header("전투")]
         [SerializeField] private GameObject attackHitBox;       // 히트박스
         [HideInInspector] public Vector3 lastHisPos;            // 맞은 위치값
-       
+
         [Tooltip("전투 시 반동")]
         private float attackLungeSpeed = 5f;                    // 공격 반동 속도
         private float attackLungeDuration = 0.2f;               // 공격 반동 지속시간
@@ -69,7 +69,7 @@ namespace KW
         public PlayerRunState playerRun = new PlayerRunState();
         public PlayerAttackState playerAttack = new PlayerAttackState();
         public PlayerDashState dashState = new PlayerDashState();
-        public PlayerDamagedState damagedState = new PlayerDamagedState();  
+        public PlayerDamagedState damagedState = new PlayerDamagedState();
 
         #endregion
 
@@ -105,7 +105,7 @@ namespace KW
                 // this.baseDamage = stats.baseDamage; 
                 // this.maxHp = stats.maxHp;
 
-                if(playerHealth != null)
+                if (playerHealth != null)
                 {
                     playerHealth.InitializeHealth(stats.maxHp, stats.baseDamage);
                 }
@@ -126,6 +126,15 @@ namespace KW
             anim = GetComponent<Animator>();
 
             playerHealth = GetComponent<PlayerHealth>();
+            if (playerHealth == null)
+            {
+                Debug.LogError("[PlayerMovement] playeHealth 를 찾지 못함");
+            }
+            else
+            {
+                Debug.Log("[PlayerMovement] playeHealth 를 찾음");
+                
+            }
 
             LoadStatsFromJson();
 
@@ -135,7 +144,7 @@ namespace KW
                 attackHitBox.SetActive(false);
             }
         }
-     
+
         private void Start()
         {
             if (SaveManager.Instance != null)
@@ -148,30 +157,35 @@ namespace KW
             // 씬 시작 시 상태(state) 설정
             SwitchState(playerIdle);
 
-            if(playerHealth!= null)
+            if (playerHealth != null)
             {
                 playerHealth.OnPlayerHit += HandleHit;
-            }            
+                playerHealth.OnPlayerDied += HandleDeath;
+            }
         }
 
         private void Update()
-        { 
+        {
             if (DialogueManager.isDialogueActive) { return; }
             if (!canMove) { return; }
             if (isDashing) { return; }
 
-            _isGrounded = IsGrounded();                
+            _isGrounded = IsGrounded();
             Gravity();
 
             if (!isAttacking)
             {
-                PlayerMove(); 
+                PlayerMove();
                 HandleSpriteFlip();
             }
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
-                if(playerHealth.hasWeapon == false)
+                if (playerHealth == null)
+                {
+                    Debug.LogError("[PlayerMovement] PlayerHealth 를 찾을 수 없음");
+                }
+                if (playerHealth.hasWeapon == false)
                 {
                     Debug.Log("플레이어가 무기가 없음");
                     return;
@@ -200,7 +214,7 @@ namespace KW
             // 기존의 방향을 lungeDir 로 지정
             if (dir.magnitude > 0.1f)
             {
-                lungeDir = dir;                
+                lungeDir = dir;
             }
             else
             {
@@ -251,7 +265,7 @@ namespace KW
         public void AnimationEvent_AttackFinished()
         {
             if (!isAttacking) return;
-           
+
 
             float xInput = Input.GetAxisRaw("Horizontal");
             float zInput = Input.GetAxisRaw("Vertical");
@@ -298,14 +312,19 @@ namespace KW
                 sr.flipX = (xInput < 0);
             }
             else
-                sr.flipX = (lastMoveX < 0);        
-        }        
-       
+                sr.flipX = (lastMoveX < 0);
+        }
+
         public void HandleHit(Vector3 dir)
         {
             lastHisPos = dir;
 
             SwitchState(damagedState);
+        }
+
+        public void HandleDeath()
+        {
+            Debug.Log("[PlayerMovement] 플레이어 죽음");
         }
 
         public void SwitchState(MovementBaseState state)
@@ -315,7 +334,7 @@ namespace KW
             currentState = state;
             currentState.EnterState(this);
         }
-        
+
         private bool IsGrounded()
         {
             // 플레이어의 바닥 판정

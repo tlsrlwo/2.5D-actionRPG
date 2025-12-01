@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.Rendering.HighDefinition;
 
 namespace KW
 {
@@ -40,11 +41,12 @@ namespace KW
         {
             if(Instance != null)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
             else
             {
                 Instance = this;
+                DontDestroyOnLoad(this);
             }
 
             _dialogueQueue = new Queue<string>();

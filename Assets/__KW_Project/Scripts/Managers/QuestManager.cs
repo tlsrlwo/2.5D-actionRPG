@@ -44,6 +44,7 @@ namespace KW
             else
             {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
         }
         private void Start()
