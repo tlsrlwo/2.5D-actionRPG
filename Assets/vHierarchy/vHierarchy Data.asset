@@ -335,6 +335,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-448290575-0
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-83439687-0
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-535901726-0
+        - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-718501188-0
+        - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-828884546-0
         values:
         - colorIndex: 1
           iconNameOrGuid: Camera Icon
@@ -372,21 +374,44 @@ MonoBehaviour:
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-1595994989937912293-0
         - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-1682793129-0
         - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-1089258407-0
+        - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-1751255300-0
+        - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-31550086-0
+        - globalObjectIdString: GlobalObjectId_V1-2-09a1c77c7a33ec342bb83ce341c14d22-1939732667-0
         values:
         - colorIndex: 2
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 2
+        - colorIndex: 1
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 2
+        - colorIndex: 1
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 1
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0

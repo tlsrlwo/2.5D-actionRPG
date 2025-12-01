@@ -34,6 +34,8 @@ namespace KW
                 return;
             }
 
+            if (playerMovement.isSitting) return;
+            
             // E 키를 누르는 '순간'
             if (Input.GetKeyDown(interactionKey))
             {
@@ -41,6 +43,8 @@ namespace KW
                 {
                     return;
                 }
+
+                
 
                 RaycastHit hit;
                 Vector3 startPos = transform.position;

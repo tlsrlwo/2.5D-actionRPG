@@ -101,15 +101,32 @@ namespace KW
             }
 
             // 방어구 수치 저장 로직
-            if(_acceptedItemType == ItemType.Armour && newItem is Armour armourData)
+            if (_acceptedItemType == ItemType.Armour && newItem is Armour armourData)
             {
-                if(_playerHealth != null)
+                if (_playerHealth != null)
                 {
                     _playerHealth.SetEquippedArmour(armourData);
                 }
             }
 
             return true;
+        }
+        
+        public void UseItem()
+        {
+            if (_equippedItem == null) return;
+
+            // 인벤토리에서 1개 삭제
+            if (_inventoryUI != null && _inventoryUI.PlayerInventory != null)
+            {
+                _inventoryUI.PlayerInventory.RemoveItemQuantity(_equippedItem, 1);
+                
+                // 만약 다 써서 0개가 되면?
+                if (_inventoryUI.PlayerInventory.GetItemCount(_equippedItem) <= 0)
+                {
+                    ClearSlot(); // 퀵슬롯도 비움
+                }
+            }
         }
 
         public void ClearSlot()

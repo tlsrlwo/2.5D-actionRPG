@@ -19,6 +19,22 @@ namespace KW
         public float lastMoveX, lastMoveZ;
         public bool isAttacking = false;
 
+        private bool _isSitting = false;
+        public bool isSitting
+        {
+            get { return _isSitting; }
+            set
+            {
+                // 값이 바뀔 때만 로그 찍기
+                if (_isSitting != value)
+                {
+                    // 누가 바꿨는지 추적하기 위해 스택 트레이스 출력
+                    Debug.Log($"[감시] isSitting 값이 변경됨: {_isSitting} -> {value}\n{System.Environment.StackTrace}");
+                }
+                _isSitting = value;
+            }
+        }
+
         [SerializeField]
         public bool canMove = true;                         // 플레이어 움직임 허용
         public float currentSpeed;                           // 현재 속도
@@ -70,6 +86,10 @@ namespace KW
         public PlayerAttackState playerAttack = new PlayerAttackState();
         public PlayerDashState dashState = new PlayerDashState();
         public PlayerDamagedState damagedState = new PlayerDamagedState();
+        public PlayerDeathState deathState = new PlayerDeathState();
+        public PlayerSitState sitState = new PlayerSitState();
+        public PlayerHealState healState = new PlayerHealState();
+
 
         #endregion
 
@@ -82,6 +102,12 @@ namespace KW
         void OnDisable()
         {
             UiManager.OnAnyUiStateChanged -= HandleUiStateChanged;
+
+            if (playerHealth != null)
+            {
+                playerHealth.OnPlayerHit -= HandleHit;
+                playerHealth.OnPlayerDied -= HandleDeath;
+            }
         }
 
         private void HandleUiStateChanged(bool isAnyUiOpen)
@@ -133,7 +159,7 @@ namespace KW
             else
             {
                 Debug.Log("[PlayerMovement] playeHealth 를 찾음");
-                
+
             }
 
             LoadStatsFromJson();
@@ -173,7 +199,7 @@ namespace KW
             _isGrounded = IsGrounded();
             Gravity();
 
-            if (!isAttacking)
+            if (!isAttacking && !isSitting)
             {
                 PlayerMove();
                 HandleSpriteFlip();
@@ -201,8 +227,60 @@ namespace KW
             anim.SetFloat("lastMoveX", lastMoveX);
             anim.SetFloat("lastMoveZ", lastMoveZ);
 
+            if (Input.GetKeyDown(KeyCode.R) && !isAttacking && !isDashing)
+            {
+                TryUsePotion();
+            }
             currentState.UpdateState(this);
         }
+
+        private void TryUsePotion()
+        {
+            Debug.Log("R키 입력 감지됨. 포션 사용 시도...");
+
+            if (SaveManager.Instance == null)
+            {
+                Debug.LogError("SaveManager가 없습니다.");
+                return;
+            }
+
+            if (SaveManager.Instance.potionSlot == null)
+            {
+                Debug.LogError("SaveManager에 PotionSlot이 등록되지 않았습니다.");
+                return;
+            }
+
+            QuickSlot_Ui potionSlot = SaveManager.Instance.potionSlot;
+            Item item = potionSlot.equippedItem;
+
+            if (item == null)
+            {
+                Debug.Log("포션 슬롯이 비어있습니다.");
+                return;
+            }
+
+            Debug.Log($"슬롯 아이템: {item.name}, 타입: {item.GetType()}");
+
+            if (item is Potion potion)
+            {
+                Debug.Log("포션 타입 확인 완료! 힐 상태로 전환합니다.");
+                healState.SetPotion(potion);
+                SwitchState(healState);
+            }
+            else
+            {
+                Debug.LogError($"아이템이 Potion 클래스가 아닙니다! (현재 타입: {item.GetType()})");
+            }
+        }
+
+        public void ConsumePotionFromQuickSlot()
+        {
+            if (SaveManager.Instance != null && SaveManager.Instance.potionSlot != null)
+            {
+                SaveManager.Instance.potionSlot.UseItem();
+            }
+        }
+
 
         private IEnumerator AttackLungeCoroutine()
         {
@@ -324,7 +402,10 @@ namespace KW
 
         public void HandleDeath()
         {
+            if (currentState == deathState) return;
             Debug.Log("[PlayerMovement] 플레이어 죽음");
+
+            SwitchState(deathState);
         }
 
         public void SwitchState(MovementBaseState state)

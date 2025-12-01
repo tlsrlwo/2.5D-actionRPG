@@ -77,7 +77,7 @@ namespace KW
             // 퀵슬롯 저장
             SaveQuickSlot(weaponSlot, data.quickSlotItems);
             SaveQuickSlot(armourSlot, data.quickSlotItems);
-            // SaveQuickSlot(potionSlot, data.quickSlotItems);
+            SaveQuickSlot(potionSlot, data.quickSlotItems);
 
             // 퀘스트 저장
             data.completedQuestNames = new List<string>(questManager.completedQuests);
@@ -223,6 +223,9 @@ namespace KW
                 }
                 questManager.ForceUpdateUI();
             }
+            PlayerSceneConnector sceneConnector = player.GetComponent<PlayerSceneConnector>();
+
+            sceneConnector.ConnectToSceneComponents();
 
             Debug.Log("Game Loaded , Scene" + data.sceneName);
 

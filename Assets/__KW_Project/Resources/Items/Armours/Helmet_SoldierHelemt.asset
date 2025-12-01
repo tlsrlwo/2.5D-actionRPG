@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: arm_SoldierHelmet
   itemName: "\uBCD1\uC0AC \uD22C\uAD6C"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 80b877d55e1755d4c9ffd3b634f46bf8, type: 3}
   description: 
   maxStack: 1
   armourType: 0

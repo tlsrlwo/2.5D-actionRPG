@@ -6,7 +6,6 @@ namespace KW
     {
         public override void EnterState(PlayerMovement movement)
         {           
-
             movement.isAttacking = true;
             movement.anim.SetBool("isAttacking", true);            
 

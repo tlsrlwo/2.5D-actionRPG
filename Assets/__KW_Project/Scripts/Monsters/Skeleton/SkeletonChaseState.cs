@@ -74,6 +74,16 @@ namespace KW
             controller.anim.SetFloat("xInput", blendTreeMoveX);
             controller.anim.SetFloat("zInput", normalizedVelocity.z);
 
+            if(controller.target != null)
+            {
+                // 타겟의 레이어가 'Default'로 바뀌었다면? (즉, 죽었다면)
+                if (controller.target.gameObject.layer == LayerMask.NameToLayer("Default"))
+                {
+                    controller.target = null; // 타겟 해제
+                    controller.SwitchState(controller.patrolState); // 순찰로 복귀
+                    return;
+                }
+            }
         }
 
         public override void ExitState(SkeletonController controller)

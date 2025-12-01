@@ -31,12 +31,21 @@ namespace KW
                 // 스프라이트 & blend tree 파라미터 설정            
                 // controller.sr.flipX = (dirToPlayer.x < 0);                                   // 스프라이트 반전
                 controller.sr.flipX = false;
-                
+
                 float blendTreeMoveX = dirToPlayer.x;                                           // 애니메이터에 전달할 값
                 float blendTreeMoveZ = dirToPlayer.z;
-               
+
                 controller.anim.SetFloat("xInput", blendTreeMoveX);                             // 애니메이터 설정
                 controller.anim.SetFloat("zInput", blendTreeMoveZ);
+
+                // 타겟의 레이어가 'Default'로 바뀌었다면? (즉, 죽었다면)
+                if (controller.target.gameObject.layer == LayerMask.NameToLayer("Default"))
+                {
+                    controller.target = null; // 타겟 해제
+                    controller.SwitchState(controller.patrolState); // 순찰로 복귀
+                    return;
+
+                }
             }
             // trigger 애니메이션
             controller.anim.SetTrigger("isAttack");
