@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4200221473147305971
+--- !u!1 &3992113665749639040
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6265279332866664828}
-  - component: {fileID: 6180428342534762937}
+  - component: {fileID: 7498503915929914221}
+  - component: {fileID: 3365912599681586340}
   m_Layer: 0
-  m_Name: NotificationManager
+  m_Name: VfxManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6265279332866664828
+--- !u!4 &7498503915929914221
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200221473147305971}
+  m_GameObject: {fileID: 3992113665749639040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6180428342534762937
+--- !u!114 &3365912599681586340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4200221473147305971}
+  m_GameObject: {fileID: 3992113665749639040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dcfaf32c118615469ac96cec211634c, type: 3}
+  m_Script: {fileID: 11500000, guid: d0976cb5b539bce429322a330c78786b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameUi: {fileID: 0}
-  itemLootPopupPrefab: {fileID: 7149998467113904836, guid: 89305220dde48e1478484a31a313e0a7, type: 3}
-  itemLootLinePrefab: {fileID: 8839367403115059734, guid: 7695cd56c4d8e7746910485a752b3f1e, type: 3}
-  messageLinePrefab: {fileID: 1751157458265589548, guid: 2a96a11541b723b41ac97271145cc6c9, type: 3}
-  popupHolder: {fileID: 0}
+  vfxList:
+  - type: 0
+    prefab: {fileID: 7568505782868795063, guid: 3fb3f75507616a846b6be438f0c7ada3, type: 3}
+    poolSize: 5

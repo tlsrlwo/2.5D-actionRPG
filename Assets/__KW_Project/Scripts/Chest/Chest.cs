@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace KW
 {
@@ -31,6 +32,8 @@ namespace KW
 
             // 플레이어에서 <Inventory>() 찾기
             Inventory playerInventory = player.GetComponent<Inventory>();
+
+            _notificationManager = FindObjectOfType<NotificationManager>();
 
             if(playerInventory != null)
             {               

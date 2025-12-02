@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace KW
@@ -16,10 +17,10 @@ namespace KW
         public Transform choiceBtnHolder;
         public GameObject choiceBtnPrefab;
 
-      
+
         private void Awake()
         {
-              if (Instance == null)
+            if (Instance == null)
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
@@ -27,14 +28,48 @@ namespace KW
             else
             {
                 Destroy(gameObject);
+                return;
             }
-            // Debug.Log("[NpcCanvasUI] 나 존재함");
+            RegisterToDialogueManager();
+            
+        }
 
+private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        // 씬 로딩이 끝나면 무조건 실행됨 -> 다시 등록!
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            RegisterToDialogueManager();
+        }
+        // 🔼🔼🔼 [추가 완료] 🔼🔼🔼
+
+        // 등록 로직 분리 (재사용을 위해)
+        private void RegisterToDialogueManager()
+        {
             if (DialogueManager.Instance != null)
             {
                 DialogueManager.Instance.npcCanvas = this;
+                // Debug.Log("[NpcCanvasUI] DialogueManager에 재등록 완료!");
             }
-            dialoguePanel.SetActive(false);
+
+            // 씬 바뀌면 대화창 꺼두기 (안전장치)
+            if (dialoguePanel != null) dialoguePanel.SetActive(false);
         }
+
+        // Start는 이제 필요 없지만, 혹시 모르니 놔둬도 됨
+        private void Start()
+        {
+            RegisterToDialogueManager();
+        }
+
+
     }
 }

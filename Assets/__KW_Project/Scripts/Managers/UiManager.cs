@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -41,9 +42,67 @@ namespace KW
             }           
         }
 
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            InitializeUI();
+        }
+
+      public void RegisterSystemCanvas(GameObject canvasObj)
+        {
+            systemCanvas = canvasObj;
+        }
+    
+    public void RegisterIngameCanvas(GameObject canvasObj)
+    {
+        ingameUi = canvasObj;
+    }
+        private void InitializeUI()
+        {
+            // 스크립트가 없으면 씬에서 찾기 (안전장치)
+            if (inGameUIScript == null) inGameUIScript = FindObjectOfType<InGameUI>(true);
+            if (systemCanvasUIScript == null) systemCanvasUIScript = FindObjectOfType<SystemCanvasUI>(true);
+
+            // GameObject 연결 및 초기화
+            if (inGameUIScript != null)
+            {
+                ingameUi = inGameUIScript.gameObject;
+                ingameUi.SetActive(true);
+            }
+
+            if (systemCanvasUIScript != null)
+            {
+                systemCanvas = systemCanvasUIScript.gameObject;
+                systemCanvas.SetActive(true);
+            }
+
+            // 패널들 초기화 (비활성화)
+            // 주의: SystemCanvas 자식들을 찾아 연결하는 로직이 필요하다면 여기 추가해야 함
+            foreach (var panel in uiPanels)
+            {
+                if (panel.panelObject != null)
+                {
+                    panel.panelObject.SetActive(false);
+                    panel.isOpen = false;
+                }
+            }
+
+            if (ingameUi != null) ingameUi.SetActive(true);
+            if (systemCanvas != null) systemCanvas.SetActive(false); // 평소엔 꺼둠
+        }
+        
         private void Start()
         {
-             if (inGameUIScript != null)
+            if (inGameUIScript != null)
             {
                 // Debug.Log("[UiManager] 인게임Ui 등록완료");
                 ingameUi = inGameUIScript.transform.gameObject;
@@ -53,7 +112,7 @@ namespace KW
             {
                 // Debug.Log("[UiManager] 시스템Ui 등록완료");
                 systemCanvas = systemCanvasUIScript.transform.gameObject;
-                systemCanvas.SetActive(true);             
+                systemCanvas.SetActive(true);
             }
             foreach (var panel in uiPanels)
             {

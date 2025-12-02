@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -33,12 +34,69 @@ namespace KW
                 Destroy(gameObject);
             }
         }
+private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
 
-        void Start()
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "LoadingScene") return;
+
+            // InGameUI가 등록될 때까지 기다리거나, 여기서 직접 찾기
+            // (가장 확실한 건 InGameUI가 등록해주는 거지만, 늦을 수 있으니 찾기 시도)
+            if (ingameUi == null)
+            {
+                ingameUi = FindObjectOfType<InGameUI>();
+            }
+            
+            FindPopupHolder();
+        }
+
+        // 팝업 홀더 찾는 함수 분리
+        public void FindPopupHolder()
         {
             if (ingameUi != null)
             {
-                popupHolder = ingameUi.gameObject.transform.Find("PopupHolder");
+                // "PopupHolder"라는 이름의 자식을 찾음
+                Transform holder = ingameUi.transform.Find("PopupHolder");
+                
+                // 만약 바로 아래 자식이 아니라면 전체 검색
+                if (holder == null)
+                {
+                    // (InGameUI 스크립트에 public Transform popupHolder 변수를 만들어서 연결해두는 게 가장 좋음!)
+                    // 임시: 이름으로 재귀 검색 (비추천하지만 작동은 함)
+                    foreach (Transform t in ingameUi.GetComponentsInChildren<Transform>(true))
+                    {
+                        if (t.name == "PopupHolder")
+                        {
+                            holder = t;
+                            break;
+                        }
+                    }
+                }
+                popupHolder = holder;
+            }
+            
+            if (popupHolder == null)
+            {
+                 Debug.LogWarning("[NotificationManager] PopupHolder를 찾지 못했습니다.");
+            }
+        }
+        void Start()
+        {
+            FindPopupHolder();
+
+            GameObject popupHolderObj = popupHolder.transform.gameObject;
+
+            if (popupHolderObj != null)
+            {
+                Debug.Log("[NotificationManager] 팝업을 담을 오브젝트를 찾음");
             }
             else
             {
@@ -105,6 +163,8 @@ namespace KW
         private GameObject CreatePopupBase()
         {
             Time.timeScale = 0.00001f; // 일시정지
+
+            
 
             GameObject popupObj = Instantiate(itemLootPopupPrefab, popupHolder);
             

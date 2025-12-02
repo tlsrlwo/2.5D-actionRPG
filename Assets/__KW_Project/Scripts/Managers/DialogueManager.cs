@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -53,6 +53,79 @@ namespace KW
             isDialogueActive = false;
         }
 
+       private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            InitializeUI();
+        }
+
+        private void InitializeUI()
+        {
+            if (npcCanvas == null) npcCanvas = FindObjectOfType<NpcCanvasUI>(true);
+            if (_INGAMECANVAS == null) _INGAMECANVAS = FindObjectOfType<InGameUI>(true).gameObject;
+            if (_SYSTEMCANVAS == null) _SYSTEMCANVAS = FindObjectOfType<SystemCanvasUI>(true).gameObject;
+
+            if (npcCanvas != null)
+            {
+                dialoguePanel = npcCanvas.dialoguePanel;
+                dialogueText = npcCanvas.dialogueText;
+                nextBtn = npcCanvas.nextBtn;
+                choiceBtnHolder = npcCanvas.choiceBtnHolder;
+                choiceBtnPrefab = npcCanvas.choiceBtnPrefab;
+            }
+            else
+            {
+                Debug.LogError("[DialogueManager] NPC Canvas를 찾을 수 없음");
+            }
+
+            dialoguePanel.SetActive(false);
+
+            if (nextBtn != null)
+            {
+                nextBtn.onClick.AddListener(DisplayNextLine);
+            }
+        } 
+
+        public void RegisterSystemCanvas(GameObject canvasObj)
+        {
+            _SYSTEMCANVAS = canvasObj;
+        }
+
+        public void RegisterIngameCanvas(GameObject canvasObj)
+        {
+            _INGAMECANVAS = canvasObj;
+        }
+    
+    public void RegisterNpcCanvas(NpcCanvasUI canvas)
+        {
+            npcCanvas = canvas;
+        
+        // 등록되자마자 초기화
+        if (npcCanvas != null)
+        {
+             npcCanvas.dialoguePanel.SetActive(false);
+             
+             if (npcCanvas.nextBtn != null)
+             {
+                 npcCanvas.nextBtn.onClick.RemoveAllListeners();
+                 npcCanvas.nextBtn.onClick.AddListener(DisplayNextLine);
+             }
+             
+             Debug.Log("[DialogueManager] NpcCanvas 등록 완료!");
+        }
+        }
+
         private void Start()
         {
             if (npcCanvas != null)
@@ -68,19 +141,21 @@ namespace KW
                 Debug.LogError("[DialogueManager] NPC Canvas를 찾을 수 없음");
             }
 
-            _INGAMECANVAS = ingameUi.gameObject;
-            _SYSTEMCANVAS = systemCanvasUi.gameObject;
+            if (_INGAMECANVAS == null) _INGAMECANVAS = FindObjectOfType<InGameUI>().gameObject;
+            if (_SYSTEMCANVAS == null) _SYSTEMCANVAS = FindObjectOfType<SystemCanvasUI>().gameObject;
 
             // 시작 때 대화창 숨기기
             dialoguePanel.SetActive(false);
-            
+
             // 다음 버튼에 DisplayNextLine 을 미리 연결
             // nextBtn.onClick.AddListener(=> );
-            if(nextBtn != null)
+            if (nextBtn != null)
             {
                 nextBtn.onClick.AddListener(DisplayNextLine);
             }
         }
+
+      
 
         public void StartDialogue(DialogueSO dialogueData, Npc npc)
         {

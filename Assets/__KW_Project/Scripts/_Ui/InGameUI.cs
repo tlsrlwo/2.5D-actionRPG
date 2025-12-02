@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -16,23 +18,65 @@ namespace KW
             else
             {
                 Destroy(gameObject);
+                return;
             }
 
+            RegisterToManagers();
 
-
-            if (UiManager.Instance != null)
+          /*   if (UiManager.Instance != null)
             {
-                UiManager.Instance.inGameUIScript = this;
+                UiManager.Instance.RegisterIngameCanvas(this.gameObject);
             }
             if (NotificationManager.Instance != null)
             {
                 NotificationManager.Instance.ingameUi = this;
             }
-               if (DialogueManager.Instance != null)
+            if (DialogueManager.Instance != null)
             {
-                DialogueManager.Instance.ingameUi = this;
-            }
-            
+                DialogueManager.Instance.RegisterIngameCanvas(this.gameObject);
+            } */
+
         }
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "LoadingScene") return;
+
+            RegisterToManagers();
+        }
+
+    
+        private void RegisterToManagers()
+        {
+            if (UiManager.Instance != null)
+            {
+            
+                UiManager.Instance.RegisterIngameCanvas(this.gameObject);
+            }
+
+            if (NotificationManager.Instance != null)
+            {
+                NotificationManager.Instance.ingameUi = this;
+                
+                NotificationManager.Instance.FindPopupHolder(); 
+            }
+
+            if (DialogueManager.Instance != null)
+            {
+                DialogueManager.Instance.RegisterIngameCanvas(this.gameObject);
+            }           
+        }
+
+
+
     }
 }

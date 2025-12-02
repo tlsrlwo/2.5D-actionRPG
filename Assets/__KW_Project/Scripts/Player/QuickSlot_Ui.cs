@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace KW
 {
@@ -19,10 +20,31 @@ namespace KW
 
         public Item equippedItem => _equippedItem;
 
-        public void OnEnable()
+        private void OnEnable()
         {
-            RegisterToSaveManager();
+            SceneManager.sceneLoaded += OnSceneLoaded; // 씬 로드 이벤트 구독
 
+            // 기존 OnEnable에서 하던 초기 연결은 그대로 둠 (혹시 모를 상황 대비)
+            RegisterToSaveManager();
+            FindRequiredReferences(); // PlayerHealth, InventoryUI 찾는 로직 분리
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded; // 씬 언로드 시 구독 해제
+        }
+        
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // 씬 로드 완료 시 재등록 및 참조 찾기
+            RegisterToSaveManager();
+            FindRequiredReferences(); 
+            
+            Debug.Log($"[QuickSlot_Ui] 씬 로드됨 - {acceptedItemType} 슬롯 재등록 완료");
+        }
+
+        private void FindRequiredReferences()
+        {
             if (_inventoryUI == null)
             {
                 _inventoryUI = GetComponentInParent<InventoryUI>();
@@ -32,6 +54,7 @@ namespace KW
                     _inventoryUI = FindObjectOfType<InventoryUI>();
                 }
             }
+
             if (_playerHealth == null)
             {
                 GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -41,6 +64,7 @@ namespace KW
                 }
             }
         }
+        
         private void Awake()
         {
             // _itemSprite = GetComponentInChildren<Image>(); 직접 할당해줌
