@@ -15,191 +15,94 @@ MonoBehaviour:
   folderDatas_byGuid:
     keys:
     - bc0cad4b27e26e04e9025e8526448fd3
-    - aad807df8545b284e99584ee4f4cd508
-    - c9b5f3272f4efab4d8f3313ca0e42f41
-    - 6379ef77d1b78424ba192a319afd9537
-    - 0a33f992e13add9438b6e744a7dad662
-    - dd1fb8c42092eb2448f63c4b57a4bf73
-    - 2f17d1e6a207e4d8eb72bd03b1b645ac
-    - 95caba48119d33e4ba66351a437d34a5
-    - 6d0f230ebf5549f4d8a5e7261009c26f
-    - f732808a5d474264cbeef349d1665cb4
-    - 5e8fba9dcb86c7f469a965012baa0878
-    - b95119acc707fb24884d3e17875a7b81
-    - bb5fae73bda513e4b96c13b1d0a87c85
-    - dc697e8ec6b460443b34f97f581dee4d
-    - 8ba376e8cdb35a3498db319c9bb31a48
+    - eafce47495789634a9f36992f708d00d
+    - 02816c5bc517f4446a85e17f56e9671c
+    - a94e063cbabebb940adcd284cf46f387
+    - f68091eba95679e47b720618b3d0aacc
+    - 6e3231020cc5cd24a97decfc7b24c6e9
+    - a3a60b898b2d0b9459ee68857cdb6dc7
+    - a67c7b8d091b90941b10632363275ffa
+    - 19c1bc8fc05ba6149977a60d8f67f1b7
+    - 3198e69ce83da3845855a13247ef4744
+    - f59d6e262af55bb46abc3b166d3cc664
+    - c09cd8588d2007a4a83394191d234d71
+    - a523bd837375c4f41a45205e0d962b44
+    - 5fa9900e1194d944ea6008d0b602baa5
+    - c7835036c7acdfd4086a8ad6964a57dd
+    - 8f51bf20ae0372e4f96f15f8c1323edc
+    - 50edcf6cfc1ae834895d72a4ec593617
+    - 4ba272b2523f25f43a6102f10d2dc197
+    - 0f69df9025563f64a9489c6dffbe10b5
     - 811f6de2e3973c1469fe30b9339f7f87
+    - 8c1d7b93fe12ab742a4e013e08118feb
+    - 6379ef77d1b78424ba192a319afd9537
+    - dc697e8ec6b460443b34f97f581dee4d
+    - 2a19b70c1959f8a4a89cdb260244c28c
     - edbe917ff0839184e92d5d20fff93775
-    - 8ec83f3e9ce51ee409e055993d4e4020
+    - c9b5f3272f4efab4d8f3313ca0e42f41
+    - 0a33f992e13add9438b6e744a7dad662
     - 161876b5550c10f47a543b2d922a6e62
-    - bbe21af7557013c44bb6d63e47a5dcdb
-    - 9810147a56cdcc146aa22416a15e320b
+    - b7ecaa85a6575c245bca5ce3fb157685
+    - cda004ea60d2d9c4c84aa7543600f40a
+    - 8ec83f3e9ce51ee409e055993d4e4020
+    - dd1fb8c42092eb2448f63c4b57a4bf73
+    - 14d69ee766168f84c96a075efd48e891
     - 9e288277a5e02ec4a8554c766ce38364
+    - e4935ea3d32ce5a45a1319243c8e036c
+    - 7748c35ae3edc8a48a432066904b4143
+    - a18435419c1e9f2408e1d8b9a5855453
+    - eb809e4e4d6113a4785e448ef9eedc3f
     - abdfc7f1d3f21d2469af6367cf047eda
     - 8861c8bef6d68a242bdd8d774abf1cbf
-    - ce7316ec32b0a844e84e4ea1e686c242
-    - 19a73c6704c9a3d4fa49782767685a1f
-    - 0f0a99db7b2e7aa4ca31edf9886f1f77
-    - a836e8586b9484a42bca6f4add0e5e31
-    - 122dfa13afba3a64c985abe46d0de958
-    - 2c650e9174c89c54886d2f10ecb3e492
-    - ca1dc2335c90f08498840506a0fc0899
-    - 22c6ca60bb7c49241a793ac472b0617d
-    - 3198e69ce83da3845855a13247ef4744
-    - bf994f68bf07e904a92f420397713194
-    - af416f57e0425f543a7749118ca0a7c6
-    - 40c669781b6b8b044af934f06a820757
-    - ff9eaf6772458dc419cfabf2966dab69
-    - 4ba272b2523f25f43a6102f10d2dc197
-    - db1ef1ba5a561b642a77eb9701a48f57
-    - 399df4fd66dff3a4fb6ee4cd722dbb54
-    - e4935ea3d32ce5a45a1319243c8e036c
-    - cb52b39ad82faff46be96da39fa9d878
-    - 41879bc7b7a49924493c2f336bcd2fa0
-    - 98d00cc88786afd4e9815b95bc1597f1
-    - f7e9ba65f6255c640a617bc16c15d7e0
-    - eafce47495789634a9f36992f708d00d
-    - 4eb29e3292f14c741a53406783693f2c
-    - cf8b91c45c70ada499e9c429a1a9f4ae
-    - 470f86eb06cd0994c94015c9c16e46e7
-    - 1797ae17be6dfdb438db157928001c60
-    - feb9790079a4b79478a90a9b2c9b3db9
-    - d800630b1ea74f340b2871767d89dac0
-    - 31e31a59d8cf64341bc2be21e71279b3
-    - 0f69df9025563f64a9489c6dffbe10b5
-    - a369fd57c71ac7a42975d7eb409a589a
     - 7f1f5e07716794bb7b931ba6ac5e0f6b
-    - eb809e4e4d6113a4785e448ef9eedc3f
-    - 2a19b70c1959f8a4a89cdb260244c28c
+    - 23015c8c4e5ebb942beb9acce954761a
+    - bf994f68bf07e904a92f420397713194
+    - 5e8fba9dcb86c7f469a965012baa0878
     - a0a03afe4e5917a498c1d58af85c7ac8
-    - e03d2163156b8f24797529fa8672f747
-    - 49b9dee1520d4f046a384dfc34f02c23
-    - 45f4a4e49ce128f43aa7dadfc9c15734
-    - 112fa2e8bfa224849adf51c085d16036
+    - a369fd57c71ac7a42975d7eb409a589a
     values:
     - iconNameOrGuid: 
       colorIndex: 1
       isIconRecursive: 0
       isColorRecursive: 1
     - iconNameOrGuid: 
-      colorIndex: 4
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 1
     - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 1
     - iconNameOrGuid: 
-      colorIndex: 1
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 1
     - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: SceneAsset Icon
-      colorIndex: 6
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 6
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 6
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 6
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 8
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
@@ -209,45 +112,61 @@ MonoBehaviour:
     - iconNameOrGuid: 
       colorIndex: 2
       isIconRecursive: 0
-      isColorRecursive: 1
+      isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
       isIconRecursive: 0
-      isColorRecursive: 1
+      isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 1
+      colorIndex: 2
       isIconRecursive: 0
-      isColorRecursive: 1
+      isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 1
+      colorIndex: 2
       isIconRecursive: 0
-      isColorRecursive: 1
+      isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 1
-      isIconRecursive: 0
-      isColorRecursive: 1
-    - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
       colorIndex: 7
       isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: ScriptableObject Icon
-      colorIndex: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
       colorIndex: 7
       isIconRecursive: 0
-      isColorRecursive: 0
+      isColorRecursive: 1
     - iconNameOrGuid: 
-      colorIndex: 1
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 6
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 7
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
@@ -255,26 +174,6 @@ MonoBehaviour:
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 7
-      isIconRecursive: 0
-      isColorRecursive: 1
-    - iconNameOrGuid: 
-      colorIndex: 2
-      isIconRecursive: 0
-      isColorRecursive: 1
-    - iconNameOrGuid: 
-      colorIndex: 1
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 1
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 1
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
       colorIndex: 3
       isIconRecursive: 0
       isColorRecursive: 0
@@ -283,31 +182,7 @@ MonoBehaviour:
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 1
-    - iconNameOrGuid: 
-      colorIndex: 2
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 1
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
-      isIconRecursive: 0
-      isColorRecursive: 0
-    - iconNameOrGuid: 
-      colorIndex: 3
+      colorIndex: 6
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: 
@@ -330,10 +205,48 @@ MonoBehaviour:
       colorIndex: 9
       isIconRecursive: 0
       isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 2
+      isIconRecursive: 0
+      isColorRecursive: 1
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 3
+      isIconRecursive: 0
+      isColorRecursive: 0
   bookmarks:
   - guid: bc0cad4b27e26e04e9025e8526448fd3
   - guid: ae1b47c47fa7c5446a79bff01bcb68dc
   - guid: a911d0cc63ea8a34bb53744db53e8d02
   - guid: 54c4c8c495db7c642b5ea73a46fee4d5
-  - guid: dc7a29851b1dcd1458878c5b0124d120
-  - guid: 40f2134dea38d4a4395923c7f14350aa
