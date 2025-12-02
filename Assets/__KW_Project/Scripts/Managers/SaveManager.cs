@@ -94,6 +94,13 @@ namespace KW
             // 파일 쓰기
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(savePath, json);
+
+          /*   if(NotificationManager.Instance != null)
+            {
+                string message = "게임이 저장되었습니다.";
+
+                NotificationManager.Instance.ShowMessage(message);
+            } */
             Debug.Log("게임저장됨 : " + savePath);
         }
         

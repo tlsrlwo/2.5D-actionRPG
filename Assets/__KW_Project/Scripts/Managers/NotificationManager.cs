@@ -7,13 +7,17 @@ namespace KW
 {
     public class NotificationManager : MonoBehaviour
     {
-public static NotificationManager Instance { get; private set;  }
+        public static NotificationManager Instance { get; private set; }
 
         [Header("참조")]
         public InGameUI ingameUi;
+
+        [Header("팝업 설정")]   
         [SerializeField] private GameObject itemLootPopupPrefab;                // 팝업 창 프리팹
 
         [SerializeField] private GameObject itemLootLinePrefab;                 // 아이템 1줄 프리팹
+
+        [SerializeField] private GameObject messageLinePrefab;                  // 일반 알림창 프리팹
 
         [SerializeField] private Transform popupHolder;                         // 팝업이 생성될 위치
 
@@ -43,21 +47,19 @@ public static NotificationManager Instance { get; private set;  }
         }
 
 
-        // 아이템을 획득했을 때 뜨는 팝업
+        #region [Chest] 아이템을 획득했을 때 뜨는 팝업
         public void ShowLootPopup(List<ChestSlot> items)
         {
             Time.timeScale = 0.00001f;
 
             // 팝업 창 생성
-            GameObject popupObj = Instantiate(itemLootPopupPrefab, popupHolder);
+            GameObject popupObj = CreatePopupBase();
 
             if (popupObj != null) Debug.Log("Notification Manager : 팝업 생성됨");
             else Debug.LogWarning("Notification Manager : 팝업 생성 안됨");
 
             // 팝업 창 안에서 아이템 1줄이 생성될 위치 찾기
             Transform lineHolder = popupObj.transform.Find("LineHolder");
-
-            Button confirmBtn = popupObj.transform.Find("ConfirmBtn").GetComponent<Button>();
 
             foreach (ChestSlot slot in items)
             {
@@ -74,14 +76,50 @@ public static NotificationManager Instance { get; private set;  }
                     text.text = $"{slot.item.itemName}이(가) x{slot.quantity}개 추가됐다.";
             }
 
+      
+        }
+        #endregion
+
+        #region 일반 팝업
+        public void ShowMessage(string message)
+        {
+            // 껍데기 생성
+            GameObject popupObj = CreatePopupBase();
+            Transform lineHolder = popupObj.transform.Find("LineHolder");
+
+            // 내용물 채우기
+            GameObject lineObj = Instantiate(messageLinePrefab, lineHolder);
+
+            TextMeshProUGUI textComp = lineObj.GetComponentInChildren<TextMeshProUGUI>();
+            
+            if (textComp != null)
+            {
+                textComp.text = message;
+            }
+
+        }
+
+        #endregion
+
+
+        private GameObject CreatePopupBase()
+        {
+            Time.timeScale = 0.00001f; // 일시정지
+
+            GameObject popupObj = Instantiate(itemLootPopupPrefab, popupHolder);
+            
+            // 닫기 버튼 공통 로직
+            Button confirmBtn = popupObj.transform.Find("ConfirmBtn").GetComponent<Button>();
             if (confirmBtn != null)
             {
                 confirmBtn.onClick.AddListener(() =>
                 {
-                    Time.timeScale = 1f;
+                    Time.timeScale = 1f; // 재개
                     Destroy(popupObj);
                 });
             }
+            
+            return popupObj;
         }
     }
 }

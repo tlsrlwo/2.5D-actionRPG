@@ -150,6 +150,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-2273535599607135722-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-3475988300132141392-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-8266296017993192181-1553436466
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-2114290321-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Terrain Icon
@@ -257,6 +258,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 2
           iconNameOrGuid: Favorite
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 8
+          iconNameOrGuid: Settings Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 8

@@ -13,11 +13,16 @@ namespace KW
 
             movement.anim.SetBool("isSit", true);
 
-            if (SaveManager.Instance != null)
+           /*  if (SaveManager.Instance != null)
             {
                 SaveManager.Instance.SaveGame();
                 Debug.Log("화톳불에 앉아 게임을 저장했습니다.");
             }
+            if (NotificationManager.Instance != null)
+            {
+                string message = "게임이 저장되었습니다.\n\n" + "체력이 회복되었습니다.";
+                NotificationManager.Instance.ShowMessage(message);
+            } */
         }
 
        public override void UpdateState(PlayerMovement movement)

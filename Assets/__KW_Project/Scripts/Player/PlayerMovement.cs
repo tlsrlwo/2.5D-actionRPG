@@ -69,6 +69,7 @@ namespace KW
         [Header("전투")]
         [SerializeField] private GameObject attackHitBox;       // 히트박스
         [HideInInspector] public Vector3 lastHisPos;            // 맞은 위치값
+        public Transform vfxPos;
 
         [Tooltip("전투 시 반동")]
         private float attackLungeSpeed = 5f;                    // 공격 반동 속도
@@ -356,6 +357,20 @@ namespace KW
             else
             {
                 SwitchState(playerIdle);
+            }
+        }
+
+        public void AnimationEvent_SaveGame()
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SaveGame();
+                Debug.Log("화톳불에 앉아 게임을 저장했습니다.");
+
+                if (NotificationManager.Instance != null)
+                {
+                    NotificationManager.Instance.ShowMessage("게임이 저장되었습니다.\n\n체력이 회복되었습니다.");
+                }
             }
         }
 
