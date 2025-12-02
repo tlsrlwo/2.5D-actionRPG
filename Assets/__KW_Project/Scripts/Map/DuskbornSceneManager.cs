@@ -88,13 +88,31 @@ namespace KW
                     PlayerSceneConnector sceneConnector = player.GetComponent<PlayerSceneConnector>();
 
                     sceneConnector.ConnectToSceneComponents();
-                }               
+                }
             }
             else
             {
                 Debug.LogWarning($"ID {nextSpawnPointID}에 해당하는 스폰 포인트를 찾지 못했습니다.");
-            }           
+            }
 
+        }
+        
+
+        public void GoToTitleScene()
+        {
+            Time.timeScale = 1f;
+
+            // 플레이어 파괴
+            if (SaveManager.Instance != null && SaveManager.Instance.player != null)
+            {
+                Destroy(SaveManager.Instance.player.gameObject);
+            }
+
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null) Destroy(playerObj);
+
+            // 매니저들 파괴
+            
         }
 
     }

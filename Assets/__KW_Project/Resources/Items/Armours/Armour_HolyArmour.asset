@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "\uC8FC\uC2E0\uC758 \uAC00\uD638"
   itemType: 2
   itemSprite: {fileID: 0}
-  description: 
+  description: "\uC6EC\uB9CC\uD55C \uAC74 \uC548\uC544\uD50C\uC9C0\uB3C4..."
   maxStack: 1
   armourType: 1
   armourGrade: 3

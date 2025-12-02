@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "\uC791\uC0B4"
   itemType: 1
   itemSprite: {fileID: 21300000, guid: 12bfa52d2ce49ee4c8d55d34ab81bedd, type: 3}
-  description: 
+  description: "\uC791\uC0B4\uC774\uB2E4 "
   maxStack: 1
   weaponType: 1
   weaponGrade: 1

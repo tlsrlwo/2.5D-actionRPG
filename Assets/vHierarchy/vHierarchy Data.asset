@@ -38,6 +38,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-8266296019527032263-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-2015705510-0
         - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1822477508-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1674898033-0
+        - globalObjectIdString: GlobalObjectId_V1-2-dda6ebf62fba6344ebe3c34cf60d656c-1745298125-0
         values:
         - colorIndex: 8
           iconNameOrGuid: Settings Icon
@@ -97,6 +99,14 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 8
           iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 6

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
+  m_Name: 002_DialogueQuest
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - "\uC800 \uAD34\uBB3C\uB4E4\uC744 \uC5C6\uC560\uC92C\uC73C\uBA74 \uC88B\uACA0\uC9C0\uB9CC..."
+  dialogueChoices:
+  - choiceText: "\uC54C\uACA0\uB2E4"
+    nextDialogue: {fileID: 11400000, guid: 0d4a307b7ee7fe84c96a8dea0e021ce4, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1
+  - choiceText: "\uBAA8\uB974\uACA0\uB2E4"
+    nextDialogue: {fileID: 11400000, guid: 901c10f58bc25ee4db5e1b6e8320dba8, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1
