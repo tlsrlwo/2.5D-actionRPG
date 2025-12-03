@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: 001_Quest
   m_EditorClassIdentifier: 
   questTitle: 001_Quest
-  questNameForGame: "\uC2A4\uCF08\uB808\uD1A4 \uC0AC\uB0E5"
-  description: "\uC2A4\uCF08\uB808\uD1A4\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uB77C "
+  questNameForGame: "\uB9C8\uC744 \uD574\uBC29"
+  description: "\uB9C8\uC744\uC5D0 \uCE68\uB7B5\uD55C \uBAA8\uB4E0 \uC8FD\uC740 \uC790\uB4E4\uC744
+    \uD1A0\uBC8C\uD558\uB77C."
   type: 1
   targetName: Skeleton
-  targetCount: 5
-  targetRegion: DockScene
+  targetCount: 8
+  targetRegion: VillageScene
   requiredItem: {fileID: 0}
   itemRewardCount: 1

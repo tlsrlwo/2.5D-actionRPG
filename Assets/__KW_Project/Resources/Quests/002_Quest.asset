@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 002_Quest
   m_EditorClassIdentifier: 
   questTitle: 002_Quest
-  questNameForGame: "\uB09A\uC2DC\uAC00 \uD558\uACE0 \uC2F6\uC5B4 "
-  description: "\uB09A\uC2DC\uB97C \uBC29\uD574\uD558\uB294 \uAC83(\uC2A4\uCF08\uB808\uD1A4)\uB4E4\uC744
-    \uC81C\uAC70\uD574\uC8FC\uC790 "
+  questNameForGame: "\uC120\uCC29\uC7A5 \uC815\uD654"
+  description: "\uC120\uCC29\uC7A5\uC5D0 \uC788\uB294 \uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uB4E4\uC744
+    \uD1A0\uBC8C\uD558\uB77C."
   type: 1
   targetName: Skeleton
-  targetCount: 3
+  targetCount: 5
   targetRegion: DockScene
   requiredItem: {fileID: 0}
   itemRewardCount: 0
