@@ -19,12 +19,29 @@ namespace KW
             this.isCompleted = false;
         }
     }
+
+    [System.Serializable]
+    public class NpcData
+    {
+        public bool hasMetPlayer;
+        public QuestState questState;
+
+        public NpcData(bool met, QuestState state)
+        {
+            this.hasMetPlayer = met;
+            this.questState = state;
+        }
+    }
+
     public class QuestManager : MonoBehaviour
     {
         public static QuestManager Instance { get; private set; }
 
         public List<Quest> activeQuests = new List<Quest>();            // 모든 퀘스트를 담을 리스트
         public List<string> completedQuests = new List<string>();         // 완료된 퀘스트들
+
+        // NPC 상태 저장소 (Key : NpcID, Value : 상태 데이터)
+        public Dictionary<string, NpcData> npcStateDict = new Dictionary<string, NpcData>();
 
 
         public List<Quest> trackedQuests = new List<Quest>();
@@ -33,6 +50,32 @@ namespace KW
         public event Action OnQuestListUpdated;
 
         private Inventory playerInventory;
+
+        // NPC 상태 로드 (start에서 호출)
+        public NpcData GetNpcState(string npcID)
+        {
+            if (npcStateDict.ContainsKey(npcID))
+            {
+                return npcStateDict[npcID];
+            }
+            return null;
+        }
+
+        // NPC 상태 저장(NPC가 상태 변할 때 호출)
+        public void SaveNpcState(string npcId, bool hasMet, QuestState state)
+        {
+            if (npcStateDict.ContainsKey(npcId))
+            {
+                // 이미 있으면 갱신
+                npcStateDict[npcId].hasMetPlayer = hasMet;
+                npcStateDict[npcId].questState = state;
+            }
+            else
+            {
+                // 없으면 새로 추가
+                npcStateDict.Add(npcId, new NpcData(hasMet, state));
+            }
+        }
 
         // 플레이어가 현재 수행 중인 퀘스트 목록
         private void Awake()
@@ -70,7 +113,7 @@ namespace KW
         public void AcceptQuest(QuestSO questData)
         {
             // 중복방지
-            if(activeQuests.Exists(q=> q.data == questData))
+            if (activeQuests.Exists(q => q.data == questData))
             {
                 Debug.LogWarning("[QuestManager] 이미 수행중인 퀘스트입니다");
                 return;
@@ -200,7 +243,7 @@ namespace KW
                 {
                     completedQuests.Add(questData.questTitle);
                 }
-            }       
+            }
 
             activeQuests.Remove(questToRemove);
             OnQuestListUpdated?.Invoke();

@@ -1,4 +1,5 @@
 using System.Collections.Generic; // ◀◀ 퀘스트/보상 리스트를 위해
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -8,6 +9,10 @@ namespace KW
     [RequireComponent(typeof(IInteractable))] // IInteractable이 필수임을 명시
     public class Npc : MonoBehaviour, IInteractable
     {
+        [Header("NPC 데이터")]
+        [SerializeField] private string npcID;
+
+
         [Header("대화 SO")]        
         [SerializeField] private DialogueSO firstMeetingDialogue;               // 최초 첫 만남 시 대사        
         [SerializeField] private DialogueSO questOfferDialogue;                 // 퀘스트 제안 대사       
@@ -30,15 +35,43 @@ namespace KW
 
         // NPC의 현재 상태 저장 
         private bool hasMetPlayer = false;
-        [SerializeField] private QuestState currentQuestState = QuestState.NotOffered;
+        [SerializeField] private QuestState currentQuestState = QuestState.NotOffered;    
 
         [Header("내부 변수")]
         private DialogueManager _dialogueManager;
-        private Inventory _playerInventory;
+        private Inventory _playerInventory;      
+
 
         private void Start()
         {
             _dialogueManager = DialogueManager.Instance;
+
+
+        }
+
+        // 상태 불러오기 함수
+        private void LoadState()
+        {
+            if (QuestManager.Instance != null)
+            {
+                NpcData data = QuestManager.Instance.GetNpcState(npcID);
+
+                if (data != null)
+                {
+                    hasMetPlayer = data.hasMetPlayer;
+                    currentQuestState = data.questState;
+                    Debug.Log($"[{npcID}] 기억 복구 완료: {currentQuestState}");
+                }
+            }
+        }
+
+        // 상태 저장 함수
+        private void SaveState()
+        {
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.SaveNpcState(npcID, hasMetPlayer, currentQuestState);
+            }
         }
 
         // --- 메인 상호작용 함수 ---
@@ -50,6 +83,19 @@ namespace KW
                 _playerInventory = player.GetComponent<Inventory>();
             }
 
+            if (_dialogueManager == null) _dialogueManager = DialogueManager.Instance;
+
+            // 퀘스트 매니저에서 내 상태 다시 불러오기
+            if(QuestManager.Instance != null)
+            {
+                NpcData data = QuestManager.Instance.GetNpcState(npcID);
+                if(data!= null)
+                {
+                    hasMetPlayer = data.hasMetPlayer;
+                    currentQuestState = data.questState;
+                }
+            }
+
             // NPC 현재 상태에 따른 대화 시작
             switch (currentQuestState)
             {
@@ -57,6 +103,7 @@ namespace KW
                     if (hasMetPlayer == false)
                     {
                         hasMetPlayer = true;
+                        SaveState();
                         _dialogueManager.StartDialogue(firstMeetingDialogue, this);
                     }
                     else
@@ -146,6 +193,8 @@ namespace KW
                 // 현재 상태 변경
                 currentQuestState = QuestState.Accepted;
 
+                SaveState();
+
                 if (questData != null)
                 {
                     QuestManager.Instance.AcceptQuest(questData);
@@ -154,6 +203,8 @@ namespace KW
             else if (nextDialogue == declinedDialogue)
             {
                 currentQuestState = QuestState.Declined;
+
+                SaveState();
             }
             else if (nextDialogue == afterQuestDialogue)
             {
@@ -163,6 +214,8 @@ namespace KW
                 QuestManager.Instance.FinishQuest(questData);
 
                 currentQuestState = QuestState.Completed;
+
+                SaveState();
             }
             if (nextDialogue != null)
             {

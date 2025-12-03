@@ -91,6 +91,21 @@ namespace KW
                 data.activeQuests.Add(qData);
             }
 
+            // NPC 상태 저장 (Dictionary -> List 변환)
+            if(questManager != null)
+            {
+                foreach(var kvp in questManager.npcStateDict)
+                {
+                    NpcSaveData npcData = new NpcSaveData
+                    {
+                        npcID = kvp.Key,
+                        hasMet = kvp.Value.hasMetPlayer,
+                        questStateIndex = (int)kvp.Value.questState
+                    };
+                    data.npcDataList.Add(npcData);
+                }
+            }
+
             // 파일 쓰기
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(savePath, json);
@@ -230,6 +245,19 @@ namespace KW
                 }
                 questManager.ForceUpdateUI();
             }
+
+            // NPC 상태 복구 
+            if(questManager!= null)
+            {
+                questManager.npcStateDict.Clear();
+                foreach(var npcData in data.npcDataList)
+                {
+                    QuestState state = (QuestState)npcData.questStateIndex;
+                    questManager.SaveNpcState(npcData.npcID, npcData.hasMet, state);
+                }
+            }
+
+
             PlayerSceneConnector sceneConnector = player.GetComponent<PlayerSceneConnector>();
 
             sceneConnector.ConnectToSceneComponents();

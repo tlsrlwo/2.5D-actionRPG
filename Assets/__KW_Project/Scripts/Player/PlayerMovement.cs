@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace KW
 {
@@ -115,8 +116,28 @@ namespace KW
         {
             canMove = !isAnyUiOpen;
         }
+
+        private bool IsPointerOverUIObject()
+        {
+            // 현재 활성화된 EventSystem이 없으면 false 반환
+            if (EventSystem.current == null) return false;
+
+            // 현재 마우스 포인터의 데이터를 가져옴
+            PointerEventData eventData = new PointerEventData(EventSystem.current);
+            eventData.position = Input.mousePosition;
+
+            // UI 레이캐스트를 저장할 리스트
+            var results = new System.Collections.Generic.List<RaycastResult>();
+
+            // EventSystem을 통해 UI 요소에 레이캐스트 수행 
+            EventSystem.current.RaycastAll(eventData, results);
+
+            // 결과 리스트에 UI 요소가 하나라도 있으면 true
+            return results.Count > 0;
+        }
         #endregion
 
+        [Tooltip("데이터 파싱")]
         private void LoadStatsFromJson()
         {
             // json 파일을 text 로서 읽어옴
@@ -208,6 +229,12 @@ namespace KW
 
             if (Input.GetMouseButtonDown(0) && IsGrounded() && !isAttacking)
             {
+                
+                if (IsPointerOverUIObject())
+                {
+                    Debug.Log("UI 위에 마우스가 있어서 공격 입력을 무시합니다.");
+                    return; 
+                }
                 if (playerHealth == null)
                 {
                     Debug.LogError("[PlayerMovement] PlayerHealth 를 찾을 수 없음");
@@ -237,7 +264,7 @@ namespace KW
 
         private void TryUsePotion()
         {
-            Debug.Log("R키 입력 감지됨. 포션 사용 시도...");
+            // Debug.Log("R키 입력 감지됨. 포션 사용 시도...");
 
             if (SaveManager.Instance == null)
             {
@@ -264,6 +291,14 @@ namespace KW
 
             if (item is Potion potion)
             {
+                if(playerHealth.currentHp >= playerHealth.maxHp)
+                {
+                    Debug.Log("플레이어의 체력을 더 이상 회복할 수 없습니다.");
+
+                    return;
+                }
+
+
                 Debug.Log("포션 타입 확인 완료! 힐 상태로 전환합니다.");
                 healState.SetPotion(potion);
                 SwitchState(healState);

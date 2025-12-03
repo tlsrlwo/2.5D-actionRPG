@@ -20,6 +20,17 @@ namespace KW
         [Header("퀘스트 정보")]
         public List<string> completedQuestNames = new List<string>();                   // 완료한 퀘스트
         public List<QuestSaveData> activeQuests = new List<QuestSaveData>();            // 진행중인 퀘스트
+
+        // Dictionary는 JSON 저장이 안 되므로 리스트로 변환해서 저장
+        public List<NpcSaveData> npcDataList = new List<NpcSaveData>();
+    }
+
+    [System.Serializable]
+    public class NpcSaveData
+    {
+        public string npcID;
+        public bool hasMet;
+        public int questStateIndex; // Enum을 정수로 저장
     }
 
     [System.Serializable]

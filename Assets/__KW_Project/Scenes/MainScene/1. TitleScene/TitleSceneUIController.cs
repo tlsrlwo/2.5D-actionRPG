@@ -5,65 +5,70 @@ using System.Collections.Generic;
 
 public class TitleSceneUIController : MonoBehaviour
 {
-    // === ¸ñÇ¥ ¾ËÆÄ °ª ¼³Á¤ (0 ~ 255) ===
-    // 0¿¡¼­ 150±îÁö Åõ¸íµµ¸¦ Áõ°¡½ÃÅ°µµ·Ï ¼³Á¤ÇÕ´Ï´Ù.
+    // === ëª©í‘œ ì•ŒíŒŒ ê°’ ì„¤ì • (0 ~ 255) ===
+    // 0ì—ì„œ 150ê¹Œì§€ íˆ¬ëª…ë„ë¥¼ ì¦ê°€ì‹œí‚¤ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤.
     private const int TARGET_ALPHA_INT = 150;
     private readonly float TARGET_ALPHA_FLOAT = TARGET_ALPHA_INT / 255f;
     // ===================================
 
-    // ÆäÀÌµå È¿°ú¸¦ Àû¿ëÇÒ ¹öÆ° GameObject (»óÀ§ ¿ÀºêÁ§Æ®)
+    // í˜ì´ë“œ íš¨ê³¼ë¥¼ ì ìš©í•  ë²„íŠ¼ GameObject (ìƒìœ„ ì˜¤ë¸Œì íŠ¸)
     [Header("UI GameObjects for Fading")]
     [SerializeField] private GameObject gameStartButtonObject;
+    [SerializeField] private GameObject loadGameButtonObject;
     [SerializeField] private GameObject quitGameButtonObject;
 
     [Header("Appearance Timing (Seconds)")]
-    // Game Start ¹öÆ° µîÀå ½ÃÀÛ Áö¿¬ ½Ã°£ (5.0ÃÊ)
+    // Game Start ë²„íŠ¼ ë“±ì¥ ì‹œì‘ ì§€ì—° ì‹œê°„ (5.0ì´ˆ)
     [SerializeField] private float gameStartDelay = 5.0f;
 
-    // Quit Game ¹öÆ° µîÀå ½ÃÀÛ Áö¿¬ ½Ã°£ (5.2ÃÊ)
-    [SerializeField] private float quitGameDelay = 5.2f;
+    // Quit Game ë²„íŠ¼ ë“±ì¥ ì‹œì‘ ì§€ì—° ì‹œê°„ (5.2ì´ˆ)
+    [SerializeField] private float loadGameDelay = 5.2f;
+    [SerializeField] private float quitGameDleay = 5.4f;
 
     [Header("Fade Settings")]
-    // ÆäÀÌµå ÀÎ¿¡ °É¸®´Â ½Ã°£ (0.5ÃÊ µ¿¾È Åõ¸íµµ 0 -> TARGET_ALPHA_FLOAT)
+    // í˜ì´ë“œ ì¸ì— ê±¸ë¦¬ëŠ” ì‹œê°„ (0.5ì´ˆ ë™ì•ˆ íˆ¬ëª…ë„ 0 -> TARGET_ALPHA_FLOAT)
     [SerializeField] private float fadeInDuration = 0.5f;
 
     void Start()
     {
-        // ¾À ½ÃÀÛ ½Ã ¹öÆ°µéÀÇ Åõ¸íµµ¸¦ 0À¸·Î ÃÊ±âÈ­
+        // ì”¬ ì‹œì‘ ì‹œ ë²„íŠ¼ë“¤ì˜ íˆ¬ëª…ë„ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
         SetAlphaRecursive(gameStartButtonObject, 0f);
+        SetAlphaRecursive(loadGameButtonObject, 0f);
         SetAlphaRecursive(quitGameButtonObject, 0f);
 
-        // ¹öÆ° µîÀå ÄÚ·çÆ¾ ½ÃÀÛ
+        // ë²„íŠ¼ ë“±ì¥ ì½”ë£¨í‹´ ì‹œì‘
         StartCoroutine(ShowButtonsSequentially());
     }
 
-    // ¹öÆ°À» ¼øÂ÷ÀûÀ¸·Î Áö¿¬ ÈÄ ÆäÀÌµå ÀÎ ½ÃÅ°´Â ÄÚ·çÆ¾
+    // ë²„íŠ¼ì„ ìˆœì°¨ì ìœ¼ë¡œ ì§€ì—° í›„ í˜ì´ë“œ ì¸ ì‹œí‚¤ëŠ” ì½”ë£¨í‹´
     private IEnumerator ShowButtonsSequentially()
     {
-        // 1. Game Start ¹öÆ° µîÀå
-
-        // Game Start µîÀå ½ÃÀÛ ÁöÁ¡±îÁö ´ë±â (5.0ÃÊ)
+        // Game Start ë“±ì¥ ì‹œì‘ ì§€ì ê¹Œì§€ ëŒ€ê¸° (5.0ì´ˆ)
         yield return new WaitForSeconds(gameStartDelay);
 
-        Debug.Log($"Game Start ¹öÆ° ÆäÀÌµå ÀÎ ½ÃÀÛ (5.0ÃÊ, ¸ñÇ¥ Alpha: {TARGET_ALPHA_INT}/255)");
-        // ÆäÀÌµå ÀÎ ÄÚ·çÆ¾ ½ÇÇà ¹× ¿Ï·á±îÁö ´ë±â
+        Debug.Log($"Game Start ë²„íŠ¼ í˜ì´ë“œ ì¸ ì‹œì‘ (5.0ì´ˆ, ëª©í‘œ Alpha: {TARGET_ALPHA_INT}/255)");
+        // í˜ì´ë“œ ì¸ ì½”ë£¨í‹´ ì‹¤í–‰ ë° ì™„ë£Œê¹Œì§€ ëŒ€ê¸°
         yield return StartCoroutine(FadeGameObject(gameStartButtonObject, TARGET_ALPHA_FLOAT, fadeInDuration));
 
-        // 2. Quit Game ¹öÆ° µîÀå
-
-        // Game Start ¹öÆ° µîÀå ¿Ï·á ÈÄ, Quit Game ¹öÆ° ½ÃÀÛ ÁöÁ¡±îÁö ³²Àº ½Ã°£ ´ë±â
-        float delayBetweenFades = quitGameDelay - gameStartDelay;
+        // Game Start ë²„íŠ¼ ë“±ì¥ ì™„ë£Œ í›„, Quit Game ë²„íŠ¼ ì‹œì‘ ì§€ì ê¹Œì§€ ë‚¨ì€ ì‹œê°„ ëŒ€ê¸°
+        float delayBetweenFades = loadGameDelay - gameStartDelay;
         if (delayBetweenFades > 0)
         {
             yield return new WaitForSeconds(delayBetweenFades);
         }
 
-        Debug.Log($"Quit Game ¹öÆ° ÆäÀÌµå ÀÎ ½ÃÀÛ (5.2ÃÊ, ¸ñÇ¥ Alpha: {TARGET_ALPHA_INT}/255)");
-        // ÆäÀÌµå ÀÎ ÄÚ·çÆ¾ ½ÇÇà ¹× ¿Ï·á±îÁö ´ë±â
+        Debug.Log($"Quit Game ë²„íŠ¼ í˜ì´ë“œ ì¸ ì‹œì‘ (5.2ì´ˆ, ëª©í‘œ Alpha: {TARGET_ALPHA_INT}/255)");
+        // í˜ì´ë“œ ì¸ ì½”ë£¨í‹´ ì‹¤í–‰ ë° ì™„ë£Œê¹Œì§€ ëŒ€ê¸°
+        yield return StartCoroutine(FadeGameObject(loadGameButtonObject, TARGET_ALPHA_FLOAT, fadeInDuration));
+
+        if (delayBetweenFades > 0)
+        {
+            yield return new WaitForSeconds(delayBetweenFades);
+        }
         yield return StartCoroutine(FadeGameObject(quitGameButtonObject, TARGET_ALPHA_FLOAT, fadeInDuration));
     }
 
-    // GameObject¿Í ±× ¸ğµç ÀÚ½Ä ¿ä¼ÒÀÇ Graphic ÄÄÆ÷³ÍÆ® Åõ¸íµµ¸¦ ¸ñÇ¥ °ªÀ¸·Î º¯°æ
+    // GameObjectì™€ ê·¸ ëª¨ë“  ìì‹ ìš”ì†Œì˜ Graphic ì»´í¬ë„ŒíŠ¸ íˆ¬ëª…ë„ë¥¼ ëª©í‘œ ê°’ìœ¼ë¡œ ë³€ê²½
     private IEnumerator FadeGameObject(GameObject rootObject, float targetAlpha, float duration)
     {
         Graphic[] graphics = rootObject.GetComponentsInChildren<Graphic>(true);
@@ -85,7 +90,7 @@ public class TitleSceneUIController : MonoBehaviour
             for (int i = 0; i < graphics.Length; i++)
             {
                 Color startColor = startColors[i];
-                // ½ÃÀÛ ¾ËÆÄ °ª(0)¿¡¼­ ¸ñÇ¥ ¾ËÆÄ °ª(TARGET_ALPHA_FLOAT)À¸·Î ºÎµå·´°Ô º¸°£
+                // ì‹œì‘ ì•ŒíŒŒ ê°’(0)ì—ì„œ ëª©í‘œ ì•ŒíŒŒ ê°’(TARGET_ALPHA_FLOAT)ìœ¼ë¡œ ë¶€ë“œëŸ½ê²Œ ë³´ê°„
                 float currentAlpha = Mathf.Lerp(startColor.a, targetAlpha, t);
 
                 Color newColor = new Color(startColor.r, startColor.g, startColor.b, currentAlpha);
@@ -95,7 +100,7 @@ public class TitleSceneUIController : MonoBehaviour
             yield return null;
         }
 
-        // ÃÖÁ¾ÀûÀ¸·Î ¸ñÇ¥ ¾ËÆÄ °ªÀ¸·Î ¼³Á¤
+        // ìµœì¢…ì ìœ¼ë¡œ ëª©í‘œ ì•ŒíŒŒ ê°’ìœ¼ë¡œ ì„¤ì •
         for (int i = 0; i < graphics.Length; i++)
         {
             Color startColor = startColors[i];
@@ -104,7 +109,7 @@ public class TitleSceneUIController : MonoBehaviour
         }
     }
 
-    // ÃÊ±â ¼³Á¤ ½Ã Åõ¸íµµ¸¦ ÀÏ°ıÀûÀ¸·Î ¼³Á¤ÇÏ´Â ÇïÆÛ ÇÔ¼ö
+    // ì´ˆê¸° ì„¤ì • ì‹œ íˆ¬ëª…ë„ë¥¼ ì¼ê´„ì ìœ¼ë¡œ ì„¤ì •í•˜ëŠ” í—¬í¼ í•¨ìˆ˜
     private void SetAlphaRecursive(GameObject rootObject, float alpha)
     {
         Graphic[] graphics = rootObject.GetComponentsInChildren<Graphic>(true);

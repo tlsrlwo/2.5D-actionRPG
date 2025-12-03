@@ -1,55 +1,64 @@
+using KW;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    // ÀÌµ¿ÇÒ ¾À ÀÌ¸§À» "OpeningCutScene"À¸·Î º¯°æ
+    // ì´ë™í•  ì”¬ ì´ë¦„ì„ "OpeningCutScene"ìœ¼ë¡œ ë³€ê²½
     public string nextSceneName = "OpeningCutScene";
 
-    // ÀÎ½ºÆåÅÍ¿¡¼­ ÇÒ´çÇÒ È¿°úÀ½
+    // ì¸ìŠ¤í™í„°ì—ì„œ í• ë‹¹í•  íš¨ê³¼ìŒ
     public AudioClip clickSound;
 
-    // ¿Àµğ¿À ¼Ò½º ÄÄÆ÷³ÍÆ®
+    // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ ì»´í¬ë„ŒíŠ¸
     private AudioSource audioSource;
 
-    void Awake() // Start() ´ë½Å Awake()¸¦ »ç¿ëÇØ ÃÊ±âÈ­ º¸Àå
+    void Awake() 
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            // TitleManager ¿ÀºêÁ§Æ®¿¡ AudioSource°¡ ¾øÀ¸¸é ÀÚµ¿À¸·Î Ãß°¡
+            // TitleManager ì˜¤ë¸Œì íŠ¸ì— AudioSourceê°€ ì—†ìœ¼ë©´ ìë™ìœ¼ë¡œ ì¶”ê°€
             audioSource = gameObject.AddComponent<AudioSource>();
-            Debug.Log("AudioSource ÄÄÆ÷³ÍÆ®°¡ ÀÚµ¿À¸·Î Ãß°¡µÇ¾ú½À´Ï´Ù.");
+            Debug.Log("AudioSource ì»´í¬ë„ŒíŠ¸ê°€ ìë™ìœ¼ë¡œ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
         }
     }
 
-    // 1. °ÔÀÓ ½ÃÀÛ ¹öÆ° ±â´É
+    // ê²Œì„ ì‹œì‘ ë²„íŠ¼ ê¸°ëŠ¥
     public void StartGame()
     {
-        // 1. È¿°úÀ½ Àç»ı
+        // íš¨ê³¼ìŒ ì¬ìƒ
         if (audioSource != null && clickSound != null)
         {
             audioSource.PlayOneShot(clickSound);
         }
 
-        // 2. ¾À ÀüÈ¯ (Å¬¸¯À½Àº ÂªÀ¸¹Ç·Î Áï½Ã ·Îµå)
-        // ÁÖÀÇ: OpeningCutScene ¾ÀÀÌ Build Settings¿¡ Ãß°¡µÇ¾î ÀÖ¾î¾ß ÇÕ´Ï´Ù.
+        // ì”¬ ì „í™˜ (í´ë¦­ìŒì€ ì§§ìœ¼ë¯€ë¡œ ì¦‰ì‹œ ë¡œë“œ)
+        // ì£¼ì˜: OpeningCutScene ì”¬ì´ Build Settingsì— ì¶”ê°€ë˜ì–´ ìˆì–´ì•¼ í•©ë‹ˆë‹¤.
         SceneManager.LoadScene(nextSceneName);
     }
 
-    // 2. °ÔÀÓ Á¾·á ¹öÆ° ±â´É
+    public void LoadGame()
+    {
+        if(SaveManager.Instance != null)
+        {
+            SaveManager.Instance.LoadGame();
+        }
+    }
+
+    // ê²Œì„ ì¢…ë£Œ ë²„íŠ¼ ê¸°ëŠ¥
     public void QuitGame()
     {
-        // (¼±ÅÃ »çÇ×) Á¾·á È¿°úÀ½ÀÌ ÀÖ´Ù¸é ¿©±â¼­ Àç»ı
+        // (ì„ íƒ ì‚¬í•­) ì¢…ë£Œ íš¨ê³¼ìŒì´ ìˆë‹¤ë©´ ì—¬ê¸°ì„œ ì¬ìƒ
 
-        // Áï½Ã °ÔÀÓ Á¾·á
+        // ì¦‰ì‹œ ê²Œì„ ì¢…ë£Œ
 #if UNITY_EDITOR
-        // ¿¡µğÅÍ¿¡¼­ ÇÃ·¹ÀÌ ¸ğµå Á¾·á
+        // ì—ë””í„°ì—ì„œ í”Œë ˆì´ ëª¨ë“œ ì¢…ë£Œ
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            // ºôµåµÈ °ÔÀÓ Á¾·á
+            // ë¹Œë“œëœ ê²Œì„ ì¢…ë£Œ
             Application.Quit();
 #endif
-        Debug.Log("°ÔÀÓ Á¾·á ¿äÃ»");
+        Debug.Log("ê²Œì„ ì¢…ë£Œ ìš”ì²­");
     }
 }

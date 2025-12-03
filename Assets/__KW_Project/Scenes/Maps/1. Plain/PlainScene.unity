@@ -5126,11 +5126,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4940530804649595483, guid: 2c9025a917f443e488eaf255d42ef11c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 69.34
+      value: 73.08
       objectReference: {fileID: 0}
     - target: {fileID: 4940530804649595483, guid: 2c9025a917f443e488eaf255d42ef11c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.66
+      value: 8.45
       objectReference: {fileID: 0}
     - target: {fileID: 4940530804649595483, guid: 2c9025a917f443e488eaf255d42ef11c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8708,6 +8708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da1e8c6baf8b64db67184cf1de5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: NPC_VillageForeman
   firstMeetingDialogue: {fileID: 11400000, guid: f7c85fc8d09ebec489c6750c2bcef482, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
