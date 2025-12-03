@@ -11131,7 +11131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1420576323660819500, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.58456
+      value: 0.58456105
       objectReference: {fileID: 0}
     - target: {fileID: 1420576323660819500, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
       propertyPath: m_AnchorMin.y
@@ -11184,6 +11184,10 @@ PrefabInstance:
     - target: {fileID: 7862387302319963034, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 284.27435
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006719912032804769, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8605459784660159074, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11272,7 +11276,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8006719912032804769, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451080844}
+    - targetCorrespondingSourceObject: {fileID: 8006719912032804769, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451080843}
   m_SourcePrefab: {fileID: 100100000, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
 --- !u!1 &1451080838 stripped
 GameObject:
@@ -11299,6 +11309,44 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 963331671378424895, guid: d678b16c60f055243a00bdf4e96b180d, type: 3}
   m_PrefabInstance: {fileID: 1451080837}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1451080843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451080840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f530299e045eeb244ad53a8325b8dc71, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1451080844
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451080840}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1467399225
 PrefabInstance:
   m_ObjectHideFlags: 0
