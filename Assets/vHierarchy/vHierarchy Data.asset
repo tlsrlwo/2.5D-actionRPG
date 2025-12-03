@@ -146,6 +146,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-2371521062756655922-1056710892
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-7432331878930858131-522116789
         - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-3992113665749639040-1719547074
+        - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-2138650084-0
+        - globalObjectIdString: GlobalObjectId_V1-2-95951b636f85b6e418d6f4faac547b3c-467553897-0
         values:
         - colorIndex: 1
           iconNameOrGuid: Camera Icon
@@ -253,6 +255,14 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 8
           iconNameOrGuid: Settings Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:
@@ -351,6 +361,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-3a16ebb013cd3b84fb68f27c696d1ce1-5505215358706358480-442913783
         - globalObjectIdString: GlobalObjectId_V1-2-3a16ebb013cd3b84fb68f27c696d1ce1-1802078594-0
         - globalObjectIdString: GlobalObjectId_V1-2-3a16ebb013cd3b84fb68f27c696d1ce1-1323268790-0
+        - globalObjectIdString: GlobalObjectId_V1-2-3a16ebb013cd3b84fb68f27c696d1ce1-1503897256-0
         values:
         - colorIndex: 1
           iconNameOrGuid: Camera Icon
@@ -414,6 +425,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 1
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

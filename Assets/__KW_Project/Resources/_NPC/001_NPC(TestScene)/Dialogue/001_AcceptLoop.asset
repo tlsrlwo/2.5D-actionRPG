@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 001_AcceptLoop
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uC544\uC9C1\uC774\uAD70... \uB2E4\uC2DC \uD55C \uBC88 \uB3C4\uC640\uC918\uC11C
-    \uACE0\uB9D9\uB124"
+  - "\uADF8 \uC0AC\uB78C\uC744 \uCC3E\uC544\uAC00 \uBCF4\uC2DC\uC624. \uD544\uC694\uD55C
+    \uC7A5\uBE44\uB97C \uAC16\uCD9C \uC218 \uC788\uC744 \uAC83\uC774\uC624"
   dialogueChoices: []

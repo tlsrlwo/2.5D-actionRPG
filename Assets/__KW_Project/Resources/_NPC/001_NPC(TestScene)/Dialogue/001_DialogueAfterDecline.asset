@@ -16,6 +16,10 @@ MonoBehaviour:
   - "\uB9C8\uC74C\uC774 \uBC14\uB00C\uC5C8\uB098??"
   dialogueChoices:
   - choiceText: "\uADF8\uB807\uB2E4"
-    nextDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
+    nextDialogue: {fileID: 11400000, guid: ca2b5a84049399949a40d6a46028376f, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1
   - choiceText: "\uC544\uB2C8\uB2E4"
     nextDialogue: {fileID: 11400000, guid: 76ea593d0a4aacd489634a8a835b1bf9, type: 2}
+    rewardItem: {fileID: 0}
+    rewardItemCount: 1
