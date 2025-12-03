@@ -10,20 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: 002_DialogueFirstMeet
+  m_Name: 002_DialogueAfterDecline
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uC548\uB155\uD558\uC2DC\uAC8C. \uB098\uB294 \uAC00\uB054 \uC5EC\uAE30\uC11C
-    \uB09A\uC2DC\uB97C \uC990\uAE34\uB2E4\uB124\n"
-  - "\uADF8\uB7EC\uB098 \uBCF4\uC774\uB2E4\uC2DC\uD53C, \uB3C4\uD1B5 \uC694\uC998\uC740
-    \uB09A\uC2DC\uB97C \uD558\uB7EC \uAC08 \uC218\uAC00 \uC5C6\uB124 "
-  - "\uC800 \uAD34\uBB3C\uB4E4\uC774 \uC880 \uC0AC\uB77C\uC84C\uC73C\uBA74 \uC88B\uACA0\uAC74\uB9CC "
+  - "\uC2E0\uACBD\uC4F0\uC9C0 \uB9D0\uAC8C"
   dialogueChoices:
-  - choiceText: "\uB3C4\uC640\uC900\uB2E4"
+  - choiceText: "\uB3C4\uC640\uC900\uB2E4 "
     nextDialogue: {fileID: 11400000, guid: bff3889c9cecd964da1570466752b189, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 1
-  - choiceText: "\uADF8\uB0E5 \uAC04\uB2E4"
+  - choiceText: "\uADF8\uB0E5 \uAC04\uB2E4 "
     nextDialogue: {fileID: 11400000, guid: 901c10f58bc25ee4db5e1b6e8320dba8, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 1

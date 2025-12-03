@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: 002_AfterAccept
+  m_Name: npcDialogue_FirstMeet
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uB3C4\uC640\uC900\uB2E4\uB294\uAC74\uAC00...!! \uACE0\uB9D9\uB124"
+  - "\uB2F9\uC2E0... \uC678\uBD80\uC5D0\uC11C \uC624\uC2E0 \uBD84\uC778\uAC00\uC694?"
+  - "\uC232 \uC18D\uC5D0 \uC788\uB294 \uAD50\uD68C\uAE4C\uC9C0 \uC8FD\uC740 \uC790\uB4E4\uC774
+    \uCC3E\uC544\uC624\uACE0 \uB9D0\uC558\uC2B5\uB2C8\uB2E4.\n\uC800\uB294 \uAC04\uC2E0\uD788
+    \uB3C4\uB9DD\uB098\uC654\uC8E0."
   dialogueChoices: []

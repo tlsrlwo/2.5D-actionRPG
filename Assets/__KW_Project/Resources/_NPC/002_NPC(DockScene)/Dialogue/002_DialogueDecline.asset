@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: 002_LastDialogue
+  m_Name: 002_DialogueDecline
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uACE0\uB9D9\uB124!! \uB098\uC911\uC5D0 \uB2E4\uC2DC \uAF2D \uB9C8\uC744\uC5D0
-    \uB4DC\uB974\uBA74 \uBCF4\uC0C1\uD558\uB3C4\uB85D \uD558\uACA0\uB124  "
+  - "\uADF8\uB798, \uC2E0\uACBD\uC4F0\uC9C0 \uB9D0\uAC8C"
   dialogueChoices: []

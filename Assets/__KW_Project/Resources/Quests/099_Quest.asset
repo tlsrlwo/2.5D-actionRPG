@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 099_Quest
   m_EditorClassIdentifier: 
   questTitle: 099_Quest
-  questNameForGame: "\uAC11\uC637\uC774 \uD544\uC694\uD574!"
-  description: "\uBCD1\uC0AC \uD5EC\uBA67\uC744 \uC5BB\uC5B4\uB77C. (1\uAC1C)"
+  questNameForGame: "\uB0A0 \uC9C0\uCF1C\uC8FC\uB294 \uAC83"
+  description: "\uBCD1\uC0AC \uD5EC\uBA67\uC744 \uC5BB\uC5B4\uB77C"
   type: 0
   targetName: arm_SoldierHelmet
   targetCount: 1

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: 002_AcceptLoop
+  m_Name: 002_AfterAccept
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uB2E4\uC2DC \uD55C \uBC88 \uACE0\uB9D9\uB124 "
+  - "\uC800 \uB188\uB4E4\uC744 \uD574\uCE58\uC6CC \uC900\uB2E4\uB294 \uAC74\uAC00...
+    \uACE0\uB9D9\uAD70."
   dialogueChoices: []
