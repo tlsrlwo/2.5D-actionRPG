@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Leg_FurLeg
   m_EditorClassIdentifier: 
   itemId: arm_FurLeg
-  itemName: "\uBAA8\uD53C \uBC14\uC9C0"
+  itemName: "\uBAA8\uD5D8\uAC00\uC758 \uC815\uAC15\uC774\uBC1B\uC774"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 581dcc03489bc6041a2ad5f91cbd61b9, type: 3}
   description: "\uD328\uC158\uC5D0 \uC788\uC5B4\uC120 \uC88B\uC740 \uC120\uD0DD\uC774\uB2E4 "
   maxStack: 1
   armourType: 2

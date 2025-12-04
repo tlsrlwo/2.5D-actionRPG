@@ -93,6 +93,7 @@ namespace KW
 
             if (nextBtn != null)
             {
+                nextBtn.onClick.RemoveAllListeners();
                 nextBtn.onClick.AddListener(DisplayNextLine);
             }
         } 
@@ -106,29 +107,29 @@ namespace KW
         {
             _INGAMECANVAS = canvasObj;
         }
-    
-    public void RegisterNpcCanvas(NpcCanvasUI canvas)
+
+        public void RegisterNpcCanvas(NpcCanvasUI canvas)
         {
             npcCanvas = canvas;
-        
-        // 등록되자마자 초기화
-        if (npcCanvas != null)
-        {
-             npcCanvas.dialoguePanel.SetActive(false);
-             
-             if (npcCanvas.nextBtn != null)
-             {
-                 npcCanvas.nextBtn.onClick.RemoveAllListeners();
-                 npcCanvas.nextBtn.onClick.AddListener(DisplayNextLine);
-             }
-             
-             Debug.Log("[DialogueManager] NpcCanvas 등록 완료!");
-        }
+
+            // 등록되자마자 초기화
+            if (npcCanvas != null)
+            {
+                npcCanvas.dialoguePanel.SetActive(false);
+
+                if (npcCanvas.nextBtn != null)
+                {
+                    npcCanvas.nextBtn.onClick.RemoveAllListeners();
+                    npcCanvas.nextBtn.onClick.AddListener(DisplayNextLine);
+                }
+
+                Debug.Log("[DialogueManager] NpcCanvas 등록 완료!");
+            }
         }
 
         private void Start()
         {
-            if (npcCanvas != null)
+            /* if (npcCanvas != null)
             {
                 dialoguePanel = npcCanvas.dialoguePanel;
                 dialogueText = npcCanvas.dialogueText;
@@ -145,14 +146,15 @@ namespace KW
             if (_SYSTEMCANVAS == null) _SYSTEMCANVAS = FindObjectOfType<SystemCanvasUI>().gameObject;
 
             // 시작 때 대화창 숨기기
-            dialoguePanel.SetActive(false);
+            dialoguePanel.SetActive(false); */
 
-            // 다음 버튼에 DisplayNextLine 을 미리 연결
+         /*    // 다음 버튼에 DisplayNextLine 을 미리 연결
             // nextBtn.onClick.AddListener(=> );
             if (nextBtn != null)
             {
+                nextBtn.onClick.RemoveAllListeners();
                 nextBtn.onClick.AddListener(DisplayNextLine);
-            }
+            } */
         }
 
       

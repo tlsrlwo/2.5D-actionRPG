@@ -37,7 +37,7 @@ namespace KW
             else
             {
                 Destroy(gameObject);
-            }                
+            }
 
             savePath = Application.persistentDataPath + "/saveGame.json";                   // 저장될 주소 
         }
@@ -46,7 +46,7 @@ namespace KW
         {
             if (weaponSlot == null || armourSlot == null || potionSlot == null)
             {
-                FindQuickSlots();   
+                FindQuickSlots();
             }
 
             SaveData data = new SaveData();
@@ -92,9 +92,9 @@ namespace KW
             }
 
             // NPC 상태 저장 (Dictionary -> List 변환)
-            if(questManager != null)
+            if (questManager != null)
             {
-                foreach(var kvp in questManager.npcStateDict)
+                foreach (var kvp in questManager.npcStateDict)
                 {
                     NpcSaveData npcData = new NpcSaveData
                     {
@@ -110,15 +110,15 @@ namespace KW
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(savePath, json);
 
-          /*   if(NotificationManager.Instance != null)
-            {
-                string message = "게임이 저장되었습니다.";
+            /*   if(NotificationManager.Instance != null)
+              {
+                  string message = "게임이 저장되었습니다.";
 
-                NotificationManager.Instance.ShowMessage(message);
-            } */
+                  NotificationManager.Instance.ShowMessage(message);
+              } */
             Debug.Log("게임저장됨 : " + savePath);
         }
-        
+
         private void SaveQuickSlot(QuickSlot_Ui slot, List<ItemSaveData> list)
         {
             if (slot.equippedItem != null)
@@ -135,7 +135,7 @@ namespace KW
         {
             QuickSlot_Ui[] allSlots = FindObjectsOfType<QuickSlot_Ui>(true);
 
-            foreach(var slot in allSlots)
+            foreach (var slot in allSlots)
             {
                 switch (slot.acceptedItemType)
                 {
@@ -147,7 +147,7 @@ namespace KW
                         break;
                     case ItemType.Consumable:
                         potionSlot = slot;
-                        break;                        
+                        break;
                 }
             }
         }
@@ -247,10 +247,10 @@ namespace KW
             }
 
             // NPC 상태 복구 
-            if(questManager!= null)
+            if (questManager != null)
             {
                 questManager.npcStateDict.Clear();
-                foreach(var npcData in data.npcDataList)
+                foreach (var npcData in data.npcDataList)
                 {
                     QuestState state = (QuestState)npcData.questStateIndex;
                     questManager.SaveNpcState(npcData.npcID, npcData.hasMet, state);
@@ -286,7 +286,7 @@ namespace KW
                 if (item != null) slot.EquipItem(item);
             }
         }
-        
+
         public void ExitBtn()
         {
             Debug.Log("Exit Button is Pressed");
@@ -299,6 +299,9 @@ namespace KW
             // 2. 유니티 에디터에서 플레이 모드를 중지할 때 사용
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
+#else
+            // 빌드된 게임 종료
+            Application.Quit();
 #endif
         }
     }

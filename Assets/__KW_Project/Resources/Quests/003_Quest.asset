@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55942b11c7e975e43b4c767879c32c20, type: 3}
-  m_Name: 001_Quest
+  m_Name: 003_Quest
   m_EditorClassIdentifier: 
-  questTitle: 001_Quest
-  questNameForGame: "\uB9C8\uC744 \uD574\uBC29"
-  description: "\uB9C8\uC744\uC5D0 \uCE68\uB7B5\uD55C \uBAA8\uB4E0 \uC8FD\uC740 \uC790\uB4E4\uC744
-    \uD1A0\uBC8C\uD558\uB77C."
+  questTitle: 003_Quest
+  questNameForGame: "\uB9C8\uC744\uC744 \uAD6C\uD558\uC790"
+  description: "\uB9C8\uC744\uC5D0 \uC544\uC9C1 \uC0DD\uC874\uC790\uAC00 \uB0A8\uC544\uC788\uC744
+    \uC218\uB3C4 \uC788\uB2E4. \uB9C8\uC744\uC758 \uAD34\uBB3C\uC744 \uB2E4 \uCC98\uB9AC\uD558\uC790."
   type: 1
   targetName: Skeleton
   targetCount: 8

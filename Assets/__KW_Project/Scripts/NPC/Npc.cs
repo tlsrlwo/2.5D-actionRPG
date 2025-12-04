@@ -24,12 +24,12 @@ namespace KW
         [SerializeField] private DialogueSO afterQuestDialogue;                 // 퀘스트 완료 후 방문 시 대사
 
 
-        /* [Header("퀘스트 데이터")]
+    /*     [Header("퀘스트 데이터")]
         [Tooltip("퀘스트 요구 사항")]
         public List<ChestSlot> questRequirements;
 
         [Tooltip("퀘스트 완료 시 지급할 보상")]
-        public List<ChestSlot> questRewards;*/
+        public List<ChestSlot> questRewards; */
 
         public QuestSO questData; 
 

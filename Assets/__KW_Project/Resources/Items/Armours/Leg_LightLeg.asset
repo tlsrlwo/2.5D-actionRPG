@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: arm_LightLeg
   itemName: "\uAC00\uBCBC\uC6B4 \uBC14\uC9C0"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 40f4f0eb592f55741a41fa44b1f14b25, type: 3}
   description: "\uAC00\uBCBC\uC6CC\uC11C \uC0B0\uCC45\uD560 \uB54C \uC88B\uB2E4 "
   maxStack: 1
   armourType: 2

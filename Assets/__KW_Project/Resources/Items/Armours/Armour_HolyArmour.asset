@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: arm_HolyArmour
   itemName: "\uC8FC\uC2E0\uC758 \uAC00\uD638"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: a3fdb8e09d96d21459e930a129b77737, type: 3}
   description: "\uC6EC\uB9CC\uD55C \uAC74 \uC548\uC544\uD50C\uC9C0\uB3C4..."
   maxStack: 1
   armourType: 1

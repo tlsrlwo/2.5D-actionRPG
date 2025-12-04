@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: arm_TravelerArmour
   itemName: "\uBAA8\uD5D8\uAC00\uC758 \uC637"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 2e2ceb1af9c2c974d8fc70c39429ecde, type: 3}
   description: "\uC774 \uC138\uACC4\uC5D0\uC11C\uB294 \uAC00\uC7A5 \uBB34\uB09C\uD55C
     \uC120\uD0DD "
   maxStack: 1

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: 002_AfterQuest
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uC815\uB9D0 \uACE0\uB9D9\uAD70"
+  - "\uD56D\uAD6C\uCABD\uC5D0 \uC800\uD0DD\uC758 \uC9D1\uC0AC\uB2D8\uC774... \uC544\uB2D0\uC138
+    \uC6D0\uD558\uB294 \uAC78 \uAC00\uC838\uAC00\uC138"
   dialogueChoices:
-  - choiceText: "\uD5D0\uB801\uD55C \uD65C"
+  - choiceText: "\uB2E8\uB2E8\uD55C \uAC80"
     nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
-    rewardItem: {fileID: 11400000, guid: 2e38db743d43cf44097a726358ee828f, type: 2}
+    rewardItem: {fileID: 11400000, guid: 4eb636f01d26b044aa73f61dd3a50197, type: 2}
     rewardItemCount: 1
   - choiceText: "\uD22C\uCC99\uC6A9 \uCC3D"
     nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}

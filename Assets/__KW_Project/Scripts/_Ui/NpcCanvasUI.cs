@@ -49,7 +49,7 @@ private void OnEnable()
         {
             RegisterToDialogueManager();
         }
-        // 🔼🔼🔼 [추가 완료] 🔼🔼🔼
+        
 
         // 등록 로직 분리 (재사용을 위해)
         private void RegisterToDialogueManager()
@@ -64,10 +64,10 @@ private void OnEnable()
             if (dialoguePanel != null) dialoguePanel.SetActive(false);
         }
 
-        // Start는 이제 필요 없지만, 혹시 모르니 놔둬도 됨
+        // Start는 이제 필요 없지만, 혹시 모르니 놔둬도 됨a
         private void Start()
         {
-            RegisterToDialogueManager();
+            // RegisterToDialogueManager();
         }
 
 

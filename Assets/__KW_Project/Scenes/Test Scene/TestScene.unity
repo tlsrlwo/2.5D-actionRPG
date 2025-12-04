@@ -12564,6 +12564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da1e8c6baf8b64db67184cf1de5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: 
   firstMeetingDialogue: {fileID: 11400000, guid: d5a907b52842e59438bfdd919062c1c3, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: bff3889c9cecd964da1570466752b189, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: 0d4a307b7ee7fe84c96a8dea0e021ce4, type: 2}
@@ -12572,6 +12573,8 @@ MonoBehaviour:
   declinedLoopDialogue: {fileID: 11400000, guid: 2c4ab22eec222fd4a81c0fcec09da599, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 11a47eb64b01a774b834913408ee22ef, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: a130137e9a1c91e46a8a8a0412663bc0, type: 2}
+  questRequirements: []
+  questRewards: []
   questData: {fileID: 11400000, guid: 6d29348e912850749bea02d6dfe8563e, type: 2}
   currentQuestState: 0
 --- !u!212 &1674898037
@@ -12909,6 +12912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da1e8c6baf8b64db67184cf1de5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: 
   firstMeetingDialogue: {fileID: 11400000, guid: 19c7efbdabdaaa34b9bb384bda20f54b, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 6a81128fe4c87bd48871f8011b2d73ef, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: a07f1d1ac6c2473498c329b3140fb107, type: 2}
@@ -12917,6 +12921,8 @@ MonoBehaviour:
   declinedLoopDialogue: {fileID: 11400000, guid: 31a3331c2e8b0f34c901b046f660fc58, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 16dddaba1956d1d4aa5ecec722250c7e, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: 233ba159201ed014c8b31526b816cbb1, type: 2}
+  questRequirements: []
+  questRewards: []
   questData: {fileID: 11400000, guid: df0a794cb24d0a94b98607abb063c411, type: 2}
   currentQuestState: 0
 --- !u!212 &1745298129
@@ -13432,6 +13438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da1e8c6baf8b64db67184cf1de5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: 
   firstMeetingDialogue: {fileID: 11400000, guid: 19c7efbdabdaaa34b9bb384bda20f54b, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 6a81128fe4c87bd48871f8011b2d73ef, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: a07f1d1ac6c2473498c329b3140fb107, type: 2}
@@ -13440,6 +13447,8 @@ MonoBehaviour:
   declinedLoopDialogue: {fileID: 11400000, guid: 31a3331c2e8b0f34c901b046f660fc58, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 16dddaba1956d1d4aa5ecec722250c7e, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: 233ba159201ed014c8b31526b816cbb1, type: 2}
+  questRequirements: []
+  questRewards: []
   questData: {fileID: 11400000, guid: df0a794cb24d0a94b98607abb063c411, type: 2}
   currentQuestState: 0
 --- !u!95 &1822477513
@@ -13963,6 +13972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da1e8c6baf8b64db67184cf1de5224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcID: 
   firstMeetingDialogue: {fileID: 11400000, guid: f7c85fc8d09ebec489c6750c2bcef482, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 94ec9b79e679b2b4d9ffa09e08c03502, type: 2}
   acceptedDialogue: {fileID: 11400000, guid: d48cd129e601ff943a82287aba465f54, type: 2}
@@ -13971,6 +13981,12 @@ MonoBehaviour:
   declinedLoopDialogue: {fileID: 11400000, guid: c40be54b3110b234f9d8ce9e73e97da4, type: 2}
   questCompletionDialogue: {fileID: 11400000, guid: 6c6197a4b4b023141aad1797300fade1, type: 2}
   afterQuestDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
+  questRequirements: []
+  questRewards:
+  - item: {fileID: 0}
+    quantity: 0
+  - item: {fileID: 0}
+    quantity: 0
   questData: {fileID: 11400000, guid: ab045e92cdda25b4187b676a5b34748e, type: 2}
   currentQuestState: 0
 --- !u!65 &2015705514

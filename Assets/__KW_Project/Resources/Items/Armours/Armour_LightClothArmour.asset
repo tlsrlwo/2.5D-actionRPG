@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: arm_LightClothArmour
   itemName: "\uAC00\uBCBC\uC6B4 \uCC9C \uC637"
   itemType: 2
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 530a243b650aee746ab3f224e660c0a0, type: 3}
   description: "\uD328\uC158\uC6A9\uC73C\uB85C\uB294 \uC88B\uC740 \uC637\uC774\uB2E4"
   maxStack: 1
   armourType: 1

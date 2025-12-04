@@ -645,7 +645,7 @@ Transform:
   m_GameObject: {fileID: 81511638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 69.236, y: 5.4100003, z: 14.904992}
+  m_LocalPosition: {x: 44.713997, y: 5.4100003, z: 58.362995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1440,7 +1440,7 @@ Transform:
   m_GameObject: {fileID: 164557864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.565002, y: 5.529, z: 23.957008}
+  m_LocalPosition: {x: 57.386, y: 5.529, z: 74.907005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2796,7 +2796,7 @@ Transform:
   m_GameObject: {fileID: 262578077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.6289, y: 4.63, z: 69.8102}
+  m_LocalPosition: {x: 12.32, y: 4.63, z: 69.8102}
   m_LocalScale: {x: 4.397948, y: 5, z: 16.239323}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3929,7 +3929,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4940530804649595483, guid: 2c9025a917f443e488eaf255d42ef11c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.066
+      value: 17.76
       objectReference: {fileID: 0}
     - target: {fileID: 4940530804649595483, guid: 2c9025a917f443e488eaf255d42ef11c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7982,7 +7982,7 @@ Transform:
   m_GameObject: {fileID: 1059815869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.17, y: 5.53, z: 68.63}
+  m_LocalPosition: {x: 18.19, y: 5.53, z: 68.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8645,7 +8645,7 @@ Transform:
   m_GameObject: {fileID: 1085460953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.499, y: 5.361, z: 23.870003}
+  m_LocalPosition: {x: 57.32, y: 5.361, z: 74.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13138,7 +13138,7 @@ Animator:
   m_GameObject: {fileID: 1503897256}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c6b2b7ae81db5245b93fb9e1156892d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6c7aa11b169db3b4a841d3606e6d06fd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13233,8 +13233,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 64767a20f6180694db01c17a35d61243, type: 2}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: b88bcc058d171fe4496743669e4d9f25, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13934,7 +13934,7 @@ Transform:
   m_GameObject: {fileID: 1588164676}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 69.302, y: 5.578, z: 14.992}
+  m_LocalPosition: {x: 44.78, y: 5.578, z: 58.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17600,13 +17600,13 @@ MonoBehaviour:
   npcID: NPC_Priest
   firstMeetingDialogue: {fileID: 11400000, guid: d1b0257691b47fd4ba27f5f320abe22f, type: 2}
   questOfferDialogue: {fileID: 11400000, guid: 60dad98f78b2f6141b4f51dc64800ce5, type: 2}
-  acceptedDialogue: {fileID: 11400000, guid: 0d4a307b7ee7fe84c96a8dea0e021ce4, type: 2}
-  declinedDialogue: {fileID: 11400000, guid: 901c10f58bc25ee4db5e1b6e8320dba8, type: 2}
-  acceptedLoopDialogue: {fileID: 11400000, guid: eaedc9d261cfea54ea88126e36aedf52, type: 2}
-  declinedLoopDialogue: {fileID: 11400000, guid: 2c4ab22eec222fd4a81c0fcec09da599, type: 2}
-  questCompletionDialogue: {fileID: 11400000, guid: 11a47eb64b01a774b834913408ee22ef, type: 2}
-  afterQuestDialogue: {fileID: 11400000, guid: a130137e9a1c91e46a8a8a0412663bc0, type: 2}
-  questData: {fileID: 11400000, guid: 6d29348e912850749bea02d6dfe8563e, type: 2}
+  acceptedDialogue: {fileID: 11400000, guid: 51704046424815643b7746cc86fb0ae4, type: 2}
+  declinedDialogue: {fileID: 11400000, guid: adb9cfaa90a9ac542be4a15a00405299, type: 2}
+  acceptedLoopDialogue: {fileID: 11400000, guid: 3c65e88aa2ff9f14baeafca7cf613f32, type: 2}
+  declinedLoopDialogue: {fileID: 11400000, guid: ec1546839d19959428f78cd4dd3a05b5, type: 2}
+  questCompletionDialogue: {fileID: 11400000, guid: a10b94cd07f2a3d4f8852ead78943998, type: 2}
+  afterQuestDialogue: {fileID: 11400000, guid: 1c61ae50380c76c4c88495013cb03666, type: 2}
+  questData: {fileID: 11400000, guid: 2128235e86e0242419e25126cdedafe0, type: 2}
   currentQuestState: 0
 --- !u!212 &1981976038
 SpriteRenderer:
@@ -17648,7 +17648,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 92ef6acd7ca94ba4eadc13c2f873bd46, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17669,7 +17669,7 @@ Transform:
   m_GameObject: {fileID: 1981976034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 85.156, y: 5.453, z: 94.17}
+  m_LocalPosition: {x: 63.34, y: 5.815, z: 18.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

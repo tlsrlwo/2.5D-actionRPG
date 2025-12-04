@@ -16,11 +16,11 @@ MonoBehaviour:
   - "\uC548\uC5D0 \uC0DD\uC874\uC790\uB4E4\uC774 \uB9CE\uC774 \uB0A8\uC544\uC788\uC2B5\uB2C8\uB2E4.\n\uBD80\uB514
     \uADF8\uB4E4\uC744 \uC0B4\uB824\uC8FC\uC2ED\uC2DC\uC624."
   dialogueChoices:
-  - choiceText: "\uC54C\uACA0\uB2E4"
+  - choiceText: "\uC218\uB77D\uD55C\uB2E4"
     nextDialogue: {fileID: 11400000, guid: 51704046424815643b7746cc86fb0ae4, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 0
-  - choiceText: "\uBBF8\uC548\uD558\uB2E4"
+  - choiceText: "\uAC70\uC808\uD55C\uB2E4"
     nextDialogue: {fileID: 11400000, guid: adb9cfaa90a9ac542be4a15a00405299, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 0

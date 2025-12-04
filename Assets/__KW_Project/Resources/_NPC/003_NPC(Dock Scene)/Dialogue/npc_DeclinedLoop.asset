@@ -10,22 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd2481596066a34fb5ceaf20921c38e, type: 3}
-  m_Name: npcDialogue_FirstMeet
+  m_Name: npc_DeclinedLoop
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "\uD5C9..\uD5C9... "
-  - "\uC5EC\uAE30\uAE4C\uC9C0\uB294 \uBABB \uC624\uACA0\uC9C0"
-  - "\uB2F9\uC2E0... \uC678\uBD80\uC5D0\uC11C \uC624\uC2E0 \uBD84\uC778\uAC00\uC694?"
-  - "\uC232 \uC18D\uC5D0 \uC788\uB294 \uAD50\uD68C\uAE4C\uC9C0 \uC8FD\uC740 \uC790\uB4E4\uC774
-    \uCC3E\uC544\uC624\uACE0 \uB9D0\uC558\uC2B5\uB2C8\uB2E4.\n\uC800\uB294 \uAC04\uC2E0\uD788
-    \uB3C4\uB9DD\uB098\uC654\uC8E0."
-  - "\uB9C8\uC744\uC5D0\uB294 \uC544\uC9C1 \uC0AC\uB78C\uC774.."
+  - "\uD639\uC2DC \uB9C8\uC74C\uC774 \uBC14\uB00C\uC2E0\uAC74\uAC00\uC694??"
   dialogueChoices:
-  - choiceText: "\uBB34\uC2A8\uC77C\uC774\uC8E0?"
+  - choiceText: "\uADF8\uB807\uB2E4"
     nextDialogue: {fileID: 11400000, guid: 60dad98f78b2f6141b4f51dc64800ce5, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 0
-  - choiceText: "\uBAA8\uB974\uB294\uCC99\uD55C\uB2E4"
+  - choiceText: "\uC544\uB2C8\uB2E4"
     nextDialogue: {fileID: 11400000, guid: adb9cfaa90a9ac542be4a15a00405299, type: 2}
     rewardItem: {fileID: 0}
     rewardItemCount: 0
