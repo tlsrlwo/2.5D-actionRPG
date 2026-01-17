@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,7 +27,11 @@ namespace KW
         public QuickSlot_Ui armourSlot;
         public QuickSlot_Ui potionSlot;
 
+        // 저장될 경로
         private string savePath;
+
+        // 죽은 몬스터ID 를 저장할 리스트
+        public List<string> deadMonsterIDs = new List<string>();
 
         private void Awake()
         {
@@ -39,11 +45,12 @@ namespace KW
                 Destroy(gameObject);
             }
 
-            savePath = Application.persistentDataPath + "/saveGame.json";                   // 저장될 주소 
+            savePath = Application.persistentDataPath + "/saveGame.json";                   // 저장될 주소 지정
         }
 
         public void SaveGame()
         {
+            // 퀵슬롯 데이터
             if (weaponSlot == null || armourSlot == null || potionSlot == null)
             {
                 FindQuickSlots();
@@ -55,12 +62,13 @@ namespace KW
             data.sceneName = SceneManager.GetActiveScene().name;
 
             // 플레이어 정보 저장
-            data.playerPos = player.transform.position;
-            data.currentHp = playerHealth.currentHp;
+            data.playerPos = player.transform.position;         // 플레이어의 transform
+            data.currentHp = playerHealth.currentHp;            // 플레이어의 hp 
 
             // 인벤토리 저장
             foreach (var slot in inventory.slots)
             {
+                // 각 인벤토리에 아이템이 존재한다면
                 if (slot.item != null)
                 {
                     // 아이템의 정보를 불러옴
@@ -106,6 +114,10 @@ namespace KW
                 }
             }
 
+            // 죽은 몬스터들의 List 상태 저장
+            // 현재 메모리에 있는 사망자 명단을 저장 데이터에 복사
+            data.deadMonsterIDs = new List<string>(deadMonsterIDs);
+
             // 파일 쓰기
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(savePath, json);
@@ -137,6 +149,7 @@ namespace KW
 
             foreach (var slot in allSlots)
             {
+                // 퀵슬롯에 지정된 아이템에 맞춰서 각 변수에 지정
                 switch (slot.acceptedItemType)
                 {
                     case ItemType.Weapon:
@@ -256,6 +269,9 @@ namespace KW
                     questManager.SaveNpcState(npcData.npcID, npcData.hasMet, state);
                 }
             }
+
+            // 저장된 파일에서 사망자 명단 복구
+            deadMonsterIDs = new List<string>(data.deadMonsterIDs);
 
 
             PlayerSceneConnector sceneConnector = player.GetComponent<PlayerSceneConnector>();

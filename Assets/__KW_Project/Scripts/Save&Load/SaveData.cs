@@ -23,6 +23,9 @@ namespace KW
 
         // Dictionary는 JSON 저장이 안 되므로 리스트로 변환해서 저장
         public List<NpcSaveData> npcDataList = new List<NpcSaveData>();
+
+        [Header("몬스터 사망 후 보관 리스트")]
+        public List<string> deadMonsterIDs = new List<string>();
     }
 
     [System.Serializable]
@@ -47,4 +50,6 @@ namespace KW
         public string questName;                        // 퀘스트 식별자
         public int currentCount;                        // 현재 진행도
     }
+
+  
 }

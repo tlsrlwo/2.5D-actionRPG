@@ -49,7 +49,7 @@ namespace KW
 
         }
 
-        // 상태 불러오기 함수
+        // LoadState의 실행 순서때문에 Interact 안으로 해당 내용을 집어넣음
         private void LoadState()
         {
             if (QuestManager.Instance != null)
@@ -85,7 +85,7 @@ namespace KW
 
             if (_dialogueManager == null) _dialogueManager = DialogueManager.Instance;
 
-            // 퀘스트 매니저에서 내 상태 다시 불러오기
+            // 퀘스트 매니저에서 내 상태 다시 불러오기 (LoadState() 의 내용)
             if(QuestManager.Instance != null)
             {
                 NpcData data = QuestManager.Instance.GetNpcState(npcID);

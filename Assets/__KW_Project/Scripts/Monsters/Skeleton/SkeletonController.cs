@@ -220,6 +220,17 @@ namespace KW
                 Debug.LogError("[SkeletonController] QuestManager.cs를 찾을 수 없음");
             }
 
+            // 사망 사실 기록 SaveManager에
+            SkeletonPersistence skeletonPersistence = GetComponent<SkeletonPersistence>();
+            if (skeletonPersistence != null)
+            {
+                skeletonPersistence.RecordDeath();
+            }
+            else
+            {
+                Debug.LogWarning($"[SkeletonController] {gameObject.name}에 SkeletonPersistence 컴포넌트를 찾을 수 없음");
+            }
+
             Debug.Log($"[SkeletonController] 스켈레톹 사망 : {this.monsterId} / {currentScene}");
 
             SwitchState(deathState);

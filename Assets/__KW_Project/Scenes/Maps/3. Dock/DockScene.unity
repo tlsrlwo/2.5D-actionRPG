@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 81511641}
   - component: {fileID: 81511640}
   - component: {fileID: 81511639}
+  - component: {fileID: 81511646}
   m_Layer: 12
   m_Name: Skeleton_004
   m_TagString: Monster
@@ -653,6 +654,19 @@ Transform:
   - {fileID: 857586466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &81511646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81511638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonDocks004
 --- !u!65 &83202818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2183,14 +2197,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214341771}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.28, y: 5.127, z: 7.22}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
+  m_LocalPosition: {x: 22.75, y: 5.003, z: 71.33}
   m_LocalScale: {x: 1, y: 0.7, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1422968152}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &222030182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8485,6 +8499,7 @@ GameObject:
   - component: {fileID: 1085460956}
   - component: {fileID: 1085460955}
   - component: {fileID: 1085460954}
+  - component: {fileID: 1085460961}
   m_Layer: 12
   m_Name: Skeleton_005
   m_TagString: Monster
@@ -8653,6 +8668,19 @@ Transform:
   - {fileID: 1186914859}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085460961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085460953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonDocks005
 --- !u!1001 &1092968775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14865,6 +14893,7 @@ GameObject:
   - component: {fileID: 1700203556}
   - component: {fileID: 1700203555}
   - component: {fileID: 1700203554}
+  - component: {fileID: 1700203561}
   m_Layer: 12
   m_Name: Skeleton_003
   m_TagString: Monster
@@ -15033,6 +15062,19 @@ Transform:
   - {fileID: 610043684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700203561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700203553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonDocks003
 --- !u!1001 &1704432305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15959,6 +16001,7 @@ GameObject:
   - component: {fileID: 1802078597}
   - component: {fileID: 1802078596}
   - component: {fileID: 1802078595}
+  - component: {fileID: 1802078602}
   m_Layer: 12
   m_Name: Skeleton_001
   m_TagString: Monster
@@ -16127,6 +16170,19 @@ Transform:
   - {fileID: 292833208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1802078602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802078594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonDocks001
 --- !u!1001 &1811948252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18416,6 +18472,7 @@ GameObject:
   - component: {fileID: 2021190985}
   - component: {fileID: 2021190984}
   - component: {fileID: 2021190983}
+  - component: {fileID: 2021190990}
   m_Layer: 12
   m_Name: Skeleton_002
   m_TagString: Monster
@@ -18584,6 +18641,19 @@ Transform:
   - {fileID: 1983225836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021190990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021190982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonDocks002
 --- !u!65 &2036444861
 BoxCollider:
   m_ObjectHideFlags: 0

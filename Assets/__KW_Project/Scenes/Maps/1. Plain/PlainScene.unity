@@ -5888,6 +5888,7 @@ GameObject:
   - component: {fileID: 1062104535}
   - component: {fileID: 1062104534}
   - component: {fileID: 1062104533}
+  - component: {fileID: 1062104540}
   m_Layer: 12
   m_Name: Skeleton_003
   m_TagString: Monster
@@ -6056,6 +6057,19 @@ Transform:
   - {fileID: 1432221109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062104540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062104532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonPlain003
 --- !u!1001 &1062181412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8051,6 +8065,7 @@ GameObject:
   - component: {fileID: 1384031083}
   - component: {fileID: 1384031082}
   - component: {fileID: 1384031081}
+  - component: {fileID: 1384031088}
   m_Layer: 12
   m_Name: Skeleton_002
   m_TagString: Monster
@@ -8219,6 +8234,19 @@ Transform:
   - {fileID: 1603108351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384031088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384031080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonPlain002
 --- !u!1 &1390556923
 GameObject:
   m_ObjectHideFlags: 0
@@ -11796,6 +11824,7 @@ GameObject:
   - component: {fileID: 2055761678}
   - component: {fileID: 2055761677}
   - component: {fileID: 2055761676}
+  - component: {fileID: 2055761683}
   m_Layer: 12
   m_Name: Skeleton_001
   m_TagString: Monster
@@ -11964,6 +11993,19 @@ Transform:
   - {fileID: 1965055862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055761683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055761675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonPlain001
 --- !u!1001 &2072916785
 PrefabInstance:
   m_ObjectHideFlags: 0

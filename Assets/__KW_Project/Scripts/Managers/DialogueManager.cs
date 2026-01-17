@@ -32,8 +32,8 @@ namespace KW
         [SerializeField] private GameObject _SYSTEMCANVAS;
 
         // Queue 는 순차적으로 정보를 보여주는 형식의 List와 비슷한 것
-        private Queue<string> _dialogueQueue;
-        private DialogueSO _currentDialogueData;
+        private Queue<string> _dialogueQueue;                           // 각 NPC 의 dialogue 를 보관할 Queue
+        private DialogueSO _currentDialogueData;                        // 현재 대사 (DialogueSO 스크립터블 오브젝트 형식)
 
         private Npc currentNpc;
 
@@ -55,27 +55,33 @@ namespace KW
 
        private void OnEnable()
         {
+            // 씬이 로드될 때 OnSceneLoaded 를 구독함
             SceneManager.sceneLoaded += OnSceneLoaded;
 
         }
 
         private void OnDisable()
         {
+            // 씬에서 나갈 때 OnSceneLoaded 를 구독취소함
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            InitializeUI();
+            InitializeUI();         // 각종 UI 들을 변수로 등록해주는 함수
         }
 
         private void InitializeUI()
         {
+            // <NpcCanvasUI> 형식의 오브젝트를 찾음. 비활성화되어있는 오브젝트까지 다 체크
             if (npcCanvas == null) npcCanvas = FindObjectOfType<NpcCanvasUI>(true);
+           
+            // <InGameUI> 와 <SystemCanvasUI> 형식의 오브젝트를 찾음. 비활성화되어있는 오브젝트까지 다 체크. gameObject로 선언되어있어서 .gameObject
             if (_INGAMECANVAS == null) _INGAMECANVAS = FindObjectOfType<InGameUI>(true).gameObject;
             if (_SYSTEMCANVAS == null) _SYSTEMCANVAS = FindObjectOfType<SystemCanvasUI>(true).gameObject;
 
+            // npcCanvas 가 존재할 시, npcCanvas의 각 변수 할당
             if (npcCanvas != null)
             {
                 dialoguePanel = npcCanvas.dialoguePanel;
@@ -86,6 +92,7 @@ namespace KW
             }
             else
             {
+                // npcCanavs 를 찾을 수 없을 때
                 Debug.LogError("[DialogueManager] NPC Canvas를 찾을 수 없음");
             }
 
@@ -96,18 +103,21 @@ namespace KW
                 nextBtn.onClick.RemoveAllListeners();
                 nextBtn.onClick.AddListener(DisplayNextLine);
             }
-        } 
+        }
 
+        // DialogueMangaer에서 찾지 못했을 경우를 대비해, SystemCanvasUI.cs 에서도 자체적으롣 등록할 수 있도록 하는 함수
         public void RegisterSystemCanvas(GameObject canvasObj)
         {
             _SYSTEMCANVAS = canvasObj;
         }
 
+        // DialogueMangaer에서 찾지 못했을 경우를 대비해, IngameUI.cs 에서도 자체적으롣 등록할 수 있도록 하는 함수
         public void RegisterIngameCanvas(GameObject canvasObj)
         {
             _INGAMECANVAS = canvasObj;
         }
 
+        // DialogueMangaer에서 찾지 못했을 경우를 대비해, NpcCanvasUI.cs 에서도 자체적으롣 등록할 수 있도록 하는 함수
         public void RegisterNpcCanvas(NpcCanvasUI canvas)
         {
             npcCanvas = canvas;
@@ -156,7 +166,6 @@ namespace KW
                 nextBtn.onClick.AddListener(DisplayNextLine);
             } */
         }
-
       
 
         public void StartDialogue(DialogueSO dialogueData, Npc npc)

@@ -17,10 +17,10 @@ MonoBehaviour:
     \uC6D0\uD558\uB294 \uAC78 \uAC00\uC838\uAC00\uC138"
   dialogueChoices:
   - choiceText: "\uB2E8\uB2E8\uD55C \uAC80"
-    nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
+    nextDialogue: {fileID: 11400000, guid: a130137e9a1c91e46a8a8a0412663bc0, type: 2}
     rewardItem: {fileID: 11400000, guid: 4eb636f01d26b044aa73f61dd3a50197, type: 2}
     rewardItemCount: 1
   - choiceText: "\uD22C\uCC99\uC6A9 \uCC3D"
-    nextDialogue: {fileID: 11400000, guid: 3c877520e838a644699b88912bbc5178, type: 2}
+    nextDialogue: {fileID: 11400000, guid: a130137e9a1c91e46a8a8a0412663bc0, type: 2}
     rewardItem: {fileID: 11400000, guid: bd193f72c9b0bc943985fdc4093191ee, type: 2}
     rewardItemCount: 1

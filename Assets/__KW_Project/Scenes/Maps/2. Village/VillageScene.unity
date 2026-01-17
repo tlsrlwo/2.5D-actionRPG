@@ -4051,6 +4051,7 @@ GameObject:
   - component: {fileID: 298095281}
   - component: {fileID: 298095280}
   - component: {fileID: 298095279}
+  - component: {fileID: 298095286}
   m_Layer: 12
   m_Name: Skeleton_008
   m_TagString: Monster
@@ -4219,6 +4220,19 @@ Transform:
   - {fileID: 996168091}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298095286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298095278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage008
 --- !u!1001 &301851390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4535,6 +4549,7 @@ GameObject:
   - component: {fileID: 332743119}
   - component: {fileID: 332743118}
   - component: {fileID: 332743117}
+  - component: {fileID: 332743124}
   m_Layer: 12
   m_Name: Skeleton_006
   m_TagString: Monster
@@ -4703,6 +4718,19 @@ Transform:
   - {fileID: 1416482484}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332743124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332743116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage006
 --- !u!1001 &348172184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8734,6 +8762,7 @@ GameObject:
   - component: {fileID: 842850489}
   - component: {fileID: 842850488}
   - component: {fileID: 842850487}
+  - component: {fileID: 842850494}
   m_Layer: 12
   m_Name: Skeleton_003
   m_TagString: Monster
@@ -8902,6 +8931,19 @@ Transform:
   - {fileID: 147067583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842850494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842850486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage003
 --- !u!1 &851714536
 GameObject:
   m_ObjectHideFlags: 0
@@ -9889,6 +9931,7 @@ GameObject:
   - component: {fileID: 995464932}
   - component: {fileID: 995464931}
   - component: {fileID: 995464930}
+  - component: {fileID: 995464937}
   m_Layer: 12
   m_Name: Skeleton_001
   m_TagString: Monster
@@ -10057,6 +10100,19 @@ Transform:
   - {fileID: 1121352265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &995464937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995464929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage001
 --- !u!1 &996168090
 GameObject:
   m_ObjectHideFlags: 0
@@ -10400,6 +10456,7 @@ GameObject:
   - component: {fileID: 1026606915}
   - component: {fileID: 1026606914}
   - component: {fileID: 1026606913}
+  - component: {fileID: 1026606920}
   m_Layer: 12
   m_Name: Skeleton_007
   m_TagString: Monster
@@ -10568,6 +10625,19 @@ Transform:
   - {fileID: 258709124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026606920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026606912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage007
 --- !u!1001 &1027398770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11456,6 +11526,7 @@ GameObject:
   - component: {fileID: 1085242344}
   - component: {fileID: 1085242343}
   - component: {fileID: 1085242342}
+  - component: {fileID: 1085242349}
   m_Layer: 12
   m_Name: Skeleton_005
   m_TagString: Monster
@@ -11624,6 +11695,19 @@ Transform:
   - {fileID: 1859509481}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085242349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085242341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage005
 --- !u!1 &1089258407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12590,6 +12674,7 @@ GameObject:
   - component: {fileID: 1142243899}
   - component: {fileID: 1142243898}
   - component: {fileID: 1142243897}
+  - component: {fileID: 1142243904}
   m_Layer: 12
   m_Name: Skeleton_004
   m_TagString: Monster
@@ -12758,6 +12843,19 @@ Transform:
   - {fileID: 651983793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1142243904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142243896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage004
 --- !u!1 &1159954151
 GameObject:
   m_ObjectHideFlags: 0
@@ -18592,6 +18690,7 @@ GameObject:
   - component: {fileID: 1850591930}
   - component: {fileID: 1850591929}
   - component: {fileID: 1850591928}
+  - component: {fileID: 1850591935}
   m_Layer: 12
   m_Name: Skeleton_009
   m_TagString: Monster
@@ -18760,6 +18859,19 @@ Transform:
   - {fileID: 1016464366}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1850591935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850591927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage009
 --- !u!1001 &1851711981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20259,6 +20371,7 @@ GameObject:
   - component: {fileID: 1947033068}
   - component: {fileID: 1947033067}
   - component: {fileID: 1947033066}
+  - component: {fileID: 1947033073}
   m_Layer: 12
   m_Name: Skeleton_002
   m_TagString: Monster
@@ -20427,6 +20540,19 @@ Transform:
   - {fileID: 1118255931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1947033073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947033065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd676e8dd2063d044b34eaa627e8068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonID: skeletonVillage002
 --- !u!1 &1952318927
 GameObject:
   m_ObjectHideFlags: 0
